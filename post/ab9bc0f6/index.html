@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liosq.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":24,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":400},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="数据链路层成帧（Framing）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSI七层模型 - 数据链路层">
+<meta property="og:url" content="https://liosq.github.io/post/ab9bc0f6/index.html">
+<meta property="og:site_name" content="liosq的博客">
+<meta property="og:description" content="数据链路层成帧（Framing）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-15T02:47:51.000Z">
+<meta property="article:modified_time" content="2024-05-10T04:22:01.528Z">
+<meta property="article:author" content="liosq">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://liosq.github.io/post/ab9bc0f6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://liosq.github.io/post/ab9bc0f6/","path":"post/ab9bc0f6/","title":"OSI七层模型 - 数据链路层"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OSI七层模型 - 数据链路层 | liosq的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">liosq的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">blog of liosq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a></li><li class="menu-item menu-item-游戏"><a href="/game/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%B8%A7%EF%BC%88Framing%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">成帧（Framing）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E8%AE%A1%E6%95%B0%E6%B3%95%EF%BC%88Byte-count%EF%BC%89"><span class="nav-number">1.1.1.</span> <span class="nav-text">字节计数法（Byte count）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AD%97%E8%8A%82%E5%A1%AB%E5%85%85%E7%9A%84%E5%AE%9A%E7%95%8C%E7%AC%A6%E6%B3%95%EF%BC%88Flag-bytes-with-byte-stuffing%EF%BC%89"><span class="nav-number">1.1.2.</span> <span class="nav-text">带字节填充的定界符法（Flag bytes with byte stuffing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E6%AF%94%E7%89%B9%E5%A1%AB%E5%85%85%E7%9A%84%E5%AE%9A%E7%95%8C%E7%AC%A6%E6%B3%95%EF%BC%88Flag-bits-with-bit-stuffing%EF%BC%89"><span class="nav-number">1.1.3.</span> <span class="nav-text">带比特填充的定界符法（Flag bits with bit stuffing）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%BC%96%E7%A0%81%E8%BF%9D%E4%BE%8B%EF%BC%88Physical-layer-coding-violations%EF%BC%89"><span class="nav-number">1.1.4.</span> <span class="nav-text">物理层编码违例（Physical layer coding violations）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6%EF%BC%88Error-Control%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">差错控制（Error Control）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E9%94%99"><span class="nav-number">1.2.1.</span> <span class="nav-text">检错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">奇偶校验</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8C%EF%BC%88CRC%EF%BC%89"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">循环冗余校验（CRC）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">解码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">校验和</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A0%E9%94%99"><span class="nav-number">1.2.2.</span> <span class="nav-text">纠错</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%B7%E6%98%8E%E7%A0%81"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">海明码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%96%E7%A0%81-1"><span class="nav-number">1.2.2.1.1.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E7%A0%81-1"><span class="nav-number">1.2.2.1.2.</span> <span class="nav-text">解码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8D%B7%E7%A7%AF%E7%A0%81"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">二进制卷积码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8C%E5%BE%B7%E6%89%80%E7%BD%97%E9%97%A8%E7%A0%81"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">里德所罗门码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8E%E5%AF%86%E5%BA%A6%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C%E5%90%97"><span class="nav-number">1.2.2.4.</span> <span class="nav-text">低密度奇偶校验吗</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%EF%BC%88Flow-Control%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">流量控制（Flow Control）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="nav-number">1.3.1.</span> <span class="nav-text">滑动窗口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E9%80%80N%E5%B8%A7"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">回退N帧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">选择重传</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="liosq"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">liosq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <h3 class="widget-title">标签云</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag">数据库系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag">集群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a><span class="tag-list-count">2</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liosq.github.io/post/ab9bc0f6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="liosq">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liosq的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OSI七层模型 - 数据链路层 | liosq的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OSI七层模型 - 数据链路层
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-15 10:47:51" itemprop="dateCreated datePublished" datetime="2024-04-15T10:47:51+08:00">2024-04-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-05-10 12:22:01" itemprop="dateModified" datetime="2024-05-10T12:22:01+08:00">2024-05-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><h2 id="成帧（Framing）"><a href="#成帧（Framing）" class="headerlink" title="成帧（Framing）"></a>成帧（Framing）</h2><p>将比特流划分成”帧”的主要目的是为了<strong>检测和纠正物理层在比特传输中可能出现的错误</strong>，数据链路层功能需借助”帧”的各个域来实现</p>
+<h3 id="字节计数法（Byte-count）"><a href="#字节计数法（Byte-count）" class="headerlink" title="字节计数法（Byte count）"></a>字节计数法（Byte count）</h3><p>每帧的第一个字节表示<strong>该帧的总字节数</strong></p>
+<p>如：<strong>5</strong>1234<strong>5</strong>1234<strong>8</strong>1234567<strong>6</strong>12345</p>
+<h3 id="带字节填充的定界符法（Flag-bytes-with-byte-stuffing）"><a href="#带字节填充的定界符法（Flag-bytes-with-byte-stuffing）" class="headerlink" title="带字节填充的定界符法（Flag bytes with byte stuffing）"></a>带字节填充的定界符法（Flag bytes with byte stuffing）</h3><p>每帧包含<strong>头标+有效载荷+尾标</strong>，帧与帧之间<strong>用定界符相隔</strong></p>
+<p>使用两种特殊的字节分别作为<strong>定界符FLAG</strong>和<strong>转义符ESC</strong>，如 01111110（0x7E）</p>
+<ul>
+<li><strong>FLAG：</strong>用于区分前后两个不同的帧</li>
+<li><strong>ESC：</strong>用于将后一个字节转义为有效数据（防止有效载荷中出现FLAG或ESC）<ul>
+<li><strong>ESC+ESC和ESC+FLAG</strong>分别表示<strong>ESC和FLAG字节所代表的数据</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="带比特填充的定界符法（Flag-bits-with-bit-stuffing）"><a href="#带比特填充的定界符法（Flag-bits-with-bit-stuffing）" class="headerlink" title="带比特填充的定界符法（Flag bits with bit stuffing）"></a>带比特填充的定界符法（Flag bits with bit stuffing）</h3><p>和上面的方法类似，不过将 01111110 作为了固定的定界符，并且去除了转义符</p>
+<p><strong>发送方检查有效载荷：</strong></p>
+<ul>
+<li>若出现<strong>连续5个1比特</strong>，则在其后面插入<strong>1个0比特</strong></li>
+</ul>
+<p><strong>接收方处理有效载荷：</strong></p>
+<ul>
+<li>若出现<strong>连续5个1比特</strong><ul>
+<li>若<strong>下一比特为1</strong>，则<strong>连同下下一位比特的0构成定界符</strong>，结束一帧</li>
+<li>若<strong>下一比特为0</strong>，则为有效载荷，<strong>丢弃下一比特</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="物理层编码违例（Physical-layer-coding-violations）"><a href="#物理层编码违例（Physical-layer-coding-violations）" class="headerlink" title="物理层编码违例（Physical layer coding violations）"></a>物理层编码违例（Physical layer coding violations）</h3><p>这种方法依然是使用</p>
+<h2 id="差错控制（Error-Control）"><a href="#差错控制（Error-Control）" class="headerlink" title="差错控制（Error Control）"></a>差错控制（Error Control）</h2><p>处理传输中的出现的差错，如<strong>位错误</strong>、<strong>丢失</strong>等</p>
+<p>利用检纠错码进行差错控制的常用方式有三种：</p>
+<ul>
+<li><strong>自动请求重发（ARQ）</strong><ul>
+<li>发送端发送出<strong>可以发现错误的码字</strong></li>
+<li>接收端解码，若检测到错误，则主动向发送端发出请求，要求重发以便纠错</li>
+<li><strong>特点和应用场景：</strong>要求有反馈信道，且发送端和接收端都有缓存器</li>
+</ul>
+</li>
+<li><strong>前向纠错（FEC）</strong><ul>
+<li>发送端发送<strong>具有一定纠错能力的码字</strong></li>
+<li>接收端解码后不仅可以发现错码，还可以<strong>判断错码所在位置并自动纠正</strong></li>
+<li><strong>特点和应用场景：</strong>不需要反馈信道，实时性好，传输效率较高，但纠错编码方法和设备较复杂</li>
+</ul>
+</li>
+<li><strong>混合纠错（HEC）</strong><ul>
+<li>结合使用 ARQ 和 FEC 方法</li>
+<li><strong>在传输错码较少且接收端能纠正时</strong>，自动纠正错误</li>
+<li><strong>在错码较多、超出纠正能力但可以检测时</strong>，采用自动请求重发方式，请求发送端重传，直到正确接收为止</li>
+</ul>
+</li>
+</ul>
+<h3 id="检错"><a href="#检错" class="headerlink" title="检错"></a>检错</h3><h4 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h4><p>通过<strong>增加冗余位使码字中 1 的个数保持奇数或偶数</strong>，在校验时使用<strong>水平或垂直奇偶校验</strong>来检测每行每列奇偶性是否一致</p>
+<p>其细分可以分为以下几种方式：</p>
+<ul>
+<li><strong>垂直奇偶校验</strong></li>
+<li><strong>水平奇偶校验</strong></li>
+<li><strong>水平垂直奇偶校验</strong></li>
+</ul>
+<h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ul>
+<li><strong>编码简单：</strong>只需要添加<strong>冗余位</strong>即可实现</li>
+<li><strong>实现容易：</strong>只需判断 1 的数量即可，即使是需要再划分数据的<strong>水平奇偶校验</strong>，相对于其他校验方式也更容易</li>
+</ul>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><ul>
+<li><strong>漏检率高：</strong>单独使用水平或垂直的漏检率约为 $\frac12$（偶数个变化就无法检测出来），使用<strong>水平垂直奇偶校验</strong>的话，漏检率可以大大降低</li>
+<li><strong>无纠错能力：</strong>只能检测是否存在错误，并不能定位到错误的位置</li>
+</ul>
+<h4 id="循环冗余校验（CRC）"><a href="#循环冗余校验（CRC）" class="headerlink" title="循环冗余校验（CRC）"></a>循环冗余校验（CRC）</h4><p><strong>其校验码称为循环码（多项式码）</strong>，是一种线性分组码。它是<strong>在严格的代数学理论基础上建立起来的</strong>，检纠错能力非常强，且广泛应用在计算机网络和数据通信中</p>
+<p>循环码除了具有线性分组码的一般性之外，还有一个显著的特点就是<strong>循环性</strong>，即循环码中<strong>任一码字循环左右移一位或多位</strong>形成的码字依旧是循环码中的码字</p>
+<h5 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h5><blockquote>
+<p>给定一个长度为 $n$ 的二进制串 $B_n&#x3D;b_{n-1}b_{n-2}…b_1b_0,(b&#x3D;0,1)$</p>
+<p><strong>则可以将其表示为多项式 $B(x)&#x3D;b_{n-1}x^{n-1}+b_{n-2}x^{n-2}+…+b_1x+b_0$</strong></p>
+</blockquote>
+<p>我们给定一个<strong>生成 $k$ 阶多项式</strong> $G(x)$，<strong>二进制串数据</strong> $F(x)$，进行以下操作：</p>
+<ul>
+<li>将 $F(x)$ <strong>左移 $k-1$ 位</strong>，即 $F’(x)&#x3D;F(x)\times x^{k-1}$</li>
+<li>用模 2 算法求得 $F’(x)&#x2F;G(x)$ 的余数 $R(x)$，并将余数 $R(x)$ 追加到 $F(x)$ 尾部，得到最终要发送的数据 $F’’(x)$</li>
+</ul>
+<p>然后由发送端将 $G(x),F’’(x)$ 发送给接收端</p>
+<h5 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h5><p>接收端接收到数据后，只需用模 2 算法计算 $F’’(x)&#x2F;G(x)$，判断计算后的余数是否为 0（能否被整除），如果为 0，则说明<strong>传输过程中没有出错</strong></p>
+<h4 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h4><p>将发送的数据看成是二进制整数序列，并划分一段段规定的长度（如8、16、32位等）；然后<strong>计算它们的和</strong>，如计算时有进位，则<strong>将进位加到计算出的和中</strong>，计算完毕后，<strong>将计算的和取反</strong>作为校验和，与数据一并发送给接收端</p>
+<p>在接收端，重新计算校验和，并于接收到的原校验和进行比较</p>
+<h3 id="纠错"><a href="#纠错" class="headerlink" title="纠错"></a>纠错</h3><h4 id="海明码"><a href="#海明码" class="headerlink" title="海明码"></a>海明码</h4><p>在 $m$ 位数据之中添加 $r$ 个冗余位，此时数据传输的总位数为 $m+r$，且要求 $r$ 必须<strong>能够至少表示 $m+r+1$ 种状态</strong>（1 种状态表示无差错，$m+r$ 种状态分别表示数据第 $i,(0&lt; i\le m+r)$ 位出错）</p>
+<p>因为 $r$ 位二进制数可以表示 $2^r$ 种不同的状态，所以有： $2^r\ge m+r+1$</p>
+<h5 id="编码-1"><a href="#编码-1" class="headerlink" title="编码"></a>编码</h5><p>在 $m+r$ 位数据中，各冗余位处于第 $2^i,(0\le i&lt;r)$ 位，分别用 $r_1,r_2,…,r_r$ 表示；而后 $m$ 位数据<strong>从低位到高位按序填充到剩余位置</strong></p>
+<p>因为冗余位 $r_rr_{r-1}…r_1$ 组成的二进制数就代表出错位的位置，所以对于第 $r_i$ 而言，它应该与<strong>位置序号代表的二进制串中第 $i-1$ 位为 1 的位置有关</strong></p>
+<blockquote>
+<p>很容易理解，当第 $k$ 位出错时，<strong>冗余位组成的二进制数</strong>应该等于 $k$</p>
+<p>即 $2^0\times r_1+2^1\times r_2+…+2^{r-1}\times r_r&#x3D;k$，说明第 $k$ 位和其二进制串中为 1 的每一位都有关；相对地，$r_i$ 也就和每个第 $i-1$ 位为 1 的位置有关</p>
+</blockquote>
+<p>于是，就可以采用奇偶校验来求出所有与 $r_i$ 有关的数据位的校验位，将其作为 $r_i$</p>
+<h5 id="解码-1"><a href="#解码-1" class="headerlink" title="解码"></a>解码</h5><p>解码时，对 $n$ 位数据中的第  $2^i,(0&lt;2^i\le n)$ 位进行奇偶校验，并将结果合并为二进制数 $x$，如果 $x$ 不为 0，则说明有数据位出错，第 $x$ 位即为出错位</p>
+<h4 id="二进制卷积码"><a href="#二进制卷积码" class="headerlink" title="二进制卷积码"></a>二进制卷积码</h4><h4 id="里德所罗门码"><a href="#里德所罗门码" class="headerlink" title="里德所罗门码"></a>里德所罗门码</h4><h4 id="低密度奇偶校验吗"><a href="#低密度奇偶校验吗" class="headerlink" title="低密度奇偶校验吗"></a>低密度奇偶校验吗</h4><h2 id="流量控制（Flow-Control）"><a href="#流量控制（Flow-Control）" class="headerlink" title="流量控制（Flow Control）"></a>流量控制（Flow Control）</h2><p><strong>确保发送方的发送速率</strong>，不大于接收方的处理速率</p>
+<ul>
+<li>避免接收缓冲区溢出</li>
+</ul>
+<h3 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h3><h4 id="回退N帧"><a href="#回退N帧" class="headerlink" title="回退N帧"></a>回退N帧</h4><p>接收方没有接收到某一帧时，自动丢弃接下来接收到的所有帧，直到接收到需要的帧</p>
+<h4 id="选择重传"><a href="#选择重传" class="headerlink" title="选择重传"></a>选择重传</h4><p>接收方没有接收到某一帧时，继续对接下来接收到的帧进行确认。由发送方对未确认的帧进行重传</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>liosq
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://liosq.github.io/post/ab9bc0f6/" title="OSI七层模型 - 数据链路层">https://liosq.github.io/post/ab9bc0f6/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"># 计算机网络</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/4f117b1f/" rel="prev" title="网络模型">
+                  <i class="fa fa-angle-left"></i> 网络模型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/98eaaa29/" rel="next" title="MySQL - 存储引擎">
+                  MySQL - 存储引擎 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">liosq</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">155k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:42</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/liosq" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://liosq.github.io/post/ab9bc0f6/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script src="/js/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '32px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>

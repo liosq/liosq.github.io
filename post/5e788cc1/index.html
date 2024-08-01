@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liosq.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":24,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":400},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="集合Java 集合，也叫作容器，主要是由两大接口派生而来：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java - 集合">
+<meta property="og:url" content="https://liosq.github.io/post/5e788cc1/index.html">
+<meta property="og:site_name" content="liosq的博客">
+<meta property="og:description" content="集合Java 集合，也叫作容器，主要是由两大接口派生而来：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-07T11:13:19.000Z">
+<meta property="article:modified_time" content="2024-04-22T03:04:59.346Z">
+<meta property="article:author" content="liosq">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://liosq.github.io/post/5e788cc1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://liosq.github.io/post/5e788cc1/","path":"post/5e788cc1/","title":"Java - 集合"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java - 集合 | liosq的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">liosq的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">blog of liosq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a></li><li class="menu-item menu-item-游戏"><a href="/game/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E5%90%88"><span class="nav-number">1.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Collection"><span class="nav-number">1.1.</span> <span class="nav-text">Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.1.1.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">底层数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grow-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">grow 流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">add 流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#remove-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">remove 流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Arrays-asList"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">Arrays.asList</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedList"><span class="nav-number">1.1.2.</span> <span class="nav-text">LinkedList</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-1"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">底层数据结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vector"><span class="nav-number">1.1.3.</span> <span class="nav-text">Vector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-2"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">底层数据结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map"><span class="nav-number">1.2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">1.2.1.</span> <span class="nav-text">HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-3"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">底层数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resize-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">resize 流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#put-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">put 流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">get 流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap"><span class="nav-number">1.2.2.</span> <span class="nav-text">ConcurrentHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections-SynchronizedMap"><span class="nav-number">1.2.3.</span> <span class="nav-text">Collections.SynchronizedMap</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E6%A3%80%E6%B5%8B%E6%9C%BA%E5%88%B6"><span class="nav-number">1.3.</span> <span class="nav-text">错误检测机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fail-safe"><span class="nav-number">1.3.1.</span> <span class="nav-text">fail-safe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fail-fast"><span class="nav-number">1.3.2.</span> <span class="nav-text">fail-fast</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="liosq"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">liosq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">31</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <h3 class="widget-title">标签云</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag">数据库系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag">集群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a><span class="tag-list-count">2</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liosq.github.io/post/5e788cc1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="liosq">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liosq的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java - 集合 | liosq的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java - 集合
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-04-07 19:13:19" itemprop="dateCreated datePublished" datetime="2024-04-07T19:13:19+08:00">2024-04-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-04-22 11:04:59" itemprop="dateModified" datetime="2024-04-22T11:04:59+08:00">2024-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>Java 集合，也叫作容器，主要是由两大接口派生而来：</p>
+<ul>
+<li><code>Collection</code>：存放单一元素<ul>
+<li><code>List</code>：列表，存储<strong>有序、可重复</strong>的元素</li>
+<li><code>Set</code>：集合，存储<strong>不可重复</strong>的元素</li>
+<li><code>Queue</code>：队列，按<strong>特定规则</strong>来确定元素顺序</li>
+</ul>
+</li>
+<li><code>Map</code>：存储<code>Entry</code>键值对</li>
+</ul>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><h4 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p>使用 <code>Object[]</code> 数组来存储元素</p>
+<h4 id="grow-流程"><a href="#grow-流程" class="headerlink" title="grow 流程"></a><code>grow</code> 流程</h4><ol>
+<li>判断当前 <code>elemenetData</code> 是否为默认空数组（未初始化）<ul>
+<li>若<strong>是</strong>，则将其初始化为<strong>长度为 <code>minCapacity</code> 和 16（默认长度）的数组</strong></li>
+<li>若<strong>否</strong>，则将长度扩容为<strong>原有长度的1.5倍和<code>minCapacity</code>的最大值</strong></li>
+</ul>
+</li>
+</ol>
+<h4 id="add-流程"><a href="#add-流程" class="headerlink" title="add 流程"></a><code>add</code> 流程</h4><p><strong>时间复杂度：$O(n)$</strong></p>
+<ol>
+<li>判断<strong>当前元素数量是否等于数组长度</strong><ul>
+<li>若<strong>等于</strong>，则扩容（默认<code>minCapacity</code> 为原数组长度+1）</li>
+</ul>
+</li>
+<li>将元素添加到数组尾部</li>
+</ol>
+<h4 id="remove-流程"><a href="#remove-流程" class="headerlink" title="remove 流程"></a><code>remove</code> 流程</h4><p><strong>时间复杂度：$O(n)$</strong></p>
+<ol>
+<li>判断要<code>remove</code>的元素是否为最后一个<ul>
+<li>若<strong>否</strong>，则用<code>System.arraycopy</code>将<strong>待删除元素后的所有元素</strong>复制到<strong>待删除元素前面</strong></li>
+</ul>
+</li>
+<li>将<strong>数组最后一位</strong>置为<code>null</code></li>
+</ol>
+<h4 id="Arrays-asList"><a href="#Arrays-asList" class="headerlink" title="Arrays.asList"></a><code>Arrays.asList</code></h4><p>**使用该方法创建的 <code>List</code> 并不是 <code>ArrayList</code>**，而是 <code>Arrays</code> 的一个内部类 <code>ArrayList</code>，其不包含<code>add</code>和<code>remove</code>方法，只能调用<code>get</code>方法</p>
+<p>同时其创建的<code>List</code>是<strong>对原数组的引用</strong>，如果修改原数组，其也会受到影响</p>
+<p>若想将数组转为 <code>ArrayList</code>，可以使用 <code>new ArrayList&lt;&gt;(List.of(xxx))</code> 创建</p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><h4 id="底层数据结构-1"><a href="#底层数据结构-1" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p>双向链表</p>
+<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p><code>Vector</code>在很多方法上都加入了**<code>synchronized</code>关键字**，来保证线程的安全，如：<code>get,set,add,remove,equals,hashcode,toString,toArray...</code>等</p>
+<p>也正是因为这一点，导致<code>Vector</code>效率低，不能和<code>ArrayList</code>相比</p>
+<h4 id="底层数据结构-2"><a href="#底层数据结构-2" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p>与<code>ArrayList</code>相同，都是使用<code>Object[]</code>来存储数据的，但是**<code>Vector</code>的默认容量是 10<strong>，且</strong><code>Vector</code>扩容到原来的 2 倍**</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><h4 id="底层数据结构-3"><a href="#底层数据结构-3" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p><strong>JDK1.7：</strong> 数组 + 链表</p>
+<p><strong>JDK1.8及以后：</strong> 数组 + 链表 &#x2F; 红黑树</p>
+<blockquote>
+<p><strong>链表 &#x3D;&gt; 红黑树：数组长度大于 64</strong> 且链表长度大于 <strong>8</strong></p>
+<p><strong>红黑树 &#x3D;&gt; 链表：红黑树节点数量小于 6</strong> </p>
+</blockquote>
+<h4 id="resize-流程"><a href="#resize-流程" class="headerlink" title="resize 流程"></a><code>resize</code> 流程</h4><p>简单来说，扩容就是将数组容量变为原来的 2 倍，并且对旧数组中元素重新进行一次哈希计算，比较耗时</p>
+<p>所以在使用 <code>HashMap</code> 时应<strong>尽可能避免扩容</strong></p>
+<ol>
+<li><p>判断<strong>原来的数组容量</strong>是否大于 0 </p>
+<ul>
+<li><p>若<strong>否</strong>，则初始化数组容量为 <strong>16</strong>、扩容阈值为 <strong>12</strong>，并创建新数组，结束流程</p>
+</li>
+<li><p>若<strong>是</strong>，判断<strong>原来的数组容量</strong>是否大于等于<strong>最大容量</strong>（$2^{30}$）</p>
+<ul>
+<li>若<strong>是</strong>，则将<strong>扩容阈值</strong>设为 $2^{31}-1$</li>
+<li>若<strong>否</strong>，则判断当前长度 * 2 是否超出<strong>最大容量</strong><ul>
+<li>若<strong>否</strong>，设定<strong>新数组容量</strong>为当前长度 * 2</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>根据<strong>新数组容量</strong>创建一个新数组</p>
+</li>
+<li><p>遍历旧数组中的每一个元素</p>
+<ul>
+<li>若元素为<strong>红黑树</strong>：进行红黑树添加</li>
+<li>若元素为<strong>链表</strong><ul>
+<li>遍历链表，判断元素的 $hash$ 值是否满足 $hash\ &amp;\ oldCap&#x3D;&#x3D;0$（$oldCap$ 为旧数组容量）<ul>
+<li>若<strong>是</strong>，则将其移动到新数组中下标为 $i+oldCap$ （$i$ 为元素在旧数组中的下标）的位置上</li>
+<li>若<strong>否</strong>，则将元素移动到新数组中下标为 $i$ 的位置上</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a><code>put</code> 流程</h4><p><strong>时间复杂度：$O(1)$</strong></p>
+<p><strong>调用 <code>put(key, value)</code> 的具体流程：</strong></p>
+<ol>
+<li>对传入的 $key$ 值进行哈希处理得到哈希值 $hash$</li>
+<li>判断存储节点的 $table$ 是否为空<ul>
+<li>若<strong>为空</strong>，则调用 <code>resize()</code> 方法初始化一个长度为 <strong>16</strong> 的数组</li>
+</ul>
+</li>
+<li>根据 $hash$ 取模计算出 $key$ 存放的下标 $i$</li>
+<li>判断 $table[i]$ 是否为空<ul>
+<li>若<strong>不为空</strong>，则判断 $table[i]$ 与传入值是否相同（$hash,key$）<ul>
+<li>若<strong>相同</strong>，则覆盖 $table[i]$ 的 $value$</li>
+<li>若<strong>不相同</strong>，则判断当前节点是否为红黑树<ul>
+<li>若<strong>是红黑树</strong>，则调用红黑树插入方法插入新节点</li>
+<li>若<strong>不是红黑树</strong>，则遍历链表判断 $key$ 是否存在<ul>
+<li>若<strong>存在</strong>，则覆盖其 $value$</li>
+<li>若<strong>不存在</strong>，则在链表尾部插入新节点，同时判断链表长度是否大于 <strong>8</strong><ul>
+<li>若<strong>大于</strong>，则调用 <code>treeifyBin</code> 将链表转换为红黑树（若 $table$ 长度不足 <strong>64</strong> 则扩容而不是转换）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>直接插入到 $table[i]$</li>
+<li>判断插入后 $table$ 中键值对数量（包括冲突的）是否大于扩容阈值（数组容量 * 加载因子）<ul>
+<li>若<strong>是</strong>，则调用 <code>resize()</code> 方法扩容数组</li>
+</ul>
+</li>
+</ol>
+<h4 id="get-流程"><a href="#get-流程" class="headerlink" title="get 流程"></a><code>get</code> 流程</h4><p><strong>时间复杂度：$O(1)$</strong></p>
+<p><strong>调用 <code>get(key)</code> 的具体流程：</strong></p>
+<ol>
+<li>对 <code>key</code> 哈希运算并取模当前 <code>table</code> 长度得到下标 <code>first</code></li>
+<li>判断 <code>table[first]</code> 是否为空<ul>
+<li>若<strong>不为空</strong>则判断当前节点哈希值和 <code>key</code> 是否相同<ul>
+<li>若<strong>相同</strong>则返回该节点 <code>value</code></li>
+<li>若<strong>不相同</strong>则根据该节点类型（链表或红黑树）查询到满足<strong>哈希值和<code>key</code>都相同的节点</strong>，并返回其<code>value</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><p>顾名思义，并发安全的 <code>HashMap</code>。使用 <strong>CAS</strong> + <strong>synchronized</strong> 来保证 <code>HashMap</code> 的并发安全</p>
+<ul>
+<li><strong>CAS</strong> 控制数组节点的添加</li>
+<li><strong>synchronized</strong> 只锁定当前链表&#x2F;红黑树的首节点，只要插入的 key 的哈希值不冲突，就不会存在并发的问题，提高了效率</li>
+</ul>
+<blockquote>
+<p><strong>为什么只有 HashMap 的键或值可以为空，而 Hashtable、ConcurrentHashMap不能</strong></p>
+</blockquote>
+<p><strong>代码层面：</strong></p>
+<p>Hashtable 和 ConcurrentHashMap 在<code>put</code>时需要<strong>调用<code>key</code>对象的<code>hashcode()</code>方法</strong>，所以在此之前对键进行了空值判断（值也进行了判断，不清楚原因）</p>
+<p><strong>设计层面：</strong></p>
+<p>Hashtable 和 ConcurrentHashMap 都是<strong>线程安全</strong>的，其需要在<code>put</code>时判断键是否存在，如果允许键为<code>null</code>的话就<strong>无法判断对应键是<code>null</code>还是不存在</strong></p>
+<h3 id="Collections-SynchronizedMap"><a href="#Collections-SynchronizedMap" class="headerlink" title="Collections.SynchronizedMap"></a>Collections.SynchronizedMap</h3><p>其内部维护了一个<strong>普通对象<code>Map m</code></strong> 和 <strong>互斥锁对象<code>Object mutex</code><strong>，<code>SynchronizedMap</code>提供了<code>get,put,remove</code>等基本方法，其原理是</strong>使用<code>synchronized</code>对原<code>Map</code>对象进行了一层封装</strong>以达到线程安全的目的</p>
+<h2 id="错误检测机制"><a href="#错误检测机制" class="headerlink" title="错误检测机制"></a>错误检测机制</h2><h3 id="fail-safe"><a href="#fail-safe" class="headerlink" title="fail-safe"></a>fail-safe</h3><p>在遍历集合时，不直接在集合内容上访问，而是先复制原有的集合内容，在拷贝的集合上进行遍历。这样就避免了<strong>其他线程修改集合结构对其造成的影响</strong>，但也<strong>无法读取到其他线程修改后的最新数据</strong></p>
+<h3 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h3><p>即<strong>快速失败机制</strong>，当多个线程在遍历集合时，如果该集合的结构发生改变，则有可能触发 fail-fast，抛出<code>ConcurrentModificationException</code>异常</p>
+<p>fail-fast 机制并不保证不同步的修改下一定会抛出异常，它只是尽最大努力去抛出，所以这种机制一般仅用于检测 bug</p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jalja365/p/15592694.html">java 集合中的错误检测机制 - 徐知语的笔记 - 博客园 (cnblogs.com)</a></li>
+</ul>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>liosq
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://liosq.github.io/post/5e788cc1/" title="Java - 集合">https://liosq.github.io/post/5e788cc1/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/61d7fd40/" rel="prev" title="1483. 树节点的第 K 个祖先">
+                  <i class="fa fa-angle-left"></i> 1483. 树节点的第 K 个祖先
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/6c92115f/" rel="next" title="Spring">
+                  Spring <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">liosq</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">155k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">4:42</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/liosq" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://liosq.github.io/post/5e788cc1/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script src="/js/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '32px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
