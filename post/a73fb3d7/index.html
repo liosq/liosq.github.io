@@ -19,18 +19,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"liosq.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":24,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":400},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="多线程创建线程">
+    <meta name="description" content="多线程Thread">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java - 多线程">
+<meta property="og:title" content="Java - 并发编程">
 <meta property="og:url" content="https://liosq.github.io/post/a73fb3d7/index.html">
 <meta property="og:site_name" content="liosq的博客">
-<meta property="og:description" content="多线程创建线程">
+<meta property="og:description" content="多线程Thread">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-01T11:47:46.000Z">
-<meta property="article:modified_time" content="2024-06-22T02:18:39.889Z">
+<meta property="article:modified_time" content="2024-08-05T14:23:01.792Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="Java">
-<meta property="article:tag" content="多线程">
+<meta property="article:tag" content="并发编程">
 <meta name="twitter:card" content="summary">
 
 
@@ -38,10 +38,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://liosq.github.io/post/a73fb3d7/","path":"post/a73fb3d7/","title":"Java - 多线程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://liosq.github.io/post/a73fb3d7/","path":"post/a73fb3d7/","title":"Java - 并发编程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Java - 多线程 | liosq的博客</title>
+<title>Java - 并发编程 | liosq的博客</title>
   
 
 
@@ -90,7 +90,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">100</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">54</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a></li><li class="menu-item menu-item-游戏"><a href="/game/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">106</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">56</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">31</span></a></li><li class="menu-item menu-item-游戏"><a href="/game/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">创建线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Thread"><span class="nav-number">1.1.1.</span> <span class="nav-text">Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Runnable"><span class="nav-number">1.1.2.</span> <span class="nav-text">Runnable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Callable"><span class="nav-number">1.1.3.</span> <span class="nav-text">Callable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">1.1.4.</span> <span class="nav-text">ThreadPoolExecutor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Executors%E8%87%AA%E5%B8%A6%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">1.2.1.</span> <span class="nav-text">Executors自带线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">线程池参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B%E6%95%B0"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">核心线程数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">阻塞队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E8%BF%87%E7%A8%8B"><span class="nav-number">1.2.3.</span> <span class="nav-text">调度过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">1.3.</span> <span class="nav-text">乐观锁和悲观锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81"><span class="nav-number">1.3.1.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">1.3.2.</span> <span class="nav-text">悲观锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CAS"><span class="nav-number">1.4.</span> <span class="nav-text">CAS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized"><span class="nav-number">1.5.</span> <span class="nav-text">synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">1.5.1.</span> <span class="nav-text">底层原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%81%E5%8D%87%E7%BA%A7"><span class="nav-number">1.5.2.</span> <span class="nav-text">锁升级</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">重量级锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">轻量级锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">偏向锁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile"><span class="nav-number">1.6.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AQS"><span class="nav-number">1.7.</span> <span class="nav-text">AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">1.7.1.</span> <span class="nav-text">基本工作机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.8.</span> <span class="nav-text">ReentrantLock</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Thread"><span class="nav-number">1.1.</span> <span class="nav-text">Thread</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runnable"><span class="nav-number">1.2.</span> <span class="nav-text">Runnable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Callable"><span class="nav-number">1.3.</span> <span class="nav-text">Callable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="nav-number">1.4.</span> <span class="nav-text">线程状态</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">2.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-number">2.1.</span> <span class="nav-text">ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executors-%E8%87%AA%E5%B8%A6%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">2.2.</span> <span class="nav-text">Executors 自带线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0"><span class="nav-number">2.3.</span> <span class="nav-text">线程池参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E7%BA%BF%E7%A8%8B%E6%95%B0"><span class="nav-number">2.3.1.</span> <span class="nav-text">核心线程数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%BB%E5%A1%9E%E9%98%9F%E5%88%97"><span class="nav-number">2.3.2.</span> <span class="nav-text">阻塞队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5"><span class="nav-number">2.3.3.</span> <span class="nav-text">拒绝策略</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%8A%B6%E6%80%81"><span class="nav-number">2.4.</span> <span class="nav-text">线程池状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E8%BF%87%E7%A8%8B"><span class="nav-number">2.5.</span> <span class="nav-text">任务调度过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81%E5%92%8C%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">3.</span> <span class="nav-text">乐观锁和悲观锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%90%E8%A7%82%E9%94%81"><span class="nav-number">3.1.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%82%B2%E8%A7%82%E9%94%81"><span class="nav-number">3.2.</span> <span class="nav-text">悲观锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CAS"><span class="nav-number">4.</span> <span class="nav-text">CAS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronized"><span class="nav-number">5.</span> <span class="nav-text">synchronized</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="nav-number">5.1.</span> <span class="nav-text">底层原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%81%E5%8D%87%E7%BA%A7"><span class="nav-number">5.2.</span> <span class="nav-text">锁升级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">5.2.1.</span> <span class="nav-text">重量级锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="nav-number">5.2.2.</span> <span class="nav-text">轻量级锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="nav-number">5.2.3.</span> <span class="nav-text">偏向锁</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">6.</span> <span class="nav-text">volatile</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AQS"><span class="nav-number">7.</span> <span class="nav-text">AQS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E6%9C%BA%E5%88%B6"><span class="nav-number">7.1.</span> <span class="nav-text">基本工作机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">8.</span> <span class="nav-text">ReentrantLock</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -186,7 +186,7 @@
           <h3 class="widget-title">标签云</h3>
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag">多线程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag">数据库系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag">集群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a><span class="tag-list-count">2</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/" rel="tag">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag">数据库系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag">集群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a><span class="tag-list-count">2</span></li></ul>
               </canvas>
           </div>
       </div>
@@ -220,12 +220,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Java - 多线程 | liosq的博客">
+      <meta itemprop="name" content="Java - 并发编程 | liosq的博客">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Java - 多线程
+          Java - 并发编程
         </h1>
 
         <div class="post-meta-container">
@@ -243,7 +243,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-06-22 10:18:39" itemprop="dateModified" datetime="2024-06-22T10:18:39+08:00">2024-06-22</time>
+      <time title="修改时间：2024-08-05 22:23:01" itemprop="dateModified" datetime="2024-08-05T22:23:01+08:00">2024-08-05</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -279,24 +279,24 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><h3 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h3><ul>
+    <div class="post-body" itemprop="articleBody"><h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><ul>
 <li>通过新建一个<strong>Thread对象</strong>，并<strong>重载其run方法</strong>来创建一个进程</li>
 <li>自定义Thread的子类，在其内部<strong>重载run方法</strong>，然后在外部通过创建自定义类来创建线程</li>
 </ul>
 <p>这两种方法都太”重”，<strong>不太适合</strong>在实际开发或其他应用场景中广泛使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    System.out.pringln(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h3><p>自定义一个<strong>实现Runnable接口</strong>的类，在其内部<strong>实现run方法</strong>。配合Thread使用</p>
+<h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>自定义一个<strong>实现Runnable接口</strong>的类，在其内部<strong>实现run方法</strong>。配合Thread使用</p>
 <p>这种方法相较于Thread更”轻”，比较推荐使用这种方法来创建线程任务</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">MyRunnable</span>());</span><br></pre></td></tr></table></figure>
 
-<h3 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h3><p>和Runnable相似，也是自定义一个实现接口的类，区别是Callable可以<strong>返回数据</strong>，并且其需要配合<strong>FutureTask</strong>来使用</p>
+<h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><p>和 Runnable 相似，也是自定义一个实现接口的类，区别是 Callable 可以<strong>返回数据</strong>，并且其需要配合<strong>FutureTask</strong>来使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer处填返回的数据类型（基元类的包装类）</span></span><br><span class="line">MyCallable <span class="keyword">implements</span> <span class="title class_">Callable</span>&lt;Integer&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 可以理解为FutureTask是带返回值的Thread</span></span><br><span class="line">FutureTask&lt;Integer&gt; futureTask = <span class="keyword">new</span> <span class="title class_">FutureTask</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">MyCallable</span>());</span><br></pre></td></tr></table></figure>
 
-<h3 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h3><p>将需要使用多线程执行的任务封装为自定义的Runnable类，然后使用**<code>Executors</code>静态方法<strong>或</strong><code>ThreadPoolExecutor</code>构造函数<strong>创建一个线程池。推荐使用</strong>构造函数**来创建线程池</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    <span class="number">2</span>,                          			<span class="comment">// corePoolSize: 核心线程数</span></span><br><span class="line">    <span class="number">7</span>,                                      <span class="comment">// maximumPoolSize: 最大线程数</span></span><br><span class="line">    <span class="number">10L</span>,                                    <span class="comment">// keepAliveTime: 超时时间</span></span><br><span class="line">    TimeUnit.NANOSECONDS,                   <span class="comment">// TimeUnit: 超时时间的单位</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="number">1</span>),   		<span class="comment">// BlockingQueue: 任务队列</span></span><br><span class="line">    Executors.defaultThreadFactory(),       <span class="comment">// ThreadFactory: 线程工厂</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy()    <span class="comment">// RejectedExecutionHandler: 饱和策略</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><p>将需要使用多线程执行的任务封装为自定义的Runnable类，然后使用 <strong><code>Executors</code>静态方法</strong>或**<code>ThreadPoolExecutor</code>构造函数** 创建一个线程池。推荐使用<strong>构造函数</strong>来创建线程池</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    <span class="number">2</span>,                          			<span class="comment">// corePoolSize: 核心线程数</span></span><br><span class="line">    <span class="number">7</span>,                                      <span class="comment">// maximumPoolSize: 最大线程数</span></span><br><span class="line">    <span class="number">10L</span>,                                    <span class="comment">// keepAliveTime: 超时时间</span></span><br><span class="line">    TimeUnit.NANOSECONDS,                   <span class="comment">// TimeUnit: 超时时间的单位</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="number">1</span>),   		<span class="comment">// BlockingQueue: 任务队列</span></span><br><span class="line">    Executors.defaultThreadFactory(),       <span class="comment">// ThreadFactory: 线程工厂</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy()    <span class="comment">// RejectedExecutionHandler: 饱和/拒绝策略</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="Executors自带线程池"><a href="#Executors自带线程池" class="headerlink" title="Executors自带线程池"></a>Executors自带线程池</h3><p>用于创建线程池的**<code>Executors</code>静态方法**包括：</p>
+<h2 id="Executors-自带线程池"><a href="#Executors-自带线程池" class="headerlink" title="Executors 自带线程池"></a>Executors 自带线程池</h2><p>用于创建线程池的**<code>Executors</code>静态方法**包括：</p>
 <ul>
 <li><code>newFixedThreadPool</code>：创建一个<strong>定长</strong>的线程池，可以控制线程的最大并发数，超出的线程会存在队列中等待<ul>
 <li><strong>核心线程数</strong>与<strong>最大线程数</strong>相同，没有临时线程</li>
@@ -326,13 +326,13 @@
 <p>此建议出自<strong>阿里开发手册《Java开发手册-嵩山版》</strong></p>
 </blockquote>
 <p>不推荐使用<code>Executors</code>来创建线程池，是因为每一种方法创建的线程池都有<strong>积压大量线程</strong>从而导致OOM的风险。使用<code>ThreadPoolExecutor</code>构造方法来创建线程池可以<strong>明确线程池的运行规则</strong>，避免<strong>资源耗尽</strong>的风险</p>
-<h3 id="线程池参数"><a href="#线程池参数" class="headerlink" title="线程池参数"></a>线程池参数</h3><h4 id="核心线程数"><a href="#核心线程数" class="headerlink" title="核心线程数"></a>核心线程数</h4><p>一个线程池中主要工作的核心线程的数量</p>
+<h2 id="线程池参数"><a href="#线程池参数" class="headerlink" title="线程池参数"></a>线程池参数</h2><h3 id="核心线程数"><a href="#核心线程数" class="headerlink" title="核心线程数"></a>核心线程数</h3><p>一个线程池中主要工作的核心线程的数量</p>
 <p>对于不同类型的任务，线程池的核心线程数（<code>corePoolSize</code>）的设置也不同，一般都和 CPU 的核心数 $N$ 有关</p>
 <ul>
 <li><strong>IO密集型任务：</strong>文件读写、DB读写、网络请求等，核心线程数设为 $2N+1$</li>
 <li><strong>CPU密集型任务：</strong>数据计算、Bitmap转换等，核心线程数设为 $N+1$</li>
 </ul>
-<h4 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h4><ul>
+<h3 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h3><ul>
 <li><code>ArrayBlockingQueue</code>：基于数组结构的<strong>有界阻塞队列</strong></li>
 <li><code>LinkedBlockingQueue</code>：基于链表结构的<strong>有界阻塞队列</strong></li>
 <li><code>DelayedWordQueue</code>：优先级队列，它可以保证每次出队的任务都是<strong>当前队列中执行时间最靠前</strong>的</li>
@@ -367,32 +367,75 @@
 <td align="center">两把锁（头尾）</td>
 </tr>
 </tbody></table>
-<h3 id="调度过程"><a href="#调度过程" class="headerlink" title="调度过程"></a>调度过程</h3><p>具体到核心线程的调度问题方面，</p>
-<h2 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h2><h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>总是假设<strong>最好的情况</strong>，即共享资源在访问时<strong>不会出问题</strong>，因此无需给共享资源加锁或等待</p>
+<h3 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h3><p>当线程池已经<strong>关闭</strong>或达到<strong>饱和</strong>（最大线程和阻塞队列都已满）状态时，新提交的任务会被拒绝，具体策略如下：</p>
+<ol>
+<li><code>AbortPolicy</code>：<strong>默认拒绝策略</strong>。需要拒绝任务时抛出 <code>RejectedExecutionException</code> 异常</li>
+<li><code>CallerRunsPolicy</code>：直接在 <strong><code>execute</code> 方法的调用线程</strong> 中执行被拒绝的任务；如果线程池已经关闭，任务将被<strong>丢弃</strong></li>
+<li><code>DiscardPolicy</code>：<strong>直接丢弃任务</strong></li>
+<li><code>DiscardOldestPolicy</code>：丢弃队列中<strong>等待时间最长</strong>的任务，并执行当前提交的任务；如果线程池已经关闭，任务将被<strong>丢弃</strong></li>
+</ol>
+<h2 id="线程池状态"><a href="#线程池状态" class="headerlink" title="线程池状态"></a>线程池状态</h2><ol>
+<li><code>RUNNING</code>：<ul>
+<li>线程池刚被创建时的状态，能够接受处理新任务</li>
+</ul>
+</li>
+<li><code>SHUTDOWN</code>：<ul>
+<li>线程池被关闭，不再接受新的任务；但会将原有的任务处理完</li>
+<li>调用线程池的 <code>shutdown()</code> 方法后，线程池状态会立即变为 <code>SHUTDOWN</code></li>
+</ul>
+</li>
+<li><code>STOP</code>：<ul>
+<li>不再接受新任务；会中断所有正在处理的任务</li>
+<li>调用线程池的 <code>shutdownNow()</code> 方法后，状态会变为 <code>STOP</code></li>
+</ul>
+</li>
+<li><code>TIDYING</code>：<ul>
+<li>线程池中线程都没了后，会变为 <code>TIDYING</code>，并调用 <code>terminated()</code> 方法</li>
+</ul>
+</li>
+<li><code>TERMINATED</code>：<ul>
+<li>线程池调用完成 <code>terminated()</code> 方法，彻底终止</li>
+</ul>
+</li>
+</ol>
+<h2 id="任务调度过程"><a href="#任务调度过程" class="headerlink" title="任务调度过程"></a>任务调度过程</h2><p>当向线程池提交一个任务时，会根据线程池不同的状态来调度提交的任务</p>
+<ul>
+<li><strong>核心线程未满：</strong>用核心线程执行任务</li>
+<li><strong>核心线程已满：</strong><ul>
+<li><strong>阻塞队列未满：</strong>放入阻塞队列中等待</li>
+<li><strong>阻塞队列已满：</strong><ul>
+<li><strong>核心线程数 &lt;&#x3D; 最大线程数：</strong>创建线程执行任务</li>
+<li><strong>核心线程数 &gt; 最大线程数：</strong>触发拒绝策略，拒绝该任务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h1><h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>总是假设<strong>最好的情况</strong>，即共享资源在访问时<strong>不会出问题</strong>，因此无需给共享资源加锁或等待</p>
 <p>乐观锁的实现方式一般为使用<strong>版本号</strong>确定数据的状态，若读取数据时与线程中数据版本不一致，则获取最新版本的数据</p>
 <p><strong>常见的乐观锁的实现有：</strong>CAS、MySQL 的 MVCC（多版本并发控制）等</p>
-<h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>总是假设<strong>最坏的情况</strong>，即共享资源在访问时<strong>会出问题</strong>，因此在获取共享资源时会加锁或等待</p>
+<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是假设<strong>最坏的情况</strong>，即共享资源在访问时<strong>会出问题</strong>，因此在获取共享资源时会加锁或等待</p>
 <p><strong>常见的悲观锁的实现有：</strong>synchronized、ReentrantLock等</p>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><p>CAS（<strong>C</strong>ompare <strong>A</strong>nd <strong>S</strong>wap），即对比交换。基于<strong>乐观锁</strong>的思想，在每一次获取线程的<strong>共享资源</strong>时，先比对线程的工作内存中<strong>共享资源副本</strong>是否与<strong>共享资源</strong>相同</p>
+<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><p>CAS（<strong>C</strong>ompare <strong>A</strong>nd <strong>S</strong>wap），即对比交换。基于<strong>乐观锁</strong>的思想，在每一次获取线程的<strong>共享资源</strong>时，先比对线程的工作内存中<strong>共享资源副本</strong>是否与<strong>共享资源</strong>相同</p>
 <ul>
 <li>若相同，则将新的数据与共享资源的数据交换</li>
 <li>若不相同，则读取共享资源的数据，并再次比对是否相同，直到相同为止（<strong>自旋锁</strong>）</li>
 </ul>
-<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p>synchronized 用于<strong>修饰一个方法</strong>或<strong>用做特定代码块</strong></p>
+<h1 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h1><p>synchronized 用于<strong>修饰一个方法</strong>或<strong>用做特定代码块</strong></p>
 <ul>
 <li><strong>修饰方法：</strong>表示将方法所在的对象作为<strong>对象锁</strong>，对该方法进行加锁保护</li>
 <li><strong>代码块：</strong>将代码块中的对象作为<strong>对象锁</strong>，对该代码块进行加锁保护</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// synchronized关键字需要锁定一个对象</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">LOCK</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"><span class="type">Thread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(LOCK) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Thread1 running&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="type">Thread</span> <span class="variable">thread2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(LOCK) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Thread2 running&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><p>底层由<strong>Monitor</strong>实现，Monitor是<strong>JVM级别</strong>的对象（用C++实现），线程获取锁需要使用对象（锁）关联Monitor</p>
-<p><strong>在Monitor中有三个属性：</strong></p>
+<h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><p>底层由 <strong>Monitor</strong> 实现，Monitor 是 <strong>JVM 级别</strong>的对象（用C++实现），线程获取锁需要使用对象（锁）关联 Monitor</p>
+<p><strong>在 Monitor 中有三个属性：</strong></p>
 <ul>
 <li><strong>owner：</strong>关联获取到锁的线程，并且只能关联一个线程</li>
 <li><strong>entrylist：</strong>关联的是处于<strong>阻塞状态</strong>（BLOCKED）的线程</li>
 <li><strong>waitset：</strong>关联的是出于<strong>等待状态</strong>（WAITING）的线程</li>
 </ul>
-<h3 id="锁升级"><a href="#锁升级" class="headerlink" title="锁升级"></a>锁升级</h3><p>Monitor 实现的锁属于<strong>重量级锁</strong>，其中涉及到<strong>用户态和内核态的切换</strong>、<strong>进程的上下文切换</strong>，成本较高，性能较低</p>
+<h2 id="锁升级"><a href="#锁升级" class="headerlink" title="锁升级"></a>锁升级</h2><p>Monitor 实现的锁属于<strong>重量级锁</strong>，其中涉及到<strong>用户态和内核态的切换</strong>、<strong>进程的上下文切换</strong>，成本较高，性能较低</p>
 <p>在<strong>JDK1.6</strong>引入了<strong>偏向锁</strong>和<strong>轻量级锁</strong>，他们的引入是为了解决在<strong>没有多线程竞争</strong>或<strong>基本没有竞争</strong>的场景中因使用传统锁带来的<strong>性能开销问题</strong></p>
 <p><strong>HotSpot虚拟机中，对象头中的Mark Word：</strong></p>
 <table style="text-align: center">
@@ -441,8 +484,8 @@
 <li><strong>ptr_to_lock_record：</strong>轻量级锁状态下，指向栈中锁记录的指针，<strong>占30位</strong></li>
 <li><strong>ptr_to_heavyweight_monitor：</strong>重量级锁状态下，指向对象监视器Monitor的指针，<strong>占30位</strong></li>
 </ul>
-<h4 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h4><p>加锁时<strong>对象锁</strong>的<strong>对象头中Mark Word的ptr_to_heavyweight_monitor指针</strong>指向<strong>Monitor对象</strong></p>
-<h4 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h4><p><strong>加锁流程：</strong></p>
+<h3 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h3><p>加锁时<strong>对象锁</strong>的<strong>对象头中Mark Word的ptr_to_heavyweight_monitor指针</strong>指向<strong>Monitor对象</strong></p>
+<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><p><strong>加锁流程：</strong></p>
 <ol>
 <li>在线程栈中创建一个 Lock Record（包含地址和对象引用Object Reference），将其对象引用<strong>指向对象锁</strong></li>
 <li>使用CAS指令，将<strong>Lock Record的地址</strong>存储在<strong>对象锁</strong>的Mark Word中（ptr_to_lock_record），若<strong>对象锁</strong>处于无锁状态则修改成功，该线程获得了轻量级锁</li>
@@ -455,9 +498,9 @@
 <li>若Lock Record的地址为 null，则代表这是一次重入，将对象引用设为null后继续</li>
 <li>若Lock Record的地址不为 null，则利用CAS指令将<strong>对象锁</strong>的Mark Word恢复为无锁状态，若失败则膨胀为<strong>重量级锁</strong></li>
 </ol>
-<h4 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h4><p>轻量级锁在没有竞争时，每次<strong>重入锁</strong>时仍需要执行CAS操作，偏向锁就是针对轻量级锁的这一点进行了优化</p>
+<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><p>轻量级锁在没有竞争时，每次<strong>重入锁</strong>时仍需要执行CAS操作，偏向锁就是针对轻量级锁的这一点进行了优化</p>
 <p>在第一次加锁时，CAS操作仅将<strong>对象锁</strong>的Mark Word中的<strong>biased_lock</strong>置为1，并且存储<strong>当前线程的ID</strong>（23位thread）；在以后得重入过程中，仅判断重入的<strong>线程ID是否相同</strong>即可</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>volatile用于修饰<strong>类中的成员变量或静态成员变量</strong>，其具备两层语义：</p>
+<h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><p>volatile用于修饰<strong>类中的成员变量或静态成员变量</strong>，其具备两层语义：</p>
 <ol>
 <li><strong>保证线程间的可见性</strong><ul>
 <li><strong>可见性：</strong>指当一个线程修改了共享变量的值后，其他线程能够得知这个修改</li>
@@ -468,7 +511,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><p>AQS（<strong>A</strong>bstract <strong>Q</strong>ueued <strong>S</strong>ynchronizer），即抽象队列同步器。是构建锁或其他同步组件的基础框架</p>
+<h1 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h1><p>AQS（<strong>A</strong>bstract <strong>Q</strong>ueued <strong>S</strong>ynchronizer），即抽象队列同步器。是构建锁或其他同步组件的基础框架</p>
 <p><strong>AQS与synchronized的区别：</strong></p>
 <table>
 <thead>
@@ -496,14 +539,21 @@
 <li><strong>Semaphore：</strong>信号量</li>
 <li><strong>CountDownLatch：</strong>倒计时锁</li>
 </ul>
-<h3 id="基本工作机制"><a href="#基本工作机制" class="headerlink" title="基本工作机制"></a>基本工作机制</h3><ol>
+<h2 id="基本工作机制"><a href="#基本工作机制" class="headerlink" title="基本工作机制"></a>基本工作机制</h2><ol>
 <li>线程使用CAS指令设置<strong>被volatile修饰的state变量</strong>，判断其是否为1（0为无锁，1为有锁）<ul>
 <li>若<strong>是</strong>，则将其置为0，获取锁成功，结束</li>
 <li>若<strong>否</strong>，则进入由<strong>双向链表</strong>实现的队列的队尾进行等待</li>
 </ul>
 </li>
 </ol>
-<h2 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h2><p>支持<strong>公平锁</strong>和<strong>非公平锁</strong>、锁重入、锁打断、条件锁等功能</p>
+<h1 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h1><p>支持<strong>公平锁</strong>和<strong>非公平锁</strong>、锁重入、锁打断、条件锁等功能</p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/andy1234/p/17849689.html">线程池拒绝策略详解 - 爱喝茶的安迪 - 博客园 (cnblogs.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_61916154/article/details/138533565">线程池的五种状态_线程池状态-CSDN博客</a></li>
+</ul>
+</blockquote>
 
     </div>
 
@@ -521,7 +571,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://liosq.github.io/post/a73fb3d7/" title="Java - 多线程">https://liosq.github.io/post/a73fb3d7/</a>
+      <a href="https://liosq.github.io/post/a73fb3d7/" title="Java - 并发编程">https://liosq.github.io/post/a73fb3d7/</a>
   </li>
   <li class="post-copyright-license">
       <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -531,7 +581,7 @@
 
           <div class="post-tags">
               <a href="/tags/Java/" rel="tag"># Java</a>
-              <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/" rel="tag"># 多线程</a>
+              <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag"># 并发编程</a>
           </div>
 
         
@@ -543,8 +593,8 @@
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/58d1758d/" rel="next" title="239. 滑动窗口最大值">
-                  239. 滑动窗口最大值 <i class="fa fa-angle-right"></i>
+                <a href="/post/df2849ec/" rel="next" title="Java">
+                  Java <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -576,13 +626,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">155k</span>
+    <span title="站点总字数">166k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:42</span>
+    <span title="站点阅读时长">5:01</span>
   </span>
 </div>
 <div class="busuanzi-count">

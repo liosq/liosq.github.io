@@ -154,7 +154,7 @@
 </ul>
 <p>加粗的是符合定义的前后缀，其长度为 3</p>
 <h3 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h3><p>在暴力匹配中，我们回溯是因为害怕匹配过的字符中存在<strong>与目标串的一个前缀相同的子字符串</strong>，但我们不知道其位置，所以就索性回溯到最初起点的下一位</p>
-<p>但是当我们了解了上面的概念之后就可以分析出，当两个指针不匹配时，对于目标串指针匹配过的字符，若其最长前后缀的长度为 $n$ ，则说明我们可以把<strong>已匹配的字符的最长相等前缀与后缀</strong>进行对应</p>
+<p>但是当我们了解了上面的概念之后就可以分析出，当两个指针不匹配时，对于目标串指针匹配过的字符，则说明我们可以把<strong>已匹配的字符的最长相等前缀与后缀</strong>进行对应</p>
 <p>举个例子：</p>
 <p>在 abababad 中找 abad 时，当匹配到 aba<strong>b</strong> 时会进行回溯。aba 我们已经匹配过了，它的最长相等前后缀长度为 1</p>
 <p>那么在回溯时我们就只需要把第一位回溯到 ab<strong>a</strong>babad 中的加粗位置就可以了，不必担心略过了一些重要的字符</p>
@@ -192,8 +192,8 @@
         <tag>C++</tag>
         <tag>算法</tag>
         <tag>JavaScript</tag>
-        <tag>Python</tag>
         <tag>Java</tag>
+        <tag>Python</tag>
         <tag>字符串</tag>
         <tag>Golang</tag>
       </tags>
@@ -290,18 +290,181 @@
         <tag>C++</tag>
         <tag>算法</tag>
         <tag>JavaScript</tag>
-        <tag>Python</tag>
         <tag>Java</tag>
+        <tag>Python</tag>
         <tag>Golang</tag>
         <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>selenium-wire</title>
+    <url>/post/2cea8929/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>selenium 的拓展版，可以支持一些更高级的操作（比如我用到的拦截当前网页发生的请求等等）</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接安装</span></span><br><span class="line">pip install selenium-wire</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>安装后记得跑一个 demo 测试一下，我在测试的时候就发现有些包有冲突：</p>
+<ul>
+<li><strong><code>No module named &#39;OpenSSL&#39;</code>：</strong>当时遇到的第一个报错，当时以为是 pyOpenSSL 的问题，但是找了下 selenium-wire 的依赖发现是没有装 <strong>mitmproxy</strong></li>
+<li><strong><code>cannot import name &#39;deprecated&#39; from &#39;typing_extensions&#39;</code>：</strong>装完 mitmproxy 后的报错，现在看来应该还是版本的问题，再问了通义千问执行了下 <code>pip install --upgrade selenium-wire mitmproxy pyOpenSSL urllib3 certifi</code> 似乎解决了？</li>
+<li><strong><code>No module named &#39;cryptography.exceptions&#39;</code>：</strong>重装了下 cryptography 解决，应该是版本的问题</li>
+<li><strong><code>module &#39;lib&#39; has no attribute &#39;X509_V_FLAG_NOTIFY_POLICY&#39;</code>：</strong>看了下堆栈信息，是 OpenSSL 的报错信息，重装了下 pyOpenSSL 解决（应该是除了 selenium-wire 的其他依赖也用了 pyOpenSSL，但是版本要求不一样）</li>
+</ul>
+</blockquote>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="拦截网页请求"><a href="#拦截网页请求" class="headerlink" title="拦截网页请求"></a>拦截网页请求</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> seleniumwire <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Edge()</span><br><span class="line">driver.get(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接遍历.requests属性即可 每个request有url, headers, body属性</span></span><br><span class="line"><span class="keyword">for</span> request <span class="keyword">in</span> driver.requests:</span><br><span class="line">    <span class="keyword">if</span> request.url == <span class="string">&#x27;my target url&#x27;</span>:</span><br><span class="line">        <span class="comment"># 请求有响应</span></span><br><span class="line">        <span class="keyword">if</span> request.respone:</span><br><span class="line">            <span class="built_in">print</span>(request.response.body)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+        <category>selenium</category>
+      </categories>
+      <tags>
+        <tag>selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>某信公众号数据</title>
+    <url>/post/3ffe02a4/</url>
+    <content><![CDATA[<p>秋招开始了，因为缺乏一些招聘信息的获取渠道，所以打算自己做个小爬虫爬些招聘信息来</p>
+<p>刚开始想着去各大官网爬他们的公告，但是发现有些公司不更新公告，而且公告信息很滞后。所以打算从各大大学的就业公众号出发，写个公众号数据的爬虫</p>
+<p>先是直接在网上搜了搜相关的教程，发现还有挺多的而且比较详细。我随便找了一篇看了下，大概思路就是通过微信公众平台的接口直接爬取数据。只不过需要自己注册一个公众号提供一个 <code>token</code>，然后调用查询公众号信息的接口就行了</p>
+<p>因为感觉会很有用，所以自己封装了一下，把可复用的方法封装了一下，然后用 pyqt 搞了个简陋的可视化界面。自己反正用的还算可以，主要是因为没时间所以就没有搞太精致，在我的 github 里有开源，仓库名字叫 wechat-public，有感兴趣的可以去看一看<a href="https://github.com/liosq/wechat-public">liosq&#x2F;wechat-public: 微信公众号爬虫 (github.com)</a></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Socket</title>
+    <url>/post/2496d8d/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Socket 作为网络通信的一个高度抽象化的接口，可以在创建 Socket 时指定网络层使用的是 IPv4 还是 IPv6，传输层使用的是 TCP 还是 UDP</p>
+<p>Socket 可以视为网络通信的一种媒介，传输数据时需要向 <strong>Socket 缓冲区</strong>（并不是文件的缓冲区，而是一块特定的内存区域）写入数据。最后再写入到网卡中发送</p>
+<h1 id="Socket-模型"><a href="#Socket-模型" class="headerlink" title="Socket 模型"></a>Socket 模型</h1><p>以下的几个模型的目标都是<strong>让一个计算机能够处理更多的请求</strong></p>
+<h2 id="多进程模型"><a href="#多进程模型" class="headerlink" title="多进程模型"></a>多进程模型</h2><p>采用一个进程处理一个请求的方式，也就是当父进程建立完与客户端的连接后，调用 <code>fork()</code> 函数创建一个子进程来处理请求</p>
+<p>这种方式缺点显而易见，创建一个子进程会将父进程的<strong>文件描述符、内存地址空间、程序计数器、执行的代码等</strong>所有相关东西<strong>都复制一份</strong></p>
+<h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2><p>在一个进程中创建多个线程处理请求，进程每接收到一个请求，就创建一个新线程来处理</p>
+<p>这样<strong>频繁地创建和销毁线程</strong>带来的系统开销也不小，所以可以采用线程池来复用线程，同时进程将请求都放入到一个队列中，线程池获取队列中的请求后进行处理</p>
+<p>但是这又引入了新的问题，就是线程安全。想要确保一个线程处理一个请求，需要在获取请求前<strong>加锁</strong></p>
+<h2 id="I-O-多路复用"><a href="#I-O-多路复用" class="headerlink" title="I&#x2F;O 多路复用"></a>I&#x2F;O 多路复用</h2><p>采用一个进程来维护所有的 Socket 请求</p>
+<p>一个进程虽然任一时刻只能处理一个请求，但是处理每个请求的事件时，耗时控制在 1 毫秒以内，这样 1 秒内就可以处理上千个请求，把时间拉长来看，多个请求复用了一个进程，这就是多路复用，这种思想很类似一个 CPU 并发多个进程，所以也叫做时分多路复用</p>
+<h3 id="select-poll"><a href="#select-poll" class="headerlink" title="select&#x2F;poll"></a>select&#x2F;poll</h3><p>将已连接的 Socket 都放进一个<strong>文件描述符集合</strong>中，然后将集合拷贝到<strong>内核空间</strong>中，由内核进行遍历，找出有事件发生的 Socket</p>
+<h3 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h3><p>epoll 通过两个方面，很好解决了 select&#x2F;poll 的问题：</p>
+<p><strong>第一点，</strong>epoll 在内核里使用<strong>红黑树来跟踪进程所有待检测的文件描述字</strong>，把需要监控的 socket 通过 <code>epoll_ctl()</code> 函数加入内核中的红黑树里，红黑树是个高效的数据结构，增删改一般时间复杂度是 <code>O(logn)</code></p>
+<p>而 select&#x2F;poll 内核里没有类似 epoll 红黑树这种保存所有待检测的 socket 的数据结构，所以 select&#x2F;poll 每次操作时都传入整个 socket 集合给内核，而 epoll 因为在内核维护了红黑树，可以保存所有待检测的 socket ，所以只需要传入一个待检测的 socket，减少了内核和用户空间大量的数据拷贝和内存分配</p>
+<p><strong>第二点，</strong>epoll 使用<strong>事件驱动</strong>的机制，内核里<strong>维护了一个链表来记录就绪事件</strong>，当某个 socket 有事件发生时，通过<strong>回调函数</strong>内核会将其加入到这个就绪事件列表中，当用户调用 <code>epoll_wait()</code> 函数时，只会返回有事件发生的文件描述符的个数，不需要像 select&#x2F;poll 那样轮询扫描整个 socket 集合，大大提高了检测的效率。</p>
+<h1 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h1><h2 id="传统拷贝"><a href="#传统拷贝" class="headerlink" title="传统拷贝"></a>传统拷贝</h2><p>通过调用 <code>read()</code>，<code>write()</code> 函数来传输文件</p>
+<p>发生了 <strong>4 次用户态和内核态的上下文切换</strong>，和 <strong>4 次拷贝</strong>，流程如下：</p>
+<ol>
+<li>调用 <code>read()</code> 函数，由<strong>用户态切换到内核态</strong></li>
+<li><strong>DMA</strong> 从<strong>磁盘</strong>将文件拷贝到<strong>内核缓冲区</strong></li>
+<li><strong>CPU</strong> 从<strong>内核缓冲区</strong>拷贝到<strong>用户缓冲区</strong></li>
+<li><code>read()</code> 结束，从<strong>内核态切换到用户态</strong></li>
+<li>调用 <code>write()</code> 函数，由<strong>用户态切换到内核态</strong></li>
+<li><strong>CPU</strong> 从<strong>用户缓冲区</strong>拷贝到<strong>Socket 缓冲区</strong></li>
+<li><strong>DMA</strong> 从<strong>Socket 缓冲区</strong>拷贝到<strong>网卡</strong></li>
+<li><code>write()</code> 结束，从<strong>内核态切换到用户态</strong></li>
+</ol>
+<h2 id="零拷贝"><a href="#零拷贝" class="headerlink" title="零拷贝"></a>零拷贝</h2><h3 id="mmap-write"><a href="#mmap-write" class="headerlink" title="mmap + write"></a>mmap + write</h3><p><code>mmap()</code> 会直接<strong>把内核缓冲区的数据映射到用户缓冲区</strong>，这样操作系统内核和用户空间之间就不需要进行任何数据拷贝操作了</p>
+<p>发生了 <strong>4 次用户态和内核态的上下文切换</strong>，和 <strong>3 次拷贝</strong>，流程如下：</p>
+<ol>
+<li>调用 <code>mmap()</code> 函数，由<strong>用户态切换到内核态</strong></li>
+<li><strong>DMA</strong> 从<strong>磁盘</strong>将文件拷贝到<strong>内核缓冲区</strong></li>
+<li>用户空间与系统内核<strong>共享内核缓冲区</strong></li>
+<li><code>mmap()</code> 结束，从<strong>内核态切换到用户态</strong></li>
+<li>调用 <code>write()</code> 函数，由<strong>用户态切换到内核态</strong></li>
+<li><strong>CPU</strong> 从<strong>内核缓冲区</strong>拷贝到<strong>Socket 缓冲区</strong></li>
+<li><strong>DMA</strong> 从<strong>Socket 缓冲区</strong>拷贝到<strong>网卡</strong></li>
+<li><code>write()</code> 结束，从<strong>内核态切换到用户态</strong></li>
+</ol>
+<h3 id="sendfile"><a href="#sendfile" class="headerlink" title="sendfile"></a>sendfile</h3><p><code>sendfile()</code> 函数会<strong>直接将文件内容拷贝到网卡</strong>中，所以就不需要向用户空间传输数据。相应地，用户空间也无法知晓文件数据</p>
+<p>发生了 <strong>2 次用户态和内核态的上下文切换</strong>，和 <strong>3 次拷贝</strong>，流程如下：</p>
+<ol>
+<li>调用 <code>sendfile()</code> 函数，由<strong>用户态切换到内核态</strong></li>
+<li><strong>DMA</strong> 从<strong>磁盘</strong>将文件拷贝到<strong>内核缓冲区</strong></li>
+<li><strong>CPU</strong> 从<strong>内核缓冲区</strong>拷贝到<strong>Socket 缓冲区</strong></li>
+<li><strong>DMA</strong> 从<strong>Socket 缓冲区</strong>拷贝到<strong>网卡</strong></li>
+<li><code>sendfile()</code> 结束，从<strong>内核态切换到用户态</strong></li>
+</ol>
+<p>如果网卡支持 SG-DMA（<em>The Scatter-Gather Direct Memory Access</em>）技术，就可以<strong>代替 CPU 将内核缓冲区数据拷贝到 Socket 缓冲区</strong></p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84-socket-%E6%A8%A1%E5%9E%8B">9.2 I&#x2F;O 多路复用：select&#x2F;poll&#x2F;epoll | 小林coding (xiaolincoding.com)</a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux - Socket</title>
+    <url>/post/4ad4bf0/</url>
+    <content><![CDATA[<h1 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h1><h2 id="传统拷贝"><a href="#传统拷贝" class="headerlink" title="传统拷贝"></a>传统拷贝</h2><ul>
+<li>从磁盘拷贝到内核缓冲区</li>
+<li>内核缓冲区拷贝到用户空间的内存中</li>
+<li>从用户空间的内存中</li>
+</ul>
+<h2 id="mmap-拷贝"><a href="#mmap-拷贝" class="headerlink" title="mmap 拷贝"></a>mmap 拷贝</h2><p>mmap 映射</p>
+<h2 id="sendfile-拷贝"><a href="#sendfile-拷贝" class="headerlink" title="sendfile 拷贝"></a>sendfile 拷贝</h2><p>DMA</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>操作系统</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Socket</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>电话卡</title>
+    <url>/post/a646ed62/</url>
+    <content><![CDATA[<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><ul>
+<li><p><strong>选购电话卡套餐注意事项：</strong></p>
+</li>
+<li><p>每月<strong>全国通用流量</strong>有多少（一般五六十G）</p>
+</li>
+<li><p>了解<strong>流量组成</strong>都有哪些，定向流量<strong>适用于哪些APP</strong></p>
+</li>
+<li><p><strong>通话时长</strong>多少分钟（一般300分钟）</p>
+</li>
+<li><p><strong>套餐有效期</strong>多少，过了有效期月租会变成多少钱</p>
+</li>
+<li><p><strong>带不带宽带</strong>，如果加宽带要多少钱（大学的校园卡一般加10-20）</p>
+</li>
+<li><p><strong>拿到电话卡后注意事项：</strong>拿到卡之后一般是要<strong>线上预约激活</strong>的，激活后才能接收短信打电话之类的；如果拿到了电话卡但是一直不激活的话好像还是会扣钱（问相关人员，我之前的校园卡是不激活还会扣9块会员任选权益的钱）</p>
+</li>
+<li><p>避雷<strong>电信</strong>的<strong>校园随翼选N选2</strong>套餐（我是湖南办的卡，不确定其他地区是不是也有这种），每个月会给你2个权益点，一个权益点可以换一个权益。但是<strong>尊享特权</strong>、<strong>福利加倍</strong>两个板块每个只能换一次，而大部分有用的权益都在<strong>福利加倍</strong>板块里，<strong>尊享特权</strong>板块毛都没有只有个3小时雷神加速器还算一般。这套餐还不如移动的权益，每个月可以领两个权益，还都是主流应用的权益。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
       </tags>
   </entry>
   <entry>
     <title>出行</title>
     <url>/post/72a12a55/</url>
     <content><![CDATA[<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><ul>
-<li>出门通勤的话，尽量坐地铁出行。长沙的话地铁从<strong>中南大学</strong>坐到<strong>长沙南站</strong>也就3块6</li>
-<li>买电动车，首先要问清楚以下几个方面<ul>
+<li><strong>出门通勤：</strong>尽量坐地铁出行。长沙的话地铁从<strong>中南大学</strong>坐到<strong>长沙南站</strong>也就3块6</li>
+</ul>
+<h2 id="电动车"><a href="#电动车" class="headerlink" title="电动车"></a>电动车</h2><ul>
+<li><strong>购买注意事项：</strong><ul>
 <li><strong>电池续航：</strong>小型电动车续航基本连30公里都不到，中大型电动车续航在40-70公里。用的时候看电量主要关注<strong>拉满速度时的显示电量</strong></li>
 <li><strong>电池是否可拆卸：</strong>电动车充电一般就这几种方式<ul>
 <li>拆下电池带回家充电：方便、省钱，但是放家里充电是否安全需要考虑</li>
@@ -310,10 +473,22 @@
 </ul>
 </li>
 <li><strong>减震效果：</strong>过减速带的时候，没减震的车能把你魂都震出来</li>
-<li><strong>最高时速：</strong>新国标的车超过15码就会响而且限速25，但是可以解限速</li>
+<li><strong>最高时速：</strong>新国标的车超过15码就会响而且限速25，但是一般都可以解限速，大的跑三四十多没什么问题</li>
 </ul>
 </li>
-<li>买电动车穿的雨衣时</li>
+<li><strong>骑行注意事项：</strong><ul>
+<li><strong>原则上要戴头盔</strong>，记得左右观望下看看<strong>原则在不在</strong>（开玩笑，骑行距离远一定要戴头盔）</li>
+<li>如果有时间<strong>检查下坐垫</strong>是否有什么针头之类的，防人之心不可无</li>
+<li>刹车尽量<strong>用左刹</strong>（刹后轮），如果速度太快刹车只用前刹<strong>很有可能翻车</strong>（我妈经历过），实在刹不住也尽量先左刹再右刹</li>
+<li><strong>刹车如果失灵了</strong>随便找个电动车维修地方让他给你弄紧一下就行，一般不用钱</li>
+<li>后视镜一定要多看，不仅仅是在变道转弯的时候</li>
+</ul>
+</li>
+<li><strong>相关杂物需求：</strong><ul>
+<li><strong>雨衣：</strong>不用买那种可以包住电动车的雨衣；买正常大小的，坐着时候能包住腿的就够了，不会太大携带很方便</li>
+<li><strong>坐垫罩：</strong>罩着坐垫后扯下来放车的篮子里，这样下雪下雨之后就不用拿抹布擦干坐垫了；夏天坐垫太热也能减少点坐垫温度</li>
+</ul>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -321,6 +496,23 @@
       </categories>
       <tags>
         <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>25. K 个一组翻转链表</title>
+    <url>/post/290cb30/</url>
+    <content><![CDATA[<h1 id="25-K-个一组翻转链表"><a href="#25-K-个一组翻转链表" class="headerlink" title="25. K 个一组翻转链表"></a><a href="https://leetcode.cn/problems/reverse-nodes-in-k-group/">25. K 个一组翻转链表</a></h1><h2 id="O-n-O-1"><a href="#O-n-O-1" class="headerlink" title="$O(n)+O(1)$"></a>$O(n)+O(1)$</h2><p>遍历链表，每遍历 $k$ 个节点就将这些节点倒置</p>
+<p>思路很简单，但是在实际实现代码过程中会有一些小细节要注意，比如：倒置节点时，怎么做才不会影响这些节点<strong>之前的指针</strong>等等</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @lc app=leetcode.cn id=25 lang=java</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * [25] K 个一组翻转链表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @lc code=start=</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reverse</span><span class="params">(ListNode head, ListNode tail)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (head == tail) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head, ans = <span class="keyword">new</span> <span class="title class_">ListNode</span>(), next;</span><br><span class="line">    <span class="keyword">while</span> (cur != tail) &#123;</span><br><span class="line">      next = cur.next;</span><br><span class="line">      cur.next = ans.next;</span><br><span class="line">      ans.next = cur;</span><br><span class="line">      cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">    tail.next = ans.next;</span><br><span class="line">    head = tail;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> ListNode <span class="title function_">reverseKGroup</span><span class="params">(ListNode head, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">    <span class="type">ListNode</span> <span class="variable">cur</span> <span class="operator">=</span> head, las = head, lasPre = <span class="keyword">new</span> <span class="title class_">ListNode</span>(), next;</span><br><span class="line">    <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    lasPre.next = head;</span><br><span class="line">    head = lasPre;</span><br><span class="line">    <span class="keyword">while</span> (cur != <span class="literal">null</span>) &#123;</span><br><span class="line">      next = cur.next;</span><br><span class="line">      <span class="keyword">if</span> (++count == k) &#123;</span><br><span class="line">        count = <span class="number">0</span>;</span><br><span class="line">        reverse(las, cur);</span><br><span class="line">        lasPre.next = cur;</span><br><span class="line">        las.next = next;</span><br><span class="line">        lasPre = las;</span><br><span class="line">        las = next;</span><br><span class="line">      &#125;</span><br><span class="line">      cur = next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @lc code=end</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>力扣</category>
+        <category>困难</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -441,7 +633,7 @@
   <entry>
     <title>Spring - Bean</title>
     <url>/post/46ee2461/</url>
-    <content><![CDATA[<h1 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h1><p>简单来说，Bean 代指被 IoC 容器所管理的对象</p>
+    <content><![CDATA[<h1 id="Bean"><a href="#Bean" class="headerlink" title="Bean"></a>Bean</h1><p>简单来说，Bean 代指<strong>被 IoC 容器所管理的对象</strong></p>
 <h2 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h2><p>可以通过配置 XML 配置文件、注解或 Java 配置类来声明一个 Bean</p>
 <h3 id="类声明注解"><a href="#类声明注解" class="headerlink" title="类声明注解"></a>类声明注解</h3><ul>
 <li><strong><code>@Component</code>：</strong>通用注解，可标注任意类为 Spring 组件（如果不知道 Bean 对应哪一层可以用）</li>
@@ -510,10 +702,10 @@
 <li><p>Bean销毁</p>
 </li>
 </ol>
-<h2 id="循环依赖"><a href="#循环依赖" class="headerlink" title="循环依赖"></a>循环依赖</h2><blockquote>
+<h2 id="循环依赖注入问题"><a href="#循环依赖注入问题" class="headerlink" title="循环依赖注入问题"></a>循环依赖注入问题</h2><blockquote>
 <p><strong>循环依赖：</strong>两个或两个以上的对象互相持有对方，最终形成环路</p>
 </blockquote>
-<p>Spring中是允许存在循环依赖的，其使用<strong>三级缓存</strong>来解决<strong>大部分</strong>的循环依赖</p>
+<p>Spring 中是允许存在<strong>循环依赖注入</strong>的，其使用<strong>三级缓存</strong>来解决<strong>大部分</strong>的循环依赖</p>
 <p><strong>三级缓存源码：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DefaultSingletonBeanRegistry</span> <span class="keyword">extends</span> <span class="title class_">SimpleAliasRegistry</span> <span class="keyword">implements</span> <span class="title class_">SingletonBeanRegistry</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">SUPPRESSED_EXCEPTIONS_LIMIT</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">    <span class="comment">// 一级缓存</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; singletonObjects = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>(<span class="number">256</span>);</span><br><span class="line">    <span class="comment">// 三级缓存</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = <span class="keyword">new</span> <span class="title class_">HashMap</span>(<span class="number">16</span>);</span><br><span class="line">    <span class="comment">// 二级缓存</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; earlySingletonObjects = <span class="keyword">new</span> <span class="title class_">ConcurrentHashMap</span>(<span class="number">16</span>);</span><br></pre></td></tr></table></figure>
 
@@ -528,17 +720,17 @@
 <tbody><tr>
 <td>一级缓存</td>
 <td>singletonObjects</td>
-<td>缓存已经经历了完整的生命周期，已经初始化完成的Bean对象</td>
+<td>缓存已经经历了完整的生命周期，已经初始化完成的 Bean 对象</td>
 </tr>
 <tr>
 <td>二级缓存</td>
 <td>earlySingletonObjects</td>
-<td>缓存早期的Bean对象（生命周期还未走完）</td>
+<td>缓存早期的 Bean 对象（生命周期还未走完）</td>
 </tr>
 <tr>
 <td>三级缓存</td>
 <td>singletonFactories</td>
-<td>缓存ObjectFactory，表示对象工厂，用来创建某个对象</td>
+<td>缓存 ObjectFactory，表示对象工厂，用来创建某个对象</td>
 </tr>
 </tbody></table>
 <p><strong>场景1：</strong>A对象需要依赖注入B，B对象中需要依赖注入A</p>
@@ -557,7 +749,7 @@
 </ol>
 <p><strong>场景2：</strong>A使用构造方法注入B，B对象使用构造方法注入A</p>
 <blockquote>
-<p>由于Bean的生命周期中构造函数是<strong>第一个执行</strong>的，所以Spring无法解决构造函数的依赖注入</p>
+<p>由于 Bean 的生命周期中构造函数是<strong>第一个执行</strong>的，所以 Spring 无法解决构造函数的依赖注入</p>
 </blockquote>
 <p>在构造方法中添加<code>@Lazy</code>注解懒加载</p>
 <blockquote>
@@ -745,22 +937,6 @@
       </tags>
   </entry>
   <entry>
-    <title>设计模式 -</title>
-    <url>/post/2ec0effe/</url>
-    <content><![CDATA[<blockquote>
-<p><strong>参考资料：</strong></p>
-<p>- </p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>设计模式</category>
-      </categories>
-      <tags>
-        <tag>设计模式</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CRC</title>
     <url>/post/eac5c577/</url>
     <content><![CDATA[<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function">string <span class="title">calc</span><span class="params">(string F,string G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">string <span class="title">res</span><span class="params">(<span class="string">&quot;&quot;</span>)</span></span>;</span><br><span class="line">	<span class="function"><span class="type">int</span> <span class="title">n</span><span class="params">(G.length())</span>,<span class="title">m</span><span class="params">(F.length())</span>,<span class="title">a</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">	<span class="type">bool</span> f[m],g[n],r[(n&lt;&lt;<span class="number">1</span>)<span class="number">-1</span>],e;</span><br><span class="line">	<span class="comment">// init G(x)</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;g[i]=G[i]-<span class="string">&#x27;0&#x27;</span>,i++);</span><br><span class="line">	<span class="comment">// init F(x)</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;m;f[i]=F[i]-<span class="string">&#x27;0&#x27;</span>,i++);</span><br><span class="line">	<span class="comment">// init R(x) </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;r[i]=f[i],i++);</span><br><span class="line">	<span class="comment">// calculate R(x) </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i+n&lt;=m;i+=a)</span><br><span class="line">	&#123;</span><br><span class="line">		e=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> t=a,j=<span class="number">0</span>;j&lt;n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			r[j]=r[j+t]^g[j];</span><br><span class="line">			<span class="keyword">if</span>(r[j])</span><br><span class="line">				e=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(e)</span><br><span class="line">				a=j+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> t=i+n,j=<span class="number">0</span>;j&lt;a&amp;&amp;t&lt;m;j++,t++)</span><br><span class="line">			r[n+j]=f[t];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=m;i&lt;a+n;i++)</span><br><span class="line">		r[i]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> t=<span class="number">1</span>,i=a;t&lt;n;t++,i++)</span><br><span class="line">		res+=(r[i]+<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">string <span class="title">crc</span><span class="params">(string f,string g)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="function">string <span class="title">o</span><span class="params">(f)</span></span>;</span><br><span class="line">	f.<span class="built_in">append</span>(g.<span class="built_in">length</span>()<span class="number">-1</span>,<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">	<span class="keyword">return</span> o+<span class="built_in">calc</span>(f,g);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="number">0</span>));</span><br><span class="line">	string f,g,r;</span><br><span class="line">	cin&gt;&gt;f&gt;&gt;g;</span><br><span class="line"><span class="comment">//	cout&lt;&lt;crc(f,g); </span></span><br><span class="line">	cout&lt;&lt;<span class="built_in">calc</span>(<span class="built_in">crc</span>(f,g),g);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -820,10 +996,22 @@
 </blockquote>
 <p>如果没有意向锁，那么在加表级的独占锁时，就需要遍历表中所有记录，查看是否有记录存在独占表锁，效率会很低</p>
 <p>有意向锁后，在加表级独占锁前，就会<strong>先获取意向独占锁</strong>，如果</p>
-<h1 id="行级锁"><a href="#行级锁" class="headerlink" title="行级锁"></a>行级锁</h1><blockquote>
+<h2 id="AUTO-INC-锁"><a href="#AUTO-INC-锁" class="headerlink" title="AUTO-INC 锁"></a>AUTO-INC 锁</h2><p>给主键添加 <code>AUTO_INCREMENT</code> 属性后，在表中插入一条记录数据库会<strong>自动给主键赋递增值</strong>，其主要是通过 <strong>AUTO-INC 锁</strong>来实现的</p>
+<p>AUTO-INC 锁不是在事务提交时释放锁，而是在<strong>插入语句执行完成就会释放</strong></p>
+<h1 id="行级锁"><a href="#行级锁" class="headerlink" title="行级锁"></a>行级锁</h1><h2 id="记录锁（record-lock）"><a href="#记录锁（record-lock）" class="headerlink" title="记录锁（record lock）"></a>记录锁（record lock）</h2><p>锁住一条记录，有 <strong>S 锁和 X 锁</strong>；锁住后无法对该记录进行修改</p>
+<blockquote>
+<p><strong>记录锁是对索引记录加锁</strong>，因为 InnoDB 一定存在聚簇索引，所以最终都会落在聚簇索引上</p>
+</blockquote>
+<h2 id="间隙锁（gap-lock）"><a href="#间隙锁（gap-lock）" class="headerlink" title="间隙锁（gap lock）"></a>间隙锁（gap lock）</h2><p><strong>只存在于可重复读隔离级别</strong>，目的是为了解决可重复读级别下的幻读问题</p>
+<p>间隙锁会锁住一个<strong>主键的开区间</strong>，如果向插入一条主键介于该区间内的记录，会被阻塞住</p>
+<p>间隙锁也有 S 锁和 X 锁，但是没有什么区别，都是兼容的。因为其目的是为了<strong>防止在区间内插入幻影记录</strong>，所以多个事务持有含有共同范围的间隙锁也是没有冲突的</p>
+<h2 id="临键锁（next-key-lock）"><a href="#临键锁（next-key-lock）" class="headerlink" title="临键锁（next-key lock）"></a>临键锁（next-key lock）</h2><p>是<strong>记录锁和间隙锁的组合</strong>，能够锁定主键的一个范围，并锁住记录本身。所以其可以锁住一个<strong>半开半闭或闭区间</strong></p>
+<p>由于临键锁是包含了间隙锁和记录锁的，所以如果创建了一个临键 X 锁，会<strong>与其他事务的临键 S 锁或 X 锁冲突而阻塞</strong></p>
+<blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
 <li><a href="https://xiaolincoding.com/mysql/lock/mysql_lock.html">MySQL 有哪些锁？ | 小林coding (xiaolincoding.com)</a></li>
+<li><a href="https://www.cnblogs.com/caibaotimes/p/17958671">MySQL记录锁、间隙锁、临键锁（Next-Key Locks）加锁过程 - caibaotimes - 博客园 (cnblogs.com)</a></li>
 </ul>
 </blockquote>
 ]]></content>
@@ -1060,9 +1248,9 @@
 <p><code>transient</code>可以用在一些隐私信息字段上，如密码、访问令牌等，这些信息在对象序列化时需要被保护，以防泄露</p>
 <blockquote>
 <p><strong><code>ArrayList</code>的<code>elementData</code>为什么被<code>transient</code>修饰</strong></p>
-</blockquote>
 <p>因为<code>elementData</code>是一个缓存数组，通常会预留一些容量。如果直接将其序列化会消耗更多时间和空间</p>
 <p>所以**<code>ArrayList</code>中自己实现了<code>writeObject</code>和<code>readObject</code>这两个序列化方法<strong>，并且将<code>elementData</code>用<code>transient</code>修饰，</strong>保证序列化后的<code>ArrayList</code>中<code>elementData</code>中没有冗余空间**</p>
+</blockquote>
 <h4 id="需要注意的点"><a href="#需要注意的点" class="headerlink" title="需要注意的点"></a>需要注意的点</h4><ul>
 <li><strong><code>transient</code>只能修饰变量</strong>，不能修饰方法和类</li>
 <li><code>transient</code>标记的变量所在的类<strong>必须实现<code>Serailizable</code>接口</strong></li>
@@ -1089,7 +1277,7 @@
   <entry>
     <title>Java - 代理</title>
     <url>/post/50f7167e/</url>
-    <content><![CDATA[<h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><p><strong>代理模式中角色分为 3 种：</strong></p>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><strong>代理模式中角色分为 3 种：</strong></p>
 <ul>
 <li><strong>Subject（抽象主题角色）：</strong>定义<strong>代理类和真实主题的公共对外方法</strong>，也是<strong>代理类代理真实主题的方法</strong></li>
 <li><strong>RealSubject（真实主题角色）：</strong>真正实现业务逻辑的类</li>
@@ -1106,16 +1294,16 @@
 <li><strong>同步化代理</strong></li>
 <li><strong>智能引用代理</strong></li>
 </ol>
-<h2 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h2><p><strong>代理对象和实际对象都继承同一个接口</strong>，在代理对象中指向的是实际对象的实例，这样<strong>对外暴露的是代理对象而真正调用的是实际对象</strong></p>
-<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><p>定义一个接口<code>UserService</code>，以及接口的一个实现类<code>UserServiceImpl</code></p>
+<h1 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h1><p><strong>代理对象和实际对象都继承同一个接口</strong>，在代理对象中指向的是实际对象的实例，这样<strong>对外暴露的是代理对象而真正调用的是实际对象</strong></p>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>定义一个接口<code>UserService</code>，以及接口的一个实现类<code>UserServiceImpl</code></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Subject</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">select</span><span class="params">()</span>;   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// RealSubject</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">select</span><span class="params">()</span> &#123;  </span><br><span class="line">        System.out.println(<span class="string">&quot;查询 selectById&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;更新 update&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们将通过<strong>静态代理</strong>对<code>UserServiceImpl</code>进行功能增强，在调用<code>select</code>和<code>update</code>前后记录一些日志，写一个代理类<code>UserServiceProxy</code>，代理类需要实现<code>UserService</code></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Proxy</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceProxy</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserService target; <span class="comment">// 被代理的对象</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UserServiceProxy</span><span class="params">(UserService target)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">select</span><span class="params">()</span> &#123;</span><br><span class="line">        before();</span><br><span class="line">        target.select(); <span class="comment">// 这里才实际调用真实主题角色的方法</span></span><br><span class="line">        after();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line">        before();</span><br><span class="line">        target.update(); <span class="comment">// 这里才实际调用真实主题角色的方法</span></span><br><span class="line">        after();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 执行方法前的日志记录</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">after</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 执行方法后的日志记录</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>通过静态代理，我们达到了功能增强的目的，并且没有侵入源代码，这是<strong>静态代理的一个优点</strong></p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>可以很好地保护实际对象的业务逻辑不对外暴露，从而提高安全性</p>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p>当场景稍微复杂一些时，<strong>静态代理的缺点也会暴露出来</strong></p>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>可以很好地保护实际对象的业务逻辑不对外暴露，从而提高安全性</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>当场景稍微复杂一些时，<strong>静态代理的缺点也会暴露出来</strong></p>
 <ol>
 <li>当需要代理读个类时，由于<strong>代理对象需要实现与目标对象一致的接口</strong>，由两种方式：<ul>
 <li>只维护一个代理类，由这个代理类实现多个接口，这样会导致<strong>代理类过于庞大</strong></li>
@@ -1124,7 +1312,7 @@
 </li>
 <li>当接口需要增加、删除、修改方法的时候，目标对象和代理类都要同时修改，<strong>不易维护</strong></li>
 </ol>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>为了改进静态代理的缺点，可以<strong>动态生成代理类</strong>，也就是动态代理</p>
+<h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><p>为了改进静态代理的缺点，可以<strong>动态生成代理类</strong>，也就是动态代理</p>
 <blockquote>
 <p><strong>为什么类可以动态地生成？</strong></p>
 </blockquote>
@@ -1139,9 +1327,9 @@
 <li><strong>JDK动态代理：</strong>实现接口</li>
 <li><strong>CGLIB动态代理：</strong>继承类</li>
 </ul>
-<h3 id="JDK-动态代理"><a href="#JDK-动态代理" class="headerlink" title="JDK 动态代理"></a>JDK 动态代理</h3><p>代理类通过实现<code>InvocationHandler</code>接口，并重写<code>invoke</code>方法便可以完成代理的实现。然后其利用反射生成代理类字节码，并生成对象</p>
+<h2 id="JDK-代理"><a href="#JDK-代理" class="headerlink" title="JDK 代理"></a>JDK 代理</h2><p>代理类通过实现<code>InvocationHandler</code>接口，并重写<code>invoke</code>方法便可以完成代理的实现。然后其利用反射生成代理类字节码，并生成对象</p>
 <p>JDK 动态代理<strong>只能代理接口</strong>，因为<strong>代理类生成时<code>extends</code>了<code>Proxy</code><strong>，Java 中</strong>不允许多重继承</strong></p>
-<h4 id="代码示例-1"><a href="#代码示例-1" class="headerlink" title="代码示例"></a>代码示例</h4><p>JDK 动态代理主要涉及两个类：<code>java.lang.reflect.Proxy</code> 和 <code>java.lang.reflect.InvocationHandler</code>，我们仍然通过案例来学习</p>
+<h3 id="代码示例-1"><a href="#代码示例-1" class="headerlink" title="代码示例"></a>代码示例</h3><p>JDK 动态代理主要涉及两个类：<code>java.lang.reflect.Proxy</code> 和 <code>java.lang.reflect.InvocationHandler</code>，我们仍然通过案例来学习</p>
 <ul>
 <li>编写一个调用逻辑处理器<code>LogHandler</code>类，提供日志增强功能，并<strong>实现<code>InvocationHandler</code>接口</strong></li>
 <li>在<code>LogHandler</code>中维护一个目标对象，即被代理的 Real Subject</li>
@@ -1152,27 +1340,36 @@
 <p>编写客户端，通过动态生成的代理类的对象须借助<code>Proxy</code>类的<code>newProxyInstance</code>方法</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> proxy.UserService;</span><br><span class="line"><span class="keyword">import</span> proxy.UserServiceImpl;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Client2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalAccessException, InstantiationException &#123;</span><br><span class="line">        <span class="comment">// 设置变量可以保存动态代理类，默认名称以 $Proxy0 格式命名</span></span><br><span class="line">        <span class="comment">// System.getProperties().setProperty(&quot;sun.misc.ProxyGenerator.saveGeneratedFiles&quot;, &quot;true&quot;);</span></span><br><span class="line">        <span class="comment">// 1. 创建被代理的对象，UserService接口的实现类</span></span><br><span class="line">        <span class="type">UserServiceImpl</span> <span class="variable">userServiceImpl</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UserServiceImpl</span>();</span><br><span class="line">        <span class="comment">// 2. 获取对应的 ClassLoader</span></span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> userServiceImpl.getClass().getClassLoader();</span><br><span class="line">        <span class="comment">// 3. 获取所有接口的Class，这里的UserServiceImpl只实现了一个接口UserService，</span></span><br><span class="line">        Class[] interfaces = userServiceImpl.getClass().getInterfaces();</span><br><span class="line">        <span class="comment">// 4. 创建一个将传给代理类的调用请求处理器，处理所有的代理对象上的方法调用</span></span><br><span class="line">        <span class="comment">//     这里创建的是一个自定义的日志处理器，须传入实际的执行对象 userServiceImpl</span></span><br><span class="line">        <span class="type">InvocationHandler</span> <span class="variable">logHandler</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LogHandler</span>(userServiceImpl);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">		   5.根据上面提供的信息，创建代理对象 在这个过程中，</span></span><br><span class="line"><span class="comment">               a.JDK会通过根据传入的参数信息动态地在内存中创建和.class 文件等同的字节码</span></span><br><span class="line"><span class="comment">               b.然后根据相应的字节码转换成对应的class，</span></span><br><span class="line"><span class="comment">               c.然后调用newInstance()创建代理实例</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">proxy</span> <span class="operator">=</span> (UserService) Proxy.newProxyInstance(classLoader, interfaces, logHandler);</span><br><span class="line">        <span class="comment">// 调用代理的方法</span></span><br><span class="line">        proxy.select();</span><br><span class="line">        proxy.update();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 保存JDK动态代理生成的代理类，类名保存为 UserServiceProxy</span></span><br><span class="line">        <span class="comment">// ProxyUtils.generateClassFile(userServiceImpl.getClass(), &quot;UserServiceProxy&quot;);</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="java-lang-reflect-InvocationHandler"><a href="#java-lang-reflect-InvocationHandler" class="headerlink" title="java.lang.reflect.InvocationHandler"></a>java.lang.reflect.InvocationHandler</h4><ul>
+<h3 id="java-lang-reflect-InvocationHandler"><a href="#java-lang-reflect-InvocationHandler" class="headerlink" title="java.lang.reflect.InvocationHandler"></a>java.lang.reflect.InvocationHandler</h3><ul>
 <li><strong><code>Object invoke(..)</code>：</strong>定义了代理对象调用方法时希望执行的动作，用于集中处理在动态代理类对象上的方法调用</li>
 </ul>
-<h4 id="java-lang-reflect-Proxy"><a href="#java-lang-reflect-Proxy" class="headerlink" title="java.lang.reflect.Proxy"></a>java.lang.reflect.Proxy</h4><ul>
+<h3 id="java-lang-reflect-Proxy"><a href="#java-lang-reflect-Proxy" class="headerlink" title="java.lang.reflect.Proxy"></a>java.lang.reflect.Proxy</h3><ul>
 <li><strong><code>static InvocationHandler getInvocationHandler(..)</code>：</strong>用于获取<strong>指定代理对象所关联的调用处理器</strong></li>
 <li><strong><code>static Class&lt;?&gt; getProxyClass(..)</code>：</strong>返回指定接口的代理类</li>
 <li><strong><code>static Object newProxyInstance(..)</code>：</strong>构造实现指定接口的代理类的一个新实例，所有方法会调用给定处理器对象的<code>invoke</code>方法</li>
 <li><strong><code>static boolean isProxyClass(Class&lt;?&gt; cl)</code>：</strong>返回 cl 是否为一个代理类</li>
 </ul>
-<h3 id="CGLIB-动态代理"><a href="#CGLIB-动态代理" class="headerlink" title="CGLIB 动态代理"></a>CGLIB 动态代理</h3><p><strong>CGLIB 采用了非常底层的字节码技术</strong>，其原理是通过字节码技术<strong>为一个类创建子类</strong>，并在子类中采用方法拦截的技术，<strong>拦截所有父类方法的调用</strong>。顺势织入横切逻辑，来完成动态代理的实现</p>
+<h2 id="CGLIB-代理"><a href="#CGLIB-代理" class="headerlink" title="CGLIB 代理"></a>CGLIB 代理</h2><p><strong>CGLIB 采用了非常底层的字节码技术</strong>，其原理是通过字节码技术<strong>为一个类创建子类</strong>，并在子类中采用方法拦截的技术，<strong>拦截所有父类方法的调用</strong>。顺势织入横切逻辑，来完成动态代理的实现</p>
 <p>CGLIB 创建动态代理类的模式是：</p>
 <ol>
-<li>查找目标类上的所有非<code>final</code>的<code>public</code>类型的方法定义</li>
+<li>查找目标类上的所有非 <code>final</code> 的 <code>public</code> 类型的方法定义</li>
 <li>将这些方法的定义转换成字节码</li>
-<li>将组成的字节码转换成相应的代理的<code>Class</code>对象</li>
-<li>实现<code>MethodInterceptor</code>接口，用来处理对代理类上所有方法的请求</li>
+<li>将组成的字节码转换成相应的代理的 <code>Class</code> 对象</li>
+<li>实现 <code>MethodInterceptor</code> 接口，用来处理对代理类上所有方法的请求</li>
 </ol>
-<h3 id="JDK-与-CGLIB-动态代理对比"><a href="#JDK-与-CGLIB-动态代理对比" class="headerlink" title="JDK 与 CGLIB 动态代理对比"></a>JDK 与 CGLIB 动态代理对比</h3><ul>
-<li><strong>JDK动态代理：</strong>基于Java反射机制实现，必须要实现了接口的业务类才能用这种办法生成代理对象<ul>
+<h3 id="代码示例-2"><a href="#代码示例-2" class="headerlink" title="代码示例"></a>代码示例</h3><p>在 maven 中导入 CGLIB 包，然后编写一个 <code>UserDao</code> 类，只有两个方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserDao</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">select</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;UserDao 查询 selectById&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;UserDao 更新 update&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编写一个 LogInterceptor ，继承了 <code>MethodInterceptor</code>，用于方法的拦截回调</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LogInterceptor</span> <span class="keyword">implements</span> <span class="title class_">MethodInterceptor</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> object 表示要进行增强的对象</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> method 表示拦截的方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objects 数组表示参数列表，基本数据类型需要传入其包装类型，如int--&gt;Integer、long-Long、double--&gt;Double</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> methodProxy 表示对方法的代理，invokeSuper方法表示对被代理对象方法的调用</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 执行结果</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Throwable</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Object <span class="title function_">intercept</span><span class="params">(Object object, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        before();</span><br><span class="line">        <span class="type">Object</span> <span class="variable">result</span> <span class="operator">=</span> methodProxy.invokeSuper(object, objects);   <span class="comment">// 注意这里是调用 invokeSuper 而不是 invoke，否则死循环，methodProxy.invokesuper执行的是原始类的方法，method.invoke执行的是子类的方法</span></span><br><span class="line">        after();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">before</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;log start time [%s] &quot;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">after</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(String.format(<span class="string">&quot;log end time [%s] &quot;</span>, <span class="keyword">new</span> <span class="title class_">Date</span>()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用代理类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> net.sf.cglib.proxy.Enhancer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CglibTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">DaoProxy</span> <span class="variable">daoProxy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DaoProxy</span>(); </span><br><span class="line">        <span class="type">Enhancer</span> <span class="variable">enhancer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Enhancer</span>();</span><br><span class="line">        enhancer.setSuperclass(Dao.class);  <span class="comment">// 设置超类，cglib是通过继承来实现的</span></span><br><span class="line">        enhancer.setCallback(daoProxy);</span><br><span class="line"></span><br><span class="line">        <span class="type">Dao</span> <span class="variable">dao</span> <span class="operator">=</span> (Dao)enhancer.create();   <span class="comment">// 创建代理类</span></span><br><span class="line">        dao.update();</span><br><span class="line">        dao.select();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 运行结果</span></span><br><span class="line"><span class="comment">// log start time [Fri Dec 21 00:06:40 CST 2018] </span></span><br><span class="line"><span class="comment">// UserDao 查询 selectById</span></span><br><span class="line"><span class="comment">// log end time [Fri Dec 21 00:06:40 CST 2018] </span></span><br><span class="line"><span class="comment">// log start time [Fri Dec 21 00:06:40 CST 2018] </span></span><br><span class="line"><span class="comment">// UserDao 更新 update</span></span><br><span class="line"><span class="comment">// log end time [Fri Dec 21 00:06:40 CST 2018] </span></span><br></pre></td></tr></table></figure>
+
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><h3 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h3><p>基于Java反射机制实现，只有<strong>实现了接口的业务类</strong>才能用这种办法生成代理对象</p>
+<ul>
 <li><strong>优点：</strong><ul>
-<li><strong>最小化依赖关系</strong>，减少依赖意味着简化开发和维护，JDK 本身的支持，可能比CGLIB更加可靠</li>
+<li><strong>最小化依赖关系</strong>，减少依赖意味着简化开发和维护，JDK 本身的支持，可能比 CGLIB 更加可靠</li>
 <li><strong>平滑进行 JDK 版本升级</strong>，而字节码类库通常需要进行更新以保证在新版 Java 上能够使用</li>
 <li><strong>代码实现简单</strong></li>
 </ul>
@@ -1182,8 +1379,8 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><strong>CGLIB动态代理：</strong>基于 <strong>ASM</strong> 机制实现，通过生成业务类的子类作为代理类<ul>
+<h3 id="CGLIB"><a href="#CGLIB" class="headerlink" title="CGLIB"></a>CGLIB</h3><p>基于 <strong>ASM</strong> 机制实现，通过生成业务类的子类作为代理类</p>
+<ul>
 <li><strong>优点：</strong><ul>
 <li><strong>无需实现接口</strong>，达到代理类无侵入</li>
 <li>只操作我们关心的类，而不必为其他相关类增加工作量</li>
@@ -1191,9 +1388,8 @@
 </ul>
 </li>
 <li><strong>缺点：</strong><ul>
+<li>需要依赖 CGLIB 库，会增加项目复杂度</li>
 <li><strong>技术实现相对难理解</strong></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -1223,17 +1419,15 @@
   <entry>
     <title>Java - 泛型</title>
     <url>/post/fb66a9a7/</url>
-    <content><![CDATA[<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><strong>有三种使用方式：</strong></p>
-<ul>
-<li><strong>泛型类</strong></li>
-<li><strong>泛型接口</strong></li>
-<li><strong>泛型方法</strong></li>
-</ul>
-<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 泛型&lt;T&gt;尖括号内可以填任意非关键字的标识符 常见的如 T,E,K,V</span></span><br><span class="line"><span class="comment">// 实例化泛型类时 必须指定 T 的指定类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>&lt;T&gt; &#123;</span><br><span class="line">    T data;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">(T data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">getData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 泛型的指定类型必须为包装类型 即基本类型需要使用其包装类型作为泛型类型</span></span><br><span class="line">Test&lt;Integer&gt; t = <span class="keyword">new</span> <span class="title class_">Test</span>&lt;&gt;(); <span class="comment">// 类型指定后 后面的尖括号可以不写</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>泛型可以用于<strong>类</strong>、<strong>接口</strong>和<strong>方法</strong></p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 泛型&lt;T&gt;尖括号内可以填任意非关键字的标识符 常见的如 T,E,K,V</span></span><br><span class="line"><span class="comment">// 实例化泛型类时 必须指定 T 的指定类型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Test</span>&lt;T&gt; &#123;</span><br><span class="line">    T data;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Test</span><span class="params">(T data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">getData</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 泛型的指定类型必须为包装类型 即基本类型需要使用其包装类型作为泛型类型</span></span><br><span class="line">Test&lt;Integer&gt; t = <span class="keyword">new</span> <span class="title class_">Test</span>&lt;&gt;(); <span class="comment">// 类型指定后 后面的尖括号可以不写</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Test</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">method</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现不指定类型泛型接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestImplM</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Test</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现指定类型泛型接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestImpl2</span> <span class="keyword">implements</span> <span class="title class_">Test</span>&lt;String&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Test</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">method</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现不指定类型泛型接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestImplM</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">Test</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> T <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实现指定类型泛型接口</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestImpl2</span> <span class="keyword">implements</span> <span class="title class_">Test</span>&lt;String&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">method</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;T&gt; <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(T t)</span> &#123;</span><br><span class="line">    System.out.println(t);</span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">print(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&lt;T&gt; <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(T t)</span> &#123;</span><br><span class="line">    System.out.println(t);</span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">print(<span class="number">123</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="泛型擦除"><a href="#泛型擦除" class="headerlink" title="泛型擦除"></a>泛型擦除</h1><p>泛型在编译后会被抹去类型，如果用<strong>指定类型</strong>作为泛型的参数类型，会在编译后被抹去</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">func</span><span class="params">(List&lt;String&gt; list)</span> &#123;&#125;</span><br><span class="line"><span class="comment">// 无法重载 泛型擦除后两个 list 的类型是一样的</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">func</span><span class="params">(List&lt;Integer&gt; list)</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1322,7 +1516,7 @@
   <entry>
     <title>MySQL - 索引</title>
     <url>/post/2dade9db/</url>
-    <content><![CDATA[<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="主键索引（聚簇索引）"><a href="#主键索引（聚簇索引）" class="headerlink" title="主键索引（聚簇索引）"></a>主键索引（聚簇索引）</h2><p>存储的是表中一整行的数据，通常当</p>
+    <content><![CDATA[<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="主键索引（聚簇索引）"><a href="#主键索引（聚簇索引）" class="headerlink" title="主键索引（聚簇索引）"></a>主键索引（聚簇索引）</h2><p>存储的是表中一整行的数据</p>
 <h2 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h2><p>存储的是该行的[聚簇索引](# 聚簇索引和非聚簇索引)，若需要返回整行数据需根据聚簇索引再<strong>回表</strong>检索一次</p>
 <h2 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h2><p>设置多个字段的索引，但命中索引需要满足<strong>最左匹配原则</strong>，如（a，b，c）联合索引，查询条件中包含 <strong>a</strong> 才会命中（命中索引的长度要看<strong>最左连续匹配了几个字段</strong>，如 ac 命中 a、abc 命中 abc）</p>
 <p><strong>当查询时对联合索引字段有以下操作，也会出现索引失效</strong></p>
@@ -1343,7 +1537,7 @@
 <li><strong>覆盖索引：</strong>使用索引检索到的数据覆盖了<strong>查询所需字段</strong></li>
 <li><strong>非覆盖索引：</strong>使用索引检索后还需要回表查询整行数据才能覆盖<strong>查询所需字段</strong></li>
 </ul>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+]]></content>
       <categories>
         <category>笔记</category>
         <category>数据库</category>
@@ -1919,7 +2113,7 @@
 <li>如果保证访问的高可用性（A），可以持续对外提供服务，但不能保证数据的强一致性 &#x3D;&gt; AP</li>
 <li>如果保证访问的数据强一致性（C），那么就要放弃高可用性 &#x3D;&gt; CP</li>
 </ul>
-<h1 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h1><p>BASE理论是对CAP的一种解决思路，包含三个思想：</p>
+<h1 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h1><p>BASE 理论是对 CAP 的一种解决思路，包含三个思想：</p>
 <ul>
 <li><strong><font color="red">B</font>asically <font color="red">A</font>vailable（基本可用）：</strong>分布式系统在出现故障时，允许损失部分可用性，即保证<strong>核心可用</strong></li>
 <li><strong><font color="red">S</font>oft State（软状态）：</strong>在一定时间内，允许出现中间状态，比如临时的不一致状态</li>
@@ -1980,7 +2174,7 @@
     <url>/post/2cd4a446/</url>
     <content><![CDATA[<h1 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h1><h2 id="服务雪崩"><a href="#服务雪崩" class="headerlink" title="服务雪崩"></a>服务雪崩</h2><p>由于一个服务<strong>崩溃或异常</strong>导致调用这个服务的服务调用失败无法释放连接，从而引发的一系列连锁反应，可能导致整个服务链路都崩溃</p>
 <h2 id="降级"><a href="#降级" class="headerlink" title="降级"></a>降级</h2><p>服务降级是<strong>服务自我保护</strong>或<strong>保护下游服务</strong>的一种方式，用于确保服务不会受<strong>请求突增</strong>的影响而变得<strong>不可用</strong>，确保服务不会崩溃</p>
-<h2 id="熔断"><a href="#熔断" class="headerlink" title="熔断"></a>熔断</h2><p>Hystrix熔断机制，用于监控微服务调用的情况，默认是关闭的。如果需要开启需要再引导类上添加注解<code>@EnableCircultBreaker</code>，若检测到**10秒内请求的失败率超过50%**，就会触发熔断机制</p>
+<h2 id="熔断"><a href="#熔断" class="headerlink" title="熔断"></a>熔断</h2><p>Hystrix 熔断机制，用于监控微服务调用的情况，默认是关闭的。如果需要开启需要再引导类上添加注解<code>@EnableCircultBreaker</code>，若检测到**10秒内请求的失败率超过50%**，就会触发熔断机制</p>
 <p>熔断机制触发后，每隔5秒重新尝试请求微服务：</p>
 <ul>
 <li>若微服务不能响应，继续走熔断机制</li>
@@ -2026,7 +2220,7 @@
     <url>/post/1d3b9f9f/</url>
     <content><![CDATA[<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><p>SpringCloud主要包含<strong>五大组件</strong>：</p>
 <ol>
-<li><strong>服务发现：</strong>Eureka、Nacos、Zookeeper等</li>
+<li><strong>服务发现：</strong>Eureka、Nacos、Zookeeper 等</li>
 <li><strong>负载均衡：</strong>Ribbon</li>
 <li><strong>远程调用：</strong>Feign</li>
 <li><strong>服务熔断：</strong>Hystrix</li>
@@ -2503,14 +2697,16 @@
   <entry>
     <title>selenium</title>
     <url>/post/4d23fd8d/</url>
-    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一个Python的开源库，用来<strong>模拟用户</strong>操作Web界面。如鼠标点击、键盘输入等，因为是使用浏览器模拟，所以可以加载一些用<strong>js动态渲染</strong>的页面信息，一般用来做<strong>爬虫</strong>或<strong>Web的自动化测试工具</strong></p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install selenium</code>即可</p>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一个Python的开源库，用来<strong>模拟用户</strong>操作Web界面。如鼠标点击、键盘输入等，因为是使用浏览器模拟，所以可以加载一些用<strong>js 动态渲染</strong>的页面信息，一般用来做<strong>爬虫</strong>或<strong>Web的自动化测试工具</strong></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install selenium</code> 即可</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="创建浏览器实例"><a href="#创建浏览器实例" class="headerlink" title="创建浏览器实例"></a>创建浏览器实例</h3><p>目前我接触到的就chrome和edge浏览器，可能还有其他的，没有了解太多</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">path = <span class="string">&#x27;D:\xx\xx&#x27;</span> <span class="comment"># 浏览器 exe 文件路径</span></span><br><span class="line">chrome_driver = webdriver.chrome(path) <span class="comment"># chrome浏览器</span></span><br><span class="line">edge_driver = webdriver.edge(path) <span class="comment"># edge浏览器</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="访问页面和等待加载"><a href="#访问页面和等待加载" class="headerlink" title="访问页面和等待加载"></a>访问页面和等待加载</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"></span><br><span class="line">edge_driver.get(<span class="string">&#x27;https://www.baidu.com&#x27;</span>) <span class="comment"># 访问页面</span></span><br><span class="line"><span class="comment"># 每0.5秒检测指定元素是否已经渲染出来，5秒内都没检测到就抛出异常</span></span><br><span class="line">WebDriverWait(edge_driver, <span class="number">5</span>, <span class="number">0.5</span>)</span><br><span class="line">.until(expected_conditions.presence_of_element_located((By.ID, <span class="string">&#x27;xxx&#x27;</span>)), message=<span class="string">&#x27;元素未找到&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <h3 id="获取页面内元素"><a href="#获取页面内元素" class="headerlink" title="获取页面内元素"></a>获取页面内元素</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">element = driver.find_element_by_id(<span class="string">&#x27;kw&#x27;</span>) <span class="comment"># 通过id属性获取元素</span></span><br><span class="line">element = driver.find_element_by_name(<span class="string">&#x27;wd&#x27;</span>) <span class="comment"># 通过name属性获取元素</span></span><br><span class="line">element = driver.find_element_by_class_name(<span class="string">&#x27;input&#x27;</span>) <span class="comment"># 通过class属性获取元素</span></span><br><span class="line">element = driver.find_element_by_tag_name(<span class="string">&#x27;input&#x27;</span>) <span class="comment"># 通过标签名获取元素</span></span><br><span class="line">element = driver.find_element_by_link_text(<span class="string">&#x27;视频&#x27;</span>) <span class="comment"># 通过链接文本值获取元素</span></span><br><span class="line">element = driver.find_element_by_partial_link_text(<span class="string">&#x27;视&#x27;</span>)<span class="comment"># 通过部分链接文本值获取元素</span></span><br><span class="line">element = driver.find_element_by_xpath(<span class="string">&quot;//*[@id=&#x27;kw&#x27;]&quot;</span>) <span class="comment"># 通过Xpath获取元素</span></span><br><span class="line">element = driver.find_element_by_css_selector(<span class="string">&#x27;#kw&#x27;</span>) <span class="comment"># 通过CSS选择器获取元素</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置网页-Cookie"><a href="#设置网页-Cookie" class="headerlink" title="设置网页 Cookie"></a>设置网页 Cookie</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 要先访问网页再配置cookie</span></span><br><span class="line">driver.get(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line"><span class="comment"># 清空原有cookie</span></span><br><span class="line">driver.delete_all_cookies()</span><br><span class="line"><span class="comment"># cookie是字典类型的 浏览器装个Cookie Editor插件就可以导出json格式的cookies</span></span><br><span class="line">cookies = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;domain&quot;</span>: <span class="string">&quot;.taobao.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;expirationDate&quot;</span>: <span class="number">1725995896.097156</span>,</span><br><span class="line">        <span class="string">&quot;httpOnly&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;3PcFlag&quot;</span>,</span><br><span class="line">        <span class="string">&quot;path&quot;</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">        <span class="comment"># 要注意在selenium中sameSite字段只能有None. Lax, Strict三种情况，从Cookie Editor导出来不是这个格式需要自己替换一下</span></span><br><span class="line">        <span class="string">&quot;sameSite&quot;</span>: <span class="string">&#x27;None&#x27;</span>,</span><br><span class="line">        <span class="string">&quot;secure&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">        <span class="string">&quot;storeId&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;1725103097024&quot;</span>,</span><br><span class="line">        <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://www.taobao.com/&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="comment"># 添加cookie</span></span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">	driver.add_cookie(cookie)</span><br><span class="line"><span class="comment"># 配置完要刷新才能生效</span></span><br><span class="line">driver.refresh()</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -2614,16 +2810,26 @@
   <entry>
     <title>Java - 反射</title>
     <url>/post/f7e99270/</url>
-    <content><![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p>通过反射，你可以获取<strong>任意一个类</strong>的<strong>所有属性和方法</strong>，你还可以<strong>调用</strong>这些方法和属性</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>反射的应用场景很广，但在业务开发的时候很少有用到反射机制。Java的各种框架如 <strong>Struts、Spring、MyBatis</strong> 等都大量使用到了反射机制</p>
-<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>可以在运行时动态创建对象，使用 <code>Class</code> 类的 <code>newInstance()</code> 或者调用 <code>Constructor</code> 类来创建对象</p>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>使用反射，你可以<strong>在运行时动态地获取类的各项信息</strong>（成员变量、函数方法等等），提高了程序的灵活性和可扩展性</p>
+<p>Java 中与反射相关的几个类：</p>
+<ul>
+<li><code>java.lang.Class</code>：反射最<strong>核心</strong>的类，可以通过该类获取反射类的各种信息，包括但不限于以下几个类</li>
+<li><code>java.lang.reflect.Method</code>：代表类的方法，能用该类来<strong>调用反射类的方法</strong></li>
+<li><code>java.lang.reflect.Field</code>：代表类的字段，能用该类来<strong>访问或修改反射类的字段</strong></li>
+<li><code>java.lang.reflect.Constructor</code>：代表类的构造函数，能用该类来<strong>创建反射类的实例</strong></li>
+</ul>
+<p>还有其他像 <code>Proxy</code>、<code>InvocationHandler</code> 等等的类</p>
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><p>反射的应用场景很广，但在业务开发的时候很少有用到反射机制。Java的各种框架如 <strong>Struts、Spring、MyBatis</strong> 等都大量使用到了反射机制</p>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>可以在运行时动态创建对象，使用 <code>Class</code> 类的 <code>newInstance()</code> 或者调用 <code>Constructor</code> 类来创建对象</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MyClass</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// Constructor</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        Class&lt;?&gt; clazz = MyClass.class;</span><br><span class="line">        <span class="type">MyClass</span> <span class="variable">obj</span> <span class="operator">=</span> (MyClass) clazz.newInstance();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><ul>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>在 JDK 动态代理时用到了 <code>Proxy</code> 和 <code>InvocationHandler</code> 来实现代理</p>
+<h2 id="Spring-中-Bean-的属性注入"><a href="#Spring-中-Bean-的属性注入" class="headerlink" title="Spring 中 Bean 的属性注入"></a>Spring 中 Bean 的属性注入</h2><p>Spring 通过反射机制获取 Bean 的属性字段信息，并且调用其 <code>Setter</code> 方法来注入值</p>
+<h1 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h1><ul>
 <li><strong>优点：</strong>可以让代码变得更灵活，为各种框架的功能开发提供了便利</li>
 <li><strong>缺点：</strong>让我们在运行时有了分析和操作类的能力，带来了<strong>安全问题</strong></li>
 </ul>
-<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h2><p>在程序中，JVM每加载完一个类，就会在<strong>堆内存</strong>中产生一个该类的<code>Class</code>对象，一个类在堆内存中最多只会有一个<code>Class</code>对象</p>
+<h1 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h1><p>在程序中，JVM每加载完一个类，就会在<strong>堆内存</strong>中产生一个该类的<code>Class</code>对象，一个类在堆内存中最多只会有一个<code>Class</code>对象</p>
 <p>这个<code>Class</code>对象包含了该类的<strong>完整结构信息</strong>，如类的成员变量、成员方法、构造方法、使用的注解等信息</p>
 ]]></content>
       <categories>
@@ -2865,10 +3071,7 @@
 <p>当创建好一个 Read View 后，在读取表中记录时，就会对<strong>每一条记录的隐藏字段 <code>trx_id</code> 进行上述规则判断</strong></p>
 <ul>
 <li>如果<strong>允许访问</strong>，则读取这条记录</li>
-<li>如果<strong>不允许</strong>，则根据隐藏字段 <code> roll_ptr</code> 沿着 undo log 版本链寻找该记录的上一版本，并对这一版本的 <code>trx_id</code> 进行判断<ul>
-<li>若<strong>仍不允许</strong>，则重复上一步骤直至找到<strong>第一个允许访问的旧记录</strong></li>
-</ul>
-</li>
+<li>如果<strong>不允许</strong>，则根据隐藏字段 <code> roll_ptr</code> 沿着 undo log 版本链对每一版本的 <code>trx_id</code> 进行判断，寻找该记录的<strong>第一个允许访问的版本</strong></li>
 </ul>
 <h2 id="MVCC-实现读提交"><a href="#MVCC-实现读提交" class="headerlink" title="MVCC 实现读提交"></a>MVCC 实现读提交</h2><p><strong>读提交隔离级别是在每次读取数据时，都会生成一个新的 Read View</strong></p>
 <blockquote>
@@ -3087,15 +3290,19 @@
   <entry>
     <title>Spring</title>
     <url>/post/6c92115f/</url>
-    <content><![CDATA[<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="Spring的核心思想"><a href="#Spring的核心思想" class="headerlink" title="Spring的核心思想"></a>Spring的核心思想</h2><h3 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h3><p><strong>IoC（Inversion of Control）</strong>即控制反转，它不是一种实现方式而是一种思想。大体含义主要为将类与类之间的<strong>依赖</strong>关系<strong>反转</strong>过来</p>
-<p>当然反转不是指<strong>被依赖类</strong>来控制自己的依赖关系，而是指把控制权交由给<strong>外部容器</strong>（IoC容器），由IoC容器来为需要依赖的类提供依赖</p>
+    <content><![CDATA[<h1 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h1><h2 id="IoC"><a href="#IoC" class="headerlink" title="IoC"></a>IoC</h2><p><strong>IoC（Inversion of Control）</strong>即控制反转，它不是一种实现方式而是一种思想。大体含义主要为将类与类之间的<strong>依赖</strong>关系<strong>反转</strong>过来</p>
+<p>当然反转不是指<strong>被依赖类</strong>来控制自己的依赖关系，而是指把控制权交由给<strong>外部容器</strong>（IoC 容器），由 IoC 容器来为需要依赖的类提供依赖</p>
 <p>IoC最常见以及最合理的实现方式为<strong>依赖注入（Dependency Injection，简称DI）</strong></p>
-<h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h3><p><strong>AOP（Aspect Oriented Programming）</strong>即面向切面编程，AOP是OOP（面向对象编程）的一种延续，二者互补</p>
+<h2 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h2><p><strong>AOP（Aspect Oriented Programming）</strong>即面向切面编程，AOP是OOP（面向对象编程）的一种延续，二者互补</p>
 <p>AOP的目的是将<strong>横切关注点</strong>（记录日志等）从业务逻辑中分离出来，通过<strong>动态代理</strong>、<strong>字节码操作</strong>等技术来实现对代码的<strong>复用</strong>和<strong>解耦</strong>，提高代码的可维护性和可拓展性</p>
+<h1 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h1><h2 id="加载配置文件"><a href="#加载配置文件" class="headerlink" title="加载配置文件"></a>加载配置文件</h2><p>在启动阶段，SpringBoot 会首先加载配置文件。默认情况下，SpringBoot 会加载位于 <code>src/main/resources</code> 目录下的 <code>application.properties</code> 或 <code>application.yml</code> 文件</p>
+<h2 id="创建-Spring-容器"><a href="#创建-Spring-容器" class="headerlink" title="创建 Spring 容器"></a>创建 Spring 容器</h2><p>Spring 容器是 <code>ApplicationContext</code> 的实现类。常用的实现类有 <code>AnnotationConfigApplicationContext</code>、<code>ClassPathXmlApplicationContext</code> 和 <code>GenericWebApplicationContext</code>。在 Spring Boot 中，通常使用 <code>SpringApplication</code> 类来创建容器</p>
+<h2 id="实例化-Bean"><a href="#实例化-Bean" class="headerlink" title="实例化 Bean"></a>实例化 Bean</h2><p>根据 XML 中 Bean 的定义创建 Bean 对象，涉及到 Bean 的生命周期</p>
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
 <li><a href="https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html">Spring常见面试题总结 | JavaGuide</a></li>
+<li><a href="https://blog.csdn.net/YeJingLiangZuo/article/details/139624021">Spring 启动顺序_spring启动流程-CSDN博客</a></li>
 </ul>
 </blockquote>
 ]]></content>
@@ -3111,7 +3318,7 @@
   <entry>
     <title>Java - 集合</title>
     <url>/post/5e788cc1/</url>
-    <content><![CDATA[<h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>Java 集合，也叫作容器，主要是由两大接口派生而来：</p>
+    <content><![CDATA[<p>Java 集合，也叫作容器，主要是由两大接口派生而来：</p>
 <ul>
 <li><code>Collection</code>：存放单一元素<ul>
 <li><code>List</code>：列表，存储<strong>有序、可重复</strong>的元素</li>
@@ -3121,15 +3328,15 @@
 </li>
 <li><code>Map</code>：存储<code>Entry</code>键值对</li>
 </ul>
-<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><h4 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p>使用 <code>Object[]</code> 数组来存储元素</p>
-<h4 id="grow-流程"><a href="#grow-流程" class="headerlink" title="grow 流程"></a><code>grow</code> 流程</h4><ol>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><h3 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><p>使用 <code>Object[]</code> 数组来存储元素</p>
+<h3 id="grow-流程"><a href="#grow-流程" class="headerlink" title="grow 流程"></a><code>grow</code> 流程</h3><ol>
 <li>判断当前 <code>elemenetData</code> 是否为默认空数组（未初始化）<ul>
 <li>若<strong>是</strong>，则将其初始化为<strong>长度为 <code>minCapacity</code> 和 16（默认长度）的数组</strong></li>
 <li>若<strong>否</strong>，则将长度扩容为<strong>原有长度的1.5倍和<code>minCapacity</code>的最大值</strong></li>
 </ul>
 </li>
 </ol>
-<h4 id="add-流程"><a href="#add-流程" class="headerlink" title="add 流程"></a><code>add</code> 流程</h4><p><strong>时间复杂度：$O(n)$</strong></p>
+<h3 id="add-流程"><a href="#add-流程" class="headerlink" title="add 流程"></a><code>add</code> 流程</h3><p><strong>时间复杂度：$O(n)$</strong></p>
 <ol>
 <li>判断<strong>当前元素数量是否等于数组长度</strong><ul>
 <li>若<strong>等于</strong>，则扩容（默认<code>minCapacity</code> 为原数组长度+1）</li>
@@ -3137,7 +3344,7 @@
 </li>
 <li>将元素添加到数组尾部</li>
 </ol>
-<h4 id="remove-流程"><a href="#remove-流程" class="headerlink" title="remove 流程"></a><code>remove</code> 流程</h4><p><strong>时间复杂度：$O(n)$</strong></p>
+<h3 id="remove-流程"><a href="#remove-流程" class="headerlink" title="remove 流程"></a><code>remove</code> 流程</h3><p><strong>时间复杂度：$O(n)$</strong></p>
 <ol>
 <li>判断要<code>remove</code>的元素是否为最后一个<ul>
 <li>若<strong>否</strong>，则用<code>System.arraycopy</code>将<strong>待删除元素后的所有元素</strong>复制到<strong>待删除元素前面</strong></li>
@@ -3145,20 +3352,20 @@
 </li>
 <li>将<strong>数组最后一位</strong>置为<code>null</code></li>
 </ol>
-<h4 id="Arrays-asList"><a href="#Arrays-asList" class="headerlink" title="Arrays.asList"></a><code>Arrays.asList</code></h4><p>**使用该方法创建的 <code>List</code> 并不是 <code>ArrayList</code>**，而是 <code>Arrays</code> 的一个内部类 <code>ArrayList</code>，其不包含<code>add</code>和<code>remove</code>方法，只能调用<code>get</code>方法</p>
+<h2 id="Arrays-asList"><a href="#Arrays-asList" class="headerlink" title="Arrays.asList"></a><code>Arrays.asList</code></h2><p>**使用该方法创建的 <code>List</code> 并不是 <code>ArrayList</code>**，而是 <code>Arrays</code> 的一个内部类 <code>ArrayList</code>，其不包含<code>add</code>和<code>remove</code>方法，只能调用<code>get</code>方法</p>
 <p>同时其创建的<code>List</code>是<strong>对原数组的引用</strong>，如果修改原数组，其也会受到影响</p>
 <p>若想将数组转为 <code>ArrayList</code>，可以使用 <code>new ArrayList&lt;&gt;(List.of(xxx))</code> 创建</p>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><h4 id="底层数据结构-1"><a href="#底层数据结构-1" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p>双向链表</p>
-<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p><code>Vector</code>在很多方法上都加入了**<code>synchronized</code>关键字**，来保证线程的安全，如：<code>get,set,add,remove,equals,hashcode,toString,toArray...</code>等</p>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><h3 id="底层数据结构-1"><a href="#底层数据结构-1" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><p>双向链表</p>
+<h2 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h2><p><code>Vector</code>在很多方法上都加入了**<code>synchronized</code>关键字**，来保证线程的安全，如：<code>get,set,add,remove,equals,hashcode,toString,toArray...</code>等</p>
 <p>也正是因为这一点，导致<code>Vector</code>效率低，不能和<code>ArrayList</code>相比</p>
-<h4 id="底层数据结构-2"><a href="#底层数据结构-2" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p>与<code>ArrayList</code>相同，都是使用<code>Object[]</code>来存储数据的，但是**<code>Vector</code>的默认容量是 10<strong>，且</strong><code>Vector</code>扩容到原来的 2 倍**</p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><h4 id="底层数据结构-3"><a href="#底层数据结构-3" class="headerlink" title="底层数据结构"></a>底层数据结构</h4><p><strong>JDK1.7：</strong> 数组 + 链表</p>
+<h3 id="底层数据结构-2"><a href="#底层数据结构-2" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><p>与<code>ArrayList</code>相同，都是使用<code>Object[]</code>来存储数据的，但是**<code>Vector</code>的默认容量是 10<strong>，且</strong><code>Vector</code>扩容到原来的 2 倍**</p>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="底层数据结构-3"><a href="#底层数据结构-3" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><p><strong>JDK1.7：</strong> 数组 + 链表</p>
 <p><strong>JDK1.8及以后：</strong> 数组 + 链表 &#x2F; 红黑树</p>
 <blockquote>
 <p><strong>链表 &#x3D;&gt; 红黑树：数组长度大于 64</strong> 且链表长度大于 <strong>8</strong></p>
 <p><strong>红黑树 &#x3D;&gt; 链表：红黑树节点数量小于 6</strong> </p>
 </blockquote>
-<h4 id="resize-流程"><a href="#resize-流程" class="headerlink" title="resize 流程"></a><code>resize</code> 流程</h4><p>简单来说，扩容就是将数组容量变为原来的 2 倍，并且对旧数组中元素重新进行一次哈希计算，比较耗时</p>
+<h3 id="resize-流程"><a href="#resize-流程" class="headerlink" title="resize 流程"></a><code>resize</code> 流程</h3><p>简单来说，扩容就是将数组容量变为原来的 2 倍，并且对旧数组中元素重新进行一次哈希计算，比较耗时</p>
 <p>所以在使用 <code>HashMap</code> 时应<strong>尽可能避免扩容</strong></p>
 <ol>
 <li><p>判断<strong>原来的数组容量</strong>是否大于 0 </p>
@@ -3192,7 +3399,7 @@
 </ul>
 </li>
 </ol>
-<h4 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a><code>put</code> 流程</h4><p><strong>时间复杂度：$O(1)$</strong></p>
+<h3 id="put-流程"><a href="#put-流程" class="headerlink" title="put 流程"></a><code>put</code> 流程</h3><p><strong>时间复杂度：$O(1)$</strong></p>
 <p><strong>调用 <code>put(key, value)</code> 的具体流程：</strong></p>
 <ol>
 <li>对传入的 $key$ 值进行哈希处理得到哈希值 $hash$</li>
@@ -3218,15 +3425,15 @@
 </li>
 </ul>
 </li>
+<li>若<strong>为空</strong>，直接插入到 $table[i]$</li>
 </ul>
 </li>
-<li>直接插入到 $table[i]$</li>
-<li>判断插入后 $table$ 中键值对数量（包括冲突的）是否大于扩容阈值（数组容量 * 加载因子）<ul>
+<li>判断插入后 $table$ 中键值对数量（包括冲突的）是否大于扩容阈值（数组容量 $\times$ 加载因子）<ul>
 <li>若<strong>是</strong>，则调用 <code>resize()</code> 方法扩容数组</li>
 </ul>
 </li>
 </ol>
-<h4 id="get-流程"><a href="#get-流程" class="headerlink" title="get 流程"></a><code>get</code> 流程</h4><p><strong>时间复杂度：$O(1)$</strong></p>
+<h3 id="get-流程"><a href="#get-流程" class="headerlink" title="get 流程"></a><code>get</code> 流程</h3><p><strong>时间复杂度：$O(1)$</strong></p>
 <p><strong>调用 <code>get(key)</code> 的具体流程：</strong></p>
 <ol>
 <li>对 <code>key</code> 哈希运算并取模当前 <code>table</code> 长度得到下标 <code>first</code></li>
@@ -3239,19 +3446,24 @@
 </ul>
 </li>
 </ol>
-<h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><p>顾名思义，并发安全的 <code>HashMap</code>。使用 <strong>CAS</strong> + <strong>synchronized</strong> 来保证 <code>HashMap</code> 的并发安全</p>
+<h2 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h2><p>顾名思义，并发安全的 <code>HashMap</code>。使用 <strong>CAS</strong> + <strong>synchronized</strong> 来保证 <code>HashMap</code> 的并发安全</p>
 <ul>
 <li><strong>CAS</strong> 控制数组节点的添加</li>
 <li><strong>synchronized</strong> 只锁定当前链表&#x2F;红黑树的首节点，只要插入的 key 的哈希值不冲突，就不会存在并发的问题，提高了效率</li>
 </ul>
 <blockquote>
 <p><strong>为什么只有 HashMap 的键或值可以为空，而 Hashtable、ConcurrentHashMap不能</strong></p>
+<ul>
+<li><p><strong>代码层面：</strong>Hashtable 和 ConcurrentHashMap 在<code>put</code>时需要<strong>调用<code>key</code>对象的<code>hashcode()</code>方法</strong>，所以在此之前对键进行了空值判断（值也进行了判断，不清楚原因）</p>
+</li>
+<li><p><strong>设计层面：</strong>Hashtable 和 ConcurrentHashMap 都是<strong>线程安全</strong>的，其需要在<code>put</code>时判断键是否存在，如果允许键为 <code>null</code> 的话就<strong>无法判断对应键是 <code>null</code> 还是不存在</strong></p>
+</li>
+</ul>
 </blockquote>
-<p><strong>代码层面：</strong></p>
-<p>Hashtable 和 ConcurrentHashMap 在<code>put</code>时需要<strong>调用<code>key</code>对象的<code>hashcode()</code>方法</strong>，所以在此之前对键进行了空值判断（值也进行了判断，不清楚原因）</p>
-<p><strong>设计层面：</strong></p>
-<p>Hashtable 和 ConcurrentHashMap 都是<strong>线程安全</strong>的，其需要在<code>put</code>时判断键是否存在，如果允许键为<code>null</code>的话就<strong>无法判断对应键是<code>null</code>还是不存在</strong></p>
-<h3 id="Collections-SynchronizedMap"><a href="#Collections-SynchronizedMap" class="headerlink" title="Collections.SynchronizedMap"></a>Collections.SynchronizedMap</h3><p>其内部维护了一个<strong>普通对象<code>Map m</code></strong> 和 <strong>互斥锁对象<code>Object mutex</code><strong>，<code>SynchronizedMap</code>提供了<code>get,put,remove</code>等基本方法，其原理是</strong>使用<code>synchronized</code>对原<code>Map</code>对象进行了一层封装</strong>以达到线程安全的目的</p>
+<h2 id="Collections-SynchronizedMap"><a href="#Collections-SynchronizedMap" class="headerlink" title="Collections.SynchronizedMap"></a>Collections.SynchronizedMap</h2><p>其内部维护了一个<strong>普通对象<code>Map m</code></strong> 和 <strong>互斥锁对象<code>Object mutex</code><strong>，<code>SynchronizedMap</code>提供了<code>get,put,remove</code>等基本方法，其原理是</strong>使用<code>synchronized</code>对原<code>Map</code>对象进行了一层封装</strong>以达到线程安全的目的</p>
+<h2 id="Hashtable"><a href="#Hashtable" class="headerlink" title="Hashtable"></a>Hashtable</h2><p>Hashtable 是线程安全的，因为其对每个方法都加了锁</p>
+<p>Hashtable 不允许<strong>键或值为 <code>null</code></strong></p>
+<p>默认的初始容量为 11，负载因子也是 0.75</p>
 <h2 id="错误检测机制"><a href="#错误检测机制" class="headerlink" title="错误检测机制"></a>错误检测机制</h2><h3 id="fail-safe"><a href="#fail-safe" class="headerlink" title="fail-safe"></a>fail-safe</h3><p>在遍历集合时，不直接在集合内容上访问，而是先复制原有的集合内容，在拷贝的集合上进行遍历。这样就避免了<strong>其他线程修改集合结构对其造成的影响</strong>，但也<strong>无法读取到其他线程修改后的最新数据</strong></p>
 <h3 id="fail-fast"><a href="#fail-fast" class="headerlink" title="fail-fast"></a>fail-fast</h3><p>即<strong>快速失败机制</strong>，当多个线程在遍历集合时，如果该集合的结构发生改变，则有可能触发 fail-fast，抛出<code>ConcurrentModificationException</code>异常</p>
 <p>fail-fast 机制并不保证不同步的修改下一定会抛出异常，它只是尽最大努力去抛出，所以这种机制一般仅用于检测 bug</p>
@@ -3311,26 +3523,38 @@
       </tags>
   </entry>
   <entry>
-    <title>Java - 多线程</title>
+    <title>Java</title>
+    <url>/post/df2849ec/</url>
+    <content><![CDATA[<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1>]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>编程语言</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java - 并发编程</title>
     <url>/post/a73fb3d7/</url>
-    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><h3 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h3><ul>
+    <content><![CDATA[<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><ul>
 <li>通过新建一个<strong>Thread对象</strong>，并<strong>重载其run方法</strong>来创建一个进程</li>
 <li>自定义Thread的子类，在其内部<strong>重载run方法</strong>，然后在外部通过创建自定义类来创建线程</li>
 </ul>
 <p>这两种方法都太”重”，<strong>不太适合</strong>在实际开发或其他应用场景中广泛使用</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    System.out.pringln(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h3><p>自定义一个<strong>实现Runnable接口</strong>的类，在其内部<strong>实现run方法</strong>。配合Thread使用</p>
+<h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>自定义一个<strong>实现Runnable接口</strong>的类，在其内部<strong>实现run方法</strong>。配合Thread使用</p>
 <p>这种方法相较于Thread更”轻”，比较推荐使用这种方法来创建线程任务</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyRunnable</span> <span class="keyword">implements</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">Thread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">MyRunnable</span>());</span><br></pre></td></tr></table></figure>
 
-<h3 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h3><p>和Runnable相似，也是自定义一个实现接口的类，区别是Callable可以<strong>返回数据</strong>，并且其需要配合<strong>FutureTask</strong>来使用</p>
+<h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><p>和 Runnable 相似，也是自定义一个实现接口的类，区别是 Callable 可以<strong>返回数据</strong>，并且其需要配合<strong>FutureTask</strong>来使用</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Integer处填返回的数据类型（基元类的包装类）</span></span><br><span class="line">MyCallable <span class="keyword">implements</span> <span class="title class_">Callable</span>&lt;Integer&gt; &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Integer <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 可以理解为FutureTask是带返回值的Thread</span></span><br><span class="line">FutureTask&lt;Integer&gt; futureTask = <span class="keyword">new</span> <span class="title class_">FutureTask</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">MyCallable</span>());</span><br></pre></td></tr></table></figure>
 
-<h3 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h3><p>将需要使用多线程执行的任务封装为自定义的Runnable类，然后使用**<code>Executors</code>静态方法<strong>或</strong><code>ThreadPoolExecutor</code>构造函数<strong>创建一个线程池。推荐使用</strong>构造函数**来创建线程池</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    <span class="number">2</span>,                          			<span class="comment">// corePoolSize: 核心线程数</span></span><br><span class="line">    <span class="number">7</span>,                                      <span class="comment">// maximumPoolSize: 最大线程数</span></span><br><span class="line">    <span class="number">10L</span>,                                    <span class="comment">// keepAliveTime: 超时时间</span></span><br><span class="line">    TimeUnit.NANOSECONDS,                   <span class="comment">// TimeUnit: 超时时间的单位</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="number">1</span>),   		<span class="comment">// BlockingQueue: 任务队列</span></span><br><span class="line">    Executors.defaultThreadFactory(),       <span class="comment">// ThreadFactory: 线程工厂</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy()    <span class="comment">// RejectedExecutionHandler: 饱和策略</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><p>将需要使用多线程执行的任务封装为自定义的Runnable类，然后使用 <strong><code>Executors</code>静态方法</strong>或**<code>ThreadPoolExecutor</code>构造函数** 创建一个线程池。推荐使用<strong>构造函数</strong>来创建线程池</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">ExecutorService</span> <span class="variable">executorService</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>(</span><br><span class="line">    <span class="number">2</span>,                          			<span class="comment">// corePoolSize: 核心线程数</span></span><br><span class="line">    <span class="number">7</span>,                                      <span class="comment">// maximumPoolSize: 最大线程数</span></span><br><span class="line">    <span class="number">10L</span>,                                    <span class="comment">// keepAliveTime: 超时时间</span></span><br><span class="line">    TimeUnit.NANOSECONDS,                   <span class="comment">// TimeUnit: 超时时间的单位</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="number">1</span>),   		<span class="comment">// BlockingQueue: 任务队列</span></span><br><span class="line">    Executors.defaultThreadFactory(),       <span class="comment">// ThreadFactory: 线程工厂</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">ThreadPoolExecutor</span>.AbortPolicy()    <span class="comment">// RejectedExecutionHandler: 饱和/拒绝策略</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="Executors自带线程池"><a href="#Executors自带线程池" class="headerlink" title="Executors自带线程池"></a>Executors自带线程池</h3><p>用于创建线程池的**<code>Executors</code>静态方法**包括：</p>
+<h2 id="Executors-自带线程池"><a href="#Executors-自带线程池" class="headerlink" title="Executors 自带线程池"></a>Executors 自带线程池</h2><p>用于创建线程池的**<code>Executors</code>静态方法**包括：</p>
 <ul>
 <li><code>newFixedThreadPool</code>：创建一个<strong>定长</strong>的线程池，可以控制线程的最大并发数，超出的线程会存在队列中等待<ul>
 <li><strong>核心线程数</strong>与<strong>最大线程数</strong>相同，没有临时线程</li>
@@ -3360,13 +3584,13 @@
 <p>此建议出自<strong>阿里开发手册《Java开发手册-嵩山版》</strong></p>
 </blockquote>
 <p>不推荐使用<code>Executors</code>来创建线程池，是因为每一种方法创建的线程池都有<strong>积压大量线程</strong>从而导致OOM的风险。使用<code>ThreadPoolExecutor</code>构造方法来创建线程池可以<strong>明确线程池的运行规则</strong>，避免<strong>资源耗尽</strong>的风险</p>
-<h3 id="线程池参数"><a href="#线程池参数" class="headerlink" title="线程池参数"></a>线程池参数</h3><h4 id="核心线程数"><a href="#核心线程数" class="headerlink" title="核心线程数"></a>核心线程数</h4><p>一个线程池中主要工作的核心线程的数量</p>
+<h2 id="线程池参数"><a href="#线程池参数" class="headerlink" title="线程池参数"></a>线程池参数</h2><h3 id="核心线程数"><a href="#核心线程数" class="headerlink" title="核心线程数"></a>核心线程数</h3><p>一个线程池中主要工作的核心线程的数量</p>
 <p>对于不同类型的任务，线程池的核心线程数（<code>corePoolSize</code>）的设置也不同，一般都和 CPU 的核心数 $N$ 有关</p>
 <ul>
 <li><strong>IO密集型任务：</strong>文件读写、DB读写、网络请求等，核心线程数设为 $2N+1$</li>
 <li><strong>CPU密集型任务：</strong>数据计算、Bitmap转换等，核心线程数设为 $N+1$</li>
 </ul>
-<h4 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h4><ul>
+<h3 id="阻塞队列"><a href="#阻塞队列" class="headerlink" title="阻塞队列"></a>阻塞队列</h3><ul>
 <li><code>ArrayBlockingQueue</code>：基于数组结构的<strong>有界阻塞队列</strong></li>
 <li><code>LinkedBlockingQueue</code>：基于链表结构的<strong>有界阻塞队列</strong></li>
 <li><code>DelayedWordQueue</code>：优先级队列，它可以保证每次出队的任务都是<strong>当前队列中执行时间最靠前</strong>的</li>
@@ -3401,32 +3625,75 @@
 <td align="center">两把锁（头尾）</td>
 </tr>
 </tbody></table>
-<h3 id="调度过程"><a href="#调度过程" class="headerlink" title="调度过程"></a>调度过程</h3><p>具体到核心线程的调度问题方面，</p>
-<h2 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h2><h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>总是假设<strong>最好的情况</strong>，即共享资源在访问时<strong>不会出问题</strong>，因此无需给共享资源加锁或等待</p>
+<h3 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h3><p>当线程池已经<strong>关闭</strong>或达到<strong>饱和</strong>（最大线程和阻塞队列都已满）状态时，新提交的任务会被拒绝，具体策略如下：</p>
+<ol>
+<li><code>AbortPolicy</code>：<strong>默认拒绝策略</strong>。需要拒绝任务时抛出 <code>RejectedExecutionException</code> 异常</li>
+<li><code>CallerRunsPolicy</code>：直接在 <strong><code>execute</code> 方法的调用线程</strong> 中执行被拒绝的任务；如果线程池已经关闭，任务将被<strong>丢弃</strong></li>
+<li><code>DiscardPolicy</code>：<strong>直接丢弃任务</strong></li>
+<li><code>DiscardOldestPolicy</code>：丢弃队列中<strong>等待时间最长</strong>的任务，并执行当前提交的任务；如果线程池已经关闭，任务将被<strong>丢弃</strong></li>
+</ol>
+<h2 id="线程池状态"><a href="#线程池状态" class="headerlink" title="线程池状态"></a>线程池状态</h2><ol>
+<li><code>RUNNING</code>：<ul>
+<li>线程池刚被创建时的状态，能够接受处理新任务</li>
+</ul>
+</li>
+<li><code>SHUTDOWN</code>：<ul>
+<li>线程池被关闭，不再接受新的任务；但会将原有的任务处理完</li>
+<li>调用线程池的 <code>shutdown()</code> 方法后，线程池状态会立即变为 <code>SHUTDOWN</code></li>
+</ul>
+</li>
+<li><code>STOP</code>：<ul>
+<li>不再接受新任务；会中断所有正在处理的任务</li>
+<li>调用线程池的 <code>shutdownNow()</code> 方法后，状态会变为 <code>STOP</code></li>
+</ul>
+</li>
+<li><code>TIDYING</code>：<ul>
+<li>线程池中线程都没了后，会变为 <code>TIDYING</code>，并调用 <code>terminated()</code> 方法</li>
+</ul>
+</li>
+<li><code>TERMINATED</code>：<ul>
+<li>线程池调用完成 <code>terminated()</code> 方法，彻底终止</li>
+</ul>
+</li>
+</ol>
+<h2 id="任务调度过程"><a href="#任务调度过程" class="headerlink" title="任务调度过程"></a>任务调度过程</h2><p>当向线程池提交一个任务时，会根据线程池不同的状态来调度提交的任务</p>
+<ul>
+<li><strong>核心线程未满：</strong>用核心线程执行任务</li>
+<li><strong>核心线程已满：</strong><ul>
+<li><strong>阻塞队列未满：</strong>放入阻塞队列中等待</li>
+<li><strong>阻塞队列已满：</strong><ul>
+<li><strong>核心线程数 &lt;&#x3D; 最大线程数：</strong>创建线程执行任务</li>
+<li><strong>核心线程数 &gt; 最大线程数：</strong>触发拒绝策略，拒绝该任务</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h1><h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>总是假设<strong>最好的情况</strong>，即共享资源在访问时<strong>不会出问题</strong>，因此无需给共享资源加锁或等待</p>
 <p>乐观锁的实现方式一般为使用<strong>版本号</strong>确定数据的状态，若读取数据时与线程中数据版本不一致，则获取最新版本的数据</p>
 <p><strong>常见的乐观锁的实现有：</strong>CAS、MySQL 的 MVCC（多版本并发控制）等</p>
-<h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>总是假设<strong>最坏的情况</strong>，即共享资源在访问时<strong>会出问题</strong>，因此在获取共享资源时会加锁或等待</p>
+<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是假设<strong>最坏的情况</strong>，即共享资源在访问时<strong>会出问题</strong>，因此在获取共享资源时会加锁或等待</p>
 <p><strong>常见的悲观锁的实现有：</strong>synchronized、ReentrantLock等</p>
-<h2 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h2><p>CAS（<strong>C</strong>ompare <strong>A</strong>nd <strong>S</strong>wap），即对比交换。基于<strong>乐观锁</strong>的思想，在每一次获取线程的<strong>共享资源</strong>时，先比对线程的工作内存中<strong>共享资源副本</strong>是否与<strong>共享资源</strong>相同</p>
+<h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><p>CAS（<strong>C</strong>ompare <strong>A</strong>nd <strong>S</strong>wap），即对比交换。基于<strong>乐观锁</strong>的思想，在每一次获取线程的<strong>共享资源</strong>时，先比对线程的工作内存中<strong>共享资源副本</strong>是否与<strong>共享资源</strong>相同</p>
 <ul>
 <li>若相同，则将新的数据与共享资源的数据交换</li>
 <li>若不相同，则读取共享资源的数据，并再次比对是否相同，直到相同为止（<strong>自旋锁</strong>）</li>
 </ul>
-<h2 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h2><p>synchronized 用于<strong>修饰一个方法</strong>或<strong>用做特定代码块</strong></p>
+<h1 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h1><p>synchronized 用于<strong>修饰一个方法</strong>或<strong>用做特定代码块</strong></p>
 <ul>
 <li><strong>修饰方法：</strong>表示将方法所在的对象作为<strong>对象锁</strong>，对该方法进行加锁保护</li>
 <li><strong>代码块：</strong>将代码块中的对象作为<strong>对象锁</strong>，对该代码块进行加锁保护</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// synchronized关键字需要锁定一个对象</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">LOCK</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br><span class="line"><span class="type">Thread</span> <span class="variable">thread1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(LOCK) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Thread1 running&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="type">Thread</span> <span class="variable">thread2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(LOCK) &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Thread2 running&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h3 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h3><p>底层由<strong>Monitor</strong>实现，Monitor是<strong>JVM级别</strong>的对象（用C++实现），线程获取锁需要使用对象（锁）关联Monitor</p>
-<p><strong>在Monitor中有三个属性：</strong></p>
+<h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><p>底层由 <strong>Monitor</strong> 实现，Monitor 是 <strong>JVM 级别</strong>的对象（用C++实现），线程获取锁需要使用对象（锁）关联 Monitor</p>
+<p><strong>在 Monitor 中有三个属性：</strong></p>
 <ul>
 <li><strong>owner：</strong>关联获取到锁的线程，并且只能关联一个线程</li>
 <li><strong>entrylist：</strong>关联的是处于<strong>阻塞状态</strong>（BLOCKED）的线程</li>
 <li><strong>waitset：</strong>关联的是出于<strong>等待状态</strong>（WAITING）的线程</li>
 </ul>
-<h3 id="锁升级"><a href="#锁升级" class="headerlink" title="锁升级"></a>锁升级</h3><p>Monitor 实现的锁属于<strong>重量级锁</strong>，其中涉及到<strong>用户态和内核态的切换</strong>、<strong>进程的上下文切换</strong>，成本较高，性能较低</p>
+<h2 id="锁升级"><a href="#锁升级" class="headerlink" title="锁升级"></a>锁升级</h2><p>Monitor 实现的锁属于<strong>重量级锁</strong>，其中涉及到<strong>用户态和内核态的切换</strong>、<strong>进程的上下文切换</strong>，成本较高，性能较低</p>
 <p>在<strong>JDK1.6</strong>引入了<strong>偏向锁</strong>和<strong>轻量级锁</strong>，他们的引入是为了解决在<strong>没有多线程竞争</strong>或<strong>基本没有竞争</strong>的场景中因使用传统锁带来的<strong>性能开销问题</strong></p>
 <p><strong>HotSpot虚拟机中，对象头中的Mark Word：</strong></p>
 <table style="text-align: center">
@@ -3475,8 +3742,8 @@
 <li><strong>ptr_to_lock_record：</strong>轻量级锁状态下，指向栈中锁记录的指针，<strong>占30位</strong></li>
 <li><strong>ptr_to_heavyweight_monitor：</strong>重量级锁状态下，指向对象监视器Monitor的指针，<strong>占30位</strong></li>
 </ul>
-<h4 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h4><p>加锁时<strong>对象锁</strong>的<strong>对象头中Mark Word的ptr_to_heavyweight_monitor指针</strong>指向<strong>Monitor对象</strong></p>
-<h4 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h4><p><strong>加锁流程：</strong></p>
+<h3 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h3><p>加锁时<strong>对象锁</strong>的<strong>对象头中Mark Word的ptr_to_heavyweight_monitor指针</strong>指向<strong>Monitor对象</strong></p>
+<h3 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h3><p><strong>加锁流程：</strong></p>
 <ol>
 <li>在线程栈中创建一个 Lock Record（包含地址和对象引用Object Reference），将其对象引用<strong>指向对象锁</strong></li>
 <li>使用CAS指令，将<strong>Lock Record的地址</strong>存储在<strong>对象锁</strong>的Mark Word中（ptr_to_lock_record），若<strong>对象锁</strong>处于无锁状态则修改成功，该线程获得了轻量级锁</li>
@@ -3489,9 +3756,9 @@
 <li>若Lock Record的地址为 null，则代表这是一次重入，将对象引用设为null后继续</li>
 <li>若Lock Record的地址不为 null，则利用CAS指令将<strong>对象锁</strong>的Mark Word恢复为无锁状态，若失败则膨胀为<strong>重量级锁</strong></li>
 </ol>
-<h4 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h4><p>轻量级锁在没有竞争时，每次<strong>重入锁</strong>时仍需要执行CAS操作，偏向锁就是针对轻量级锁的这一点进行了优化</p>
+<h3 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h3><p>轻量级锁在没有竞争时，每次<strong>重入锁</strong>时仍需要执行CAS操作，偏向锁就是针对轻量级锁的这一点进行了优化</p>
 <p>在第一次加锁时，CAS操作仅将<strong>对象锁</strong>的Mark Word中的<strong>biased_lock</strong>置为1，并且存储<strong>当前线程的ID</strong>（23位thread）；在以后得重入过程中，仅判断重入的<strong>线程ID是否相同</strong>即可</p>
-<h2 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h2><p>volatile用于修饰<strong>类中的成员变量或静态成员变量</strong>，其具备两层语义：</p>
+<h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><p>volatile用于修饰<strong>类中的成员变量或静态成员变量</strong>，其具备两层语义：</p>
 <ol>
 <li><strong>保证线程间的可见性</strong><ul>
 <li><strong>可见性：</strong>指当一个线程修改了共享变量的值后，其他线程能够得知这个修改</li>
@@ -3502,7 +3769,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h2><p>AQS（<strong>A</strong>bstract <strong>Q</strong>ueued <strong>S</strong>ynchronizer），即抽象队列同步器。是构建锁或其他同步组件的基础框架</p>
+<h1 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h1><p>AQS（<strong>A</strong>bstract <strong>Q</strong>ueued <strong>S</strong>ynchronizer），即抽象队列同步器。是构建锁或其他同步组件的基础框架</p>
 <p><strong>AQS与synchronized的区别：</strong></p>
 <table>
 <thead>
@@ -3530,14 +3797,21 @@
 <li><strong>Semaphore：</strong>信号量</li>
 <li><strong>CountDownLatch：</strong>倒计时锁</li>
 </ul>
-<h3 id="基本工作机制"><a href="#基本工作机制" class="headerlink" title="基本工作机制"></a>基本工作机制</h3><ol>
+<h2 id="基本工作机制"><a href="#基本工作机制" class="headerlink" title="基本工作机制"></a>基本工作机制</h2><ol>
 <li>线程使用CAS指令设置<strong>被volatile修饰的state变量</strong>，判断其是否为1（0为无锁，1为有锁）<ul>
 <li>若<strong>是</strong>，则将其置为0，获取锁成功，结束</li>
 <li>若<strong>否</strong>，则进入由<strong>双向链表</strong>实现的队列的队尾进行等待</li>
 </ul>
 </li>
 </ol>
-<h2 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h2><p>支持<strong>公平锁</strong>和<strong>非公平锁</strong>、锁重入、锁打断、条件锁等功能</p>
+<h1 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h1><p>支持<strong>公平锁</strong>和<strong>非公平锁</strong>、锁重入、锁打断、条件锁等功能</p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://www.cnblogs.com/andy1234/p/17849689.html">线程池拒绝策略详解 - 爱喝茶的安迪 - 博客园 (cnblogs.com)</a></li>
+<li><a href="https://blog.csdn.net/m0_61916154/article/details/138533565">线程池的五种状态_线程池状态-CSDN博客</a></li>
+</ul>
+</blockquote>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -3546,7 +3820,7 @@
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>多线程</tag>
+        <tag>并发编程</tag>
       </tags>
   </entry>
   <entry>
@@ -3946,6 +4220,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Html</title>
+    <url>/post/b84b57db/</url>
+    <content><![CDATA[<h1 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h1><h2 id="富文本div"><a href="#富文本div" class="headerlink" title="富文本div"></a>富文本div</h2><p>设置div的<strong>contenteditable</strong>属性为true即可在div里插入富文本</p>
+<p>但是如果用js过滤图片时，如果innerHTML追加了一个<strong>img标签</strong>的话，会自动把img标签内的 &#x2F; 去掉</p>
+<p>比如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;...&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 会变成下面这样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mybatis</title>
     <url>/post/da3e1361/</url>
     <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="MyBatis的执行流程"><a href="#MyBatis的执行流程" class="headerlink" title="MyBatis的执行流程"></a>MyBatis的执行流程</h2><ol>
@@ -3979,6 +4268,12 @@
 <h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p>MyBatis<strong>默认开启</strong>一级缓存；在<strong>同一Session</strong>（会话）中缓存数据，即使使用不同的Mapper也会缓存数据</p>
 <h3 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h3><p>MyBatis<strong>默认关闭</strong>二级缓存，在<code>mapper-config.xml</code>中的<code>settings</code>中加入<code>setting name=&quot;cacheEnabled&quot; value=&quot;true|false&quot;</code></p>
 <h3 id="缓存的清理"><a href="#缓存的清理" class="headerlink" title="缓存的清理"></a>缓存的清理</h3><p>当某一作用域（一级缓存：Session &#x2F; 二级缓存：Namespaces）中进行了<strong>增删改</strong>操作后，默认该作用域下<strong>所有SELECT中的缓存</strong>将被清空</p>
+<h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{} 和 ${} 的区别"></a><code>#&#123;&#125;</code> 和 <code>$&#123;&#125;</code> 的区别</h2><p><code>#&#123;&#125;</code> 底层使用的是 <code>PreparedStatement</code>，会创建<strong>预编译的 SQL 语句</strong>，将 SQL 中的 <code>#&#123;&#125;</code> 替换为 <code>?</code> ，在执行 SQL 时会为预编译 SQL 中的占位符 <code>?</code> 进行赋值，调用 <code>PreparedStatement</code> 的 <code>set</code> 方法来赋值，预编译的 SQL 语句执行效率高，并且可以防止 SQL 注入</p>
+<p>MyBatis 处理<code>$&#123;&#125;</code>时，只创建普通的 SQL 语句，然后再执行过程中将 <code>$&#123;&#125;</code> 中的参数值以<strong>字符串拼接</strong>的形式插入到 SQL 语句中</p>
+<blockquote>
+<p><strong>为什么预编译就可以防止 SQL 注入？</strong></p>
+<p>原理是采用了预编译的方法，先将 SQL 语句中可被客户端控制的参数集进行编译，生成对应的临时变量集，再使用对应的设置方法，为临时变量集里面的元素进行赋值，赋值函数 <code>setString()</code>，会对传入的参数进行<strong>强制类型检查</strong>和<strong>安全检查</strong>，所以可以避免 SQL 注入</p>
+</blockquote>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="项目引入"><a href="#项目引入" class="headerlink" title="项目引入"></a>项目引入</h2><h3 id="MyBatis-Plus"><a href="#MyBatis-Plus" class="headerlink" title="MyBatis-Plus"></a>MyBatis-Plus</h3><p>MyBatisPlus也能写Mapper</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--mysql驱动依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--mybatis-plus启动依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis-plus.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--mybatis--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -4013,6 +4308,13 @@
 <h2 id="一个XML标签写多个SQL语句"><a href="#一个XML标签写多个SQL语句" class="headerlink" title="一个XML标签写多个SQL语句"></a>一个XML标签写多个SQL语句</h2><p><strong>可以实现</strong>，但是要在配置文件中的<strong>数据库url</strong>后面加上<strong>allowMultiQueries&#x3D;true</strong></p>
 <h2 id="MyBatis子查询"><a href="#MyBatis子查询" class="headerlink" title="MyBatis子查询"></a>MyBatis子查询</h2><p>如果标签里有<strong>resultMap属性</strong>需要去掉，把resultMap放在子查询的标签里</p>
 <p>需要在标签里加<strong>column属性</strong>，其表示<strong>主查询中的字段值到子查询的映射</strong>，格式为<code>&#123;子查询要用的变量名=主查询的字段名&#125;</code>。子查询用<code>#&#123;&#125;</code>调用变量值</p>
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://xiaolincoding.com/interview/spring.html#mybatis%E9%87%8C%E7%9A%84-%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB">Spring面试题 | 小林coding (xiaolincoding.com)</a></li>
+<li><a href="https://blog.csdn.net/qq_71443736/article/details/134728125">PreparedStatement预编译原理及基础使用_preparestatement-CSDN博客</a></li>
+</ul>
+</blockquote>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -4021,21 +4323,6 @@
       <tags>
         <tag>Java</tag>
         <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Html</title>
-    <url>/post/b84b57db/</url>
-    <content><![CDATA[<h1 id="Html"><a href="#Html" class="headerlink" title="Html"></a>Html</h1><h2 id="富文本div"><a href="#富文本div" class="headerlink" title="富文本div"></a>富文本div</h2><p>设置div的<strong>contenteditable</strong>属性为true即可在div里插入富文本</p>
-<p>但是如果用js过滤图片时，如果innerHTML追加了一个<strong>img标签</strong>的话，会自动把img标签内的 &#x2F; 去掉</p>
-<p>比如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;...&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 会变成下面这样 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;...&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;...&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>Html</tag>
       </tags>
   </entry>
   <entry>
@@ -4065,8 +4352,8 @@
   <entry>
     <title>SpringBoot</title>
     <url>/post/6f2612a2/</url>
-    <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="SpringBoot和Spring"><a href="#SpringBoot和Spring" class="headerlink" title="SpringBoot和Spring"></a>SpringBoot和Spring</h2><p>SpringBoot的出现是为了简化Spring的配置，使开发者可以专注于业务逻辑的实现，不需要依赖项的xml配置</p>
-<h2 id="SpringBoot自动配置原理"><a href="#SpringBoot自动配置原理" class="headerlink" title="SpringBoot自动配置原理"></a>SpringBoot自动配置原理</h2><ol>
+    <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="SpringBoot-和-Spring"><a href="#SpringBoot-和-Spring" class="headerlink" title="SpringBoot 和 Spring"></a>SpringBoot 和 Spring</h2><p>SpringBoot 的出现是为了简化 Spring 的配置，使开发者可以<strong>专注于业务逻辑的实现</strong>，不需要依赖项的 XML 配置</p>
+<h2 id="SpringBoot-自动配置原理"><a href="#SpringBoot-自动配置原理" class="headerlink" title="SpringBoot 自动配置原理"></a>SpringBoot 自动配置原理</h2><ol>
 <li>SpringBoot的引导类上有一个注解**@SpringBootApplication**，该注解对三个注解进行了封装：<ul>
 <li>@SpringBootConfiguration</li>
 <li>@EnableAutoConfiguration</li>
@@ -4178,10 +4465,14 @@
 </tr>
 <tr>
 <td align="center">@ComponentScan</td>
-<td align="center">扫描Spring组件</td>
+<td align="center">扫描 Spring 组件</td>
 </tr>
 </tbody></table>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Transactional不回滚的问题"><a href="#Transactional不回滚的问题" class="headerlink" title="@Transactional不回滚的问题"></a><code>@Transactional</code>不回滚的问题</h2><p><code>@Transational</code>默认只会回滚非受检异常，如果想实现受检异常也回滚需要配置注解<code>@Transactional(rollbackFor = Exception.class)</code></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Transactional-不回滚的问题"><a href="#Transactional-不回滚的问题" class="headerlink" title="@Transactional 不回滚的问题"></a><code>@Transactional</code> 不回滚的问题</h2><p><code>@Transational</code>默认只会回滚非受检异常，如果想实现受检异常也回滚需要配置注解<code>@Transactional(rollbackFor = Exception.class)</code></p>
+<h2 id="properties-和-yml-配置文件同时存在"><a href="#properties-和-yml-配置文件同时存在" class="headerlink" title=".properties 和 .yml 配置文件同时存在"></a><code>.properties</code> 和 <code>.yml</code> 配置文件同时存在</h2><p>两个文件都有效，但 <strong><code>applicaiton.properties</code> 优先级高于 <code>application.yml</code></strong></p>
+<blockquote>
+<p>如果多个目录都有配置文件，文件所在<strong>目录级数</strong>越低，优先级越高</p>
+</blockquote>
 <h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="实现IP封禁"><a href="#实现IP封禁" class="headerlink" title="实现IP封禁"></a>实现IP封禁</h2><p>目前只了解了下面这几种实现方法（登录权限拦截思路也一样）</p>
 <ul>
 <li><strong>全局拦截：</strong>创建Interceptor拦截所有的方法（一劳永逸，但是灵活性不是很高）</li>
@@ -4202,17 +4493,17 @@
   <entry>
     <title>MySQL</title>
     <url>/post/4d712855/</url>
-    <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="MySQL的深分页优化"><a href="#MySQL的深分页优化" class="headerlink" title="MySQL的深分页优化"></a>MySQL的深分页优化</h2><p>深分页指的是使用 <code>LIMIT x, y</code>  关键字进行分页时，x参数过大导致查询时会先查询<strong>先排序前 x+y 条数据</strong>，然后才返回第 y 到 x+y 条数据</p>
+    <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="深分页优化"><a href="#深分页优化" class="headerlink" title="深分页优化"></a>深分页优化</h2><p>深分页指的是使用 <code>LIMIT x, y</code>  关键字进行分页时，x参数过大导致查询时会先查询<strong>先排序前 x+y 条数据</strong>，然后才返回第 y 到 x+y 条数据</p>
 <p>当请求返回的是整行数据时还需要进行<strong>回表查询</strong>（根据聚簇索引查找整行数据），导致效率非常低</p>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="延迟关联"><a href="#延迟关联" class="headerlink" title="延迟关联"></a>延迟关联</h4><p>使用<strong>聚簇索引</strong>先进行分页查询，再利用查询到的聚簇索引查询整行数据，这样可以<strong>减少回表次数</strong></p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> target t </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> target LIMIT <span class="number">100000</span> <span class="number">10</span>) t_ids</span><br><span class="line"><span class="keyword">ON</span> t.id <span class="operator">=</span> t_ids.id</span><br></pre></td></tr></table></figure>
 
-<h2 id="MySQL的主从同步"><a href="#MySQL的主从同步" class="headerlink" title="MySQL的主从同步"></a>MySQL的主从同步</h2><ul>
+<h2 id="主从同步"><a href="#主从同步" class="headerlink" title="主从同步"></a>主从同步</h2><ul>
 <li>主节点的事务提交时，将数据的更改记录到<strong>binlog</strong>（二进制日志）中</li>
 <li>从节点的<strong>IOthread现成</strong>读取<strong>主节点的二进制日志</strong>并写入到<strong>从节点的relay log</strong>（中继日志）中</li>
 <li>从节点的SQLthread<strong>重做中继日志中的事件</strong>，改变自己的数据</li>
 </ul>
-<h2 id="MySQL的分库分表"><a href="#MySQL的分库分表" class="headerlink" title="MySQL的分库分表"></a>MySQL的分库分表</h2><blockquote>
+<h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><blockquote>
 <p><strong>常见的分库分表中间件：</strong></p>
 <ul>
 <li>mycat</li>
@@ -4254,13 +4545,26 @@
 <li>减少单表数据压力</li>
 <li>避免IO争抢，减少锁表的概率</li>
 </ul>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="查看所有正在运行的事务"><a href="#查看所有正在运行的事务" class="headerlink" title="查看所有正在运行的事务"></a>查看所有正在运行的事务</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select * from information.innodb_trx\g;</span><br></pre></td></tr></table></figure>
+<h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><h3 id="登录控制台"><a href="#登录控制台" class="headerlink" title="登录控制台"></a>登录控制台</h3><p><code>mysql -u[username] -p[password] -h[hostname] -P[port]</code></p>
+<h3 id="事务相关"><a href="#事务相关" class="headerlink" title="事务相关"></a>事务相关</h3><ul>
+<li><strong>显示开启事务：</strong><code>begin</code> 或者 <code>start transaction</code></li>
+<li><strong>提交事务：</strong><code>commit</code></li>
+<li><strong>事务回滚：</strong><code>rollback</code></li>
+</ul>
+<h3 id="表修改"><a href="#表修改" class="headerlink" title="表修改"></a>表修改</h3><p><strong>统一前缀：</strong><code>alter table 表名</code></p>
+<ul>
+<li><p><strong>添加列：</strong><code>add [column] 列名 数据类型 [列属性]</code></p>
+</li>
+<li><p><strong>修改列：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 修改列数据类型</span><br><span class="line">modify [column] 列名 数据类型 [列属性]</span><br><span class="line">-- 重命名列</span><br><span class="line">change [column] 列名 新列名 数据类型 [列属性]</span><br><span class="line">-- 修改列默认值</span><br><span class="line">alter [column] 列名 set default 默认值</span><br><span class="line">                   drop default</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除列：</strong><code>drop [column] 列名</code></p>
+</li>
+</ul>
+<h3 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h3><p><code>explain</code> 或 <code>desc</code></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="查看所有表磁盘空间占用情况"><a href="#查看所有表磁盘空间占用情况" class="headerlink" title="查看所有表磁盘空间占用情况"></a>查看所有表磁盘空间占用情况</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    table_schema AS &#x27;数据库&#x27;,</span><br><span class="line">    sum( table_rows ) AS &#x27;记录数&#x27;,</span><br><span class="line">    sum(</span><br><span class="line">    TRUNCATE ( data_length / 1024 / 1024, 2 )) AS &#x27;数据容量(MB)&#x27;,</span><br><span class="line">    sum(</span><br><span class="line">    TRUNCATE ( index_length / 1024 / 1024, 2 )) AS &#x27;索引容量(MB)&#x27;</span><br><span class="line">FROM</span><br><span class="line">    information_schema.TABLES </span><br><span class="line">GROUP BY</span><br><span class="line">    table_schema </span><br><span class="line">ORDER BY</span><br><span class="line">    sum( data_length ) DESC,</span><br><span class="line">    sum( index_length ) DESC;</span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="查看-SQL-语句执行计划"><a href="#查看-SQL-语句执行计划" class="headerlink" title="查看 SQL 语句执行计划"></a>查看 SQL 语句执行计划</h2><p>使用 <code>explain </code>或 <code>desc</code></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">explain <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> demo</span><br><span class="line"><span class="keyword">desc</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> demo</span><br></pre></td></tr></table></figure>
-
+<h2 id="查看所有正在运行的事务"><a href="#查看所有正在运行的事务" class="headerlink" title="查看所有正在运行的事务"></a>查看所有正在运行的事务</h2><p><code>select * from information.innodb_trx\g</code></p>
 <h2 id="多表拼接"><a href="#多表拼接" class="headerlink" title="多表拼接"></a>多表拼接</h2><p>当两个表join后<strong>再次join其他表前</strong>，需要用<strong>select语句</strong>将<strong>前两个表join的结果</strong>进行整合</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> ...) <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> c <span class="keyword">ON</span> ...;</span><br></pre></td></tr></table></figure>
 
@@ -4296,7 +4600,7 @@
       </tags>
   </entry>
   <entry>
-    <title>爬虫 - 某云音乐缓存</title>
+    <title>某云音乐缓存</title>
     <url>/post/91dd4a8a/</url>
     <content><![CDATA[<p>在b站刷到个把某云音乐缓存转成mp3或者flac格式的视频，比较好奇就点开看了一下</p>
 <p>那个up是专门做逆向的，用了些反编译的软件和把汇编代码转高级语言代码的软件。从读取缓存到缓存加密的过长一步一步向底层深挖，推导出缓存加密的函数的内存地址，最后发现缓存加密很简单，解密只需要异或一下就行了（开发人员偷大懒）</p>
@@ -4306,13 +4610,17 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">cache_path = <span class="string">&#x27;C:\\Users\\...\\AppData\\Local\\Netease\\CloudMusic\\Cache\\Cache&#x27;</span></span><br><span class="line"><span class="comment"># 解码后音乐文件的存储目录</span></span><br><span class="line">target_path = <span class="string">&#x27;...&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_music_names</span>(<span class="params">filenames</span>):</span><br><span class="line">    <span class="comment"># 请求官方api (根本不需要改User-Agent...)</span></span><br><span class="line">    music_ids = <span class="string">&#x27;,&#x27;</span>.join([_[:_.index(<span class="string">&#x27;-&#x27;</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> filenames])</span><br><span class="line">    resp = requests.get(<span class="string">f&#x27;http://music.163.com/api/song/detail/?id=<span class="subst">&#123;music_ids&#125;</span>&amp;ids=[<span class="subst">&#123;music_ids&#125;</span>]&#x27;</span>).json()</span><br><span class="line">    <span class="keyword">return</span> [song[<span class="string">&#x27;name&#x27;</span>] <span class="keyword">for</span> song <span class="keyword">in</span> resp[<span class="string">&#x27;songs&#x27;</span>]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_file</span>(<span class="params">file_name, music_name</span>):</span><br><span class="line">    temp = file_name.split(<span class="string">&#x27;.&#x27;</span>)</span><br><span class="line">    name = temp[<span class="number">0</span>]</span><br><span class="line">    ext = temp[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ext == <span class="string">&#x27;uc&#x27;</span>:</span><br><span class="line">    	<span class="comment"># 缓存文件夹中有一个记录了缓存文件源格式的文件</span></span><br><span class="line">        <span class="comment"># 打开 info 文件获取文件格式名</span></span><br><span class="line">        info = json.loads(<span class="built_in">open</span>(<span class="string">f&#x27;<span class="subst">&#123;cache_path&#125;</span>\\<span class="subst">&#123;name&#125;</span>.info&#x27;</span>, <span class="string">&#x27;r&#x27;</span>).read())</span><br><span class="line">        target_ext = info[<span class="string">&#x27;format&#x27;</span>]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="comment"># 获取 uc 缓存文件内容</span></span><br><span class="line">            cont = <span class="built_in">bytearray</span>(<span class="built_in">open</span>(<span class="string">f&#x27;<span class="subst">&#123;cache_path&#125;</span>\\<span class="subst">&#123;file_name&#125;</span>&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>).read())</span><br><span class="line">            <span class="comment"># 异或 163 解码内容</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(cont)):</span><br><span class="line">                cont[i] ^= <span class="number">163</span></span><br><span class="line">            <span class="comment"># 写入到指定目录中</span></span><br><span class="line">            <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">f&quot;<span class="subst">&#123;target_path&#125;</span>\\<span class="subst">&#123;music_name&#125;</span>.<span class="subst">&#123;target_ext&#125;</span>&quot;</span>, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">                f.write(<span class="built_in">bytes</span>(cont))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span>\t--&#x27;</span></span><br><span class="line">                  <span class="string">f&#x27;-&gt;\t<span class="subst">&#123;music_name&#125;</span>.<span class="subst">&#123;target_ext&#125;</span> 解码成功&#x27;</span>)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f&#x27;<span class="subst">&#123;file_name&#125;</span>\t--&#x27;</span></span><br><span class="line">                  <span class="string">f&#x27;-x\t<span class="subst">&#123;music_name&#125;</span>.<span class="subst">&#123;target_ext&#125;</span> 解码失败&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decode_all_files</span>(<span class="params">file_names, music_names</span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(file_names)):</span><br><span class="line">        decode_file(file_names[i], music_names[i])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">orders = [</span><br><span class="line">    <span class="string">&#x27;解码全部文件&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;解码指定文件&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;退出&#x27;</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> root, dirs, file_names <span class="keyword">in</span> os.walk(cache_path):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        file_names = [_ <span class="keyword">for</span> _ <span class="keyword">in</span> file_names <span class="keyword">if</span> _.split(<span class="string">&#x27;.&#x27;</span>)[<span class="number">1</span>] == <span class="string">&#x27;uc&#x27;</span>]</span><br><span class="line">        music_names = get_music_names(file_names)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;i + <span class="number">1</span>&#125;</span>.\t<span class="subst">&#123;orders[i]&#125;</span>&#x27;</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(orders))]))</span><br><span class="line">        order = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;输入序号: &#x27;</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> order == <span class="number">1</span>:</span><br><span class="line">            decode_all_files(file_names)</span><br><span class="line">        <span class="keyword">elif</span> order == <span class="number">2</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;i + <span class="number">1</span>&#125;</span>\t- <span class="subst">&#123;music_names[i]&#125;</span>&#x27;</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(music_names))]))</span><br><span class="line">            order = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&#x27;输入指定文件序号: &#x27;</span>))</span><br><span class="line">            decode_file(file_names[order - <span class="number">1</span>], music_names[order - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">elif</span> order == <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;无该选项&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+      </categories>
       <tags>
         <tag>Python</tag>
         <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
-    <title>爬虫 - 文献数据</title>
+    <title>学报文献数据</title>
     <url>/post/4fc25800/</url>
     <content><![CDATA[<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>知识库的项目缺数据，学长在群里本来让其他两个人爬数据来着，但是过了一周开会他们也没爬到数据，说还在学什么的</p>
 <p>从语气可以感觉到学长有点生气了，开始催我们抓紧进度什么的，然后问我会爬虫吗？让我也开始学爬虫</p>
@@ -4325,6 +4633,10 @@
 <p>再然后，我就开始爬文献了。第一次爬的是中南大学学报，看了看请求发现网站居然是前后端分离的，直接把接口cv过来就爬完了。我马上在群里问学长数据是这样吗，学长也是很惊讶我当天晚上就爬完了（但也确实很简单）​ <span class="github-emoji" alias="slightly_smiling_face" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f642.png?v8">&#x1f642;</span>	</p>
 <p>再再然后，我就专门负责爬数据了，转而开始爬其他大学学报的数据，因为大学学报的文献都是免费下载的，所以也不存在爬数据违法（至少学长是这么说的）。爬的时候才发现原来前后端分离的只是少数，绝大部分学报用的都是后端直接返回网页的模式，而且似乎好多学报的网站架构都差不多，只能爬完网页嗯分析了 <span class="github-emoji" alias="sob" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">&#x1f62d;</span></p>
 ]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+      </categories>
       <tags>
         <tag>Python</tag>
         <tag>爬虫</tag>
@@ -4597,9 +4909,6 @@
 <h2 id="质数筛"><a href="#质数筛" class="headerlink" title="质数筛"></a>质数筛</h2><h3 id="埃氏筛"><a href="#埃氏筛" class="headerlink" title="埃氏筛"></a>埃氏筛</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> com[maxN]; <span class="comment">//表示是否为合数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sieve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">end</span><span class="params">(sqrt(maxN))</span></span>;</span><br><span class="line">	com[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>;i &lt; end;i++)</span><br><span class="line">		<span class="keyword">if</span>(!com[i])</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = i * <span class="number">2</span>;j &lt; maxN;j += i)</span><br><span class="line">				com[j] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="欧拉筛"><a href="#欧拉筛" class="headerlink" title="欧拉筛"></a>欧拉筛</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> pri[maxM], <span class="built_in">cnt</span>(<span class="number">0</span>);</span><br><span class="line"><span class="type">bool</span> com[maxN];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">sieve</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	com[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>;i &lt; maxN;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span>(!com[i])</span><br><span class="line">			pri[++cnt] = i;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>;j &lt;= cnt &amp;&amp; i * pri[j] &lt; maxN;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			com[i * pri[j]] = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(i % pri[j] == <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="KMP字符串匹配"><a href="#KMP字符串匹配" class="headerlink" title="KMP字符串匹配"></a>KMP字符串匹配</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <categories>
         <category>笔记</category>
