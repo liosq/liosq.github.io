@@ -192,9 +192,9 @@
         <tag>C++</tag>
         <tag>算法</tag>
         <tag>JavaScript</tag>
-        <tag>Java</tag>
         <tag>Python</tag>
         <tag>字符串</tag>
+        <tag>Java</tag>
         <tag>Golang</tag>
       </tags>
   </entry>
@@ -290,10 +290,530 @@
         <tag>C++</tag>
         <tag>算法</tag>
         <tag>JavaScript</tag>
-        <tag>Java</tag>
         <tag>Python</tag>
+        <tag>Java</tag>
         <tag>Golang</tag>
         <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>消费</title>
+    <url>/post/5350dbd0/</url>
+    <content><![CDATA[<h1 id="水杯"><a href="#水杯" class="headerlink" title="水杯"></a>水杯</h1><ul>
+<li>水杯材质不要选 <strong>PC[聚碳酸酯]</strong> 的，选 <strong>PP[聚丙烯] &#x2F; TRITAN &#x2F; PPSU</strong> 材质的都可以（越往后越贵）</li>
+</ul>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习记录</title>
+    <url>/post/8ad1a2bc/</url>
+    <content><![CDATA[<h1 id="2024-9-3"><a href="#2024-9-3" class="headerlink" title="2024-9-3"></a>2024-9-3</h1><table>
+<thead>
+<tr>
+<th>certify</th>
+<th>证明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>leisure</td>
+<td>休闲</td>
+</tr>
+<tr>
+<td>overlap</td>
+<td>重叠、交叠</td>
+</tr>
+<tr>
+<td>outweigh</td>
+<td>超过</td>
+</tr>
+<tr>
+<td>undertake</td>
+<td>承担、负责</td>
+</tr>
+<tr>
+<td>entitle</td>
+<td>使享有权利；给…题名</td>
+</tr>
+<tr>
+<td>reluctant</td>
+<td>不情愿</td>
+</tr>
+<tr>
+<td>accommodate</td>
+<td>适应、给…提供空间</td>
+</tr>
+<tr>
+<td>fierce</td>
+<td>凶猛</td>
+</tr>
+<tr>
+<td>intense</td>
+<td>激烈、强烈、尖锐</td>
+</tr>
+<tr>
+<td>impart</td>
+<td>通知、透露</td>
+</tr>
+<tr>
+<td>diffuse</td>
+<td>传播</td>
+</tr>
+<tr>
+<td>extent</td>
+<td>程度、范围、面积</td>
+</tr>
+<tr>
+<td>dab</td>
+<td>轻触、轻拍</td>
+</tr>
+<tr>
+<td>embark</td>
+<td>开始</td>
+</tr>
+<tr>
+<td>concede</td>
+<td>承认</td>
+</tr>
+<tr>
+<td>dread</td>
+<td>畏惧</td>
+</tr>
+<tr>
+<td>counter</td>
+<td>反驳、抵制</td>
+</tr>
+<tr>
+<td>prospect</td>
+<td>希望、前景</td>
+</tr>
+<tr>
+<td>inflict</td>
+<td>使……遭受打击</td>
+</tr>
+<tr>
+<td>levy</td>
+<td>征收、征税</td>
+</tr>
+<tr>
+<td>slack</td>
+<td>松弛、懈怠</td>
+</tr>
+<tr>
+<td>integrate</td>
+<td>整合、合并</td>
+</tr>
+<tr>
+<td>depose</td>
+<td>宣誓作证；罢免（君王）</td>
+</tr>
+<tr>
+<td>warrant</td>
+<td>保证</td>
+</tr>
+<tr>
+<td>compensate</td>
+<td>补偿、弥补</td>
+</tr>
+<tr>
+<td>cram</td>
+<td>把…塞进</td>
+</tr>
+<tr>
+<td>speculate</td>
+<td>推测、猜测</td>
+</tr>
+<tr>
+<td>dominate</td>
+<td>支配、控制</td>
+</tr>
+</tbody></table>
+<h1 id="2024-9-6"><a href="#2024-9-6" class="headerlink" title="2024-9-6"></a>2024-9-6</h1><table>
+<thead>
+<tr>
+<th>cease</th>
+<th>停止、终止</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>deficit</td>
+<td>赤字</td>
+</tr>
+<tr>
+<td>criteria</td>
+<td>标准</td>
+</tr>
+<tr>
+<td>tariff</td>
+<td>关税</td>
+</tr>
+<tr>
+<td>compassion</td>
+<td>同情、怜悯</td>
+</tr>
+<tr>
+<td>accompaniment</td>
+<td>伴奏</td>
+</tr>
+<tr>
+<td>labor</td>
+<td>劳动力</td>
+</tr>
+<tr>
+<td>march</td>
+<td>前进</td>
+</tr>
+<tr>
+<td>commitment</td>
+<td>献身、奉献、承诺</td>
+</tr>
+<tr>
+<td>sponsor</td>
+<td>发起者、倡议者</td>
+</tr>
+<tr>
+<td>investor</td>
+<td>投资者</td>
+</tr>
+<tr>
+<td>obstacle</td>
+<td>障碍</td>
+</tr>
+<tr>
+<td>strain</td>
+<td>损伤</td>
+</tr>
+<tr>
+<td>in stock</td>
+<td>有存货</td>
+</tr>
+<tr>
+<td>fishery</td>
+<td>渔场、渔业</td>
+</tr>
+<tr>
+<td>resolution</td>
+<td>解决、决议、决心</td>
+</tr>
+<tr>
+<td>evacuate</td>
+<td>撤离</td>
+</tr>
+<tr>
+<td>resident</td>
+<td>居民</td>
+</tr>
+<tr>
+<td>relieve</td>
+<td>解除、减轻、缓和</td>
+</tr>
+<tr>
+<td>postage</td>
+<td>邮资</td>
+</tr>
+<tr>
+<td>serene</td>
+<td>宁静的、安详的</td>
+</tr>
+<tr>
+<td>retain</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>withdraw</td>
+<td>撤回；脱离</td>
+</tr>
+<tr>
+<td>eliminate</td>
+<td>消除、消灭</td>
+</tr>
+<tr>
+<td>facilitate</td>
+<td>促进、促使</td>
+</tr>
+<tr>
+<td>flop</td>
+<td>失败</td>
+</tr>
+<tr>
+<td>offbeat</td>
+<td>离奇的、标新立异的</td>
+</tr>
+<tr>
+<td>fond</td>
+<td>喜欢</td>
+</tr>
+<tr>
+<td>glup</td>
+<td>吞咽；忍住</td>
+</tr>
+<tr>
+<td>waffle</td>
+<td>华夫饼；无聊话</td>
+</tr>
+<tr>
+<td>perch</td>
+<td>栖息</td>
+</tr>
+<tr>
+<td>succumb</td>
+<td>屈服、因…死亡（to）</td>
+</tr>
+<tr>
+<td>whiff</td>
+<td>一吹、一吸</td>
+</tr>
+<tr>
+<td>turbulent</td>
+<td>湍急的、混乱的</td>
+</tr>
+<tr>
+<td>stink</td>
+<td>发臭、臭名昭著</td>
+</tr>
+<tr>
+<td>constitute</td>
+<td>构成、组成；任命</td>
+</tr>
+</tbody></table>
+<h1 id="2024-9-7"><a href="#2024-9-7" class="headerlink" title="2024-9-7"></a>2024-9-7</h1><table>
+<thead>
+<tr>
+<th>dismiss</th>
+<th>解雇</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nevertheless</td>
+<td>然而</td>
+</tr>
+<tr>
+<td>grapple</td>
+<td>扭打；设法解决；抓住</td>
+</tr>
+<tr>
+<td>revive</td>
+<td>使复活&#x2F;恢复</td>
+</tr>
+<tr>
+<td>rehearse</td>
+<td>排练；背诵；重复</td>
+</tr>
+<tr>
+<td>restore</td>
+<td>归还；使复原</td>
+</tr>
+<tr>
+<td>shuttle</td>
+<td>班车；公共汽车</td>
+</tr>
+<tr>
+<td>contention</td>
+<td>看法；争论</td>
+</tr>
+<tr>
+<td>orient</td>
+<td>面向，朝向</td>
+</tr>
+<tr>
+<td>penetrate</td>
+<td>渗透，穿透；被领悟</td>
+</tr>
+<tr>
+<td>demonstrate</td>
+<td>证明，演示</td>
+</tr>
+<tr>
+<td>facility</td>
+<td>设施，设备；天赋</td>
+</tr>
+<tr>
+<td>far and away</td>
+<td>无疑的</td>
+</tr>
+<tr>
+<td>cut and dried</td>
+<td>已成定局</td>
+</tr>
+<tr>
+<td>hard and fast</td>
+<td>明确的</td>
+</tr>
+<tr>
+<td>fair and square</td>
+<td>光明正大的</td>
+</tr>
+<tr>
+<td>undermine</td>
+<td>破坏</td>
+</tr>
+<tr>
+<td>undergo</td>
+<td>经历</td>
+</tr>
+</tbody></table>
+<h1 id="2024-9-8"><a href="#2024-9-8" class="headerlink" title="2024-9-8"></a>2024-9-8</h1><table>
+<thead>
+<tr>
+<th>reword</th>
+<th>改写，重述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>remuneration</td>
+<td>酬劳</td>
+</tr>
+<tr>
+<td>dedicate</td>
+<td>奉献</td>
+</tr>
+<tr>
+<td>extinguish</td>
+<td>熄灭，扑灭</td>
+</tr>
+<tr>
+<td>exaggerate</td>
+<td>夸张，夸大</td>
+</tr>
+<tr>
+<td>ornament</td>
+<td>装饰</td>
+</tr>
+<tr>
+<td>luxury</td>
+<td>设置的</td>
+</tr>
+<tr>
+<td>exhibit</td>
+<td>展览</td>
+</tr>
+<tr>
+<td>plight</td>
+<td>困境</td>
+</tr>
+<tr>
+<td>wage</td>
+<td>工资</td>
+</tr>
+<tr>
+<td>pension</td>
+<td>养老金</td>
+</tr>
+<tr>
+<td>derive</td>
+<td>获得，取得；产生</td>
+</tr>
+<tr>
+<td>thrive</td>
+<td>兴旺，繁荣</td>
+</tr>
+<tr>
+<td>transit</td>
+<td>通行；过渡</td>
+</tr>
+<tr>
+<td>transmit</td>
+<td>传输，传送；传播</td>
+</tr>
+<tr>
+<td>transact</td>
+<td>交易，做业务</td>
+</tr>
+<tr>
+<td>liability</td>
+<td>责任</td>
+</tr>
+</tbody></table>
+<h1 id="2024-9-9"><a href="#2024-9-9" class="headerlink" title="2024-9-9"></a>2024-9-9</h1><table>
+<thead>
+<tr>
+<th>donor</th>
+<th>捐赠者</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>external</td>
+<td>永久、永恒的</td>
+</tr>
+<tr>
+<td>toll</td>
+<td>通行费；毁坏</td>
+</tr>
+<tr>
+<td>imperative</td>
+<td>迫切的</td>
+</tr>
+<tr>
+<td>resort</td>
+<td>求助</td>
+</tr>
+<tr>
+<td>enforce</td>
+<td>执行</td>
+</tr>
+<tr>
+<td>sake</td>
+<td>缘故</td>
+</tr>
+<tr>
+<td>emphasize</td>
+<td>强调</td>
+</tr>
+<tr>
+<td>downplay</td>
+<td>淡化</td>
+</tr>
+<tr>
+<td>antique</td>
+<td>古董</td>
+</tr>
+<tr>
+<td>crust</td>
+<td>地壳；面包皮</td>
+</tr>
+<tr>
+<td>amplify</td>
+<td>放大，增强</td>
+</tr>
+<tr>
+<td>foster</td>
+<td>促进</td>
+</tr>
+<tr>
+<td>magnify</td>
+<td>放大，夸大</td>
+</tr>
+<tr>
+<td>utmost</td>
+<td>最大的</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>英语</category>
+      </categories>
+      <tags>
+        <tag>英语</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>健康</title>
+    <url>/post/e57e29d1/</url>
+    <content><![CDATA[<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="心脏"><a href="#心脏" class="headerlink" title="心脏"></a>心脏</h2><ul>
+<li>心脏如果偶尔刺痛的话，可能是神经紊乱，没什么大碍；但如果是钝痛建议去医院查一查</li>
+</ul>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
       </tags>
   </entry>
   <entry>
@@ -302,17 +822,18 @@
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>selenium 的拓展版，可以支持一些更高级的操作（比如我用到的拦截当前网页发生的请求等等）</p>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接安装</span></span><br><span class="line">pip install selenium-wire</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>安装后记得跑一个 demo 测试一下，我在测试的时候就发现有些包有冲突：</p>
-<ul>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="拦截网页请求"><a href="#拦截网页请求" class="headerlink" title="拦截网页请求"></a>拦截网页请求</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> seleniumwire <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Edge()</span><br><span class="line">driver.get(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接遍历.requests属性即可 每个request有url, headers, body属性</span></span><br><span class="line"><span class="keyword">for</span> request <span class="keyword">in</span> driver.requests:</span><br><span class="line">    <span class="keyword">if</span> request.url == <span class="string">&#x27;my target url&#x27;</span>:</span><br><span class="line">        <span class="comment"># 请求有响应</span></span><br><span class="line">        <span class="keyword">if</span> request.respone:</span><br><span class="line">            <span class="built_in">print</span>(request.response.body)</span><br></pre></td></tr></table></figure>
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="安装依赖冲突"><a href="#安装依赖冲突" class="headerlink" title="安装依赖冲突"></a>安装依赖冲突</h2><ul>
 <li><strong><code>No module named &#39;OpenSSL&#39;</code>：</strong>当时遇到的第一个报错，当时以为是 pyOpenSSL 的问题，但是找了下 selenium-wire 的依赖发现是没有装 <strong>mitmproxy</strong></li>
 <li><strong><code>cannot import name &#39;deprecated&#39; from &#39;typing_extensions&#39;</code>：</strong>装完 mitmproxy 后的报错，现在看来应该还是版本的问题，再问了通义千问执行了下 <code>pip install --upgrade selenium-wire mitmproxy pyOpenSSL urllib3 certifi</code> 似乎解决了？</li>
 <li><strong><code>No module named &#39;cryptography.exceptions&#39;</code>：</strong>重装了下 cryptography 解决，应该是版本的问题</li>
 <li><strong><code>module &#39;lib&#39; has no attribute &#39;X509_V_FLAG_NOTIFY_POLICY&#39;</code>：</strong>看了下堆栈信息，是 OpenSSL 的报错信息，重装了下 pyOpenSSL 解决（应该是除了 selenium-wire 的其他依赖也用了 pyOpenSSL，但是版本要求不一样）</li>
 </ul>
+<h2 id="拦截请求的-response-body-乱码"><a href="#拦截请求的-response-body-乱码" class="headerlink" title="拦截请求的 response.body 乱码"></a>拦截请求的 <code>response.body</code> 乱码</h2><blockquote>
+<p><a href="https://www.saoniuhuo.com/question/detail-2459936.html">Selenium-wire响应对象-以字符串而非字节形式获取响应主体的方法 _大数据知识库 (saoniuhuo.com)</a></p>
 </blockquote>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="拦截网页请求"><a href="#拦截网页请求" class="headerlink" title="拦截网页请求"></a>拦截网页请求</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> seleniumwire <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Edge()</span><br><span class="line">driver.get(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接遍历.requests属性即可 每个request有url, headers, body属性</span></span><br><span class="line"><span class="keyword">for</span> request <span class="keyword">in</span> driver.requests:</span><br><span class="line">    <span class="keyword">if</span> request.url == <span class="string">&#x27;my target url&#x27;</span>:</span><br><span class="line">        <span class="comment"># 请求有响应</span></span><br><span class="line">        <span class="keyword">if</span> request.respone:</span><br><span class="line">            <span class="built_in">print</span>(request.response.body)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> seleniumwire.utils <span class="keyword">import</span> decode</span><br><span class="line"></span><br><span class="line"><span class="comment"># response是driver.requests[i]的属性，参考上文操作中的 拦截网页请求</span></span><br><span class="line">content = decode(response.body, response.headers.get(<span class="string">&#x27;Content-Encoding&#x27;</span>, <span class="string">&#x27;identity&#x27;</span>))</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -2974,7 +3495,31 @@
   <entry>
     <title>Linux</title>
     <url>/post/53d0684b/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>市面上主流的基于 Linux 的操作系统主要有 Ubuntu，CentOS 等等。租个云服务器或者自己在电脑装个虚拟机就可以用</p>
+<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>管道可以用来将<strong>前一个命令的输出作为后一个命令的输入</strong>，就像拼接一个管道一样将他们串联起来实现一些复杂的功能</p>
+<p>其基本用法是在要串联的两个命令之间加 <code>|</code>，例如：<code>ls | grep &quot;a.txt&quot;</code></p>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>重定向可以改变命令的输入和输出目标，允许用户指定特殊的数据输入来源（例如文件），而不是使用控制台来输入或输出</p>
+<ul>
+<li><strong>标准输入（stdin）：</strong>用 <code>&lt;</code> 或 <code>&lt;&lt;</code> 来指定输入目标，<ul>
+<li><code>grep test &lt; a.txt</code></li>
+</ul>
+</li>
+<li><strong>标准输出（stdout）：</strong>用 <code>&gt;</code> 或 <code>&gt;&gt;</code> 来指定输出目标，前者表示<strong>覆盖输出</strong>，后者表示<strong>追加输出</strong>（也可以 <code>1&gt;</code> 或 <code>1&gt;&gt;</code>，1 是可以省略的）<ul>
+<li><code>echo &quot;hello world&quot; &gt; a.txt</code></li>
+<li><code>echo &quot;.&quot; &gt;&gt; a.txt</code></li>
+</ul>
+</li>
+<li><strong>标准错误（stderr）：</strong>用 <code>2&gt;</code> 或 <code>2&gt;&gt;</code> 指定错误信息输出目标，前后者区别与上相同<ul>
+<li><code>ls a.txt 2&gt; a.txt</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p>输出<strong>文本文件的内容</strong></p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p><code>cat [OPTION]... [FILE]...</code></p>
+<h3 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h3><p>一般用于打印<strong>二进制目标文件、库或可执行文件</strong>中的<strong>可打印字符</strong>，字符串默认至少是4个或更多可打印字符的任意序列</p>
+<h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><p><code>strings [option(s)] [file(s)]</code></p>
+<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p><strong>持续输出</strong>文本文件的内容</p>
+]]></content>
       <categories>
         <category>笔记</category>
         <category>操作系统</category>
@@ -3525,7 +4070,8 @@
   <entry>
     <title>Java</title>
     <url>/post/df2849ec/</url>
-    <content><![CDATA[<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1>]]></content>
+    <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="List-remove-方法调用混淆"><a href="#List-remove-方法调用混淆" class="headerlink" title="List.remove 方法调用混淆"></a><code>List.remove</code> 方法调用混淆</h2><p>如果声明了一个 <code>List&lt;Integer&gt;</code> 的列表的话，调用 <code>remove()</code>会</p>
+<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1>]]></content>
       <categories>
         <category>笔记</category>
         <category>编程语言</category>
@@ -4350,6 +4896,125 @@
       </tags>
   </entry>
   <entry>
+    <title>MySQL</title>
+    <url>/post/4d712855/</url>
+    <content><![CDATA[<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h3><p>Centos 自带 yum，可以直接装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">更新 yum 软件依赖关系</span></span><br><span class="line">yum -y update</span><br><span class="line">yum install -y mysql-server</span><br></pre></td></tr></table></figure>
+
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p>ubuntu 安装是用的 <code>apt-get</code>，跟 <code>yum</code> 一样也需要 update</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">记得不是很清楚，但是命令应该差不多</span></span><br><span class="line">apt-get update</span><br><span class="line">apt-get install mysql-server</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>新 Ubuntu 系统在下之前需要配置一下 apt 源</p>
+<p><a href="https://blog.csdn.net/weixin_64972949/article/details/129972385">Ubuntu基础——网络配置+配置apt源（手把手教程）_ubuntu修改apt源-CSDN博客</a> </p>
+</blockquote>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>有图形化界面，直接上网下就完了</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="CentOS-Ubuntu"><a href="#CentOS-Ubuntu" class="headerlink" title="CentOS&#x2F;Ubuntu"></a>CentOS&#x2F;Ubuntu</h3><blockquote>
+<p> <a href="https://blog.csdn.net/qq_40241957/article/details/90343651">阿里云服务器中安装配置MYSQL数据库完整教程_Java全栈研发大联盟的博客-CSDN博客</a> </p>
+</blockquote>
+<p>下面这些指令是自己配的时候用到的指令，有的可能不太准确</p>
+<p>配云服务器可以照着下面的这个搞，就是有些指令因为 mysql 版本不一样有些区别</p>
+<p>配置的 mysql 版本好像是8.0的</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动mysql</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Ubuntu是mysql</span></span><br><span class="line">systemctl start mysqld.service</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">去日志里找临时生成的密码，有的时候没有初始密码就试试grep <span class="string">&#x27;password&#x27;</span></span></span><br><span class="line">cat /var/log/mysql/mysqld.log | grep &#x27;temporary password&#x27;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">用密码登录mysql</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">也可以 mysql -uroot -p密码</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">linux如果-p没直接跟密码的话，输入的密码是不可见的，所以要记住自己输了什么</span></span><br><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>然后就到 mysql 界面了，在这里每一句指令都要记得加分号，因为都是SQL语句</p>
+<p>如果没加分号他会继续让你输，算是提示你没加分号了</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="operator">/</span><span class="operator">/</span> ubuntu直接运行这个似乎就可以了？</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 先把那个检测密码安全等级关闭了</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 这个是安全策略等级，直接先弄到low</span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> validate_password.policy<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 有的时候密码跟用户名一样也不让你设置（比如root），所以也把这个关了</span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> validate_password.check_user_name<span class="operator">=</span><span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 最低密码长度改为<span class="number">4</span>。最低是<span class="number">4</span>，你改<span class="number">1</span>也是<span class="number">4</span></span><br><span class="line"><span class="keyword">SET</span> <span class="keyword">GLOBAL</span> validate_password.length<span class="operator">=</span><span class="number">4</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 现在应该就可以改密码了，上面的有的mysql版本变量名不一样，所以如果报错要去搜一搜</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 有些版本不能直接引号包密码，需要PASSWORD(<span class="string">&#x27;&#x27;</span>)函数转换一下</span><br><span class="line"><span class="keyword">SET</span> PASSWORD <span class="operator">=</span> <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 如果是服务器的mysql要远程连接，就需要再创一个host为<span class="operator">%</span>的root</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 指令大概是这样</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 给刚刚创建的用户赋予权限</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> Ubuntu22去掉identified...可以跑</span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 下面这个指令是是网上出现最多次的，我记得我好像是不能加<span class="keyword">with</span> <span class="keyword">grant</span> option，建议自己试一下</span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;root&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 刷新权限</span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 退出mysql，这句不用加;</span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line"><span class="operator">/</span><span class="operator">/</span> 这两句就是检查一下，如果有两个root，一个host是<span class="operator">%</span>，而且授权字符串都一样应该就是没问题可以用datagrip或者navicat连了</span><br><span class="line">USE mysql</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">User</span>, authentication_string, Host <span class="keyword">FROM</span> <span class="keyword">user</span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="深分页优化"><a href="#深分页优化" class="headerlink" title="深分页优化"></a>深分页优化</h2><p>深分页指的是使用 <code>LIMIT x, y</code>  关键字进行分页时，x参数过大导致查询时会先查询<strong>先排序前 x+y 条数据</strong>，然后才返回第 y 到 x+y 条数据</p>
+<p>当请求返回的是整行数据时还需要进行<strong>回表查询</strong>（根据聚簇索引查找整行数据），导致效率非常低</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="延迟关联"><a href="#延迟关联" class="headerlink" title="延迟关联"></a>延迟关联</h4><p>使用<strong>聚簇索引</strong>先进行分页查询，再利用查询到的聚簇索引查询整行数据，这样可以<strong>减少回表次数</strong></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> target t </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> target LIMIT <span class="number">100000</span> <span class="number">10</span>) t_ids</span><br><span class="line"><span class="keyword">ON</span> t.id <span class="operator">=</span> t_ids.id</span><br></pre></td></tr></table></figure>
+
+<h2 id="主从同步"><a href="#主从同步" class="headerlink" title="主从同步"></a>主从同步</h2><ul>
+<li>主节点的事务提交时，将数据的更改记录到<strong>binlog</strong>（二进制日志）中</li>
+<li>从节点的<strong>IOthread现成</strong>读取<strong>主节点的二进制日志</strong>并写入到<strong>从节点的relay log</strong>（中继日志）中</li>
+<li>从节点的SQLthread<strong>重做中继日志中的事件</strong>，改变自己的数据</li>
+</ul>
+<h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><blockquote>
+<p><strong>常见的分库分表中间件：</strong></p>
+<ul>
+<li>mycat</li>
+<li>sharding-sphere</li>
+</ul>
+</blockquote>
+<p>主要的拆分方法分为<strong>垂直拆分</strong>和<strong>水平拆分</strong></p>
+<h3 id="垂直拆分"><a href="#垂直拆分" class="headerlink" title="垂直拆分"></a>垂直拆分</h3><h4 id="垂直分库"><a href="#垂直分库" class="headerlink" title="垂直分库"></a>垂直分库</h4><p>以表为依据，<strong>根据业务</strong>将不同的表拆分到不同的库中</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li>按业务对数据分级管理、维护、监控、扩展</li>
+<li>在高并发下，提高磁盘IO和数据量连接数</li>
+</ul>
+<h4 id="垂直分表"><a href="#垂直分表" class="headerlink" title="垂直分表"></a>垂直分表</h4><p>以字段为依据，<strong>根据字段属性</strong>将不同字段拆分到不同表中</p>
+<p><strong>拆分规则：</strong></p>
+<ul>
+<li>不常用的字段单独放到一张表中</li>
+<li>将text、blob等大字段单独放到一张附表中</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li>冷热数据分离</li>
+<li>减少IO过渡争抢资源，两表互不影响</li>
+</ul>
+<h3 id="水平拆分"><a href="#水平拆分" class="headerlink" title="水平拆分"></a>水平拆分</h3><h4 id="水平分库"><a href="#水平分库" class="headerlink" title="水平分库"></a>水平分库</h4><p>将一个库数据分到多个库中</p>
+<p><strong>路由规则：</strong></p>
+<ul>
+<li>取模路由（id%n）</li>
+<li>范围路由（[1,1e5]、[1e5+1,2e5]…）</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li>减少单库数据压力</li>
+<li>提高了系统可用性</li>
+</ul>
+<h4 id="水平分表"><a href="#水平分表" class="headerlink" title="水平分表"></a>水平分表</h4><p>将一个表数据分到多个表中</p>
+<p><strong>特点：</strong></p>
+<ul>
+<li>减少单表数据压力</li>
+<li>避免IO争抢，减少锁表的概率</li>
+</ul>
+<h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><h3 id="登录控制台"><a href="#登录控制台" class="headerlink" title="登录控制台"></a>登录控制台</h3><p><code>mysql -u[username] -p[password] -h[hostname] -P[port]</code></p>
+<h3 id="事务相关"><a href="#事务相关" class="headerlink" title="事务相关"></a>事务相关</h3><ul>
+<li><strong>显示开启事务：</strong><code>begin</code> 或者 <code>start transaction</code></li>
+<li><strong>提交事务：</strong><code>commit</code></li>
+<li><strong>事务回滚：</strong><code>rollback</code></li>
+</ul>
+<h3 id="表修改"><a href="#表修改" class="headerlink" title="表修改"></a>表修改</h3><p><strong>统一前缀：</strong><code>alter table 表名</code></p>
+<ul>
+<li><p><strong>添加列：</strong><code>add [column] 列名 数据类型 [列属性]</code></p>
+</li>
+<li><p><strong>修改列：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 修改列数据类型</span><br><span class="line">modify [column] 列名 数据类型 [列属性]</span><br><span class="line">-- 重命名列</span><br><span class="line">change [column] 列名 新列名 数据类型 [列属性]</span><br><span class="line">-- 修改列默认值</span><br><span class="line">alter [column] 列名 set default 默认值</span><br><span class="line">                   drop default</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>删除列：</strong><code>drop [column] 列名</code></p>
+</li>
+</ul>
+<h3 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h3><p><code>explain</code> 或 <code>desc</code></p>
+<h3 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h3><p>如果涉及对分组后的每一个组进行操作，可以用窗口函数来解决</p>
+<p>例如：给定电影表（电影ID，放映厅ID，放映时间），找出每个电影在每个放映厅的第 N 早的放映时间</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SET @N = 3;</span><br><span class="line">SELECT movie_id, room_id, show_time FROM </span><br><span class="line">(SELECT movie_id, room_id, show_time ROW_NUMBER() (PARTITION BY movie_id, room_id ORDER BY show_time) rn)</span><br><span class="line">WHERE rn = @N;</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看所有正在运行的事务"><a href="#查看所有正在运行的事务" class="headerlink" title="查看所有正在运行的事务"></a>查看所有正在运行的事务</h3><p><code>select * from information.innodb_trx\g</code></p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="查看所有表磁盘空间占用情况"><a href="#查看所有表磁盘空间占用情况" class="headerlink" title="查看所有表磁盘空间占用情况"></a>查看所有表磁盘空间占用情况</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    table_schema AS &#x27;数据库&#x27;,</span><br><span class="line">    sum( table_rows ) AS &#x27;记录数&#x27;,</span><br><span class="line">    sum(</span><br><span class="line">    TRUNCATE ( data_length / 1024 / 1024, 2 )) AS &#x27;数据容量(MB)&#x27;,</span><br><span class="line">    sum(</span><br><span class="line">    TRUNCATE ( index_length / 1024 / 1024, 2 )) AS &#x27;索引容量(MB)&#x27;</span><br><span class="line">FROM</span><br><span class="line">    information_schema.TABLES </span><br><span class="line">GROUP BY</span><br><span class="line">    table_schema </span><br><span class="line">ORDER BY</span><br><span class="line">    sum( data_length ) DESC,</span><br><span class="line">    sum( index_length ) DESC;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多表拼接"><a href="#多表拼接" class="headerlink" title="多表拼接"></a>多表拼接</h2><p>当两个表join后<strong>再次join其他表前</strong>，需要用<strong>select语句</strong>将<strong>前两个表join的结果</strong>进行整合</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> ...) <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> c <span class="keyword">ON</span> ...;</span><br></pre></td></tr></table></figure>
+
+<h2 id="SET变量接收多行数据"><a href="#SET变量接收多行数据" class="headerlink" title="SET变量接收多行数据"></a>SET变量接收多行数据</h2><p>目前在网上找了一圈没有什么非常好的方案，这里举出来一个相对较好的方案：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># 用GROUP_CONCAT将查询语句返回的多行数据拼接成一个集合</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@ids</span> <span class="operator">=</span> (<span class="keyword">SELECT</span> GROUP_CONCAT(id SEPERATOR <span class="string">&#x27;,&#x27;</span>) <span class="keyword">FROM</span> ...);</span><br><span class="line"># 使用FIND_IN_SET在集合里找目标ID</span><br><span class="line"><span class="keyword">SELECT</span> id <span class="keyword">FROM</span> ... <span class="keyword">WHERE</span> FIND_IN_SET(id, <span class="variable">@ids</span>);</span><br></pre></td></tr></table></figure>
+
+<p>显而易见，这种方法的局限很大，不能适用于字符串类型的数据</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>数据库</category>
+        <category>MySQL</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot</title>
     <url>/post/6f2612a2/</url>
     <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="SpringBoot-和-Spring"><a href="#SpringBoot-和-Spring" class="headerlink" title="SpringBoot 和 Spring"></a>SpringBoot 和 Spring</h2><p>SpringBoot 的出现是为了简化 Spring 的配置，使开发者可以<strong>专注于业务逻辑的实现</strong>，不需要依赖项的 XML 配置</p>
@@ -4488,98 +5153,6 @@
       <tags>
         <tag>Spring</tag>
         <tag>SpringBoot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MySQL</title>
-    <url>/post/4d712855/</url>
-    <content><![CDATA[<h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="深分页优化"><a href="#深分页优化" class="headerlink" title="深分页优化"></a>深分页优化</h2><p>深分页指的是使用 <code>LIMIT x, y</code>  关键字进行分页时，x参数过大导致查询时会先查询<strong>先排序前 x+y 条数据</strong>，然后才返回第 y 到 x+y 条数据</p>
-<p>当请求返回的是整行数据时还需要进行<strong>回表查询</strong>（根据聚簇索引查找整行数据），导致效率非常低</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="延迟关联"><a href="#延迟关联" class="headerlink" title="延迟关联"></a>延迟关联</h4><p>使用<strong>聚簇索引</strong>先进行分页查询，再利用查询到的聚簇索引查询整行数据，这样可以<strong>减少回表次数</strong></p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> target t </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> (<span class="keyword">SELECT</span> id <span class="keyword">FROM</span> target LIMIT <span class="number">100000</span> <span class="number">10</span>) t_ids</span><br><span class="line"><span class="keyword">ON</span> t.id <span class="operator">=</span> t_ids.id</span><br></pre></td></tr></table></figure>
-
-<h2 id="主从同步"><a href="#主从同步" class="headerlink" title="主从同步"></a>主从同步</h2><ul>
-<li>主节点的事务提交时，将数据的更改记录到<strong>binlog</strong>（二进制日志）中</li>
-<li>从节点的<strong>IOthread现成</strong>读取<strong>主节点的二进制日志</strong>并写入到<strong>从节点的relay log</strong>（中继日志）中</li>
-<li>从节点的SQLthread<strong>重做中继日志中的事件</strong>，改变自己的数据</li>
-</ul>
-<h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><blockquote>
-<p><strong>常见的分库分表中间件：</strong></p>
-<ul>
-<li>mycat</li>
-<li>sharding-sphere</li>
-</ul>
-</blockquote>
-<p>主要的拆分方法分为<strong>垂直拆分</strong>和<strong>水平拆分</strong></p>
-<h3 id="垂直拆分"><a href="#垂直拆分" class="headerlink" title="垂直拆分"></a>垂直拆分</h3><h4 id="垂直分库"><a href="#垂直分库" class="headerlink" title="垂直分库"></a>垂直分库</h4><p>以表为依据，<strong>根据业务</strong>将不同的表拆分到不同的库中</p>
-<p><strong>特点：</strong></p>
-<ul>
-<li>按业务对数据分级管理、维护、监控、扩展</li>
-<li>在高并发下，提高磁盘IO和数据量连接数</li>
-</ul>
-<h4 id="垂直分表"><a href="#垂直分表" class="headerlink" title="垂直分表"></a>垂直分表</h4><p>以字段为依据，<strong>根据字段属性</strong>将不同字段拆分到不同表中</p>
-<p><strong>拆分规则：</strong></p>
-<ul>
-<li>不常用的字段单独放到一张表中</li>
-<li>将text、blob等大字段单独放到一张附表中</li>
-</ul>
-<p><strong>特点：</strong></p>
-<ul>
-<li>冷热数据分离</li>
-<li>减少IO过渡争抢资源，两表互不影响</li>
-</ul>
-<h3 id="水平拆分"><a href="#水平拆分" class="headerlink" title="水平拆分"></a>水平拆分</h3><h4 id="水平分库"><a href="#水平分库" class="headerlink" title="水平分库"></a>水平分库</h4><p>将一个库数据分到多个库中</p>
-<p><strong>路由规则：</strong></p>
-<ul>
-<li>取模路由（id%n）</li>
-<li>范围路由（[1,1e5]、[1e5+1,2e5]…）</li>
-</ul>
-<p><strong>特点：</strong></p>
-<ul>
-<li>减少单库数据压力</li>
-<li>提高了系统可用性</li>
-</ul>
-<h4 id="水平分表"><a href="#水平分表" class="headerlink" title="水平分表"></a>水平分表</h4><p>将一个表数据分到多个表中</p>
-<p><strong>特点：</strong></p>
-<ul>
-<li>减少单表数据压力</li>
-<li>避免IO争抢，减少锁表的概率</li>
-</ul>
-<h2 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h2><h3 id="登录控制台"><a href="#登录控制台" class="headerlink" title="登录控制台"></a>登录控制台</h3><p><code>mysql -u[username] -p[password] -h[hostname] -P[port]</code></p>
-<h3 id="事务相关"><a href="#事务相关" class="headerlink" title="事务相关"></a>事务相关</h3><ul>
-<li><strong>显示开启事务：</strong><code>begin</code> 或者 <code>start transaction</code></li>
-<li><strong>提交事务：</strong><code>commit</code></li>
-<li><strong>事务回滚：</strong><code>rollback</code></li>
-</ul>
-<h3 id="表修改"><a href="#表修改" class="headerlink" title="表修改"></a>表修改</h3><p><strong>统一前缀：</strong><code>alter table 表名</code></p>
-<ul>
-<li><p><strong>添加列：</strong><code>add [column] 列名 数据类型 [列属性]</code></p>
-</li>
-<li><p><strong>修改列：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-- 修改列数据类型</span><br><span class="line">modify [column] 列名 数据类型 [列属性]</span><br><span class="line">-- 重命名列</span><br><span class="line">change [column] 列名 新列名 数据类型 [列属性]</span><br><span class="line">-- 修改列默认值</span><br><span class="line">alter [column] 列名 set default 默认值</span><br><span class="line">                   drop default</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>删除列：</strong><code>drop [column] 列名</code></p>
-</li>
-</ul>
-<h3 id="查看执行计划"><a href="#查看执行计划" class="headerlink" title="查看执行计划"></a>查看执行计划</h3><p><code>explain</code> 或 <code>desc</code></p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="查看所有表磁盘空间占用情况"><a href="#查看所有表磁盘空间占用情况" class="headerlink" title="查看所有表磁盘空间占用情况"></a>查看所有表磁盘空间占用情况</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SELECT</span><br><span class="line">    table_schema AS &#x27;数据库&#x27;,</span><br><span class="line">    sum( table_rows ) AS &#x27;记录数&#x27;,</span><br><span class="line">    sum(</span><br><span class="line">    TRUNCATE ( data_length / 1024 / 1024, 2 )) AS &#x27;数据容量(MB)&#x27;,</span><br><span class="line">    sum(</span><br><span class="line">    TRUNCATE ( index_length / 1024 / 1024, 2 )) AS &#x27;索引容量(MB)&#x27;</span><br><span class="line">FROM</span><br><span class="line">    information_schema.TABLES </span><br><span class="line">GROUP BY</span><br><span class="line">    table_schema </span><br><span class="line">ORDER BY</span><br><span class="line">    sum( data_length ) DESC,</span><br><span class="line">    sum( index_length ) DESC;</span><br></pre></td></tr></table></figure>
-
-<h2 id="查看所有正在运行的事务"><a href="#查看所有正在运行的事务" class="headerlink" title="查看所有正在运行的事务"></a>查看所有正在运行的事务</h2><p><code>select * from information.innodb_trx\g</code></p>
-<h2 id="多表拼接"><a href="#多表拼接" class="headerlink" title="多表拼接"></a>多表拼接</h2><p>当两个表join后<strong>再次join其他表前</strong>，需要用<strong>select语句</strong>将<strong>前两个表join的结果</strong>进行整合</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> a <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> b <span class="keyword">ON</span> ...) <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> c <span class="keyword">ON</span> ...;</span><br></pre></td></tr></table></figure>
-
-<h2 id="SET变量接收多行数据"><a href="#SET变量接收多行数据" class="headerlink" title="SET变量接收多行数据"></a>SET变量接收多行数据</h2><p>目前在网上找了一圈没有什么非常好的方案，这里举出来一个相对较好的方案：</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"># 用GROUP_CONCAT将查询语句返回的多行数据拼接成一个集合</span><br><span class="line"><span class="keyword">SET</span> <span class="variable">@ids</span> <span class="operator">=</span> (<span class="keyword">SELECT</span> GROUP_CONCAT(id SEPERATOR <span class="string">&#x27;,&#x27;</span>) <span class="keyword">FROM</span> ...);</span><br><span class="line"># 使用FIND_IN_SET在集合里找目标ID</span><br><span class="line"><span class="keyword">SELECT</span> id <span class="keyword">FROM</span> ... <span class="keyword">WHERE</span> FIND_IN_SET(id, <span class="variable">@ids</span>);</span><br></pre></td></tr></table></figure>
-
-<p>显而易见，这种方法的局限很大，不能适用于字符串类型的数据</p>
-]]></content>
-      <categories>
-        <category>笔记</category>
-        <category>数据库</category>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
       </tags>
   </entry>
   <entry>
