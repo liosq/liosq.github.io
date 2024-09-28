@@ -297,6 +297,111 @@
       </tags>
   </entry>
   <entry>
+    <title>Flutter</title>
+    <url>/post/e5974716/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="flutter-指令无响应"><a href="#flutter-指令无响应" class="headerlink" title="flutter 指令无响应"></a>flutter 指令无响应</h2><p>在 CMD 输入 <code>flutter --version</code> 无响应，打开 bin 目录运行 <code>flutter.bat</code> 也同样无响应</p>
+<p>上网搜索说是镜像地址的原因，但在添加了这两个环境变量后仍然无响应</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn</span><br><span class="line">PUB_HOSTED_URL: https://pub.flutter-io.cn</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>后端</category>
+      </categories>
+      <tags>
+        <tag>Flutter</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xpath</title>
+    <url>/post/25900800/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用来定位 XML 元素的一种表达式，类似正则表达式</p>
+<p>写爬虫的时候会经常用到 XPATH，例如用 selenium 定位 html 网页元素；用 uiautomator2 定位 app 元素等等</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="单元素"><a href="#单元素" class="headerlink" title="单元素"></a>单元素</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 第 1 个 div 元素中的第 2 个 a 元素</span><br><span class="line">//div[1]/a[2]</span><br><span class="line"></span><br><span class="line"># 第 1 个 div 元素中的最后一个任意元素</span><br><span class="line">//div[1]/*[last()]</span><br><span class="line"></span><br><span class="line"># class 和 id 属性都为 test 的 div 元素</span><br><span class="line">//div[@class=&quot;test&quot; and @id=&quot;test&quot;]</span><br></pre></td></tr></table></figure>
+
+<h2 id="多元素"><a href="#多元素" class="headerlink" title="多元素"></a>多元素</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 第 1 个 ul 元素中的所有 li 元素中的第 1 个 div 元素</span><br><span class="line">//ul[1]/li/div[1]</span><br><span class="line"></span><br><span class="line"># class 属性为 test 的所有 li 元素中的第 1 个 div 元素</span><br><span class="line">//li[@class=&quot;test&quot;]/div[1]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>XML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>42. 接雨水</title>
+    <url>/post/2bfb457f/</url>
+    <content><![CDATA[<h1 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42. 接雨水"></a><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h1><h2 id="O-n-O-1"><a href="#O-n-O-1" class="headerlink" title="$O(n)+O(1)$"></a>$O(n)+O(1)$</h2><p>两次遍历，第一次遍历<strong>从左向右</strong>，维护最高值，如果不能更新最高值则积累雨水；第二次遍历<strong>从右向左</strong>，仍然维护最高值，每次遍历都减去<strong>第一次遍历最高值和当前最高值之差</strong>，并且只遍历到<strong>第一次遍历最高值处</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="type">int</span> <span class="title">ans</span><span class="params">(<span class="number">0</span>)</span>,<span class="title">h</span><span class="params">(<span class="number">0</span>)</span>,<span class="title">hi</span><span class="params">(<span class="number">0</span>)</span>,<span class="title">len</span><span class="params">(height.size())</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">            <span class="keyword">if</span>(height[i]&gt;h)</span><br><span class="line">                hi=i,h=height[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ans+=height[hi]-height[i];</span><br><span class="line">        h=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=len<span class="number">-1</span>;i&gt;hi;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(height[i]&gt;h)</span><br><span class="line">                h=height[i];</span><br><span class="line">            ans=ans-height[hi]+h;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="O-n-O-n"><a href="#O-n-O-n" class="headerlink" title="$O(n)+O(n)$"></a>$O(n)+O(n)$</h2><p><strong>单调栈</strong>，维护高度单调递减的下标栈，在维护栈的时候计算积累的雨水的宽度和高度</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @lc app=leetcode.cn id=42 lang=java</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * [42] 接雨水</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @lc code=start</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] h)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> h.length, ans = <span class="number">0</span>;</span><br><span class="line">    Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> left, right, i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; h[stack.peek()] &lt;= h[i]) &#123;</span><br><span class="line">        right = stack.pop();</span><br><span class="line">        <span class="keyword">if</span> (stack.isEmpty()) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        left = stack.peek();</span><br><span class="line">        ans += (Math.min(h[left], h[i]) - h[right]) * (i - left - <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      stack.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @lc code=end</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="O-n-O-n-1"><a href="#O-n-O-n-1" class="headerlink" title="$O(n)+O(n)$"></a>$O(n)+O(n)$</h2><p><strong>动态规划</strong>，维护 $left[i],right[i]$ 数组，分别记录下标小于或大于 $i$ 的元素中的最大值，这样就可以确定<strong>每格最终会积累多少雨水</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @lc app=leetcode.cn id=42 lang=java</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * [42] 接雨水</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @lc code=start</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] h)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> h.length, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span>[] left = <span class="keyword">new</span> <span class="title class_">int</span>[n], right = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">    left[<span class="number">0</span>] = h[<span class="number">0</span>];</span><br><span class="line">    right[n - <span class="number">1</span>] = h[n - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">      left[i] = Math.max(left[i - <span class="number">1</span>], h[i]);</span><br><span class="line">      right[n - i - <span class="number">1</span>] = Math.max(right[n - i], h[n - i - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      ans += Math.min(left[i], right[i]) - h[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @lc code=end</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>力扣</category>
+        <category>困难</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Java</tag>
+        <tag>动态规划</tag>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>weditor</title>
+    <url>/post/c99061c2/</url>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用来解析手机页面的元素组成的 Web 版工具，<strong>基于 Python 实现</strong></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装及运行"><a href="#安装及运行" class="headerlink" title="安装及运行"></a>安装及运行</h2><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 直接安装版本也行 但因为我系统路径包含中文报错了 就装了旧版本</span></span><br><span class="line">pip install weditor==<span class="number">0.6</span>.<span class="number">4</span></span><br><span class="line"><span class="comment"># 安装 uiautomator2</span></span><br><span class="line">pip install uiautomator2==<span class="number">2.16</span>.<span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<p>由于我连手机一直没成功，所以我这里介绍连接模拟器（雷电模拟器）的方法</p>
+<ol>
+<li>将雷电模拟器的<strong>网络设置</strong>中，打开<strong>网络桥接模式</strong>，并且将桥接网卡设置为<strong>电脑用的本地网卡</strong></li>
+<li>在模拟器的安装目录中，将 adb.exe 替换为电脑的 adb.exe</li>
+<li>在安装目录打开 cmd 控制台，执行 <code>python -m uiautomator2 init</code></li>
+<li>如果第 3 步最后显示 <code>Successfully init AdbDevice</code> 就可以了，在模拟器打开新添加的<strong>小黄车应用 ATX</strong></li>
+<li>执行 <code>adb devices</code> 查看<strong>模拟器的序号</strong></li>
+<li>执行 <code>python -m  weditor</code>，运行后会弹出浏览器的页面</li>
+<li>在 <strong>Connect</strong> 按钮旁边输入框内输入<strong>模拟器的序号</strong>，点击 <strong>Connect</strong> 按钮连接手机或者模拟器等设备</li>
+<li>连接成功后 <strong>Connect</strong> 按钮内会有一个绿色的草 Logo，点击 <strong>Dump Hierarchy</strong> 刷新界面，就可以分析当前模拟器页面的元素组成了</li>
+</ol>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>应用软件</title>
+    <url>/post/d3ce328c/</url>
+    <content><![CDATA[<p>记录一些实际生活中用到的比较好用的应用软件，方便自己在以后更换设备时迁移应用和数据信息等等</p>
+<h1 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h1><h2 id="滴答清单"><a href="#滴答清单" class="headerlink" title="滴答清单"></a>滴答清单</h2><p>很轻松地添加待办事项，对于我这种比较健忘的人来说很有帮助</p>
+<p>软件有收费功能（日历式显示待办、代办设置时间段、关联微信等等），但免费功能就已经能满足大部分的需求了</p>
+<h2 id="flomo"><a href="#flomo" class="headerlink" title="flomo"></a>flomo</h2><p>记笔记的应用，不像滴答清单一样能通知提醒，但是用来当一个便签一样记录下自己随笔也是不错的</p>
+<p>也是有收费功能（每日回顾、反向链接、密码锁等等），也是一样，对我来说免费的就足够了</p>
+<blockquote>
+<p><strong>为什么不用系统自带便签</strong></p>
+<p>因为我不确定会不会一直使用这个品牌的手机，数据同步不好搞，虽然随笔可能不是很重要，但是既然能数据同步为什么不同步呢</p>
+</blockquote>
+<h2 id="小黑盒"><a href="#小黑盒" class="headerlink" title="小黑盒"></a>小黑盒</h2><p>可以在手机上看 steam 游戏的实时价格</p>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>消费</title>
     <url>/post/5350dbd0/</url>
     <content><![CDATA[<h1 id="水杯"><a href="#水杯" class="headerlink" title="水杯"></a>水杯</h1><ul>
@@ -793,6 +898,150 @@
 <td>最大的</td>
 </tr>
 </tbody></table>
+<h1 id="2024-9-17"><a href="#2024-9-17" class="headerlink" title="2024-9-17"></a>2024-9-17</h1><table>
+<thead>
+<tr>
+<th>soy</th>
+<th>大豆</th>
+</tr>
+</thead>
+</table>
+<h1 id="2024-9-20"><a href="#2024-9-20" class="headerlink" title="2024-9-20"></a>2024-9-20</h1><table>
+<thead>
+<tr>
+<th>linger</th>
+<th>徘徊</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>prolong</td>
+<td>延长</td>
+</tr>
+<tr>
+<td>preside</td>
+<td>主持</td>
+</tr>
+<tr>
+<td>plug</td>
+<td>插头</td>
+</tr>
+<tr>
+<td>astray</td>
+<td>误入歧途</td>
+</tr>
+<tr>
+<td>adrift</td>
+<td>漂流</td>
+</tr>
+<tr>
+<td>lump</td>
+<td>肿块；懒汉</td>
+</tr>
+<tr>
+<td>endure</td>
+<td>忍受；持续</td>
+</tr>
+<tr>
+<td>indispensable</td>
+<td>不可或缺的</td>
+</tr>
+<tr>
+<td>exclusive</td>
+<td>独有，独家的</td>
+</tr>
+</tbody></table>
+<h1 id="2024-9-22"><a href="#2024-9-22" class="headerlink" title="2024-9-22"></a>2024-9-22</h1><table>
+<thead>
+<tr>
+<th>engage</th>
+<th>保证</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>enroll</td>
+<td>登记</td>
+</tr>
+<tr>
+<td>entice</td>
+<td>诱惑、怂恿</td>
+</tr>
+<tr>
+<td>subsidy</td>
+<td>补贴、津贴</td>
+</tr>
+<tr>
+<td>never so much as</td>
+<td>甚至不</td>
+</tr>
+<tr>
+<td>confidential</td>
+<td>受信任、保密的</td>
+</tr>
+<tr>
+<td>due</td>
+<td>到期、应有的</td>
+</tr>
+<tr>
+<td>instinct</td>
+<td>本能、直觉</td>
+</tr>
+<tr>
+<td>integrity</td>
+<td>正直；完整</td>
+</tr>
+<tr>
+<td>give away</td>
+<td>赠送、捐赠</td>
+</tr>
+<tr>
+<td>competitiveness</td>
+<td>竞争力</td>
+</tr>
+<tr>
+<td>with respect to</td>
+<td>关于、谈到</td>
+</tr>
+</tbody></table>
+<h1 id="2024-9-28"><a href="#2024-9-28" class="headerlink" title="2024-9-28"></a>2024-9-28</h1><table>
+<thead>
+<tr>
+<th>ponder</th>
+<th>思考、考虑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>contemplate</td>
+<td>思考、考虑</td>
+</tr>
+<tr>
+<td>conceive</td>
+<td>思考、考虑</td>
+</tr>
+<tr>
+<td>ponder upon</td>
+<td>思考</td>
+</tr>
+<tr>
+<td>conceive of</td>
+<td>思考</td>
+</tr>
+<tr>
+<td>perspective</td>
+<td>观点；视角</td>
+</tr>
+<tr>
+<td>distort</td>
+<td>扭曲、歪曲</td>
+</tr>
+<tr>
+<td>detach</td>
+<td>拆卸、脱离</td>
+</tr>
+<tr>
+<td>deviate</td>
+<td>背离、偏离</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -807,6 +1056,27 @@
     <url>/post/e57e29d1/</url>
     <content><![CDATA[<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="心脏"><a href="#心脏" class="headerlink" title="心脏"></a>心脏</h2><ul>
 <li>心脏如果偶尔刺痛的话，可能是神经紊乱，没什么大碍；但如果是钝痛建议去医院查一查</li>
+<li>大一点的医院可以做 24 小时的心电图，如果是心律不齐而且还是不放心的话可以做</li>
+<li>心脏不舒服可以考虑做抽血检查心肌酶</li>
+</ul>
+<h2 id="鼻子"><a href="#鼻子" class="headerlink" title="鼻子"></a>鼻子</h2><ul>
+<li>鼻翼发红、破皮，可能是真菌感染引起的<ul>
+<li>校医院的医生给开了<strong>莫匹罗星软膏</strong></li>
+<li>姐姐说可以涂<strong>红霉素眼膏</strong>（说是比软膏刺激性小）试一试，一天涂两次</li>
+</ul>
+</li>
+<li>鼻子打喷嚏后会闻到异味，多半是鼻炎或鼻咽炎引起的，可以用以下药物：<ul>
+<li><strong>糠酸莫米松鼻喷雾剂：</strong>三十多元一瓶（逸青；60揿50，微克1揿）</li>
+<li><strong>呋麻滴鼻液：</strong>3元一支（五景；10ml）</li>
+<li><strong>鼻窦炎口服液：</strong>56元一盒（太极；12瓶）</li>
+</ul>
+</li>
+</ul>
+<h2 id="肾脏"><a href="#肾脏" class="headerlink" title="肾脏"></a>肾脏</h2><ul>
+<li><p><strong>长期喝奶茶、饮料</strong>或者<strong>久坐</strong>，可能导致肾结石；</p>
+<p>如果肾结石较小，需要开扩张尿道和消炎的药，多做跑步跳绳等运动把结石排出来；</p>
+<p>较大的肾结石就需要做手术排出了，有小结石的时候一定不要忽视</p>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -820,8 +1090,7 @@
     <title>selenium-wire</title>
     <url>/post/2cea8929/</url>
     <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>selenium 的拓展版，可以支持一些更高级的操作（比如我用到的拦截当前网页发生的请求等等）</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">直接安装</span></span><br><span class="line">pip install selenium-wire</span><br></pre></td></tr></table></figure>
-
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install selenium-wire</code> 直接安装即可</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="拦截网页请求"><a href="#拦截网页请求" class="headerlink" title="拦截网页请求"></a>拦截网页请求</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> seleniumwire <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Edge()</span><br><span class="line">driver.get(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接遍历.requests属性即可 每个request有url, headers, body属性</span></span><br><span class="line"><span class="keyword">for</span> request <span class="keyword">in</span> driver.requests:</span><br><span class="line">    <span class="keyword">if</span> request.url == <span class="string">&#x27;my target url&#x27;</span>:</span><br><span class="line">        <span class="comment"># 请求有响应</span></span><br><span class="line">        <span class="keyword">if</span> request.respone:</span><br><span class="line">            <span class="built_in">print</span>(request.response.body)</span><br></pre></td></tr></table></figure>
 
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="安装依赖冲突"><a href="#安装依赖冲突" class="headerlink" title="安装依赖冲突"></a>安装依赖冲突</h2><ul>
@@ -838,10 +1107,10 @@
       <categories>
         <category>笔记</category>
         <category>爬虫</category>
-        <category>selenium</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>selenium</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -985,6 +1254,15 @@
 <li><strong>出门通勤：</strong>尽量坐地铁出行。长沙的话地铁从<strong>中南大学</strong>坐到<strong>长沙南站</strong>也就3块6</li>
 </ul>
 <h2 id="电动车"><a href="#电动车" class="headerlink" title="电动车"></a>电动车</h2><ul>
+<li>价格参考：<ul>
+<li><strong>开了一年多</strong>、<strong>续航四十多公里</strong>、<strong>车身较大</strong>的<strong>雅迪欧米-D</strong>，920 元（原价 1100，校园集市上收的，砍了点价）</li>
+<li>二手电动车回收的（没讲价）<ul>
+<li><strong>小型车：</strong>一千左右</li>
+<li><strong>中大型车：</strong>一千二三</li>
+</ul>
+</li>
+</ul>
+</li>
 <li><strong>购买注意事项：</strong><ul>
 <li><strong>电池续航：</strong>小型电动车续航基本连30公里都不到，中大型电动车续航在40-70公里。用的时候看电量主要关注<strong>拉满速度时的显示电量</strong></li>
 <li><strong>电池是否可拆卸：</strong>电动车充电一般就这几种方式<ul>
@@ -1010,6 +1288,22 @@
 <li><strong>坐垫罩：</strong>罩着坐垫后扯下来放车的篮子里，这样下雪下雨之后就不用拿抹布擦干坐垫了；夏天坐垫太热也能减少点坐垫温度</li>
 </ul>
 </li>
+<li>刹车不会解除 P 挡、喇叭不响、左右转灯不亮，可能是电动车<strong>转换器出问题了</strong>，去买电动车的地方问说 <strong>65 元</strong>一个，如果是好心商家会给你排查是不是接线的问题</li>
+<li>后座打开一般会有<strong>电池开关</strong>，如果在某个地方停很久担心再骑的时候没电，可以把开关关了（关了后被拖走也不会触发报警）</li>
+</ul>
+<h2 id="自行车"><a href="#自行车" class="headerlink" title="自行车"></a>自行车</h2><ul>
+<li>价格参考：<ul>
+<li>某东买的<strong>正常规格</strong>凤凰单车，374 元 + 40 元（请师傅装车）</li>
+</ul>
+</li>
+<li>如果骑着感觉很费劲，检查下是不是刹车片太贴车轮了</li>
+<li><strong>相关杂物需求：</strong><ul>
+<li><strong>车锁：</strong>买个带密码的粗一点的就够了（因为再怎么结实也会被偷，差不多得了）</li>
+</ul>
+</li>
+</ul>
+<h2 id="汽车"><a href="#汽车" class="headerlink" title="汽车"></a>汽车</h2><ul>
+<li>自动挡斜坡起步的话一般会有电子手刹，直接踩油门会自动解锁</li>
 </ul>
 ]]></content>
       <categories>
@@ -3218,7 +3512,7 @@
   <entry>
     <title>selenium</title>
     <url>/post/4d23fd8d/</url>
-    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一个Python的开源库，用来<strong>模拟用户</strong>操作Web界面。如鼠标点击、键盘输入等，因为是使用浏览器模拟，所以可以加载一些用<strong>js 动态渲染</strong>的页面信息，一般用来做<strong>爬虫</strong>或<strong>Web的自动化测试工具</strong></p>
+    <content><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>一个 Python 的开源库，用来<strong>模拟用户</strong>操作 Web 界面。如鼠标点击、键盘输入等，因为是使用浏览器模拟，所以可以加载一些用 <strong>js 动态渲染</strong>的页面信息，一般用来做<strong>爬虫</strong>或 <strong>Web 的自动化测试工具</strong></p>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install selenium</code> 即可</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="创建浏览器实例"><a href="#创建浏览器实例" class="headerlink" title="创建浏览器实例"></a>创建浏览器实例</h3><p>目前我接触到的就chrome和edge浏览器，可能还有其他的，没有了解太多</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">path = <span class="string">&#x27;D:\xx\xx&#x27;</span> <span class="comment"># 浏览器 exe 文件路径</span></span><br><span class="line">chrome_driver = webdriver.chrome(path) <span class="comment"># chrome浏览器</span></span><br><span class="line">edge_driver = webdriver.edge(path) <span class="comment"># edge浏览器</span></span><br></pre></td></tr></table></figure>
@@ -3233,10 +3527,10 @@
       <categories>
         <category>笔记</category>
         <category>爬虫</category>
-        <category>selenium</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>selenium</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
