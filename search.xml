@@ -189,12 +189,12 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>JavaScript</tag>
         <tag>C++</tag>
         <tag>算法</tag>
-        <tag>JavaScript</tag>
         <tag>Python</tag>
-        <tag>字符串</tag>
         <tag>Java</tag>
+        <tag>字符串</tag>
         <tag>Golang</tag>
       </tags>
   </entry>
@@ -287,13 +287,199 @@
         <category>算法</category>
       </categories>
       <tags>
+        <tag>JavaScript</tag>
         <tag>C++</tag>
         <tag>算法</tag>
-        <tag>JavaScript</tag>
         <tag>Python</tag>
         <tag>Java</tag>
         <tag>Golang</tag>
         <tag>并查集</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/post/0/</url>
+    <content><![CDATA[<h1 id="文件图标变为空白图片"><a href="#文件图标变为空白图片" class="headerlink" title="文件图标变为空白图片"></a>文件图标变为空白图片</h1><p>大概率是图标缓存没了</p>
+<ol>
+<li><strong><code>Win+R</code> 输入 <code>%localappdata%</code></strong> 或<strong>进入<code>C:\Users\[用户名]\AppData\Local</code>目录下</strong></li>
+<li>删除 <code>IconCache.db</code> 文件（如果没找到，就开启<strong>隐藏的项目</strong>）</li>
+<li>重启电脑，或重启资源管理器（<strong>在任务管理器里右键进程重启</strong>）</li>
+</ol>
+<p>解决原理就是删除错误的缓存，让系统重新创建新的图标缓存</p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>操作系统</category>
+        <category>Windows</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>国内</title>
+    <url>/post/e1a7f1fd/</url>
+    <content><![CDATA[<h1 id="高铁"><a href="#高铁" class="headerlink" title="高铁"></a>高铁</h1><ul>
+<li>高铁一般<strong>发车前15分钟开始检票</strong>，<strong>发车前3分钟停止检票</strong>，安检和地铁差不多只用个两三分钟；建议<strong>抵达高铁站时至少预留20分钟时间</strong></li>
+<li>有的高铁车型是<strong>没有插座</strong>的，如果手机没电了尽量带个充电宝或者出行前充满</li>
+<li>如果有的AB检票口都可以检票，选个靠近自己车厢的检票口</li>
+<li><strong>出发是上高铁；到达是下高铁</strong></li>
+</ul>
+<h1 id="飞机"><a href="#飞机" class="headerlink" title="飞机"></a>飞机</h1><ul>
+<li><p>飞机早订票晚订票各有好处。早订票可以尽早值机<strong>抢到经济舱第一排位置</strong>；晚订票能<strong>抢到更低价格</strong></p>
+</li>
+<li><p>一订完票就马上去值机，不然<strong>第一排、靠窗、靠过道</strong>的位置都被抢光了</p>
+</li>
+<li><p>飞机一般<strong>起飞前30分钟开始检票</strong>，<strong>起飞前15分钟停止检票</strong>，且安检流程较为严格（要求把<strong>外套、电脑、充电宝、雨伞</strong>等物品单独放进筐里）；大部分机场都是远离市区的，考虑到<strong>取票、安检、前往登机口、登机</strong>等多种因素，建议<strong>抵达机场时至少预留40分钟时间</strong></p>
+</li>
+<li><p>飞机登机时会很挤，<strong>登机检票建议很早或很晚去排队</strong>（如果随身行李比较多建议早排队）</p>
+</li>
+<li><p>最好<strong>登机前或者飞机启动前上个厕所</strong>，飞机上升时不能上厕所，滑行加速时也不好上厕所</p>
+</li>
+<li><p>即使飞行时段覆盖饭点，<strong>飞机也不一定提供餐食</strong>，一定要在订票前关注好飞机是否提供餐食（正餐、小食、点餐）</p>
+</li>
+<li><p><strong>飞机飞行全程不能使用充电宝</strong>，如果随身带了充电宝，可以在飞机启动前先用会</p>
+</li>
+<li><p>大部分飞机座位都很挤，如果想看电影的话，最多用个平板，电脑一般放不下（非经济舱除外）</p>
+</li>
+<li><p><strong>出发是上飞机；到达是下飞机</strong></p>
+</li>
+</ul>
+<h1 id="地铁卡"><a href="#地铁卡" class="headerlink" title="地铁卡"></a>地铁卡</h1><p>国内大部分城市都有地铁，可以用<strong>支付宝出行</strong>扫进出站的地铁码</p>
+<p>还挺方便的，扣钱是直接用支付宝支付的，到了新城市会提示你是否切换地铁卡，直接注册一个卡就行了</p>
+<h1 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h1><ul>
+<li><p>图便宜可以住多人青旅，30 多一晚</p>
+</li>
+<li><p>如果想住单人，也可以选那种改造的小酒店，一晚也能不过百</p>
+</li>
+<li><p>百元以内，就别想住正常的电竞酒店了，只能电竞和酒店二选一</p>
+</li>
+</ul>
+<h1 id="行李"><a href="#行李" class="headerlink" title="行李"></a>行李</h1><p>如果酒店退房了，还想再多玩一会但是嫌行李麻烦，可以把行李寄存到景点附近的店铺里（我在武汉黄鹤楼附近是不到 10 块一个小时）</p>
+]]></content>
+      <categories>
+        <category>旅行</category>
+      </categories>
+      <tags>
+        <tag>国内</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Web反爬机制</title>
+    <url>/post/5991018/</url>
+    <content><![CDATA[<h1 id="无法打开调试工具"><a href="#无法打开调试工具" class="headerlink" title="无法打开调试工具"></a>无法打开调试工具</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>页面禁用了 F12、Ctrl + Shift + L 的键盘事件</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在浏览器菜单中选择打开**”开发者工具”**即可</p>
+<h1 id="无限-debugger"><a href="#无限-debugger" class="headerlink" title="无限 debugger"></a>无限 debugger</h1><h2 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h2><p>js 定时循环执行 debugger 语句</p>
+<h2 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h2><h3 id="全局禁用断点"><a href="#全局禁用断点" class="headerlink" title="全局禁用断点"></a>全局禁用断点</h3><p>在调试工具源代码页按 Ctrl + F8，或者找到**”停用断点”**按钮</p>
+<h3 id="禁用特定行断点"><a href="#禁用特定行断点" class="headerlink" title="禁用特定行断点"></a>禁用特定行断点</h3><p>在执行 debugger 行添加条件断点 false</p>
+<blockquote>
+<p>写成了一行的代码会失效，例如 <code>setInterval(() =&gt; &#123; debugger &#125;, 100)</code></p>
+</blockquote>
+<h3 id="替换-js-文件"><a href="#替换-js-文件" class="headerlink" title="替换 js 文件"></a>替换 js 文件</h3><p>搜索或堆栈分析，定位到 debugger 语句所在 js 文件，将语句注释掉并替换 js 文件</p>
+<blockquote>
+<p>有的网站会用 base64 对 js 语句进行加密，然后用 eval 执行</p>
+</blockquote>
+<h1 id="接口签名加密"><a href="#接口签名加密" class="headerlink" title="接口签名加密"></a>接口签名加密</h1><h2 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h2><p>客户端请求接口时携带<strong>对本地信息进行加密后的签名</strong></p>
+<h2 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h2><p>逆向分析网站 js，在本地生成签名信息</p>
+<h1 id="人机验证码"><a href="#人机验证码" class="headerlink" title="人机验证码"></a>人机验证码</h1><h2 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h2><p>用图形、滑块、拼图等多种形式，来判断操作者是否为机器</p>
+<h2 id="解决-3"><a href="#解决-3" class="headerlink" title="解决"></a>解决</h2><h3 id="滑块验证码"><a href="#滑块验证码" class="headerlink" title="滑块验证码"></a>滑块验证码</h3><blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://www.jianshu.com/p/a3a0949a4e9a">禁用4399浏览器开发者工具无限debugger - 简书 (jianshu.com)</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1505309">突破前端反调试–阻止页面不断debugger-腾讯云开发者社区-腾讯云 (tencent.com)</a></li>
+</ul>
+</blockquote>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Wireshark</title>
+    <url>/post/d2cc9b2a/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>爬虫</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习笔记-金融知识</title>
+    <url>/post/3c7b500b/</url>
+    <content><![CDATA[<h1 id="柯布-道格拉斯生产函数"><a href="#柯布-道格拉斯生产函数" class="headerlink" title="柯布-道格拉斯生产函数"></a>柯布-道格拉斯生产函数</h1><p>$Y&#x3D;A_{t}L^{\alpha}<em>{t}K^{\beta}</em>{t}$，劳动 <strong>L</strong>abour；资本 <strong>K</strong>apital（Capital）</p>
+<p>当 $\alpha+\beta&#x3D;1$ 时，$\alpha$ 和 $\beta$ 分别代表<strong>劳动</strong>和<strong>资本</strong>所得在总产量中所占的相对份额</p>
+<h1 id="市场失灵的原因"><a href="#市场失灵的原因" class="headerlink" title="市场失灵的原因"></a>市场失灵的原因</h1><ol>
+<li>垄断</li>
+<li>外部影响</li>
+<li>公共物品</li>
+<li>信息不对称</li>
+</ol>
+<h1 id="竞争性消费"><a href="#竞争性消费" class="headerlink" title="竞争性消费"></a>竞争性消费</h1><p>竞争性是指消费者对某一种公共物品的消费会<strong>影响其他人对该公共物品的消费</strong></p>
+<h1 id="派生存款"><a href="#派生存款" class="headerlink" title="派生存款"></a>派生存款</h1><p>原始存款通过银行放贷能够派生出的其他存款</p>
+<p>举个简单例子来理解一下：</p>
+<ol>
+<li>张三在银行 A 存了 100 元，此时银行 A 获得了 100 元原始存款</li>
+<li>银行会拿这 100 元去放贷，但按照法律要求必须要<strong>保留一部分存款准备金来应对取款</strong>，假设法定存款准备金率是 10%，那么就可以放出 90 元的贷款</li>
+<li>李四在银行 A 贷款了这 90 元，并且有可能把这个贷款存到了银行 A 中</li>
+</ol>
+<p>第三步开始就可以循环进行，这样银行 A 利用张三存的 100 元创造出了远超于 100 元的派生的存款金额</p>
+<p>一般来说，若法定存款准备金率为 $r$，原始存款为 $D$，则派生存款为 $D(\frac{1}{r}-1)$</p>
+<h1 id="金融模式"><a href="#金融模式" class="headerlink" title="金融模式"></a>金融模式</h1><h2 id="P2C"><a href="#P2C" class="headerlink" title="P2C"></a>P2C</h2><p>网上有两种说法 Production to Consumer 和 Person to Company</p>
+<ol>
+<li><strong>Production to Consumer</strong>：生产产品送到消费者手中，传统的顾客商品模式</li>
+<li><strong>Person to Company</strong>：个人和企业间的融资借贷模式</li>
+</ol>
+<h2 id="P2P"><a href="#P2P" class="headerlink" title="P2P"></a>P2P</h2><p>应该是 Person to Person？还是 Peer to Peer，总之意思都是个人对个人的网络借贷模式</p>
+<h1 id="社会融资规模"><a href="#社会融资规模" class="headerlink" title="社会融资规模"></a>社会融资规模</h1><p>社会融资规模是指实体经济在一定时期内从<strong>金融体系中获得的资金总量</strong></p>
+<p>社会融资规模主要包括：</p>
+<ol>
+<li>人民币贷款</li>
+<li>外币贷款</li>
+<li>委托贷款</li>
+<li>信托贷款</li>
+<li>未贴现的银行承兑汇票</li>
+<li>企业债券</li>
+<li>非金融企业境内股票融资</li>
+<li>保险公司赔偿</li>
+<li>投资性房地产</li>
+<li>其他金融工具融资</li>
+</ol>
+<h1 id="基金类型"><a href="#基金类型" class="headerlink" title="基金类型"></a>基金类型</h1><ol>
+<li><strong>股票型基金</strong>：80% 以上基金资产投资于股票。<strong>高风险、高收益</strong></li>
+<li><strong>债务型基金</strong>：80% 以上基金资产投资于债券。<strong>较低风险、较低收益</strong></li>
+<li><strong>货币市场基金</strong>：仅投资于<strong>货币市场工具</strong>的基金，这类基金的资产主要投资于短期货币工具，如商业票据、银行定期存单、短期政府债券、短期企业债券等短期有价证券。<strong>低风险、低收益、高流动性</strong></li>
+<li><strong>混合型基金</strong>：投资于股票、债券、货币市场工具，且股票和债券投资的比例不符合前述规定</li>
+</ol>
+<h1 id="速动比率"><a href="#速动比率" class="headerlink" title="速动比率"></a>速动比率</h1><p>速动比率 &#x3D; 速动资产 &#x2F; 流动负债。其中，速动资产是指<strong>货币资金、交易性金融资产和各种应收款项等</strong>，可以在较短时间内变现的资产</p>
+<p>它是<strong>衡量企业流动资产中可以立即变现用于偿还流动负债的能力</strong></p>
+]]></content>
+      <categories>
+        <category>笔记</category>
+        <category>金融</category>
+      </categories>
+      <tags>
+        <tag>金融</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>国外</title>
+    <url>/post/c2abf603/</url>
+    <content><![CDATA[<h1 id="通用注意事项"><a href="#通用注意事项" class="headerlink" title="通用注意事项"></a>通用注意事项</h1><h2 id="护照"><a href="#护照" class="headerlink" title="护照"></a>护照</h2><p>在支付宝搜护照点”预约办证”，可以在所在地附近选择办理点</p>
+<p>办理期限：7-15个工作日；办理费用为 120 元（网上说 200 元，不知道哪个准）</p>
+<p>护照有效期限不超过 10 年</p>
+<h2 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h2>]]></content>
+      <categories>
+        <category>旅行</category>
+      </categories>
+      <tags>
+        <tag>国外</tag>
       </tags>
   </entry>
   <entry>
@@ -393,6 +579,11 @@
 <p>因为我不确定会不会一直使用这个品牌的手机，数据同步不好搞，虽然随笔可能不是很重要，但是既然能数据同步为什么不同步呢</p>
 </blockquote>
 <h2 id="小黑盒"><a href="#小黑盒" class="headerlink" title="小黑盒"></a>小黑盒</h2><p>可以在手机上看 steam 游戏的实时价格</p>
+<h2 id="Spotify"><a href="#Spotify" class="headerlink" title="Spotify"></a>Spotify</h2><p>一句话，<strong>能免费听周总的歌</strong></p>
+<blockquote>
+<p>国内平台的歌单迁移，可以去这个网站解决 <a href="https://yyrcd.com/n2s/">迁移 网易云 &#x2F; QQ 音乐到 Apple Music, Youtube Music, Spotify | yyrcd</a></p>
+</blockquote>
+<h1 id="桌面端"><a href="#桌面端" class="headerlink" title="桌面端"></a>桌面端</h1><h2 id="Lyricify"><a href="#Lyricify" class="headerlink" title="Lyricify"></a>Lyricify</h2><p>适配 Spotify 显示桌面歌词，Github 开源免费下载 <a href="https://github.com/WXRIW/Lyricify-App">GitHub - WXRIW&#x2F;Lyricify-App: Lyricify</a></p>
 ]]></content>
       <categories>
         <category>生活</category>
@@ -404,9 +595,153 @@
   <entry>
     <title>消费</title>
     <url>/post/5350dbd0/</url>
-    <content><![CDATA[<h1 id="水杯"><a href="#水杯" class="headerlink" title="水杯"></a>水杯</h1><ul>
-<li>水杯材质不要选 <strong>PC[聚碳酸酯]</strong> 的，选 <strong>PP[聚丙烯] &#x2F; TRITAN &#x2F; PPSU</strong> 材质的都可以（越往后越贵）</li>
+    <content><![CDATA[<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><table>
+<thead>
+<tr>
+<th align="center">品牌</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h1 id="水杯"><a href="#水杯" class="headerlink" title="水杯"></a>水杯</h1><ul>
+<li>塑料水杯材质不要选 <strong>PC[聚碳酸酯]</strong> 的，选 <strong>PP[聚丙烯] &#x2F; TRITAN &#x2F; PPSU</strong> 材质的都可以（越往后越贵）</li>
 </ul>
+<h2 id="保温杯"><a href="#保温杯" class="headerlink" title="保温杯"></a>保温杯</h2><table>
+<thead>
+<tr>
+<th align="center">品牌</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">富光 600ml</td>
+<td align="center">69.9</td>
+</tr>
+<tr>
+<td align="center">小米 350ml</td>
+<td align="center">49</td>
+</tr>
+<tr>
+<td align="center">膳魔师 500ml</td>
+<td align="center">98</td>
+</tr>
+</tbody></table>
+<ul>
+<li>内胆有 316L 和 304 不锈钢的材质，目前看来膳魔师内胆用的是 304，其他用的是 316L</li>
+</ul>
+<h1 id="灯"><a href="#灯" class="headerlink" title="灯"></a>灯</h1><h2 id="屏幕挂灯"><a href="#屏幕挂灯" class="headerlink" title="屏幕挂灯"></a>屏幕挂灯</h2><table>
+<thead>
+<tr>
+<th align="center">品牌</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">明基 ScreenBar Pro</td>
+<td align="center">979</td>
+</tr>
+<tr>
+<td align="center">小米</td>
+<td align="center">168</td>
+</tr>
+<tr>
+<td align="center">飞利浦</td>
+<td align="center">239</td>
+</tr>
+<tr>
+<td align="center">雷神 ThundeRobot</td>
+<td align="center">119</td>
+</tr>
+</tbody></table>
+<h1 id="纸巾"><a href="#纸巾" class="headerlink" title="纸巾"></a>纸巾</h1><h2 id="抽纸"><a href="#抽纸" class="headerlink" title="抽纸"></a>抽纸</h2><table>
+<thead>
+<tr>
+<th align="center">品牌</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">京东京造 24*110抽</td>
+<td align="center">30</td>
+</tr>
+<tr>
+<td align="center">洁柔 24*110抽</td>
+<td align="center">37</td>
+</tr>
+<tr>
+<td align="center">维达 24*150抽</td>
+<td align="center">44</td>
+</tr>
+<tr>
+<td align="center">心相印 27*120抽</td>
+<td align="center">45</td>
+</tr>
+<tr>
+<td align="center">清风 24*130抽</td>
+<td align="center">47</td>
+</tr>
+</tbody></table>
+<h2 id="卷纸"><a href="#卷纸" class="headerlink" title="卷纸"></a>卷纸</h2><table>
+<thead>
+<tr>
+<th align="center">品牌</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">维达 12*140g</td>
+<td align="center">21.9</td>
+</tr>
+<tr>
+<td align="center">心相印 12*140g</td>
+<td align="center">20.98</td>
+</tr>
+<tr>
+<td align="center">维达 30*140g（带芯）</td>
+<td align="center">41.9</td>
+</tr>
+<tr>
+<td align="center">洁柔 30*140g（带芯）</td>
+<td align="center">69.9</td>
+</tr>
+<tr>
+<td align="center">清风 30*140g（带芯）</td>
+<td align="center">69.9</td>
+</tr>
+<tr>
+<td align="center">心相印 27*140（带芯）</td>
+<td align="center">39.9</td>
+</tr>
+</tbody></table>
+<h1 id="插排"><a href="#插排" class="headerlink" title="插排"></a>插排</h1><table>
+<thead>
+<tr>
+<th align="center">品牌</th>
+<th align="center">价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">飞利浦 3+3USB 1.8m</td>
+<td align="center">39.9</td>
+</tr>
+<tr>
+<td align="center">小米 3+3USB 1.8m</td>
+<td align="center">49</td>
+</tr>
+<tr>
+<td align="center">小米 8 3m（4双口）</td>
+<td align="center">39.9</td>
+</tr>
+<tr>
+<td align="center">公牛 4 1.8m</td>
+<td align="center">29.9</td>
+</tr>
+</tbody></table>
+<h1 id="鼠标"><a href="#鼠标" class="headerlink" title="鼠标"></a>鼠标</h1><p>鼠标回报率 1k 就够了；无线鼠标电池一般在 300-500 毫安；主控尽量选 Nordic 的，也有用的 Realtek 的（网上褒贬不一）</p>
 ]]></content>
       <categories>
         <category>生活</category>
@@ -1042,6 +1377,82 @@
 <td>背离、偏离</td>
 </tr>
 </tbody></table>
+<h1 id="2024-9-29"><a href="#2024-9-29" class="headerlink" title="2024-9-29"></a>2024-9-29</h1><table>
+<thead>
+<tr>
+<th>divine</th>
+<th>神圣的</th>
+</tr>
+</thead>
+</table>
+<h1 id="2024-10-14"><a href="#2024-10-14" class="headerlink" title="2024-10-14"></a>2024-10-14</h1><table>
+<thead>
+<tr>
+<th>indulge</th>
+<th>迁就、纵容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>prioritize</td>
+<td>优先考虑</td>
+</tr>
+<tr>
+<td>mesmerize</td>
+<td>迷惑</td>
+</tr>
+<tr>
+<td>amendment</td>
+<td>修正案</td>
+</tr>
+<tr>
+<td>constitution</td>
+<td>宪法</td>
+</tr>
+</tbody></table>
+<h1 id="2024-10-16"><a href="#2024-10-16" class="headerlink" title="2024-10-16"></a>2024-10-16</h1><table>
+<thead>
+<tr>
+<th>compliance</th>
+<th>遵守、依从</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>obedience</td>
+<td>服从、顺从</td>
+</tr>
+<tr>
+<td>blend in</td>
+<td>融入</td>
+</tr>
+<tr>
+<td>deviation</td>
+<td>背离、偏离</td>
+</tr>
+<tr>
+<td>indifference</td>
+<td>不重视、中立</td>
+</tr>
+<tr>
+<td>discrimination</td>
+<td>区别对待</td>
+</tr>
+<tr>
+<td>initialtive</td>
+<td>主动、首创</td>
+</tr>
+<tr>
+<td>consensus</td>
+<td>共识、一致</td>
+</tr>
+<tr>
+<td>rational</td>
+<td>合理的、理性的</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -1054,30 +1465,48 @@
   <entry>
     <title>健康</title>
     <url>/post/e57e29d1/</url>
-    <content><![CDATA[<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="心脏"><a href="#心脏" class="headerlink" title="心脏"></a>心脏</h2><ul>
+    <content><![CDATA[<h1 id="心脏"><a href="#心脏" class="headerlink" title="心脏"></a>心脏</h1><ul>
 <li>心脏如果偶尔刺痛的话，可能是神经紊乱，没什么大碍；但如果是钝痛建议去医院查一查</li>
 <li>大一点的医院可以做 24 小时的心电图，如果是心律不齐而且还是不放心的话可以做</li>
 <li>心脏不舒服可以考虑做抽血检查心肌酶</li>
 </ul>
-<h2 id="鼻子"><a href="#鼻子" class="headerlink" title="鼻子"></a>鼻子</h2><ul>
-<li>鼻翼发红、破皮，可能是真菌感染引起的<ul>
+<h1 id="鼻子"><a href="#鼻子" class="headerlink" title="鼻子"></a>鼻子</h1><h2 id="真菌感染"><a href="#真菌感染" class="headerlink" title="真菌感染"></a>真菌感染</h2><p>鼻翼发红、破皮，可能是真菌感染引起的</p>
+<ul>
 <li>校医院的医生给开了<strong>莫匹罗星软膏</strong></li>
 <li>姐姐说可以涂<strong>红霉素眼膏</strong>（说是比软膏刺激性小）试一试，一天涂两次</li>
 </ul>
-</li>
+<h2 id="鼻炎"><a href="#鼻炎" class="headerlink" title="鼻炎"></a>鼻炎</h2><ul>
 <li>鼻子打喷嚏后会闻到异味，多半是鼻炎或鼻咽炎引起的，可以用以下药物：<ul>
-<li><strong>糠酸莫米松鼻喷雾剂：</strong>三十多元一瓶（逸青；60揿50，微克1揿）</li>
+<li><strong>糠酸莫米松鼻喷雾剂：</strong>30+元一瓶（逸青；60揿50，微克1揿）</li>
 <li><strong>呋麻滴鼻液：</strong>3元一支（五景；10ml）</li>
 <li><strong>鼻窦炎口服液：</strong>56元一盒（太极；12瓶）</li>
 </ul>
 </li>
 </ul>
-<h2 id="肾脏"><a href="#肾脏" class="headerlink" title="肾脏"></a>肾脏</h2><ul>
-<li><p><strong>长期喝奶茶、饮料</strong>或者<strong>久坐</strong>，可能导致肾结石；</p>
-<p>如果肾结石较小，需要开扩张尿道和消炎的药，多做跑步跳绳等运动把结石排出来；</p>
-<p>较大的肾结石就需要做手术排出了，有小结石的时候一定不要忽视</p>
+<h1 id="肾脏"><a href="#肾脏" class="headerlink" title="肾脏"></a>肾脏</h1><h2 id="肾结石"><a href="#肾结石" class="headerlink" title="肾结石"></a>肾结石</h2><p>第一时间去医院做彩超，确定结石大小</p>
+<ul>
+<li><p>肾结石较小，可以吃点<strong>扩张尿道</strong>和<strong>消炎</strong>的药，多喝水、运动把结石排出来</p>
+</li>
+<li><p>肾结石较大，就需要做手术排出了，有小结石的时候一定不要忽视</p>
 </li>
 </ul>
+<blockquote>
+<p><strong>预防肾结石，一定要 避免久坐、多喝水、少憋尿！！</strong></p>
+</blockquote>
+<h1 id="屁股"><a href="#屁股" class="headerlink" title="屁股"></a>屁股</h1><h2 id="痔疮"><a href="#痔疮" class="headerlink" title="痔疮"></a>痔疮</h2><p>便血或纸上带血，且血的颜色鲜红，大概率是痔疮</p>
+<ul>
+<li>外痔的话，涂点肛周用的痔疮膏可以缓解一下，每天要<strong>坐浴</strong>一会</li>
+<li>内痔且不太大的话，可以考虑用以下药物：<ul>
+<li><strong>裸花紫珠颗粒：</strong>38+元一盒（普正；3g一袋，9袋）</li>
+<li><strong>麝香痔疮栓：</strong>22+元一盒（马应龙；10个；坐浴后用）</li>
+<li><strong>抗菌洗剂：</strong>98元一盒（泰康；A剂B剂各8包；坐浴冲泡）</li>
+</ul>
+</li>
+<li>内痔且很大的话，可能需要做手术切除了</li>
+</ul>
+<blockquote>
+<p><strong>少吃辛辣油腻刺激是其次，最主要的是要 避免久坐，保持肛周卫生，多做提肛运动！！</strong></p>
+</blockquote>
 ]]></content>
       <categories>
         <category>生活</category>
@@ -1119,15 +1548,15 @@
     <content><![CDATA[<p>秋招开始了，因为缺乏一些招聘信息的获取渠道，所以打算自己做个小爬虫爬些招聘信息来</p>
 <p>刚开始想着去各大官网爬他们的公告，但是发现有些公司不更新公告，而且公告信息很滞后。所以打算从各大大学的就业公众号出发，写个公众号数据的爬虫</p>
 <p>先是直接在网上搜了搜相关的教程，发现还有挺多的而且比较详细。我随便找了一篇看了下，大概思路就是通过微信公众平台的接口直接爬取数据。只不过需要自己注册一个公众号提供一个 <code>token</code>，然后调用查询公众号信息的接口就行了</p>
-<p>因为感觉会很有用，所以自己封装了一下，把可复用的方法封装了一下，然后用 pyqt 搞了个简陋的可视化界面。自己反正用的还算可以，主要是因为没时间所以就没有搞太精致，在我的 github 里有开源，仓库名字叫 wechat-public，有感兴趣的可以去看一看<a href="https://github.com/liosq/wechat-public">liosq&#x2F;wechat-public: 微信公众号爬虫 (github.com)</a></p>
+<p>因为感觉会很有用，所以自己封装了一下，把可复用的方法封装了一下，然后用 pyqt 搞了个简陋的可视化界面。自己反正用的还算可以，主要是因为没时间所以就没有搞太精致，在我的 github 里有开源，仓库名字叫 wechat-public，有感兴趣的可以去看一看 <a href="https://github.com/liosq/wechat-public">liosq&#x2F;wechat-public: 微信公众号爬虫 (github.com)</a></p>
 ]]></content>
       <categories>
         <category>笔记</category>
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>爬虫</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1238,6 +1667,8 @@
 </li>
 <li><p>避雷<strong>电信</strong>的<strong>校园随翼选N选2</strong>套餐（我是湖南办的卡，不确定其他地区是不是也有这种），每个月会给你2个权益点，一个权益点可以换一个权益。但是<strong>尊享特权</strong>、<strong>福利加倍</strong>两个板块每个只能换一次，而大部分有用的权益都在<strong>福利加倍</strong>板块里，<strong>尊享特权</strong>板块毛都没有只有个3小时雷神加速器还算一般。这套餐还不如移动的权益，每个月可以领两个权益，还都是主流应用的权益。</p>
 </li>
+<li><p>注销不能等欠费自动注销，要不然会失信，以后用不了这个运营商的产品了（十块钱的教训）</p>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -1253,8 +1684,7 @@
     <content><![CDATA[<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><ul>
 <li><strong>出门通勤：</strong>尽量坐地铁出行。长沙的话地铁从<strong>中南大学</strong>坐到<strong>长沙南站</strong>也就3块6</li>
 </ul>
-<h2 id="电动车"><a href="#电动车" class="headerlink" title="电动车"></a>电动车</h2><ul>
-<li>价格参考：<ul>
+<h1 id="电动车"><a href="#电动车" class="headerlink" title="电动车"></a>电动车</h1><h2 id="价格参考"><a href="#价格参考" class="headerlink" title="价格参考"></a>价格参考</h2><ul>
 <li><strong>开了一年多</strong>、<strong>续航四十多公里</strong>、<strong>车身较大</strong>的<strong>雅迪欧米-D</strong>，920 元（原价 1100，校园集市上收的，砍了点价）</li>
 <li>二手电动车回收的（没讲价）<ul>
 <li><strong>小型车：</strong>一千左右</li>
@@ -1262,8 +1692,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><strong>购买注意事项：</strong><ul>
+<h2 id="购买注意事项"><a href="#购买注意事项" class="headerlink" title="购买注意事项"></a>购买注意事项</h2><ul>
 <li><strong>电池续航：</strong>小型电动车续航基本连30公里都不到，中大型电动车续航在40-70公里。用的时候看电量主要关注<strong>拉满速度时的显示电量</strong></li>
 <li><strong>电池是否可拆卸：</strong>电动车充电一般就这几种方式<ul>
 <li>拆下电池带回家充电：方便、省钱，但是放家里充电是否安全需要考虑</li>
@@ -1274,35 +1703,33 @@
 <li><strong>减震效果：</strong>过减速带的时候，没减震的车能把你魂都震出来</li>
 <li><strong>最高时速：</strong>新国标的车超过15码就会响而且限速25，但是一般都可以解限速，大的跑三四十多没什么问题</li>
 </ul>
-</li>
-<li><strong>骑行注意事项：</strong><ul>
-<li><strong>原则上要戴头盔</strong>，记得左右观望下看看<strong>原则在不在</strong>（开玩笑，骑行距离远一定要戴头盔）</li>
+<h2 id="骑行注意事项"><a href="#骑行注意事项" class="headerlink" title="骑行注意事项"></a>骑行注意事项</h2><ul>
+<li><strong>原则上要戴头盔</strong>，记得左右观望下看看<strong>原则在不在</strong>（开个玩笑，骑行距离远一定要戴头盔）</li>
 <li>如果有时间<strong>检查下坐垫</strong>是否有什么针头之类的，防人之心不可无</li>
 <li>刹车尽量<strong>用左刹</strong>（刹后轮），如果速度太快刹车只用前刹<strong>很有可能翻车</strong>（我妈经历过），实在刹不住也尽量先左刹再右刹</li>
-<li><strong>刹车如果失灵了</strong>随便找个电动车维修地方让他给你弄紧一下就行，一般不用钱</li>
 <li>后视镜一定要多看，不仅仅是在变道转弯的时候</li>
+<li>路面有水一定不要急刹，会翻车</li>
 </ul>
-</li>
-<li><strong>相关杂物需求：</strong><ul>
+<h2 id="相关杂物需求"><a href="#相关杂物需求" class="headerlink" title="相关杂物需求"></a>相关杂物需求</h2><ul>
 <li><strong>雨衣：</strong>不用买那种可以包住电动车的雨衣；买正常大小的，坐着时候能包住腿的就够了，不会太大携带很方便</li>
 <li><strong>坐垫罩：</strong>罩着坐垫后扯下来放车的篮子里，这样下雪下雨之后就不用拿抹布擦干坐垫了；夏天坐垫太热也能减少点坐垫温度</li>
 </ul>
-</li>
-<li>刹车不会解除 P 挡、喇叭不响、左右转灯不亮，可能是电动车<strong>转换器出问题了</strong>，去买电动车的地方问说 <strong>65 元</strong>一个，如果是好心商家会给你排查是不是接线的问题</li>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>刹车不会解除 P 挡、喇叭不响、左右转灯不亮，可能是电动车<strong>转换器出问题了</strong>，去买电动车的地方问说 <strong>65</strong> 换一个新的（找那种修电动车的小摊 20 就能换，但是要看看参数什么对不对得上），如果是好心商家会给你排查是不是接线的问题</li>
 <li>后座打开一般会有<strong>电池开关</strong>，如果在某个地方停很久担心再骑的时候没电，可以把开关关了（关了后被拖走也不会触发报警）</li>
+<li>前后刹车如果<strong>螺丝出来了很多</strong>，可能是刹车片磨光了，换一个大概几十块（还没换过）</li>
+<li><strong>刹车如果失灵了</strong>随便找个电动车维修地方让他给你弄紧一下就行，一般不用钱</li>
 </ul>
-<h2 id="自行车"><a href="#自行车" class="headerlink" title="自行车"></a>自行车</h2><ul>
-<li>价格参考：<ul>
+<h1 id="自行车"><a href="#自行车" class="headerlink" title="自行车"></a>自行车</h1><h2 id="价格参考-1"><a href="#价格参考-1" class="headerlink" title="价格参考"></a>价格参考</h2><ul>
 <li>某东买的<strong>正常规格</strong>凤凰单车，374 元 + 40 元（请师傅装车）</li>
 </ul>
-</li>
-<li>如果骑着感觉很费劲，检查下是不是刹车片太贴车轮了</li>
-<li><strong>相关杂物需求：</strong><ul>
+<h2 id="相关杂物需求："><a href="#相关杂物需求：" class="headerlink" title="相关杂物需求："></a>相关杂物需求：</h2><ul>
 <li><strong>车锁：</strong>买个带密码的粗一点的就够了（因为再怎么结实也会被偷，差不多得了）</li>
 </ul>
-</li>
+<h2 id="其他-1"><a href="#其他-1" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>如果骑着感觉很费劲，检查下是不是刹车片太贴车轮了</li>
 </ul>
-<h2 id="汽车"><a href="#汽车" class="headerlink" title="汽车"></a>汽车</h2><ul>
+<h1 id="汽车"><a href="#汽车" class="headerlink" title="汽车"></a>汽车</h1><ul>
 <li>自动挡斜坡起步的话一般会有电子手刹，直接踩油门会自动解锁</li>
 </ul>
 ]]></content>
@@ -3523,6 +3950,15 @@
 
 <h3 id="设置网页-Cookie"><a href="#设置网页-Cookie" class="headerlink" title="设置网页 Cookie"></a>设置网页 Cookie</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 要先访问网页再配置cookie</span></span><br><span class="line">driver.get(<span class="string">&#x27;url&#x27;</span>)</span><br><span class="line"><span class="comment"># 清空原有cookie</span></span><br><span class="line">driver.delete_all_cookies()</span><br><span class="line"><span class="comment"># cookie是字典类型的 浏览器装个Cookie Editor插件就可以导出json格式的cookies</span></span><br><span class="line">cookies = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&quot;domain&quot;</span>: <span class="string">&quot;.taobao.com&quot;</span>,</span><br><span class="line">        <span class="string">&quot;expirationDate&quot;</span>: <span class="number">1725995896.097156</span>,</span><br><span class="line">        <span class="string">&quot;httpOnly&quot;</span>: <span class="literal">False</span>,</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;3PcFlag&quot;</span>,</span><br><span class="line">        <span class="string">&quot;path&quot;</span>: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">        <span class="comment"># 要注意在selenium中sameSite字段只能有None. Lax, Strict三种情况，从Cookie Editor导出来不是这个格式需要自己替换一下</span></span><br><span class="line">        <span class="string">&quot;sameSite&quot;</span>: <span class="string">&#x27;None&#x27;</span>,</span><br><span class="line">        <span class="string">&quot;secure&quot;</span>: <span class="literal">True</span>,</span><br><span class="line">        <span class="string">&quot;storeId&quot;</span>: <span class="string">&quot;0&quot;</span>,</span><br><span class="line">        <span class="string">&quot;value&quot;</span>: <span class="string">&quot;1725103097024&quot;</span>,</span><br><span class="line">        <span class="string">&quot;url&quot;</span>: <span class="string">&quot;https://www.taobao.com/&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br><span class="line"><span class="comment"># 添加cookie</span></span><br><span class="line"><span class="keyword">for</span> cookie <span class="keyword">in</span> cookies:</span><br><span class="line">	driver.add_cookie(cookie)</span><br><span class="line"><span class="comment"># 配置完要刷新才能生效</span></span><br><span class="line">driver.refresh()</span><br></pre></td></tr></table></figure>
 
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="元素存在，但-click-失败"><a href="#元素存在，但-click-失败" class="headerlink" title="元素存在，但 click() 失败"></a>元素存在，但 click() 失败</h2><p>很大可能是因为<strong>元素被遮挡</strong>，导致直接调用 selenium 提供的 click 方法会报错</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">e = driver.find_element_by_xpath(<span class="string">&#x27;//div[@class=&quot;abc&quot;]&#x27;</span>)</span><br><span class="line">driver.execute_script(<span class="string">&quot;arguments[0].click()&quot;</span>, e)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>参考资料：</strong></p>
+<ul>
+<li><a href="https://www.cnblogs.com/liho/p/17822430.html">selenium定位元素被页面遮挡问题 - 萧兮易 - 博客园 (cnblogs.com)</a></li>
+</ul>
+</blockquote>
 ]]></content>
       <categories>
         <category>笔记</category>
@@ -5482,8 +5918,8 @@
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>爬虫</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -5505,8 +5941,8 @@
         <category>爬虫</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>爬虫</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
