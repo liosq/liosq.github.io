@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"liosq.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":24,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":400},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="QMScript这个名称是在按键精灵文件夹里看到的，姑且认为他的脚本语言就是认为这个名称（网上说是缝合了VBS、VB等等）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QMScript">
+<meta property="og:url" content="https://liosq.github.io/post/739d1b27/index.html">
+<meta property="og:site_name" content="liosq的博客">
+<meta property="og:description" content="QMScript这个名称是在按键精灵文件夹里看到的，姑且认为他的脚本语言就是认为这个名称（网上说是缝合了VBS、VB等等）">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-05-06T08:33:27.000Z">
+<meta property="article:modified_time" content="2025-05-06T09:26:27.754Z">
+<meta property="article:author" content="liosq">
+<meta property="article:tag" content="按键精灵">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://liosq.github.io/post/739d1b27/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://liosq.github.io/post/739d1b27/","path":"post/739d1b27/","title":"QMScript"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>QMScript | liosq的博客</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">liosq的博客</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">blog of liosq</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">123</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a></li><li class="menu-item menu-item-游戏"><a href="/game/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#QMScript"><span class="nav-number">1.</span> <span class="nav-text">QMScript</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Do-While-%E2%80%A6-Loop-%E5%BC%82%E5%B8%B8%E8%B7%B3%E5%87%BA%E5%BE%AA%E7%8E%AF"><span class="nav-number">2.1.</span> <span class="nav-text">Do While … Loop 异常跳出循环</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="liosq"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">liosq</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">123</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">63</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+
+    
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <h3 class="widget-title">标签云</h3>
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width=100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">30</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/" rel="tag">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%86%85/" rel="tag">国内</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%A4%96/" rel="tag">国外</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/" rel="tag">按键精灵</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag">数据库系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag">英语</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%91%E8%9E%8D/" rel="tag">金融</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag">集群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a><span class="tag-list-count">2</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://liosq.github.io/post/739d1b27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="liosq">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liosq的博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="QMScript | liosq的博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          QMScript
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-05-06 16:33:27 / 修改时间：17:26:27" itemprop="dateCreated datePublished" datetime="2025-05-06T16:33:27+08:00">2025-05-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">编程</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="QMScript"><a href="#QMScript" class="headerlink" title="QMScript"></a>QMScript</h1><p>这个名称是在按键精灵文件夹里看到的，姑且认为他的脚本语言就是认为这个名称（网上说是缝合了VBS、VB等等）</p>
+<p>个人认为，按键精灵对于程序员来说并不是个很好用的语言，原因有以下几点：</p>
+<ol>
+<li>PC 版 UI、交互、IDE 什么的比较屎，你在写脚本的时候拖拽窗口会明显感觉到窗口像是在追着鼠标跑一样。。。</li>
+<li>你想像其他高级语言一样自定义一个通用库，只能在内部库里面新建，而且调用方式也比较繁琐</li>
+<li>win10 会有缩放问题，如果你电脑不是 100% 的缩放，那么用抓抓选区域或者锁定句柄总会少一部分显示内容</li>
+<li>自带库里面的识图容易抽风，除非是现截现用，否则会出现识不出来的情况</li>
+<li>语言 bug 还是有挺多的，出现过用 Do While flag Loop 在进入下一次循环前 flag 变量值变了的情况（感觉很逆天，问题里会详细讲）</li>
+<li>软件不维护了，最新的 PC 版本都是14年的。。。</li>
+</ol>
+<p>但总的来说有个优点，就是相对来说比较方便（可能是我没用过其他类似的软件），能够很容易地模拟用户操作，一般都是用来搞游戏挂机刷副本之类的自动化操作。相较于用 Python 搓一个脚本来说，按键精灵肯定没那么高的灵活性，比如嵌入 OCR 或者 AI 识别之类的。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Do-While-…-Loop-异常跳出循环"><a href="#Do-While-…-Loop-异常跳出循环" class="headerlink" title="Do While … Loop 异常跳出循环"></a>Do While … Loop 异常跳出循环</h2><p>这代码原先是用雷电模拟器，搞我的勇者的钥匙副本挂机的。本来搞一个测试脚本复现的，但是发现怎么都复现不了，只好把这段代码全贴上来了。</p>
+<p>其中主要的故障部分是在 70 行，在 <code> Do While gaming</code> 这层循环执行到 106 行给 <code>gaming</code> 赋值后理应<strong>正常跳出循环</strong>，但是他会<strong>跳转到第 70 行再次赋值</strong>（没错，我给70-111行每一行代码都穿插了 <code>gaming</code> 的输出调试了，就是会跳到那里）</p>
+<p>然后我不信邪，就把前面空行都删了，以为是空行导致的 bug，结果还是不行，只能说十分逆天</p>
+<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> local_sim, matching, gaming, can_match</span><br><span class="line">local_sim = <span class="number">0.6</span></span><br><span class="line">matching = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27;没有匹配次数就不匹配了</span></span><br><span class="line">FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_no_match.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">can_match = (intX &lt; <span class="number">0</span> <span class="keyword">Or</span> intY &lt; <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">TracePrint gaming &amp; <span class="string">&quot; &quot;</span> &amp; matching &amp; <span class="string">&quot; &quot;</span> &amp; can_match &amp; <span class="string">&quot; &quot;</span> &amp; local_sim</span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> can_match</span><br><span class="line">	<span class="comment">&#x27; 一直匹配到进副本 防止有人退了崩溃</span></span><br><span class="line">	<span class="keyword">Do</span> <span class="keyword">While</span> matching</span><br><span class="line">		<span class="comment">&#x27; 匹配副本</span></span><br><span class="line">		<span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">			Delay <span class="number">150</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">&#x27; 点匹配按钮</span></span><br><span class="line">			FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_match.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">			<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">				click intX, intY</span><br><span class="line">				Delay <span class="number">100</span></span><br><span class="line">			<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">&#x27; 判断是不是在匹配了 防止点击没被识别到</span></span><br><span class="line">			FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_matching.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">			<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">				<span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line">			<span class="keyword">Else</span> </span><br><span class="line">				<span class="comment">&#x27; 检测是不是匹配到</span></span><br><span class="line">				<span class="comment">&#x27; 防止出现刚点就匹配到 但是没有退出这层循环的情况</span></span><br><span class="line">				FindPic <span class="number">266</span>, <span class="number">720</span>, <span class="number">1291</span>, <span class="number">955</span>, <span class="string">&quot;Attachment:\btn_in.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">				<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">					<span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line">				<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">			<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">			</span><br><span class="line">			Delay <span class="number">150</span></span><br><span class="line">		<span class="keyword">Loop</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&#x27; 匹配到队伍 进入</span></span><br><span class="line">		<span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">			Delay <span class="number">200</span></span><br><span class="line">			</span><br><span class="line">			FindPic <span class="number">266</span>, <span class="number">720</span>, <span class="number">1291</span>, <span class="number">955</span>, <span class="string">&quot;Attachment:\btn_in.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">			<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">				click intX, intY</span><br><span class="line">				<span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line">			<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">			</span><br><span class="line">			Delay <span class="number">200</span></span><br><span class="line">		<span class="keyword">Loop</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&#x27; 等待进入战斗</span></span><br><span class="line">		<span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">			Delay <span class="number">250</span></span><br><span class="line">			</span><br><span class="line">			FindPic <span class="number">1451</span>, <span class="number">311</span>, <span class="number">1844</span>, <span class="number">501</span>, <span class="string">&quot;Attachment:\bag.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">			<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">				matching = <span class="literal">False</span></span><br><span class="line">                <span class="comment">&#x27;&#x27;&#x27;&#x27;刚开始gaming = True是放这里的&#x27;&#x27;&#x27;&#x27;    </span></span><br><span class="line">				<span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line">			<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">			</span><br><span class="line">			Delay <span class="number">250</span></span><br><span class="line">		<span class="keyword">Loop</span></span><br><span class="line">	<span class="keyword">Loop</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&#x27; 检测有没有打完</span></span><br><span class="line">    <span class="comment">&#x27;&#x27;&#x27;&#x27;调试试了，在Do While一次循环结束，会跳到这里执行&#x27;&#x27;&#x27;&#x27;</span></span><br><span class="line">	gaming = <span class="literal">True</span></span><br><span class="line">	<span class="keyword">Do</span> <span class="keyword">While</span> gaming</span><br><span class="line">		<span class="comment">&#x27; 放技能</span></span><br><span class="line">		KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;2&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;Q&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;R&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;F&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;;&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;P&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;O&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;I&quot;</span>, <span class="number">1</span></span><br><span class="line">		KeyPress <span class="string">&quot;T&quot;</span>, <span class="number">1</span></span><br><span class="line">		Delay <span class="number">400</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">&#x27; 识别到退出按钮 说明打完了</span></span><br><span class="line">		FindPic <span class="number">1256</span>, <span class="number">179</span>, <span class="number">1748</span>, <span class="number">392</span>, <span class="string">&quot;Attachment:\out.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">		<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">			KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">			Delay <span class="number">300</span></span><br><span class="line">			<span class="keyword">Dim</span> lX, lY</span><br><span class="line">			lX = intX</span><br><span class="line">			lY = intY</span><br><span class="line">			</span><br><span class="line">			<span class="comment">&#x27; 防止卡顿确定退出按钮没弹出来</span></span><br><span class="line">			<span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">				click lX, lY</span><br><span class="line">				Delay <span class="number">250</span></span><br><span class="line">				</span><br><span class="line">				<span class="comment">&#x27; 点到确定退出按钮</span></span><br><span class="line">				FindPic <span class="number">825</span>,<span class="number">586</span>,<span class="number">1410</span>,<span class="number">821</span>,<span class="string">&quot;Attachment:\btn_ok.bmp&quot;</span>,local_sim,intX,intY</span><br><span class="line">				<span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span></span><br><span class="line">					click intX, intY</span><br><span class="line">					gaming = <span class="literal">False</span></span><br><span class="line">					<span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line">				<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">			<span class="keyword">Loop</span></span><br><span class="line">		<span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line">	<span class="keyword">Loop</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&#x27; 匹配不了了</span></span><br><span class="line">	FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_no_match.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">	can_match = (intX &lt; <span class="number">0</span> <span class="keyword">Or</span> intY &lt; <span class="number">0</span>)</span><br><span class="line">	matching = <span class="literal">True</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27;=================================================</span></span><br><span class="line"><span class="keyword">Function</span> click(x, y)</span><br><span class="line">	MoveTo x, y</span><br><span class="line">	LeftClick <span class="number">1</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Function</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>liosq
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://liosq.github.io/post/739d1b27/" title="QMScript">https://liosq.github.io/post/739d1b27/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/" rel="tag"># 按键精灵</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/536a2243/" rel="prev" title="CefFlashBrowser">
+                  <i class="fa fa-angle-left"></i> CefFlashBrowser
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">liosq</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">176k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">5:21</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/liosq" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://liosq.github.io/post/739d1b27/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script src="/js/darkmode-js.min.js"></script>
+
+<script>
+var options = {
+  bottom: '32px',
+  right: 'unset',
+  left: '32px',
+  time: '0.3s',
+  mixColor: 'transparent',
+  backgroundColor: 'transparent',
+  buttonColorDark: '#100f2c',
+  buttonColorLight: '#fff',
+  saveInCookies: false,
+  label: '🌓',
+  autoMatchOsTheme: false
+}
+const darkmode = new Darkmode(options);
+window.darkmode = darkmode;
+darkmode.showWidget();
+</script>
+
+</body>
+</html>
