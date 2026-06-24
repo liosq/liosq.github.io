@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>liosq</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <id>https://liosq.github.io/</id>
+  <link href="https://liosq.github.io/" rel="alternate"/>
+  <link href="https://liosq.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, liosq</rights>
+  <subtitle>blog of liosq</subtitle>
+  <title>liosq的博客</title>
+  <updated>2026-06-24T08:58:48.017Z</updated>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <id>https://liosq.github.io/post/0/</id>
+    <link href="https://liosq.github.io/post/0/"/>
+    <published>2026-06-24T08:58:36.920Z</published>
+    <updated>2026-06-24T08:58:48.017Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="设计模式" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <category term="设计模式" scheme="https://liosq.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    <content>
+      <![CDATA[<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><strong>设计模式</strong>是软件设计中<strong>常见问题的典型解决方案</strong>，他们就像能根据需求进行调整的预制蓝图，可用于解决代码中重复出现的设计问题</p><blockquote><p><strong>设计模式和算法有什么区别？</strong></p></blockquote><p>这两者虽然都是已知特定问题的典型解决方案，但算法更强调<strong>解决问题的一系列步骤</strong>；而设计模式更强调<strong>对解决方法的抽象的描述</strong>、</p><h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>总体来说设计模式分为三大类：</p><ul><li><p><strong>创建型模式：</strong></p><ul><li><p>工厂方法模式</p></li><li><p>抽象工厂模式</p></li><li><p>单例模式</p></li><li><p>建造者模式</p></li><li><p>原型模式</p></li></ul></li><li><p><strong>结构性模式：</strong></p><ul><li>适配器模式</li><li>装饰器模式</li><li>代理模式</li><li>外观模式</li><li>桥接模式</li><li>组合模式</li><li>享元模式</li></ul></li><li><p><strong>行为性模式：</strong></p><ul><li>策略模式</li><li>模板方法模式</li><li>观察者模式</li><li>迭代器模式</li><li>责任链模式</li><li>命令模式</li><li>备忘录模式</li><li>状态模式</li><li>访问者模式</li><li>中介器模式</li><li>解释器模式</li></ul></li></ul><h2 id="总原则"><a href="#总原则" class="headerlink" title="总原则"></a>总原则</h2><h3 id="开闭原则（Open-Close-Principle）"><a href="#开闭原则（Open-Close-Principle）" class="headerlink" title="开闭原则（Open Close Principle）"></a>开闭原则（Open Close Principle）</h3><p><strong>对扩展开放、对修改关闭</strong></p><p>在程序需要进行拓展时，不能去修改原有的代码，而是要扩展原有代码，这样可以使得程序<strong>易于维护和升级</strong></p><h2 id="六大原则"><a href="#六大原则" class="headerlink" title="六大原则"></a>六大原则</h2><h3 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h3><p>每个类应该实现单一的职责，如果其拥有多个职责，则应该将类拆分</p><h3 id="里氏替换原则（Liskov-Substitution-Principle）"><a href="#里氏替换原则（Liskov-Substitution-Principle）" class="headerlink" title="里氏替换原则（Liskov Substitution Principle）"></a>里氏替换原则（Liskov Substitution Principle）</h3><p>任何可以使用基类的地方，都可以使用其子类，并且程序的行为保持不变</p><p>即：子类可以扩展父类的功能，但不应该改变父类的原有功能</p><h3 id="依赖倒置原则（Dependence-Inversion-Principle）"><a href="#依赖倒置原则（Dependence-Inversion-Principle）" class="headerlink" title="依赖倒置原则（Dependence Inversion Principle）"></a>依赖倒置原则（Dependence Inversion Principle）</h3><p>高层模块不应该依赖于底层模块，它们都应该依赖于抽象</p><h3 id="接口隔离原则（Interface-Segregation-Principle）"><a href="#接口隔离原则（Interface-Segregation-Principle）" class="headerlink" title="接口隔离原则（Interface Segregation Principle）"></a>接口隔离原则（Interface Segregation Principle）</h3><p>建立单一的接口，而不要建立庞大臃肿的接口</p><h3 id="迪米特法则（Demeter-Principle）"><a href="#迪米特法则（Demeter-Principle）" class="headerlink" title="迪米特法则（Demeter Principle）"></a>迪米特法则（Demeter Principle）</h3><p>一个类对自己依赖的类知道的越少越好</p><h3 id="合成复用原则（Composite-Reuse-Principle）"><a href="#合成复用原则（Composite-Reuse-Principle）" class="headerlink" title="合成复用原则（Composite Reuse Principle）"></a>合成复用原则（Composite Reuse Principle）</h3><p>尽量使用对象组合，而不是继承来达到复用的目的</p><blockquote><p><strong>参考资料：</strong></p><ul><li><a href="https://refactoringguru.cn/design-patterns#intro-patterns">常用设计模式有哪些？ (refactoringguru.cn)</a></li><li><a href="https://www.cnblogs.com/geek6/p/3951677.html">23种设计模式全解析 - codeTao - 博客园 (cnblogs.com)</a></li></ul></blockquote>]]>
+    </content>
+    <id>https://liosq.github.io/post/364ea8cc/</id>
+    <link href="https://liosq.github.io/post/364ea8cc/"/>
+    <published>2026-06-24T07:34:35.714Z</published>
+    <summary>
+      <![CDATA[<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><strong>设计模式</strong>是软件设计中<strong>常见问题的典型解决方案</strong>，他们就像能根据需求进行调整的预制蓝图，可用于解决代码中重复出现的设计问题</p>]]>
+    </summary>
+    <title>设计模式</title>
+    <updated>2026-06-24T07:34:35.714Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="网络" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E7%BD%91%E7%BB%9C/"/>
+    <category term="计算机网络" scheme="https://liosq.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    <id>https://liosq.github.io/post/a1ede006/</id>
+    <link href="https://liosq.github.io/post/a1ede006/"/>
+    <published>2026-06-24T07:34:35.713Z</published>
+    <title>HTTP</title>
+    <updated>2026-06-24T07:34:35.713Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <id>https://liosq.github.io/post/0/</id>
+    <link href="https://liosq.github.io/post/0/"/>
+    <published>2026-06-24T07:34:35.706Z</published>
+    <updated>2026-06-24T07:34:35.706Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <id>https://liosq.github.io/post/0/</id>
+    <link href="https://liosq.github.io/post/0/"/>
+    <published>2026-06-24T07:34:35.702Z</published>
+    <updated>2026-06-24T07:34:35.702Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="操作系统" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <category term="Windows" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Windows/"/>
+    <category term="Windows" scheme="https://liosq.github.io/tags/Windows/"/>
+    <content>
+      <![CDATA[<h1 id="文件图标变为空白图片"><a href="#文件图标变为空白图片" class="headerlink" title="文件图标变为空白图片"></a>文件图标变为空白图片</h1><p>大概率是图标缓存没了</p><ol><li><strong><code>Win+R</code> 输入 <code>%localappdata%</code></strong> 或<strong>进入<code>C:\Users\[用户名]\AppData\Local</code>目录下</strong></li><li>删除 <code>IconCache.db</code> 文件（如果没找到，就开启<strong>隐藏的项目</strong>）</li><li>重启电脑，或重启资源管理器（<strong>在任务管理器里右键进程重启</strong>）</li></ol><p>解决原理就是删除错误的缓存，让系统重新创建新的图标缓存</p>]]>
+    </content>
+    <id>https://liosq.github.io/post/0/</id>
+    <link href="https://liosq.github.io/post/0/"/>
+    <published>2026-06-24T07:34:35.701Z</published>
+    <summary>
+      <![CDATA[<h1 id="文件图标变为空白图片"><a href="#文件图标变为空白图片" class="headerlink" title="文件图标变为空白图片"></a>文件图标变为空白图片</h1><p>大概率是图标缓存没了</p>]]>
+    </summary>
+    <title>Windows</title>
+    <updated>2026-06-24T07:34:35.701Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="Github" scheme="https://liosq.github.io/tags/Github/"/>
+    <content>
+      <![CDATA[<h1 id="CelfFlashBrowser"><a href="#CelfFlashBrowser" class="headerlink" title="CelfFlashBrowser"></a>CelfFlashBrowser</h1><blockquote><p><a href="https://github.com/Mzying2001/CefFlashBrowser">Mzying2001&#x2F;CefFlashBrowser: Flash浏览器 &#x2F; Flash Browser (github.com)</a></p></blockquote><p>内置 Flash 的浏览器，玩一些页游很方便，不需要下载什么 Flash 中心</p><h1 id="LocalSend"><a href="#LocalSend" class="headerlink" title="LocalSend"></a>LocalSend</h1><blockquote><p><a href="https://github.com/localsend/localsend">localsend&#x2F;localsend: An open-source cross-platform alternative to AirDrop (github.com)</a></p></blockquote><p>可以让局域网内的多设备相互传输文件</p><h1 id="scrcpy"><a href="#scrcpy" class="headerlink" title="scrcpy"></a>scrcpy</h1><blockquote><p> <a href="https://github.com/Genymobile/scrcpy">GitHub - Genymobile&#x2F;scrcpy: Display and control your Android device</a> </p></blockquote><p>一个手机投屏的软件，没有GUI，但是延迟巨低，自己实际用起来感觉延迟只有几十毫秒，但是有些限制屏幕录像或者截图的页面就会黑屏。比如微信支付码、学习通考试什么的…可以共享手机相机的画面</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>手机第一次连需要用usb连电脑，把 <strong>开发者模式、usb调试</strong> 什么的打开，然后手机电脑连同同一局域网，用**<code>--tcp-ip</code>**启动就能直接连了</p><p>有点鸡肋的地方就是如果电脑关机，那手机又要用 usb 连了。就相当于可以无线投屏维持到电脑关机前（可能只是我会出现这种问题）</p><h1 id="ContextMenuManager"><a href="#ContextMenuManager" class="headerlink" title="ContextMenuManager"></a>ContextMenuManager</h1><p>管理 Windows 右键出现的菜单项</p><h1 id="SyncThing"><a href="#SyncThing" class="headerlink" title="SyncThing"></a>SyncThing</h1><h1 id="KeyCastOW"><a href="#KeyCastOW" class="headerlink" title="KeyCastOW"></a>KeyCastOW</h1>]]>
+    </content>
+    <id>https://liosq.github.io/post/73a4d573/</id>
+    <link href="https://liosq.github.io/post/73a4d573/"/>
+    <published>2025-06-10T15:23:16.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="CelfFlashBrowser"><a href="#CelfFlashBrowser" class="headerlink" title="CelfFlashBrowser"></a>CelfFlashBrowser</h1><blockquote>
+<p><a href="https://github.com/Mzying2001/CefFlashBrowser">Mzying2001&#x2F;CefFlashBrowser: Flash浏览器 &#x2F; Flash Browser (github.com)</a></p>
+</blockquote>]]>
+    </summary>
+    <title>开源项目推荐</title>
+    <updated>2026-06-24T08:01:11.236Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="游戏" scheme="https://liosq.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
+    <id>https://liosq.github.io/post/587656f1/</id>
+    <link href="https://liosq.github.io/post/587656f1/"/>
+    <published>2025-05-24T04:31:24.000Z</published>
+    <title>饥荒联机版</title>
+    <updated>2026-06-24T08:01:11.237Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="编程" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B/"/>
+    <category term="按键精灵" scheme="https://liosq.github.io/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/"/>
+    <content>
+      <![CDATA[<h1 id="QMScript"><a href="#QMScript" class="headerlink" title="QMScript"></a>QMScript</h1><p>这个名称是在按键精灵文件夹里看到的，姑且认为他的脚本语言就是认为这个名称（网上说是缝合了VBS、VB等等）</p><p>个人认为，按键精灵对于程序员来说并不是个很好用的语言，原因有以下几点：</p><ol><li>PC 版 UI、交互、IDE 什么的比较屎，你在写脚本的时候拖拽窗口会明显感觉到窗口像是在追着鼠标跑一样。。。</li><li>你想像其他高级语言一样自定义一个通用库，只能在内部库里面新建，而且调用方式也比较繁琐</li><li>win10 会有缩放问题，如果你电脑不是 100% 的缩放，那么用抓抓选区域或者锁定句柄总会少一部分显示内容</li><li>自带库里面的识图容易抽风，除非是现截现用，否则会出现识不出来的情况</li><li>语言 bug 还是有挺多的，出现过用 Do While flag Loop 在进入下一次循环前 flag 变量值变了的情况（感觉很逆天，问题里会详细讲）</li><li>软件不维护了，最新的 PC 版本都是14年的。。。</li></ol><p>但总的来说有个优点，就是相对来说比较方便（可能是我没用过其他类似的软件），能够很容易地模拟用户操作，一般都是用来搞游戏挂机刷副本之类的自动化操作。相较于用 Python 搓一个脚本来说，按键精灵肯定没那么高的灵活性，比如嵌入 OCR 或者 AI 识别之类的。</p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Do-While-…-Loop-异常跳出循环"><a href="#Do-While-…-Loop-异常跳出循环" class="headerlink" title="Do While … Loop 异常跳出循环"></a>Do While … Loop 异常跳出循环</h2><p>这代码原先是用雷电模拟器，搞我的勇者的钥匙副本挂机的。本来搞一个测试脚本复现的，但是发现怎么都复现不了，只好把这段代码全贴上来了。</p><p>其中主要的故障部分是在 70 行，在 <code> Do While gaming</code> 这层循环执行到 106 行给 <code>gaming</code> 赋值后理应<strong>正常跳出循环</strong>，但是他会<strong>跳转到第 70 行再次赋值</strong>（没错，我给70-111行每一行代码都穿插了 <code>gaming</code> 的输出调试了，就是会跳到那里）</p><p>然后我不信邪，就把前面空行都删了，以为是空行导致的 bug，结果还是不行，只能说十分逆天</p><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Dim</span> local_sim, matching, gaming, can_match</span><br><span class="line">local_sim = <span class="number">0.6</span></span><br><span class="line">matching = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27;没有匹配次数就不匹配了</span></span><br><span class="line">FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_no_match.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">can_match = (intX &lt; <span class="number">0</span> <span class="keyword">Or</span> intY &lt; <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">TracePrint gaming &amp; <span class="string">&quot; &quot;</span> &amp; matching &amp; <span class="string">&quot; &quot;</span> &amp; can_match &amp; <span class="string">&quot; &quot;</span> &amp; local_sim</span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> can_match</span><br><span class="line"><span class="comment">&#x27; 一直匹配到进副本 防止有人退了崩溃</span></span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> matching</span><br><span class="line"><span class="comment">&#x27; 匹配副本</span></span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">Delay <span class="number">150</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 点匹配按钮</span></span><br><span class="line">FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_match.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">click intX, intY</span><br><span class="line">Delay <span class="number">100</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 判断是不是在匹配了 防止点击没被识别到</span></span><br><span class="line">FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_matching.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line"><span class="keyword">Else</span> </span><br><span class="line"><span class="comment">&#x27; 检测是不是匹配到</span></span><br><span class="line"><span class="comment">&#x27; 防止出现刚点就匹配到 但是没有退出这层循环的情况</span></span><br><span class="line">FindPic <span class="number">266</span>, <span class="number">720</span>, <span class="number">1291</span>, <span class="number">955</span>, <span class="string">&quot;Attachment:\btn_in.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"></span><br><span class="line">Delay <span class="number">150</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 匹配到队伍 进入</span></span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">Delay <span class="number">200</span></span><br><span class="line"></span><br><span class="line">FindPic <span class="number">266</span>, <span class="number">720</span>, <span class="number">1291</span>, <span class="number">955</span>, <span class="string">&quot;Attachment:\btn_in.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">click intX, intY</span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"></span><br><span class="line">Delay <span class="number">200</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 等待进入战斗</span></span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">Delay <span class="number">250</span></span><br><span class="line"></span><br><span class="line">FindPic <span class="number">1451</span>, <span class="number">311</span>, <span class="number">1844</span>, <span class="number">501</span>, <span class="string">&quot;Attachment:\bag.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">matching = <span class="literal">False</span></span><br><span class="line">                <span class="comment">&#x27;&#x27;&#x27;&#x27;刚开始gaming = True是放这里的&#x27;&#x27;&#x27;&#x27;    </span></span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"></span><br><span class="line">Delay <span class="number">250</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 检测有没有打完</span></span><br><span class="line">    <span class="comment">&#x27;&#x27;&#x27;&#x27;调试试了，在Do While一次循环结束，会跳到这里执行&#x27;&#x27;&#x27;&#x27;</span></span><br><span class="line">gaming = <span class="literal">True</span></span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> gaming</span><br><span class="line"><span class="comment">&#x27; 放技能</span></span><br><span class="line">KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;2&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;Q&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;R&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;F&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;;&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;P&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;O&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;I&quot;</span>, <span class="number">1</span></span><br><span class="line">KeyPress <span class="string">&quot;T&quot;</span>, <span class="number">1</span></span><br><span class="line">Delay <span class="number">400</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 识别到退出按钮 说明打完了</span></span><br><span class="line">FindPic <span class="number">1256</span>, <span class="number">179</span>, <span class="number">1748</span>, <span class="number">392</span>, <span class="string">&quot;Attachment:\out.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span> </span><br><span class="line">KeyPress <span class="string">&quot;J&quot;</span>, <span class="number">1</span></span><br><span class="line">Delay <span class="number">300</span></span><br><span class="line"><span class="keyword">Dim</span> lX, lY</span><br><span class="line">lX = intX</span><br><span class="line">lY = intY</span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 防止卡顿确定退出按钮没弹出来</span></span><br><span class="line"><span class="keyword">Do</span> <span class="keyword">While</span> <span class="literal">True</span></span><br><span class="line">click lX, lY</span><br><span class="line">Delay <span class="number">250</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 点到确定退出按钮</span></span><br><span class="line">FindPic <span class="number">825</span>,<span class="number">586</span>,<span class="number">1410</span>,<span class="number">821</span>,<span class="string">&quot;Attachment:\btn_ok.bmp&quot;</span>,local_sim,intX,intY</span><br><span class="line"><span class="keyword">If</span> intX &gt; <span class="number">0</span> <span class="keyword">And</span> intY &gt; <span class="number">0</span> <span class="keyword">Then</span></span><br><span class="line">click intX, intY</span><br><span class="line">gaming = <span class="literal">False</span></span><br><span class="line"><span class="keyword">Exit</span> <span class="keyword">Do</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">If</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27; 匹配不了了</span></span><br><span class="line">FindPic <span class="number">685</span>, <span class="number">779</span>, <span class="number">1238</span>, <span class="number">994</span>, <span class="string">&quot;Attachment:\btn_no_match.bmp&quot;</span>, local_sim, intX, intY</span><br><span class="line">can_match = (intX &lt; <span class="number">0</span> <span class="keyword">Or</span> intY &lt; <span class="number">0</span>)</span><br><span class="line">matching = <span class="literal">True</span></span><br><span class="line"><span class="keyword">Loop</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&#x27;=================================================</span></span><br><span class="line"><span class="keyword">Function</span> click(x, y)</span><br><span class="line">MoveTo x, y</span><br><span class="line">LeftClick <span class="number">1</span></span><br><span class="line"><span class="keyword">End</span> <span class="keyword">Function</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>https://liosq.github.io/post/739d1b27/</id>
+    <link href="https://liosq.github.io/post/739d1b27/"/>
+    <published>2025-05-06T08:33:27.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="QMScript"><a href="#QMScript" class="headerlink" title="QMScript"></a>QMScript</h1><p>这个名称是在按键精灵文件夹里看到的，姑且认为他的脚本语言就是认为这个名称（网上说是缝合了VBS、VB等等）</p>]]>
+    </summary>
+    <title>QMScript</title>
+    <updated>2026-06-24T07:34:35.713Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="代码记录" scheme="https://liosq.github.io/categories/%E4%BB%A3%E7%A0%81%E8%AE%B0%E5%BD%95/"/>
+    <category term="C++" scheme="https://liosq.github.io/tags/C/"/>
+    <content>
+      <![CDATA[<p>输入每月收入，和理财的年化利率上下限，用随机数模拟每天实际的收益，然后累加在一起</p><p>最后反复模拟上面的过程，取近似平均值</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> N 99999</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">// 获取某年总天数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gd</span><span class="params">(<span class="type">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">return</span> ((y%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;y%<span class="number">100</span>)||(y%<span class="number">400</span>==<span class="number">0</span>&amp;&amp;y%<span class="number">3200</span>)||y%<span class="number">172800</span>==<span class="number">0</span>)?<span class="number">366</span>:<span class="number">365</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取某年某月总天数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">gd</span><span class="params">(<span class="type">int</span> y,<span class="type">int</span> m)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(m==<span class="number">2</span>)</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">gd</span>(y)<span class="number">-365</span>+<span class="number">28</span>;</span><br><span class="line"><span class="keyword">if</span>(m&gt;<span class="number">7</span>)</span><br><span class="line"><span class="keyword">return</span> ((m<span class="number">-7</span>)&amp;<span class="number">1</span>)?<span class="number">31</span>:<span class="number">30</span>;</span><br><span class="line"><span class="keyword">return</span> (m&amp;<span class="number">1</span>)?<span class="number">31</span>:<span class="number">30</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">calc</span><span class="params">(<span class="type">double</span> &amp;c,<span class="type">double</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">c+=c*r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">solve</span><span class="params">(<span class="type">double</span> c,<span class="type">double</span> yx,<span class="type">double</span> nz,<span class="type">double</span> yrl,<span class="type">double</span> yrh,<span class="type">int</span> cy,<span class="type">int</span> cm,<span class="type">int</span> cnt)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="type">double</span> yr;</span><br><span class="line"><span class="keyword">for</span>(;cnt;cm++,cnt--)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(cm==<span class="number">13</span>)</span><br><span class="line">cy++,cm-=<span class="number">12</span>,c+=nz;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> d=<span class="built_in">gd</span>(cy,cm);d&gt;<span class="number">0</span>;d--)</span><br><span class="line">&#123;</span><br><span class="line">yr=(<span class="built_in">rand</span>()%(N+<span class="number">1</span>)/(<span class="type">float</span>)(N+<span class="number">1</span>))*(yrh-yrl)+yrl;</span><br><span class="line"><span class="built_in">calc</span>(c,yr/<span class="built_in">gd</span>(cy));</span><br><span class="line">&#125;</span><br><span class="line">c+=yx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="built_in">srand</span>(<span class="built_in">time</span>(<span class="literal">NULL</span>));</span><br><span class="line"><span class="type">double</span> c,yx,nz,yrl,yrh;</span><br><span class="line"><span class="type">int</span> cy,cm,ty,tm,m;</span><br><span class="line">cout&lt;&lt;<span class="string">&quot;当前金额；每月收入；年终奖；年利率下限，上限（百分比%）；当前年份，月份；目标年份，月份；模拟次数\n&quot;</span>;</span><br><span class="line">cin&gt;&gt;c&gt;&gt;yx&gt;&gt;nz&gt;&gt;yrl&gt;&gt;yrh&gt;&gt;cy&gt;&gt;cm&gt;&gt;ty&gt;&gt;tm&gt;&gt;m;</span><br><span class="line">yrl/=<span class="number">100</span>;</span><br><span class="line">yrh/=<span class="number">100</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cnt</span><span class="params">((ty-cy)*<span class="number">12</span>+tm-cm)</span></span>;</span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">tot</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">tot=tot+(<span class="built_in">solve</span>(c,yx,nz,yrl,yrh,cy,cm,cnt)-tot)/i;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;总金额：%.2f\t总利息：%.2f\n&quot;</span>,tot,tot-c-cnt*yx-(ty-cy)*nz);</span><br><span class="line"><span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>https://liosq.github.io/post/7bd5c796/</id>
+    <link href="https://liosq.github.io/post/7bd5c796/"/>
+    <published>2025-04-07T07:51:56.000Z</published>
+    <summary>
+      <![CDATA[<p>输入每月收入，和理财的年化利率上下限，用随机数模拟每天实际的收益，然后累加在一起</p>
+<p>最后反复模拟上面的过程，取近似平均值</p>]]>
+    </summary>
+    <title>模拟利息计算</title>
+    <updated>2026-06-24T07:34:35.694Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="编程" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E7%BC%96%E7%A8%8B/"/>
+    <category term="Python" scheme="https://liosq.github.io/tags/Python/"/>
+    <content>
+      <![CDATA[<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>由于使用 Python 一般都是需要用来做一些和人工智能相关的东西，所以可以直接安装 Anaconda（一个 Python 整合包）</p><h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><p>如果是直接安装了 Anaconda，里面会自带 pip，一款包下载工具</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">下载包 直接在‘包名’后加‘==[版本号]’可指定版本</span></span><br><span class="line">pip install [包名]</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">列出当前已下载的所有包 可以结合管道来过滤出自己想搜索的包</span></span><br><span class="line">pip list</span><br></pre></td></tr></table></figure><h2 id="poetry"><a href="#poetry" class="headerlink" title="poetry"></a>poetry</h2><p>一款包管理和打包工具。如果在 Python 项目中看见了 <code>pyproject.toml</code> 这个文件，就可以用 <code>poetry install</code> 直接下载其中指定的依赖包</p><h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="pip-设置国内镜像源"><a href="#pip-设置国内镜像源" class="headerlink" title="pip 设置国内镜像源"></a>pip 设置国内镜像源</h2><table><thead><tr><th align="center">来源</th><th align="center">链接</th></tr></thead><tbody><tr><td align="center">清华</td><td align="center"><a href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></td></tr><tr><td align="center">阿里云</td><td align="center"><a href="http://mirrors.aliyun.com/pypi/simple">http://mirrors.aliyun.com/pypi/simple</a></td></tr><tr><td align="center">中国科技大学</td><td align="center"><a href="https://pypi.mirrors.ustc.edu.cn/simple">https://pypi.mirrors.ustc.edu.cn/simple</a></td></tr><tr><td align="center">华中理工大学</td><td align="center"><a href="http://pypi.hustunique.com/">http://pypi.hustunique.com</a></td></tr><tr><td align="center">山东理工大学</td><td align="center"><a href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org</a></td></tr><tr><td align="center">豆瓣</td><td align="center"><a href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a></td></tr></tbody></table><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置默认源的url</span> </span><br><span class="line">pip config set global.index-url &quot;https://xxx&quot;</span><br></pre></td></tr></table></figure><h2 id="poetry-设置国内源"><a href="#poetry-设置国内源" class="headerlink" title="poetry 设置国内源"></a>poetry 设置国内源</h2><blockquote><p><strong>参考教程：</strong><a href="https://www.resourch.com/archives/66.html#heading-0">poetry如何更换国内源（清华源&#x2F;阿里源&#x2F;豆瓣源） - 数据科学SourceResearch (resourch.com)</a></p></blockquote><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>]]>
+    </content>
+    <id>https://liosq.github.io/post/a378bd8e/</id>
+    <link href="https://liosq.github.io/post/a378bd8e/"/>
+    <published>2025-04-07T07:21:56.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>由于使用 Python 一般都是需要用来做一些和人工智能相关的东西，所以可以直接安装 Anaconda（一个 Python 整合包）</p>]]>
+    </summary>
+    <title>Python</title>
+    <updated>2026-06-24T07:34:35.712Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="算法题" scheme="https://liosq.github.io/categories/%E7%AE%97%E6%B3%95%E9%A2%98/"/>
+    <category term="洛谷" scheme="https://liosq.github.io/categories/%E7%AE%97%E6%B3%95%E9%A2%98/%E6%B4%9B%E8%B0%B7/"/>
+    <category term="动态规划" scheme="https://liosq.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <content>
+      <![CDATA[<h1 id="P1006-NOIP-2008-提高组-传纸条-洛谷-luogu-com-cn"><a href="#P1006-NOIP-2008-提高组-传纸条-洛谷-luogu-com-cn" class="headerlink" title="[P1006 NOIP 2008 提高组] 传纸条 - 洛谷 (luogu.com.cn)"></a>[P1006 <a href="https://www.luogu.com.cn/problem/P1006">NOIP 2008 提高组] 传纸条 - 洛谷 (luogu.com.cn)</a></h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]>
+    </content>
+    <id>https://liosq.github.io/post/aa086c33/</id>
+    <link href="https://liosq.github.io/post/aa086c33/"/>
+    <published>2025-03-06T09:01:54.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="P1006-NOIP-2008-提高组-传纸条-洛谷-luogu-com-cn"><a href="#P1006-NOIP-2008-提高组-传纸条-洛谷-luogu-com-cn" class="headerlink" title="[P1006 NOIP]]>
+    </summary>
+    <title>P1006 [NOIP 2008 提高组] 传纸条</title>
+    <updated>2026-06-24T07:34:35.717Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="旅行" scheme="https://liosq.github.io/categories/%E6%97%85%E8%A1%8C/"/>
+    <category term="国内" scheme="https://liosq.github.io/tags/%E5%9B%BD%E5%86%85/"/>
+    <content>
+      <![CDATA[<h1 id="高铁"><a href="#高铁" class="headerlink" title="高铁"></a>高铁</h1><ul><li>高铁一般<strong>发车前15分钟开始检票</strong>，<strong>发车前3分钟停止检票</strong>，安检和地铁差不多只用个两三分钟；建议<strong>抵达高铁站时至少预留20分钟时间</strong></li><li>有的高铁车型是<strong>没有插座</strong>的，如果手机没电了尽量带个充电宝或者出行前充满</li><li>如果有的AB检票口都可以检票，选个靠近自己车厢的检票口</li><li><strong>出发是上高铁；到达是下高铁</strong></li></ul><h1 id="飞机"><a href="#飞机" class="headerlink" title="飞机"></a>飞机</h1><ul><li><p>飞机早订票晚订票各有好处。早订票可以尽早值机<strong>抢到经济舱第一排位置</strong>；晚订票能<strong>抢到更低价格</strong></p></li><li><p>一订完票就马上去值机，不然<strong>第一排、靠窗、靠过道</strong>的位置都被抢光了</p></li><li><p>飞机一般<strong>起飞前30分钟开始检票</strong>，<strong>起飞前15分钟停止检票</strong>，且安检流程较为严格（要求把<strong>外套、电脑、充电宝、雨伞</strong>等物品单独放进筐里）；大部分机场都是远离市区的，考虑到<strong>取票、安检、前往登机口、登机</strong>等多种因素，建议<strong>抵达机场时至少预留40分钟时间</strong></p></li><li><p>飞机登机时会很挤，<strong>登机检票建议很早或很晚去排队</strong>（如果随身行李比较多建议早排队）</p></li><li><p>最好<strong>登机前或者飞机启动前上个厕所</strong>，飞机上升时不能上厕所，滑行加速时也不好上厕所</p></li><li><p>即使飞行时段覆盖饭点，<strong>飞机也不一定提供餐食</strong>，一定要在订票前关注好飞机是否提供餐食（正餐、小食、点餐）</p></li><li><p><strong>飞机飞行全程不能使用充电宝</strong>，如果随身带了充电宝，可以在飞机启动前先用会</p></li><li><p>大部分飞机座位都很挤，如果想看电影的话，最多用个平板，电脑一般放不下（非经济舱除外）</p></li><li><p><strong>出发是上飞机；到达是下飞机</strong></p></li></ul><h1 id="地铁卡"><a href="#地铁卡" class="headerlink" title="地铁卡"></a>地铁卡</h1><p>国内大部分城市都有地铁，可以用<strong>支付宝出行</strong>扫进出站的地铁码</p><p>还挺方便的，扣钱是直接用支付宝支付的，到了新城市会提示你是否切换地铁卡，直接注册一个卡就行了</p><h1 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h1><ul><li><p>图便宜可以住多人青旅，30 多一晚</p></li><li><p>如果想住单人，也可以选那种改造的小酒店，一晚也能不过百</p></li><li><p>百元以内，就别想住正常的电竞酒店了，只能电竞和酒店二选一</p></li></ul><h1 id="行李"><a href="#行李" class="headerlink" title="行李"></a>行李</h1><p>如果酒店退房了，还想再多玩一会但是嫌行李麻烦，可以把行李寄存到景点附近的店铺里（我在武汉黄鹤楼附近是不到 10 块一个小时）</p>]]>
+    </content>
+    <id>https://liosq.github.io/post/e1a7f1fd/</id>
+    <link href="https://liosq.github.io/post/e1a7f1fd/"/>
+    <published>2024-11-19T08:00:05.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="高铁"><a href="#高铁" class="headerlink" title="高铁"></a>高铁</h1><ul>
+<li>高铁一般<strong>发车前15分钟开始检票</strong>，<strong>发车前3分钟停止检票</strong>，安检和地铁差不多只用个两三分钟；建议<strong>抵达高铁站时至少预留20分钟时间</strong></li>
+<li>有的高铁车型是<strong>没有插座</strong>的，如果手机没电了尽量带个充电宝或者出行前充满</li>
+<li>如果有的AB检票口都可以检票，选个靠近自己车厢的检票口</li>
+<li><strong>出发是上高铁；到达是下高铁</strong></li>
+</ul>]]>
+    </summary>
+    <title>旅行 - 国内</title>
+    <updated>2026-06-24T07:34:35.695Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="爬虫" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://liosq.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    <content>
+      <![CDATA[<h1 id="无法打开调试工具"><a href="#无法打开调试工具" class="headerlink" title="无法打开调试工具"></a>无法打开调试工具</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>页面禁用了 F12、Ctrl + Shift + L 的键盘事件</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在浏览器菜单中选择打开**”开发者工具”**即可</p><h1 id="无限-debugger"><a href="#无限-debugger" class="headerlink" title="无限 debugger"></a>无限 debugger</h1><h2 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h2><p>js 定时循环执行 debugger 语句</p><h2 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h2><h3 id="全局禁用断点"><a href="#全局禁用断点" class="headerlink" title="全局禁用断点"></a>全局禁用断点</h3><p>在调试工具源代码页按 Ctrl + F8，或者找到**”停用断点”**按钮</p><h3 id="禁用特定行断点"><a href="#禁用特定行断点" class="headerlink" title="禁用特定行断点"></a>禁用特定行断点</h3><p>在执行 debugger 行添加条件断点 false</p><blockquote><p>写成了一行的代码会失效，例如 <code>setInterval(() =&gt; &#123; debugger &#125;, 100)</code></p></blockquote><h3 id="替换-js-文件"><a href="#替换-js-文件" class="headerlink" title="替换 js 文件"></a>替换 js 文件</h3><p>搜索或堆栈分析，定位到 debugger 语句所在 js 文件，将语句注释掉并替换 js 文件</p><blockquote><p>有的网站会用 base64 对 js 语句进行加密，然后用 eval 执行</p></blockquote><h1 id="接口签名加密"><a href="#接口签名加密" class="headerlink" title="接口签名加密"></a>接口签名加密</h1><h2 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h2><p>客户端请求接口时携带<strong>对本地信息进行加密后的签名</strong></p><h2 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h2><p>逆向分析网站 js，在本地生成签名信息</p><h1 id="人机验证码"><a href="#人机验证码" class="headerlink" title="人机验证码"></a>人机验证码</h1><h2 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h2><p>用图形、滑块、拼图等多种形式，来判断操作者是否为机器</p><h2 id="解决-3"><a href="#解决-3" class="headerlink" title="解决"></a>解决</h2><h3 id="滑块验证码"><a href="#滑块验证码" class="headerlink" title="滑块验证码"></a>滑块验证码</h3><blockquote><p><strong>参考资料：</strong></p><ul><li><a href="https://www.jianshu.com/p/a3a0949a4e9a">禁用4399浏览器开发者工具无限debugger - 简书 (jianshu.com)</a></li><li><a href="https://cloud.tencent.com/developer/article/1505309">突破前端反调试–阻止页面不断debugger-腾讯云开发者社区-腾讯云 (tencent.com)</a></li></ul></blockquote>]]>
+    </content>
+    <id>https://liosq.github.io/post/5991018/</id>
+    <link href="https://liosq.github.io/post/5991018/"/>
+    <published>2024-10-24T13:48:58.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="无法打开调试工具"><a href="#无法打开调试工具" class="headerlink" title="无法打开调试工具"></a>无法打开调试工具</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2>]]>
+    </summary>
+    <title>Web反爬机制</title>
+    <updated>2026-06-24T07:34:35.706Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="爬虫" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB/"/>
+    <category term="爬虫" scheme="https://liosq.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    <id>https://liosq.github.io/post/d2cc9b2a/</id>
+    <link href="https://liosq.github.io/post/d2cc9b2a/"/>
+    <published>2024-10-23T03:07:32.000Z</published>
+    <title>Wireshark</title>
+    <updated>2026-06-24T07:34:35.707Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="金融" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E9%87%91%E8%9E%8D/"/>
+    <category term="金融" scheme="https://liosq.github.io/tags/%E9%87%91%E8%9E%8D/"/>
+    <content>
+      <![CDATA[<h1 id="柯布-道格拉斯生产函数"><a href="#柯布-道格拉斯生产函数" class="headerlink" title="柯布-道格拉斯生产函数"></a>柯布-道格拉斯生产函数</h1><p>$Y&#x3D;A_{t}L^{\alpha}<em>{t}K^{\beta}</em>{t}$，劳动 <strong>L</strong>abour；资本 <strong>K</strong>apital（Capital）</p><p>当 $\alpha+\beta&#x3D;1$ 时，$\alpha$ 和 $\beta$ 分别代表<strong>劳动</strong>和<strong>资本</strong>所得在总产量中所占的相对份额</p><h1 id="市场失灵的原因"><a href="#市场失灵的原因" class="headerlink" title="市场失灵的原因"></a>市场失灵的原因</h1><ol><li>垄断</li><li>外部影响</li><li>公共物品</li><li>信息不对称</li></ol><h1 id="竞争性消费"><a href="#竞争性消费" class="headerlink" title="竞争性消费"></a>竞争性消费</h1><p>竞争性是指消费者对某一种公共物品的消费会<strong>影响其他人对该公共物品的消费</strong></p><h1 id="派生存款"><a href="#派生存款" class="headerlink" title="派生存款"></a>派生存款</h1><p>原始存款通过银行放贷能够派生出的其他存款</p><p>举个简单例子来理解一下：</p><ol><li>张三在银行 A 存了 100 元，此时银行 A 获得了 100 元原始存款</li><li>银行会拿这 100 元去放贷，但按照法律要求必须要<strong>保留一部分存款准备金来应对取款</strong>，假设法定存款准备金率是 10%，那么就可以放出 90 元的贷款</li><li>李四在银行 A 贷款了这 90 元，并且有可能把这个贷款存到了银行 A 中</li></ol><p>第三步开始就可以循环进行，这样银行 A 利用张三存的 100 元创造出了远超于 100 元的派生的存款金额</p><p>一般来说，若法定存款准备金率为 $r$，原始存款为 $D$，则派生存款为 $D(\frac{1}{r}-1)$</p><h1 id="金融模式"><a href="#金融模式" class="headerlink" title="金融模式"></a>金融模式</h1><h2 id="P2C"><a href="#P2C" class="headerlink" title="P2C"></a>P2C</h2><p>网上有两种说法 Production to Consumer 和 Person to Company</p><ol><li><strong>Production to Consumer</strong>：生产产品送到消费者手中，传统的顾客商品模式</li><li><strong>Person to Company</strong>：个人和企业间的融资借贷模式</li></ol><h2 id="P2P"><a href="#P2P" class="headerlink" title="P2P"></a>P2P</h2><p>应该是 Person to Person？还是 Peer to Peer，总之意思都是个人对个人的网络借贷模式</p><h1 id="社会融资规模"><a href="#社会融资规模" class="headerlink" title="社会融资规模"></a>社会融资规模</h1><p>社会融资规模是指实体经济在一定时期内从<strong>金融体系中获得的资金总量</strong></p><p>社会融资规模主要包括：</p><ol><li>人民币贷款</li><li>外币贷款</li><li>委托贷款</li><li>信托贷款</li><li>未贴现的银行承兑汇票</li><li>企业债券</li><li>非金融企业境内股票融资</li><li>保险公司赔偿</li><li>投资性房地产</li><li>其他金融工具融资</li></ol><h1 id="基金类型"><a href="#基金类型" class="headerlink" title="基金类型"></a>基金类型</h1><ol><li><strong>股票型基金</strong>：80% 以上基金资产投资于股票。<strong>高风险、高收益</strong></li><li><strong>债务型基金</strong>：80% 以上基金资产投资于债券。<strong>较低风险、较低收益</strong></li><li><strong>货币市场基金</strong>：仅投资于<strong>货币市场工具</strong>的基金，这类基金的资产主要投资于短期货币工具，如商业票据、银行定期存单、短期政府债券、短期企业债券等短期有价证券。<strong>低风险、低收益、高流动性</strong></li><li><strong>混合型基金</strong>：投资于股票、债券、货币市场工具，且股票和债券投资的比例不符合前述规定</li></ol><h1 id="速动比率"><a href="#速动比率" class="headerlink" title="速动比率"></a>速动比率</h1><p>速动比率 &#x3D; 速动资产 &#x2F; 流动负债。其中，速动资产是指<strong>货币资金、交易性金融资产和各种应收款项等</strong>，可以在较短时间内变现的资产</p><p>它是<strong>衡量企业流动资产中可以立即变现用于偿还流动负债的能力</strong></p>]]>
+    </content>
+    <id>https://liosq.github.io/post/3c7b500b/</id>
+    <link href="https://liosq.github.io/post/3c7b500b/"/>
+    <published>2024-10-19T08:03:05.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="柯布-道格拉斯生产函数"><a href="#柯布-道格拉斯生产函数" class="headerlink" title="柯布-道格拉斯生产函数"></a>柯布-道格拉斯生产函数</h1><p>$Y&#x3D;A_{t}L^{\alpha}<em>{t}K^{\beta}</em>{t}$，劳动 <strong>L</strong>abour；资本 <strong>K</strong>apital（Capital）</p>]]>
+    </summary>
+    <title>学习笔记-金融知识</title>
+    <updated>2026-06-24T07:34:35.714Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="旅行" scheme="https://liosq.github.io/categories/%E6%97%85%E8%A1%8C/"/>
+    <category term="国外" scheme="https://liosq.github.io/tags/%E5%9B%BD%E5%A4%96/"/>
+    <content>
+      <![CDATA[<h1 id="通用注意事项"><a href="#通用注意事项" class="headerlink" title="通用注意事项"></a>通用注意事项</h1><h2 id="护照"><a href="#护照" class="headerlink" title="护照"></a>护照</h2><p>在支付宝搜护照点”预约办证”，可以在所在地附近选择办理点</p><p>办理期限：7-15个工作日；办理费用为 120 元（网上说 200 元，不知道哪个准）</p><p>护照有效期限不超过 10 年</p><h2 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h2>]]>
+    </content>
+    <id>https://liosq.github.io/post/c2abf603/</id>
+    <link href="https://liosq.github.io/post/c2abf603/"/>
+    <published>2024-10-04T09:50:08.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="通用注意事项"><a href="#通用注意事项" class="headerlink" title="通用注意事项"></a>通用注意事项</h1><h2 id="护照"><a href="#护照" class="headerlink" title="护照"></a>护照</h2>]]>
+    </summary>
+    <title>旅行 - 国外</title>
+    <updated>2026-06-24T07:34:35.695Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="后端" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E5%90%8E%E7%AB%AF/"/>
+    <category term="Flutter" scheme="https://liosq.github.io/tags/Flutter/"/>
+    <content>
+      <![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="flutter-指令无响应"><a href="#flutter-指令无响应" class="headerlink" title="flutter 指令无响应"></a>flutter 指令无响应</h2><p>在 CMD 输入 <code>flutter --version</code> 无响应，打开 bin 目录运行 <code>flutter.bat</code> 也同样无响应</p><p>上网搜索说是镜像地址的原因，但在添加了这两个环境变量后仍然无响应</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FLUTTER_STORAGE_BASE_URL: https://storage.flutter-io.cn</span><br><span class="line">PUB_HOSTED_URL: https://pub.flutter-io.cn</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>https://liosq.github.io/post/e5974716/</id>
+    <link href="https://liosq.github.io/post/e5974716/"/>
+    <published>2024-09-27T08:04:44.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>]]>
+    </summary>
+    <title>Flutter</title>
+    <updated>2026-06-24T07:34:35.697Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="笔记" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    <category term="前端" scheme="https://liosq.github.io/categories/%E7%AC%94%E8%AE%B0/%E5%89%8D%E7%AB%AF/"/>
+    <category term="XML" scheme="https://liosq.github.io/tags/XML/"/>
+    <content>
+      <![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用来定位 XML 元素的一种表达式，类似正则表达式</p><p>写爬虫的时候会经常用到 XPATH，例如用 selenium 定位 html 网页元素；用 uiautomator2 定位 app 元素等等</p><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="单元素"><a href="#单元素" class="headerlink" title="单元素"></a>单元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 第 1 个 div 元素中的第 2 个 a 元素</span><br><span class="line">//div[1]/a[2]</span><br><span class="line"></span><br><span class="line"># 第 1 个 div 元素中的最后一个任意元素</span><br><span class="line">//div[1]/*[last()]</span><br><span class="line"></span><br><span class="line"># class 和 id 属性都为 test 的 div 元素</span><br><span class="line">//div[@class=&quot;test&quot; and @id=&quot;test&quot;]</span><br></pre></td></tr></table></figure><h2 id="多元素"><a href="#多元素" class="headerlink" title="多元素"></a>多元素</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 第 1 个 ul 元素中的所有 li 元素中的第 1 个 div 元素</span><br><span class="line">//ul[1]/li/div[1]</span><br><span class="line"></span><br><span class="line"># class 属性为 test 的所有 li 元素中的第 1 个 div 元素</span><br><span class="line">//li[@class=&quot;test&quot;]/div[1]</span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>https://liosq.github.io/post/25900800/</id>
+    <link href="https://liosq.github.io/post/25900800/"/>
+    <published>2024-09-27T01:13:32.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>用来定位 XML 元素的一种表达式，类似正则表达式</p>]]>
+    </summary>
+    <title>xpath</title>
+    <updated>2026-06-24T07:34:35.697Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>liosq</name>
+    </author>
+    <category term="力扣" scheme="https://liosq.github.io/categories/%E5%8A%9B%E6%89%A3/"/>
+    <category term="困难" scheme="https://liosq.github.io/categories/%E5%8A%9B%E6%89%A3/%E5%9B%B0%E9%9A%BE/"/>
+    <category term="C++" scheme="https://liosq.github.io/tags/C/"/>
+    <category term="Java" scheme="https://liosq.github.io/tags/Java/"/>
+    <category term="动态规划" scheme="https://liosq.github.io/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    <category term="单调栈" scheme="https://liosq.github.io/tags/%E5%8D%95%E8%B0%83%E6%A0%88/"/>
+    <content>
+      <![CDATA[<h1 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42. 接雨水"></a><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h1><h2 id="O-n-O-1"><a href="#O-n-O-1" class="headerlink" title="$O(n)+O(1)$"></a>$O(n)+O(1)$</h2><p>两次遍历，第一次遍历<strong>从左向右</strong>，维护最高值，如果不能更新最高值则积累雨水；第二次遍历<strong>从右向左</strong>，仍然维护最高值，每次遍历都减去<strong>第一次遍历最高值和当前最高值之差</strong>，并且只遍历到<strong>第一次遍历最高值处</strong></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="type">int</span> <span class="title">ans</span><span class="params">(<span class="number">0</span>)</span>,<span class="title">h</span><span class="params">(<span class="number">0</span>)</span>,<span class="title">hi</span><span class="params">(<span class="number">0</span>)</span>,<span class="title">len</span><span class="params">(height.size())</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;len;i++)</span><br><span class="line">            <span class="keyword">if</span>(height[i]&gt;h)</span><br><span class="line">                hi=i,h=height[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                ans+=height[hi]-height[i];</span><br><span class="line">        h=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=len<span class="number">-1</span>;i&gt;hi;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(height[i]&gt;h)</span><br><span class="line">                h=height[i];</span><br><span class="line">            ans=ans-height[hi]+h;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="O-n-O-n"><a href="#O-n-O-n" class="headerlink" title="$O(n)+O(n)$"></a>$O(n)+O(n)$</h2><p><strong>单调栈</strong>，维护高度单调递减的下标栈，在维护栈的时候计算积累的雨水的宽度和高度</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @lc app=leetcode.cn id=42 lang=java</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * [42] 接雨水</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @lc code=start</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Deque;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] h)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> h.length, ans = <span class="number">0</span>;</span><br><span class="line">    Deque&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> left, right, i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; h[stack.peek()] &lt;= h[i]) &#123;</span><br><span class="line">        right = stack.pop();</span><br><span class="line">        <span class="keyword">if</span> (stack.isEmpty()) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        left = stack.peek();</span><br><span class="line">        ans += (Math.min(h[left], h[i]) - h[right]) * (i - left - <span class="number">1</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      stack.push(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @lc code=end</span></span><br></pre></td></tr></table></figure><h2 id="O-n-O-n-1"><a href="#O-n-O-n-1" class="headerlink" title="$O(n)+O(n)$"></a>$O(n)+O(n)$</h2><p><strong>动态规划</strong>，维护 $left[i],right[i]$ 数组，分别记录下标小于或大于 $i$ 的元素中的最大值，这样就可以确定<strong>每格最终会积累多少雨水</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @lc app=leetcode.cn id=42 lang=java</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * [42] 接雨水</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @lc code=start</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">trap</span><span class="params">(<span class="type">int</span>[] h)</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> h.length, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span>[] left = <span class="keyword">new</span> <span class="title class_">int</span>[n], right = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">    left[<span class="number">0</span>] = h[<span class="number">0</span>];</span><br><span class="line">    right[n - <span class="number">1</span>] = h[n - <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">      left[i] = Math.max(left[i - <span class="number">1</span>], h[i]);</span><br><span class="line">      right[n - i - <span class="number">1</span>] = Math.max(right[n - i], h[n - i - <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">      ans += Math.min(left[i], right[i]) - h[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// @lc code=end</span></span><br></pre></td></tr></table></figure>]]>
+    </content>
+    <id>https://liosq.github.io/post/2bfb457f/</id>
+    <link href="https://liosq.github.io/post/2bfb457f/"/>
+    <published>2024-09-21T13:51:20.000Z</published>
+    <summary>
+      <![CDATA[<h1 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42. 接雨水"></a><a href="https://leetcode.cn/problems/trapping-rain-water/">42. 接雨水</a></h1><h2 id="O-n-O-1"><a href="#O-n-O-1" class="headerlink" title="$O(n)+O(1)$"></a>$O(n)+O(1)$</h2>]]>
+    </summary>
+    <title>42. 接雨水</title>
+    <updated>2026-06-24T07:34:35.717Z</updated>
+  </entry>
+</feed>
