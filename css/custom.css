@@ -47,10 +47,10 @@ body {
 #modalSearch .modal-content {
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid #c5d8ea;
+  border: 2px solid #6fb4ff52;
   box-shadow: 0 20px 60px rgba(13, 33, 55, 0.2);
 }
-/* 纯色 header，不用渐变 */
+/* 纯色 header */
 #modalSearch .modal-header {
   background: #0d2137;
   border-bottom: none;
@@ -72,37 +72,33 @@ body {
   opacity: 1;
   color: #ffffff;
 }
+/* 修复 modal-dialog-scrollable 的 overflow-y:auto 触发横向滚动条 */
 #modalSearch .modal-body {
   padding: 1.5rem;
+  overflow-x: hidden !important;
 }
-/* label 居中展示在搜索框上方，字体稍大，与输入框保持间距 */
+/* 隐藏「关键词」label，改用 placeholder 提示 */
+#modalSearch .md-form label {
+  display: none !important;
+}
+/* 恢复 md-form 为普通块级布局，避免 flex 导致 width:100% 基准错位 */
 #modalSearch .md-form {
-  display: flex;
-  flex-direction: column;
+  display: block;
   margin-bottom: 1.2rem;
 }
-#modalSearch .md-form label {
-  order: -1;                    /* 渲染在 input 上方 */
-  position: static !important;
-  transform: none !important;
-  text-align: center;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #4a6a8a;
-  margin-bottom: 0.75rem;
-  letter-spacing: 0.06em;
-}
 #modalSearch #local-search-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;       /* 确保 padding 不撑出容器 */
   border: 1.5px solid #c5d8ea;
   border-radius: 8px;
-  padding: 0.6rem 1rem;
+  padding: 0.65rem 1rem;
   font-size: 0.95rem;
   transition: border-color 0.2s, box-shadow 0.2s;
-  width: 100%;
   outline: none;
   background: #f8fbff;
   color: #2c3e50;
-  box-shadow: none !important;  /* 清除 MDB 默认下划线 shadow */
+  box-shadow: none !important;
 }
 #modalSearch #local-search-input:focus {
   border-color: #1565c0;
@@ -150,10 +146,7 @@ body {
 /* 暗色搜索弹窗 */
 [data-user-color-scheme="dark"] #modalSearch .modal-content {
   background: #162030;
-  border-color: #1e3550;
-}
-[data-user-color-scheme="dark"] #modalSearch .md-form label {
-  color: #7a98b0;
+  border-color: #3a7acc52;
 }
 [data-user-color-scheme="dark"] #modalSearch #local-search-input {
   background: #1a2c40;
