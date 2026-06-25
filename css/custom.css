@@ -165,11 +165,12 @@ body {
   background: #1a2f45;
 }
 
-/* ── 7. 打字机游标颜色 ── */
+/* ── 7. 打字机游标 ── */
+/* animation-duration !important 可覆盖 typed.js 动态注入的普通声明（0.7s → 1.5s） */
 .typed-cursor {
   color: #c8e0f4;
   font-weight: 300;
-  opacity: 1 !important;
+  animation-duration: 1.5s !important;
 }
 
 /* ── 8. 防止 subtitle 初始静态文本闪烁 ── */
