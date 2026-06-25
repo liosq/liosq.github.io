@@ -1,25 +1,24 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.1.1">
-<link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
 
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"liosq.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":24,"offset":12},"copycode":{"enable":true,"style":"flat"},"fold":{"enable":true,"height":400},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":true,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#0d2137">
+  <meta name="author" content="liosq">
+  <meta name="keywords" content="">
+  
     <meta name="description" content="起因知识库的项目缺数据，学长在群里本来让其他两个人爬数据来着，但是过了一周开会他们也没爬到数据，说还在学什么的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学报文献数据">
@@ -30,435 +29,841 @@
 <meta property="article:published_time" content="2023-11-03T13:20:07.000Z">
 <meta property="article:modified_time" content="2026-06-24T07:34:35.707Z">
 <meta property="article:author" content="liosq">
-<meta property="article:tag" content="爬虫">
 <meta property="article:tag" content="Python">
-<meta name="twitter:card" content="summary">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>学报文献数据 - liosq的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
-<link rel="canonical" href="https://liosq.github.io/post/4fc25800/">
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://liosq.github.io/post/4fc25800/","path":"post/4fc25800/","title":"学报文献数据"}</script>
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>学报文献数据 | liosq的博客</title>
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
 
+  
+<link rel="stylesheet" href="/css/custom.css">
 
 
 
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"liosq.github.io","root":"/","version":"1.9.9","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":3},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
 
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-<link rel="alternate" href="/atom.xml" title="liosq的博客" type="application/atom+xml">
+  
+<meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="liosq的博客" type="application/atom+xml">
 <style>.darkmode--activated{--body-bg-color:#282828;--content-bg-color:#333;--card-bg-color:#555;--text-color:#ccc;--blockquote-color:#bbb;--link-color:#ccc;--link-hover-color:#eee;--brand-color:#ddd;--brand-hover-color:#ddd;--table-row-odd-bg-color:#282828;--table-row-hover-bg-color:#363636;--menu-item-bg-color:#555;--btn-default-bg:#222;--btn-default-color:#ccc;--btn-default-border-color:#555;--btn-default-hover-bg:#666;--btn-default-hover-color:#ccc;--btn-default-hover-border-color:#666;--highlight-background:#282b2e;--highlight-foreground:#a9b7c6;--highlight-gutter-background:#34393d;--highlight-gutter-foreground:#9ca9b6}.darkmode--activated img{opacity:.75}.darkmode--activated img:hover{opacity:.9}.darkmode--activated code{color:#69dbdc;background:0 0}button.darkmode-toggle{z-index:9999}.darkmode-ignore,img{display:flex!important}.beian img{display:inline-block!important}</style></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
 
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
+<body>
+  
 
-  <div class="site-meta">
+  <header>
+    
 
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">liosq的博客</p>
-      <i class="logo-line"></i>
+<div class="header-inner" style="height: 45vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>liosq 的博客</strong>
     </a>
-      <p class="site-subtitle" itemprop="description">blog of liosq</p>
-  </div>
 
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">125</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">63</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">35</span></a></li><li class="menu-item menu-item-游戏"><a href="/game/" rel="section"><i class="fa fa-gamepad fa-fw"></i>游戏</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup"><div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close" role="button">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div class="search-result-container no-result">
-  <div class="search-result-icon">
-    <i class="fa fa-spinner fa-pulse fa-5x"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</header>
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">学习</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="liosq"
-      src="/images/avatar.png">
-  <p class="site-author-name" itemprop="name">liosq</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">125</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">35</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">63</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
-</div>
-
-        </div>
-      </div>
-    </div>
-
-    
-
-    
-      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
-      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
-      <div class="widget-wrap">
-          <h3 class="widget-title">标签云</h3>
-          <div id="myCanvasContainer" class="widget tagcloud">
-              <canvas width="250" height="250" id="resCanvas" style="width=100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a><span class="tag-list-count">32</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DFS/" rel="tag">DFS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dijkstra/" rel="tag">Dijkstra</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/" rel="tag">Flutter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/" rel="tag">Github</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Golang/" rel="tag">Golang</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/" rel="tag">Html</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RabbitMQ/" rel="tag">RabbitMQ</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/" rel="tag">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/" rel="tag">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/" rel="tag">Spring</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringCloud/" rel="tag">SpringCloud</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VPN/" rel="tag">VPN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/" rel="tag">XML</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" rel="tag">二叉树</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/" rel="tag">位运算</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F/" rel="tag">分布式系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" rel="tag">前缀和</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88/" rel="tag">单调栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" rel="tag">单调队列</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84/" rel="tag">后缀数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%9E%E6%BA%AF/" rel="tag">回溯</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%86%85/" rel="tag">国内</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BD%E5%A4%96/" rel="tag">国外</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag">图论</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" rel="tag">并发编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag">并查集</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8C%89%E9%94%AE%E7%B2%BE%E7%81%B5/" rel="tag">按键精灵</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/" rel="tag">数据库系统</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag">游戏</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="tag">滑动窗口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" rel="tag">状态压缩</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E9%AA%8C/" rel="tag">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD/" rel="tag">英语</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%91%E8%9E%8D/" rel="tag">金融</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%93%BE%E8%A1%A8/" rel="tag">链表</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9B%86%E7%BE%A4/" rel="tag">集群</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%AB%98%E7%B2%BE%E5%BA%A6/" rel="tag">高精度</a><span class="tag-list-count">2</span></li></ul>
-              </canvas>
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
           </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
       </div>
-    
-  </aside>
+    </div>
+  </div>
+</div>
 
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.4)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">学报文献数据</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-03 21:20" pubdate>
+          2023-11-03
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
 
     </div>
 
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liosq.github.io/post/4fc25800/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="liosq">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liosq的博客">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="学报文献数据 | liosq的博客">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          学报文献数据
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2023-11-03 21:20:07" itemprop="dateCreated datePublished" datetime="2023-11-03T21:20:07+08:00">2023-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-06-24 15:34:35" itemprop="dateModified" datetime="2026-06-24T15:34:35+08:00">2026-06-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">笔记</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody"><h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>知识库的项目缺数据，学长在群里本来让其他两个人爬数据来着，但是过了一周开会他们也没爬到数据，说还在学什么的</p>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">学报文献数据</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>知识库的项目缺数据，学长在群里本来让其他两个人爬数据来着，但是过了一周开会他们也没爬到数据，说还在学什么的</p>
 <p>从语气可以感觉到学长有点生气了，开始催我们抓紧进度什么的，然后问我会爬虫吗？让我也开始学爬虫</p>
 <h3 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h3><p>其实那一周我是学了一下爬虫的，记得周三有一节物联网课没心思听课就打算爬一下百度翻译的api</p>
 <p>因为前端还行，所以很快定位到了请求接口，发现请求参数都很正常。除了一个sign，是一直变化，而且似乎是根据你传入文本的值变化而变化</p>
 <p>没想到刚开始学就碰上硬茬了，正琢磨怎么生成这个签名呢。突然想起来上学期实训考试，老师在旁边说考试网站有bug，你们要能找出来就能满分。我就一步一步打断点分析考试数据是怎么渲染到浏览器上，结果就发现了请求获取到的数据里有答案</p>
 <p>于是我就沿用那次的方法，一步一步打断点，找到了生成签名的函数，函数很长，而且感觉是被混淆加密过的。索性就把整个函数搬过来，上网查了查怎么在Python里调用JavaScript函数，导了个包就解决了。当时搞完已经是快下课了，当时心情就是非常激动，然后就把代码封装成一个类，每次想用翻译就直接引入这个类就ok</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> execjs</span><br><span class="line"><span class="comment"># lan_list是一个语言映射列表，也是直接拦截请求就能找到</span></span><br><span class="line"><span class="keyword">from</span> baidufanyi.languages <span class="keyword">import</span> lan_list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BaiduTranslate</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        self.headers = &#123;</span><br><span class="line">            <span class="string">&#x27;Host&#x27;</span>: <span class="string">&#x27;fanyi.baidu.com&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Origin&#x27;</span>: <span class="string">&#x27;https://fanyi.baidu.com&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.76&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Cookie&#x27;</span>: <span class="string">&#x27;BIDUPSID=3C574EAB32054FCD30DC5846A976DC4B; PSTM=1688952101; ab_jid=4eb88762366f56ee5a5d3c3092286b01c2d9; ab_jid_BFESS=4eb88762366f56ee5a5d3c3092286b01c2d9; BAIDUID=3C574EAB32054FCDB33D0B497C31F8D1:SL=0:NR=10:FG=1; BDUSS=VaRk5sd1Z-V1FuNzhhT0VRdG5KV3JZS21EUFNaQTVtSXBtWk9WbnlFY0ttLWxrSVFBQUFBJCQAAAAAAAAAAAEAAAA7lO9Os8K4r9XmzNjDtMnuaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoOwmQKDsJkWX; BDUSS_BFESS=VaRk5sd1Z-V1FuNzhhT0VRdG5KV3JZS21EUFNaQTVtSXBtWk9WbnlFY0ttLWxrSVFBQUFBJCQAAAAAAAAAAAEAAAA7lO9Os8K4r9XmzNjDtMnuaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoOwmQKDsJkWX; H_PS_PSSID=39841_39935_39937_39933_39943_39938_39999_40013_40044; BDORZ=FFFB88E999055A3F8A630C64834BD6D0; H_WISE_SIDS=39841_39935_39937_39933_39943_39938_39999_40013_40044; H_WISE_SIDS_BFESS=39841_39935_39937_39933_39943_39938_39999_40013_40044; BA_HECTOR=00a12k8kakal8g8h0ga58520f1i3ti1iojb081t; delPer=0; PSINO=7; ZFY=bCJZ:BP4jc0fMbEy0wl0IlAEUqO85tc5LYTDqupa4wQQ:C; BAIDUID_BFESS=3C574EAB32054FCDB33D0B497C31F8D1:SL=0:NR=10:FG=1; ab_bid=6bcd63a63cfe1563cd9c774b846c036f7250; ab_sr=1.0.1_YzNhOTYzM2E1ZjMwZmQ4Y2NiNDQwNTFmMTY1YTVhOGU0NmZiYzY3N2M0MDBhNjhkMDY2M2JmYjAyMzk3MjFkYjYxNTIxZDBmY2VmZWUyYzU1MGJjZTFkZTkyY2UzYTVlMjM1MDhiYTE1OTQ2NmJhY2IwNzQwNDkzNTJmNzY0M2RhZDUwMTVlM2JiYjAxMjc2NjY0MWNmZTIwNzdjMWU4NWFmMmRjYjFiYThkZGI5NDdkZTA4MjM0ZTczODhjZDRj&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;Acs-Token&#x27;</span>: <span class="string">&#x27;1703476878072_1703520782449_cuD4/9ppyjvk6OcczGm+t0+Euqsb3taki25RxfARn3AKX75f5Dq2nr+XaKK47r99gxrJeRwQsph6sRla0fgqoyg7boTYST5KS8F5iwPRRgL1R0OFaqIxxdPpFxcMSB8ScBu34BYQrqJ44t82KFN1jkV9Y9myo9uadOHMOkIHq4mBNdX2hH9ZWCX1zSOPjzpNx0VrSOeVRZUahZoQSf3lLm40ESAKAhkpQ1KlV3XL6hUxjJalKjgCU2nIlDRExu+UGV/QXYZ25uVCvztRMSk8WHEDzsDeXiGEG3iFOqnNC7b1oItuEKUpPN1umjTqGTXl8OnYM2Yk4YIJLKkM/OM+ZEOcdtfoVxgh1bW4onnvR15CyQNBSDa6Gk9QA99gyAAa62+VuoaCLJ0W2hkLcPL7ya4BP8Ovj8c9J6pQNSpwTHeNxGIwcyeep+YH3KWZ2BUwT0nySVqcECqwghq0Jj7a2ZXo2sr90TQyewpCQvAJQ+u1ZcBio0liWnpeK18d/VVP&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">        self.data = &#123;</span><br><span class="line">            <span class="string">&#x27;query&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;sign&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;transtype&#x27;</span>: <span class="string">&#x27;realtime&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;token&#x27;</span>: <span class="string">&#x27;a15d651ffb02721a9d3943e0d724387c&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;simple_means_flag&#x27;</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="string">&#x27;domain&#x27;</span>: <span class="string">&#x27;common&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;ts&#x27;</span>: <span class="built_in">int</span>(time.time_ns() / <span class="number">1e6</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        self.ctx = execjs.<span class="built_in">compile</span>(<span class="built_in">open</span>(os.path.join(os.path.dirname(__file__), <span class="string">&#x27;sign.js&#x27;</span>), <span class="string">&#x27;r&#x27;</span>).read())</span><br><span class="line">        self.log = <span class="built_in">open</span>(os.path.join(os.path.dirname(__file__), <span class="string">&#x27;translate.log&#x27;</span>), <span class="string">&#x27;a&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">        self.log_params = &#123;</span><br><span class="line">            <span class="string">&quot;from_lan&quot;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;to_lan&quot;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;result&quot;</span>: <span class="string">&#x27;无&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;code&quot;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;response&quot;</span>: <span class="string">&#x27;无&#x27;</span>,</span><br><span class="line">            <span class="string">&quot;cost_time&quot;</span>: <span class="string">&#x27;请求失败&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">detect_lan</span>(<span class="params">self, content</span>):</span><br><span class="line">        resp = requests.post(<span class="string">f&#x27;https://fanyi.baidu.com/langdetect&#x27;</span>,</span><br><span class="line">                             headers=self.headers,</span><br><span class="line">                             data=&#123;<span class="string">&#x27;query&#x27;</span>: content&#125;)</span><br><span class="line">        <span class="keyword">if</span> resp.ok:</span><br><span class="line">            json = resp.json()</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&#x27;lan&#x27;</span> <span class="keyword">in</span> json:</span><br><span class="line">                <span class="keyword">return</span> json[<span class="string">&#x27;lan&#x27;</span>]</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;zh&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">translate</span>(<span class="params">self, from_lan, to_lan, content</span>):</span><br><span class="line">        <span class="keyword">if</span> from_lan <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            from_lan = self.detect_lan(content)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> lan_key <span class="keyword">in</span> lan_list.keys():</span><br><span class="line">            <span class="keyword">if</span> lan_list[lan_key] == from_lan:</span><br><span class="line">                self.log_params[<span class="string">&#x27;from_lan&#x27;</span>] = lan_key</span><br><span class="line">            <span class="keyword">elif</span> lan_list[lan_key] == to_lan:</span><br><span class="line">                self.log_params[<span class="string">&#x27;to_lan&#x27;</span>] = lan_key</span><br><span class="line">        self.log_params[<span class="string">&#x27;content&#x27;</span>] = content</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> from_lan == to_lan:</span><br><span class="line">            self.print_log()</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;源语言类型与目标语言相同&#x27;</span></span><br><span class="line"></span><br><span class="line">        sign = self.ctx.call(<span class="string">&#x27;getSign&#x27;</span>, content)</span><br><span class="line">        url = <span class="string">f&#x27;https://fanyi.baidu.com/v2transapi?from=<span class="subst">&#123;from_lan&#125;</span>&amp;to=<span class="subst">&#123;to_lan&#125;</span>&#x27;</span></span><br><span class="line">        self.data[<span class="string">&#x27;sign&#x27;</span>] = sign</span><br><span class="line">        self.data[<span class="string">&#x27;query&#x27;</span>] = content</span><br><span class="line"></span><br><span class="line">        clock = time.time_ns()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            resp = requests.post(url, headers=self.headers, data=self.data, timeout=(<span class="number">3.0</span>, <span class="number">5.0</span>))</span><br><span class="line">        <span class="keyword">except</span> requests.RequestException:</span><br><span class="line">            self.print_log()</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;请求失败&#x27;</span></span><br><span class="line">        <span class="keyword">except</span> requests.ReadTimeout <span class="keyword">or</span> requests.Timeout:</span><br><span class="line">            self.print_log()</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;请求超时&#x27;</span></span><br><span class="line"></span><br><span class="line">        clock = (time.time_ns() - clock) / <span class="number">1e9</span></span><br><span class="line">        <span class="keyword">if</span> clock &lt; <span class="number">10</span>:</span><br><span class="line">            clock = <span class="built_in">round</span>(clock, <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">elif</span> clock &lt; <span class="number">100</span>:</span><br><span class="line">            clock = <span class="built_in">round</span>(clock, <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">elif</span> clock &lt; <span class="number">1000</span>:</span><br><span class="line">            clock = <span class="built_in">round</span>(clock, <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            clock = <span class="built_in">int</span>(clock)</span><br><span class="line">        self.log_params[<span class="string">&#x27;cost_time&#x27;</span>] = <span class="built_in">str</span>(clock)</span><br><span class="line">        self.log_params[<span class="string">&#x27;code&#x27;</span>] = <span class="built_in">str</span>(resp.status_code)</span><br><span class="line">        res = resp.json()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;trans_result&#x27;</span> <span class="keyword">in</span> res.keys():</span><br><span class="line">            result = res[<span class="string">&#x27;trans_result&#x27;</span>][<span class="string">&#x27;data&#x27;</span>][<span class="number">0</span>][<span class="string">&#x27;dst&#x27;</span>]</span><br><span class="line">            self.log_params[<span class="string">&#x27;result&#x27;</span>] = result</span><br><span class="line">            self.print_log()</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">        self.log_params[<span class="string">&#x27;response&#x27;</span>] = resp.text</span><br><span class="line">        self.print_log()</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 这个是改进后的，想拓展一下打个日志</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">print_log</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;———————\t<span class="subst">&#123;datetime.now()&#125;</span>\t————————\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;源语言类型:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;from_lan&#x27;</span>]&#125;</span>\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;目标语言类型:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;to_lan&#x27;</span>]&#125;</span>\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;翻译内容:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;content&#x27;</span>]&#125;</span>\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;翻译结果:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;result&#x27;</span>]&#125;</span>\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;请求耗时:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;cost_time&#x27;</span>]&#125;</span> ms\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;请求状态:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;code&#x27;</span>]&#125;</span>\n&quot;</span></span><br><span class="line">              <span class="string">f&quot;请求返回内容:\t<span class="subst">&#123;self.log_params[<span class="string">&#x27;response&#x27;</span>]&#125;</span>&quot;</span>, file=self.log)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">choose_lan</span>(<span class="params">self, tip</span>):</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            res = <span class="built_in">input</span>(tip)</span><br><span class="line">            keys = [key <span class="keyword">for</span> key <span class="keyword">in</span> lan_list.keys() <span class="keyword">if</span> key.find(res) &gt;= <span class="number">0</span>]</span><br><span class="line">            vals = [val <span class="keyword">for</span> val <span class="keyword">in</span> lan_list.values() <span class="keyword">if</span> val.find(res) &gt;= <span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(keys) == <span class="number">0</span> <span class="keyword">and</span> <span class="built_in">len</span>(vals) == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="built_in">len</span>(keys) == <span class="number">1</span>:</span><br><span class="line">                res = lan_list[keys[<span class="number">0</span>]]</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">elif</span> <span class="built_in">len</span>(vals) == <span class="number">1</span>:</span><br><span class="line">                res = vals[<span class="number">0</span>]</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">for</span> key <span class="keyword">in</span> keys:</span><br><span class="line">                flag = <span class="built_in">input</span>(<span class="string">f&quot;是 <span class="subst">&#123;key&#125;</span> 吗? (y/...): &quot;</span>).lower() == <span class="string">&#x27;y&#x27;</span></span><br><span class="line">                <span class="keyword">if</span> flag:</span><br><span class="line">                    res = lan_list[key]</span><br><span class="line">                    <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">for</span> val <span class="keyword">in</span> vals:</span><br><span class="line">                flag = <span class="built_in">input</span>(<span class="string">f&quot;是 <span class="subst">&#123;val&#125;</span> 吗? (y/...): &quot;</span>).lower() == <span class="string">&#x27;y&#x27;</span></span><br><span class="line">                <span class="keyword">if</span> flag:</span><br><span class="line">                    res = val</span><br><span class="line">                    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> execjs<br><span class="hljs-comment"># lan_list是一个语言映射列表，也是直接拦截请求就能找到</span><br><span class="hljs-keyword">from</span> baidufanyi.languages <span class="hljs-keyword">import</span> lan_list<br><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">BaiduTranslate</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.headers = &#123;<br>            <span class="hljs-string">&#x27;Host&#x27;</span>: <span class="hljs-string">&#x27;fanyi.baidu.com&#x27;</span>,<br>            <span class="hljs-string">&#x27;Origin&#x27;</span>: <span class="hljs-string">&#x27;https://fanyi.baidu.com&#x27;</span>,<br>            <span class="hljs-string">&#x27;User-Agent&#x27;</span>: <span class="hljs-string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.76&#x27;</span>,<br>            <span class="hljs-string">&#x27;Cookie&#x27;</span>: <span class="hljs-string">&#x27;BIDUPSID=3C574EAB32054FCD30DC5846A976DC4B; PSTM=1688952101; ab_jid=4eb88762366f56ee5a5d3c3092286b01c2d9; ab_jid_BFESS=4eb88762366f56ee5a5d3c3092286b01c2d9; BAIDUID=3C574EAB32054FCDB33D0B497C31F8D1:SL=0:NR=10:FG=1; BDUSS=VaRk5sd1Z-V1FuNzhhT0VRdG5KV3JZS21EUFNaQTVtSXBtWk9WbnlFY0ttLWxrSVFBQUFBJCQAAAAAAAAAAAEAAAA7lO9Os8K4r9XmzNjDtMnuaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoOwmQKDsJkWX; BDUSS_BFESS=VaRk5sd1Z-V1FuNzhhT0VRdG5KV3JZS21EUFNaQTVtSXBtWk9WbnlFY0ttLWxrSVFBQUFBJCQAAAAAAAAAAAEAAAA7lO9Os8K4r9XmzNjDtMnuaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoOwmQKDsJkWX; H_PS_PSSID=39841_39935_39937_39933_39943_39938_39999_40013_40044; BDORZ=FFFB88E999055A3F8A630C64834BD6D0; H_WISE_SIDS=39841_39935_39937_39933_39943_39938_39999_40013_40044; H_WISE_SIDS_BFESS=39841_39935_39937_39933_39943_39938_39999_40013_40044; BA_HECTOR=00a12k8kakal8g8h0ga58520f1i3ti1iojb081t; delPer=0; PSINO=7; ZFY=bCJZ:BP4jc0fMbEy0wl0IlAEUqO85tc5LYTDqupa4wQQ:C; BAIDUID_BFESS=3C574EAB32054FCDB33D0B497C31F8D1:SL=0:NR=10:FG=1; ab_bid=6bcd63a63cfe1563cd9c774b846c036f7250; ab_sr=1.0.1_YzNhOTYzM2E1ZjMwZmQ4Y2NiNDQwNTFmMTY1YTVhOGU0NmZiYzY3N2M0MDBhNjhkMDY2M2JmYjAyMzk3MjFkYjYxNTIxZDBmY2VmZWUyYzU1MGJjZTFkZTkyY2UzYTVlMjM1MDhiYTE1OTQ2NmJhY2IwNzQwNDkzNTJmNzY0M2RhZDUwMTVlM2JiYjAxMjc2NjY0MWNmZTIwNzdjMWU4NWFmMmRjYjFiYThkZGI5NDdkZTA4MjM0ZTczODhjZDRj&#x27;</span>,<br>            <span class="hljs-string">&#x27;Acs-Token&#x27;</span>: <span class="hljs-string">&#x27;1703476878072_1703520782449_cuD4/9ppyjvk6OcczGm+t0+Euqsb3taki25RxfARn3AKX75f5Dq2nr+XaKK47r99gxrJeRwQsph6sRla0fgqoyg7boTYST5KS8F5iwPRRgL1R0OFaqIxxdPpFxcMSB8ScBu34BYQrqJ44t82KFN1jkV9Y9myo9uadOHMOkIHq4mBNdX2hH9ZWCX1zSOPjzpNx0VrSOeVRZUahZoQSf3lLm40ESAKAhkpQ1KlV3XL6hUxjJalKjgCU2nIlDRExu+UGV/QXYZ25uVCvztRMSk8WHEDzsDeXiGEG3iFOqnNC7b1oItuEKUpPN1umjTqGTXl8OnYM2Yk4YIJLKkM/OM+ZEOcdtfoVxgh1bW4onnvR15CyQNBSDa6Gk9QA99gyAAa62+VuoaCLJ0W2hkLcPL7ya4BP8Ovj8c9J6pQNSpwTHeNxGIwcyeep+YH3KWZ2BUwT0nySVqcECqwghq0Jj7a2ZXo2sr90TQyewpCQvAJQ+u1ZcBio0liWnpeK18d/VVP&#x27;</span><br>        &#125;<br>        self.data = &#123;<br>            <span class="hljs-string">&#x27;query&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&#x27;sign&#x27;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&#x27;transtype&#x27;</span>: <span class="hljs-string">&#x27;realtime&#x27;</span>,<br>            <span class="hljs-string">&#x27;token&#x27;</span>: <span class="hljs-string">&#x27;a15d651ffb02721a9d3943e0d724387c&#x27;</span>,<br>            <span class="hljs-string">&#x27;simple_means_flag&#x27;</span>: <span class="hljs-number">3</span>,<br>            <span class="hljs-string">&#x27;domain&#x27;</span>: <span class="hljs-string">&#x27;common&#x27;</span>,<br>            <span class="hljs-string">&#x27;ts&#x27;</span>: <span class="hljs-built_in">int</span>(time.time_ns() / <span class="hljs-number">1e6</span>)<br>        &#125;<br>        self.ctx = execjs.<span class="hljs-built_in">compile</span>(<span class="hljs-built_in">open</span>(os.path.join(os.path.dirname(__file__), <span class="hljs-string">&#x27;sign.js&#x27;</span>), <span class="hljs-string">&#x27;r&#x27;</span>).read())<br>        self.log = <span class="hljs-built_in">open</span>(os.path.join(os.path.dirname(__file__), <span class="hljs-string">&#x27;translate.log&#x27;</span>), <span class="hljs-string">&#x27;a&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>)<br>        self.log_params = &#123;<br>            <span class="hljs-string">&quot;from_lan&quot;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&quot;to_lan&quot;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&quot;content&quot;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&quot;result&quot;</span>: <span class="hljs-string">&#x27;无&#x27;</span>,<br>            <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-string">&#x27;&#x27;</span>,<br>            <span class="hljs-string">&quot;response&quot;</span>: <span class="hljs-string">&#x27;无&#x27;</span>,<br>            <span class="hljs-string">&quot;cost_time&quot;</span>: <span class="hljs-string">&#x27;请求失败&#x27;</span><br>        &#125;<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">detect_lan</span>(<span class="hljs-params">self, content</span>):<br>        resp = requests.post(<span class="hljs-string">f&#x27;https://fanyi.baidu.com/langdetect&#x27;</span>,<br>                             headers=self.headers,<br>                             data=&#123;<span class="hljs-string">&#x27;query&#x27;</span>: content&#125;)<br>        <span class="hljs-keyword">if</span> resp.ok:<br>            json = resp.json()<br>            <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;lan&#x27;</span> <span class="hljs-keyword">in</span> json:<br>                <span class="hljs-keyword">return</span> json[<span class="hljs-string">&#x27;lan&#x27;</span>]<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;zh&#x27;</span><br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">translate</span>(<span class="hljs-params">self, from_lan, to_lan, content</span>):<br>        <span class="hljs-keyword">if</span> from_lan <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:<br>            from_lan = self.detect_lan(content)<br><br>        <span class="hljs-keyword">for</span> lan_key <span class="hljs-keyword">in</span> lan_list.keys():<br>            <span class="hljs-keyword">if</span> lan_list[lan_key] == from_lan:<br>                self.log_params[<span class="hljs-string">&#x27;from_lan&#x27;</span>] = lan_key<br>            <span class="hljs-keyword">elif</span> lan_list[lan_key] == to_lan:<br>                self.log_params[<span class="hljs-string">&#x27;to_lan&#x27;</span>] = lan_key<br>        self.log_params[<span class="hljs-string">&#x27;content&#x27;</span>] = content<br><br>        <span class="hljs-keyword">if</span> from_lan == to_lan:<br>            self.print_log()<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;源语言类型与目标语言相同&#x27;</span><br><br>        sign = self.ctx.call(<span class="hljs-string">&#x27;getSign&#x27;</span>, content)<br>        url = <span class="hljs-string">f&#x27;https://fanyi.baidu.com/v2transapi?from=<span class="hljs-subst">&#123;from_lan&#125;</span>&amp;to=<span class="hljs-subst">&#123;to_lan&#125;</span>&#x27;</span><br>        self.data[<span class="hljs-string">&#x27;sign&#x27;</span>] = sign<br>        self.data[<span class="hljs-string">&#x27;query&#x27;</span>] = content<br><br>        clock = time.time_ns()<br>        <span class="hljs-keyword">try</span>:<br>            resp = requests.post(url, headers=self.headers, data=self.data, timeout=(<span class="hljs-number">3.0</span>, <span class="hljs-number">5.0</span>))<br>        <span class="hljs-keyword">except</span> requests.RequestException:<br>            self.print_log()<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;请求失败&#x27;</span><br>        <span class="hljs-keyword">except</span> requests.ReadTimeout <span class="hljs-keyword">or</span> requests.Timeout:<br>            self.print_log()<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;请求超时&#x27;</span><br><br>        clock = (time.time_ns() - clock) / <span class="hljs-number">1e9</span><br>        <span class="hljs-keyword">if</span> clock &lt; <span class="hljs-number">10</span>:<br>            clock = <span class="hljs-built_in">round</span>(clock, <span class="hljs-number">3</span>)<br>        <span class="hljs-keyword">elif</span> clock &lt; <span class="hljs-number">100</span>:<br>            clock = <span class="hljs-built_in">round</span>(clock, <span class="hljs-number">2</span>)<br>        <span class="hljs-keyword">elif</span> clock &lt; <span class="hljs-number">1000</span>:<br>            clock = <span class="hljs-built_in">round</span>(clock, <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">else</span>:<br>            clock = <span class="hljs-built_in">int</span>(clock)<br>        self.log_params[<span class="hljs-string">&#x27;cost_time&#x27;</span>] = <span class="hljs-built_in">str</span>(clock)<br>        self.log_params[<span class="hljs-string">&#x27;code&#x27;</span>] = <span class="hljs-built_in">str</span>(resp.status_code)<br>        res = resp.json()<br><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&#x27;trans_result&#x27;</span> <span class="hljs-keyword">in</span> res.keys():<br>            result = res[<span class="hljs-string">&#x27;trans_result&#x27;</span>][<span class="hljs-string">&#x27;data&#x27;</span>][<span class="hljs-number">0</span>][<span class="hljs-string">&#x27;dst&#x27;</span>]<br>            self.log_params[<span class="hljs-string">&#x27;result&#x27;</span>] = result<br>            self.print_log()<br>            <span class="hljs-keyword">return</span> result<br><br>        self.log_params[<span class="hljs-string">&#x27;response&#x27;</span>] = resp.text<br>        self.print_log()<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;&#x27;</span><br><br>    <span class="hljs-comment"># 这个是改进后的，想拓展一下打个日志</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">print_log</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;———————\t<span class="hljs-subst">&#123;datetime.now()&#125;</span>\t————————\n&quot;</span><br>              <span class="hljs-string">f&quot;源语言类型:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;from_lan&#x27;</span>]&#125;</span>\n&quot;</span><br>              <span class="hljs-string">f&quot;目标语言类型:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;to_lan&#x27;</span>]&#125;</span>\n&quot;</span><br>              <span class="hljs-string">f&quot;翻译内容:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;content&#x27;</span>]&#125;</span>\n&quot;</span><br>              <span class="hljs-string">f&quot;翻译结果:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;result&#x27;</span>]&#125;</span>\n&quot;</span><br>              <span class="hljs-string">f&quot;请求耗时:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;cost_time&#x27;</span>]&#125;</span> ms\n&quot;</span><br>              <span class="hljs-string">f&quot;请求状态:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;code&#x27;</span>]&#125;</span>\n&quot;</span><br>              <span class="hljs-string">f&quot;请求返回内容:\t<span class="hljs-subst">&#123;self.log_params[<span class="hljs-string">&#x27;response&#x27;</span>]&#125;</span>&quot;</span>, file=self.log)<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">choose_lan</span>(<span class="hljs-params">self, tip</span>):<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            res = <span class="hljs-built_in">input</span>(tip)<br>            keys = [key <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> lan_list.keys() <span class="hljs-keyword">if</span> key.find(res) &gt;= <span class="hljs-number">0</span>]<br>            vals = [val <span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> lan_list.values() <span class="hljs-keyword">if</span> val.find(res) &gt;= <span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(keys) == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(vals) == <span class="hljs-number">0</span>:<br>                <span class="hljs-keyword">continue</span><br>            <span class="hljs-keyword">elif</span> <span class="hljs-built_in">len</span>(keys) == <span class="hljs-number">1</span>:<br>                res = lan_list[keys[<span class="hljs-number">0</span>]]<br>                <span class="hljs-keyword">return</span> res<br>            <span class="hljs-keyword">elif</span> <span class="hljs-built_in">len</span>(vals) == <span class="hljs-number">1</span>:<br>                res = vals[<span class="hljs-number">0</span>]<br>                <span class="hljs-keyword">return</span> res<br>            <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> keys:<br>                flag = <span class="hljs-built_in">input</span>(<span class="hljs-string">f&quot;是 <span class="hljs-subst">&#123;key&#125;</span> 吗? (y/...): &quot;</span>).lower() == <span class="hljs-string">&#x27;y&#x27;</span><br>                <span class="hljs-keyword">if</span> flag:<br>                    res = lan_list[key]<br>                    <span class="hljs-keyword">return</span> res<br>            <span class="hljs-keyword">for</span> val <span class="hljs-keyword">in</span> vals:<br>                flag = <span class="hljs-built_in">input</span>(<span class="hljs-string">f&quot;是 <span class="hljs-subst">&#123;val&#125;</span> 吗? (y/...): &quot;</span>).lower() == <span class="hljs-string">&#x27;y&#x27;</span><br>                <span class="hljs-keyword">if</span> flag:<br>                    res = val<br>                    <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
 
 <p>再然后，我就开始爬文献了。第一次爬的是中南大学学报，看了看请求发现网站居然是前后端分离的，直接把接口cv过来就爬完了。我马上在群里问学长数据是这样吗，学长也是很惊讶我当天晚上就爬完了（但也确实很简单）​ <span class="github-emoji" alias="slightly_smiling_face" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f642.png?v8">&#x1f642;</span>	</p>
 <p>再再然后，我就专门负责爬数据了，转而开始爬其他大学学报的数据，因为大学学报的文献都是免费下载的，所以也不存在爬数据违法（至少学长是这么说的）。爬的时候才发现原来前后端分离的只是少数，绝大部分学报用的都是后端直接返回网页的模式，而且似乎好多学报的网站架构都差不多，只能爬完网页嗯分析了 <span class="github-emoji" alias="sob" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">&#x1f62d;</span></p>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB/" class="category-chain-item">爬虫</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/" class="print-no-link">#Python</a>
+      
+        <a href="/tags/%E7%88%AC%E8%99%AB/" class="print-no-link">#爬虫</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>学报文献数据</div>
+      <div>https://liosq.github.io/post/4fc25800/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>liosq</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年11月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/post/91dd4a8a/" title="某云音乐缓存">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">某云音乐缓存</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/post/e4f71868/" title="油猴脚本">
+                        <span class="hidden-mobile">油猴脚本</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-          
-
-<div class="post-copyright">
-<ul>
-  <li class="post-copyright-author">
-      <strong>本文作者： </strong>liosq
-  </li>
-  <li class="post-copyright-link">
-      <strong>本文链接：</strong>
-      <a href="https://liosq.github.io/post/4fc25800/" title="学报文献数据">https://liosq.github.io/post/4fc25800/</a>
-  </li>
-  <li class="post-copyright-license">
-      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-          <div class="post-tags">
-              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
-              <a href="/tags/Python/" rel="tag"># Python</a>
-          </div>
 
-        
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/post/e4f71868/" rel="prev" title="油猴脚本">
-                  <i class="fa fa-angle-left"></i> 油猴脚本
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/post/91dd4a8a/" rel="next" title="某云音乐缓存">
-                  某云音乐缓存 <i class="fa fa-angle-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
+  </aside>
+
+
+    </div>
+  </div>
 </div>
 
 
 
 
 
+  
 
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
 </div>
+
+    
+
+    
   </main>
 
-  <footer class="footer">
+  <footer>
     <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">liosq</span>
-  </div>
-<div class="wordcount">
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-chart-line"></i>
-    </span>
-    <span title="站点总字数">184k</span>
-  </span>
-  <span class="post-meta-item">
-    <span class="post-meta-item-icon">
-      <i class="fa fa-coffee"></i>
-    </span>
-    <span title="站点阅读时长">5:34</span>
-  </span>
-</div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
   </footer>
 
+  <!-- Scripts -->
   
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
-  
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-  <div class="reading-progress-bar"></div>
-
-  <a href="https://github.com/liosq" class="github-corner" title="在 GitHub 上关注我" aria-label="在 GitHub 上关注我" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
-
-
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
 
 
 
   
-  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
   
-
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":false,"delay":true,"timeout":3000,"priority":true,"url":"https://liosq.github.io/post/4fc25800/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
-<script src="/js/darkmode-js.min.js"></script>
-
 <script>
-var options = {
-  bottom: '32px',
-  right: 'unset',
-  left: '32px',
-  time: '0.3s',
-  mixColor: 'transparent',
-  backgroundColor: 'transparent',
-  buttonColorDark: '#100f2c',
-  buttonColorLight: '#fff',
-  saveInCookies: false,
-  label: '🌓',
-  autoMatchOsTheme: false
-}
-const darkmode = new Darkmode(options);
-window.darkmode = darkmode;
-darkmode.showWidget();
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
 </script>
 
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/quotes-typed.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

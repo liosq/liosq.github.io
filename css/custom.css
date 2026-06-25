@@ -1,0 +1,161 @@
+/* =====================================================
+ * liosq 博客 - 自定义样式 | Fluid 深蓝主题
+ * ===================================================== */
+
+/* ── 1. 拓宽文章列表容器 ── */
+#board > .container {
+  max-width: 1080px;
+}
+
+/* ── 2. 文章卡片：添加背景 + 边框，让卡片视觉上独立 ── */
+.index-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.6rem 2.2rem;
+  margin-bottom: 1.4rem;
+  border: 1px solid #dde8f0;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* ── 3. 文章卡片 Hover 效果 ── */
+.index-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(13, 33, 55, 0.09);
+  border-color: #4a9fd4;
+  cursor: pointer;
+}
+
+/* ── 4. 导航栏 Tab 间距拉开 ── */
+.navbar-nav .nav-item {
+  margin: 0 6px;
+}
+.navbar-nav .nav-link {
+  letter-spacing: 0.04em;
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* ── 5. 搜索弹窗样式 ── */
+#modalSearch .modal-content {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #c5d8ea;
+  box-shadow: 0 20px 60px rgba(13, 33, 55, 0.2);
+}
+#modalSearch .modal-header {
+  background: linear-gradient(135deg, #0d2137 0%, #1b4f87 100%);
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+#modalSearch .modal-title {
+  color: #d8e8f5;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+#modalSearch .close {
+  color: #d8e8f5;
+  opacity: 0.75;
+  text-shadow: none;
+  font-size: 1.4rem;
+}
+#modalSearch .close:hover {
+  opacity: 1;
+  color: #ffffff;
+}
+#modalSearch .modal-body {
+  padding: 1.5rem;
+}
+#modalSearch #local-search-input {
+  border: 1.5px solid #c5d8ea;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  outline: none;
+  background: #f8fbff;
+  color: #2c3e50;
+}
+#modalSearch #local-search-input:focus {
+  border-color: #1565c0;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+  background: #ffffff;
+}
+#modalSearch .form-control ~ label {
+  color: #5a7a9a;
+}
+#modalSearch #local-search-result a {
+  display: block;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  color: #1565c0;
+  text-decoration: none;
+  margin-bottom: 4px;
+  transition: background 0.15s;
+}
+#modalSearch #local-search-result a:hover {
+  background: #e3f0fb;
+}
+
+/* ── 6. 暗色模式增强：对比度 + 卡片样式 ── */
+[data-user-color-scheme="dark"] .index-card {
+  background: #1a2c40;
+  border-color: #1e3a55;
+}
+[data-user-color-scheme="dark"] .index-card:hover {
+  border-color: #4a9fd4;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+}
+[data-user-color-scheme="dark"] .index-header a {
+  color: #b8d4f0 !important;
+}
+[data-user-color-scheme="dark"] .index-header a:hover {
+  color: #90caf9 !important;
+}
+[data-user-color-scheme="dark"] .index-excerpt,
+[data-user-color-scheme="dark"] .index-excerpt__noimg {
+  color: #8eb4cc !important;
+}
+[data-user-color-scheme="dark"] .index-btm,
+[data-user-color-scheme="dark"] .post-meta,
+[data-user-color-scheme="dark"] .post-meta a {
+  color: #7a98b0 !important;
+}
+
+/* 暗色搜索弹窗 */
+[data-user-color-scheme="dark"] #modalSearch .modal-content {
+  background: #162030;
+  border-color: #1e3550;
+}
+[data-user-color-scheme="dark"] #modalSearch #local-search-input {
+  background: #1a2c40;
+  border-color: #1e3550;
+  color: #d0dce8;
+}
+[data-user-color-scheme="dark"] #modalSearch #local-search-input:focus {
+  border-color: #4a9fd4;
+  box-shadow: 0 0 0 3px rgba(74, 159, 212, 0.2);
+  background: #1a2c40;
+}
+[data-user-color-scheme="dark"] #modalSearch #local-search-result a {
+  color: #64b5f6;
+}
+[data-user-color-scheme="dark"] #modalSearch #local-search-result a:hover {
+  background: #1a2f45;
+}
+
+/* ── 7. 打字机游标颜色 ── */
+.typed-cursor {
+  color: #c8e0f4;
+  font-weight: 300;
+  opacity: 1 !important;
+}
+
+/* ── 8. 防止 subtitle 初始静态文本闪烁 ── */
+/* 默认不可见，由 quotes-typed.js 在合适时机淡入 */
+#subtitle {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
