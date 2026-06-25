@@ -2,9 +2,16 @@
  * liosq 博客 - 自定义样式 | Fluid 深蓝主题
  * ===================================================== */
 
-/* ── 1. 拓宽文章列表容器 ── */
-#board > .container {
-  max-width: 1080px;
+/* ── 1. 拓宽文章列表容器（仅大屏生效，防止小屏横向滚动条）── */
+@media (min-width: 1200px) {
+  #board > .container {
+    max-width: 1080px;
+  }
+}
+
+/* 防止任何元素撑出视口产生横向滚动条 */
+body {
+  overflow-x: hidden;
 }
 
 /* ── 2. 文章卡片：添加背景 + 边框，让卡片视觉上独立 ── */
@@ -43,10 +50,11 @@
   border: 1px solid #c5d8ea;
   box-shadow: 0 20px 60px rgba(13, 33, 55, 0.2);
 }
+/* 纯色 header，不用渐变 */
 #modalSearch .modal-header {
-  background: linear-gradient(135deg, #0d2137 0%, #1b4f87 100%);
+  background: #0d2137;
   border-bottom: none;
-  padding: 1rem 1.5rem;
+  padding: 0.9rem 1.5rem;
 }
 #modalSearch .modal-title {
   color: #d8e8f5;
@@ -67,6 +75,23 @@
 #modalSearch .modal-body {
   padding: 1.5rem;
 }
+/* label 居中展示在搜索框上方，字体稍大，与输入框保持间距 */
+#modalSearch .md-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+#modalSearch .md-form label {
+  order: -1;                    /* 渲染在 input 上方 */
+  position: static !important;
+  transform: none !important;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #4a6a8a;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.06em;
+}
 #modalSearch #local-search-input {
   border: 1.5px solid #c5d8ea;
   border-radius: 8px;
@@ -77,14 +102,12 @@
   outline: none;
   background: #f8fbff;
   color: #2c3e50;
+  box-shadow: none !important;  /* 清除 MDB 默认下划线 shadow */
 }
 #modalSearch #local-search-input:focus {
   border-color: #1565c0;
-  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15) !important;
   background: #ffffff;
-}
-#modalSearch .form-control ~ label {
-  color: #5a7a9a;
 }
 #modalSearch #local-search-result a {
   display: block;
@@ -128,6 +151,9 @@
 [data-user-color-scheme="dark"] #modalSearch .modal-content {
   background: #162030;
   border-color: #1e3550;
+}
+[data-user-color-scheme="dark"] #modalSearch .md-form label {
+  color: #7a98b0;
 }
 [data-user-color-scheme="dark"] #modalSearch #local-search-input {
   background: #1a2c40;

@@ -87,6 +87,39 @@
   
   
   <entry>
+    <title>AI Agent 开发学习路径</title>
+    <link href="/post/c91fb324/"/>
+    <url>/post/c91fb324/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>整理自个人学习探索，系统梳理 AI Agent 开发所需的知识体系，从零到落地的完整路径。</p></blockquote><hr><h2 id="一、需要掌握的基础能力"><a href="#一、需要掌握的基础能力" class="headerlink" title="一、需要掌握的基础能力"></a>一、需要掌握的基础能力</h2><h3 id="编程基础"><a href="#编程基础" class="headerlink" title="编程基础"></a>编程基础</h3><ul><li>扎实的编程基础（Python &#x2F; Node.js 为主流语言）</li><li>熟悉<strong>异步编程</strong>和<strong>并发处理</strong>（Agent 任务天然并发）</li><li>理解 <strong>LLM 的基本原理</strong>：Prompt Engineering、上下文窗口管理、Token 计算</li></ul><h3 id="框架与工具链"><a href="#框架与工具链" class="headerlink" title="框架与工具链"></a>框架与工具链</h3><p>主流 Agent 框架（至少熟悉一两个）：</p><table><thead><tr><th>框架</th><th>定位</th></tr></thead><tbody><tr><td>LangChain &#x2F; LangGraph</td><td>最主流，生态最丰富</td></tr><tr><td>AutoGen</td><td>多 Agent 对话框架</td></tr><tr><td>CrewAI</td><td>角色驱动的 Agent 团队</td></tr><tr><td>OpenAI Assistants API</td><td>托管式 Agent 平台</td></tr></tbody></table><p>新兴标准值得重点关注：</p><ul><li><strong>MCP（Model Context Protocol）</strong>：Anthropic 提出的工具调用标准协议</li><li><strong>SKILL</strong>：工具调用的能力描述层</li></ul><h3 id="核心设计能力"><a href="#核心设计能力" class="headerlink" title="核心设计能力"></a>核心设计能力</h3><p>Agent 开发的精髓在于<strong>系统设计</strong>，主要包括：</p><ul><li><strong>Tool 设计与封装</strong>：工具的颗粒度、参数设计、错误处理</li><li><strong>记忆系统设计</strong>：短期&#x2F;长期记忆管理策略</li><li><strong>多步骤任务规划</strong>：ReAct、CoT、Plan-and-Execute 等范式</li><li><strong>多 Agent 协作架构</strong>：角色分工与信息流设计</li><li><strong>错误处理与重试</strong>：容错策略与降级方案</li></ul><h3 id="工程化能力"><a href="#工程化能力" class="headerlink" title="工程化能力"></a>工程化能力</h3><p>真正落地的 Agent 需要：</p><ul><li><strong>可观测性</strong>：日志、Trace、评估体系</li><li><strong>流式输出处理</strong>：用户体验优化</li><li><strong>状态持久化</strong>：跨会话的上下文管理</li><li><strong>安全与权限控制</strong>：防止 Prompt Injection</li><li><strong>成本与延迟优化</strong>：Token 效率与响应速度</li></ul><hr><h2 id="二、Agent-记忆系统"><a href="#二、Agent-记忆系统" class="headerlink" title="二、Agent 记忆系统"></a>二、Agent 记忆系统</h2><h3 id="为什么需要记忆系统"><a href="#为什么需要记忆系统" class="headerlink" title="为什么需要记忆系统"></a>为什么需要记忆系统</h3><p>LLM 本身是<strong>无状态的</strong>，每次对话从零开始。真正有用的 Agent 需要：</p><ul><li>跨会话积累知识</li><li>记住用户偏好</li><li>沉淀任务执行经验</li></ul><h3 id="记忆的三种形态"><a href="#记忆的三种形态" class="headerlink" title="记忆的三种形态"></a>记忆的三种形态</h3><table><thead><tr><th>类型</th><th>说明</th><th>特点</th></tr></thead><tbody><tr><td><strong>Token-level</strong></td><td>上下文窗口（Context）</td><td>直接但有容量上限，会话结束即消失</td></tr><tr><td><strong>Parametric</strong></td><td>微调进模型权重</td><td>持久但更新成本极高</td></tr><tr><td><strong>External</strong></td><td>向量库&#x2F;数据库&#x2F;文件系统</td><td>可读写、可增长，工程主流方向</td></tr></tbody></table><p>从功能角度，记忆还可分为：</p><ul><li><strong>用户记忆</strong>：偏好、画像</li><li><strong>任务记忆</strong>：执行过的案例、踩过的坑</li><li><strong>知识记忆</strong>：文档、规则</li></ul><h3 id="传统-RAG-的局限"><a href="#传统-RAG-的局限" class="headerlink" title="传统 RAG 的局限"></a>传统 RAG 的局限</h3><p>传统 RAG 是平铺式向量存储，存在以下问题：</p><ul><li>丢失文档结构</li><li>切片边界问题</li><li>无法做全局判断</li><li>检索是黑箱，无法理解完整语境</li><li>无法实现”越用越聪明”的自我迭代</li></ul><hr><h2 id="三、Plan（规划）——让-Agent-自主决策"><a href="#三、Plan（规划）——让-Agent-自主决策" class="headerlink" title="三、Plan（规划）——让 Agent 自主决策"></a>三、Plan（规划）——让 Agent 自主决策</h2><p><strong>Agent &#x3D; LLM + Tools + Memory + Plan</strong></p><p>Plan 让 Agent 从「被动应答」升级为「主动解决问题」。</p><h3 id="常见规划策略对比"><a href="#常见规划策略对比" class="headerlink" title="常见规划策略对比"></a>常见规划策略对比</h3><table><thead><tr><th>策略</th><th>适用场景</th><th>Token 消耗</th><th>核心优势</th></tr></thead><tbody><tr><td><strong>一次性计划</strong></td><td>步骤固定、结果可预测</td><td>低</td><td>简单直接，执行快</td></tr><tr><td><strong>动态计划</strong></td><td>结果不确定、需灵活应变</td><td>中</td><td>适应性强，能处理异常</td></tr><tr><td><strong>树形规划</strong></td><td>多路径探索、方案选型</td><td>高</td><td>全局最优，可比较方案</td></tr><tr><td><strong>树形 + 剪枝</strong></td><td>大搜索空间、需控成本</td><td>可控</td><td>平衡质量与成本</td></tr><tr><td><strong>ReAct</strong></td><td>信息不完整、边做边学</td><td>中</td><td>最灵活，工程实践主流</td></tr></tbody></table><p><strong>选型建议</strong>：大多数场景用 ReAct 即可；步骤固定时用一次性计划；多方案选优时用树形规划 + 剪枝。</p><hr><h2 id="四、MCP（Model-Context-Protocol）"><a href="#四、MCP（Model-Context-Protocol）" class="headerlink" title="四、MCP（Model Context Protocol）"></a>四、MCP（Model Context Protocol）</h2><p>MCP 是 Anthropic 在 2024 年底提出并开源的协议标准，解决 AI 模型统一连接外部工具和数据源的问题，类比 USB 接口——一旦标准化，所有工具都可以即插即用。</p><h3 id="架构三角色"><a href="#架构三角色" class="headerlink" title="架构三角色"></a>架构三角色</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino">MCP Host（Claude Desktop/IDE）<br>  └── MCP <span class="hljs-built_in">Client</span>（通信模块）<br>        └── MCP <span class="hljs-built_in">Server</span>（工具/数据源服务端）<br></code></pre></td></tr></table></figure><h3 id="MCP-Server-能提供"><a href="#MCP-Server-能提供" class="headerlink" title="MCP Server 能提供"></a>MCP Server 能提供</h3><ul><li><strong>Tools</strong>：可调用的函数（如查询数据库、发邮件）</li><li><strong>Resources</strong>：可读取的数据（如文件内容、API 响应）</li><li><strong>Prompts</strong>：提示词模板</li></ul><hr><h2 id="五、Skill-与-MCP-的关系"><a href="#五、Skill-与-MCP-的关系" class="headerlink" title="五、Skill 与 MCP 的关系"></a>五、Skill 与 MCP 的关系</h2><p><strong>核心区别：</strong></p><ul><li><strong>MCP 是协议</strong>（通信层）：负责 Agent 和工具之间的标准化通信</li><li><strong>Skill 是能力描述</strong>（认知层）：描述 Agent 能做什么、怎么做</li></ul><p><strong>类比：Skill 是大脑，MCP 是手脚。</strong></p><p>最佳实践：</p><ul><li><strong>Skill 脚本</strong>负责业务逻辑的灵活编排</li><li><strong>MCP Server</strong>负责单一职责的标准化工具执行</li></ul><hr><h2 id="六、可观测性工具"><a href="#六、可观测性工具" class="headerlink" title="六、可观测性工具"></a>六、可观测性工具</h2><table><thead><tr><th>工具</th><th>定位</th><th>特点</th></tr></thead><tbody><tr><td><strong>LangChain</strong></td><td>开发框架</td><td>用来构建 Agent 的”积木”</td></tr><tr><td><strong>LangSmith</strong></td><td>调试平台</td><td>看 Agent 在干什么，与 LangChain 强绑定</td></tr><tr><td><strong>Langfuse</strong></td><td>观测平台</td><td>开源自部署，框架无关，数据安全</td></tr></tbody></table><p>正式项目推荐<strong>自部署 Langfuse</strong>：不依赖特定框架，数据留存本地，可以追踪所有 LLM 调用的 Trace、Token 消耗、延迟和评估结果。</p><hr><h2 id="七、完整学习路径（四个阶段）"><a href="#七、完整学习路径（四个阶段）" class="headerlink" title="七、完整学习路径（四个阶段）"></a>七、完整学习路径（四个阶段）</h2><h3 id="第一阶段（1-2-周）：地基夯实"><a href="#第一阶段（1-2-周）：地基夯实" class="headerlink" title="第一阶段（1-2 周）：地基夯实"></a>第一阶段（1-2 周）：地基夯实</h3><p><strong>目标：不依赖框架从零写出能调用外部工具的 Agent</strong></p><ul><li>掌握 Node.js &#x2F; Python 异步编程</li><li>理解 Tool Calling（Function Calling）机制</li><li>手写一个能调用外部 API 的简单 Agent</li></ul><h3 id="第二阶段（3-4-周）：框架深入"><a href="#第二阶段（3-4-周）：框架深入" class="headerlink" title="第二阶段（3-4 周）：框架深入"></a>第二阶段（3-4 周）：框架深入</h3><p><strong>目标：掌握主流框架，实现 RAG 和记忆系统</strong></p><ul><li>深入学习 LangChain &#x2F; LangGraph</li><li>实现 RAG（Retrieval-Augmented Generation）</li><li>工程化记忆系统（向量库选型、检索策略）</li><li>Week 4-7：综合项目实践</li></ul><h3 id="第三阶段（3-4-周）：多-Agent-协作"><a href="#第三阶段（3-4-周）：多-Agent-协作" class="headerlink" title="第三阶段（3-4 周）：多 Agent 协作"></a>第三阶段（3-4 周）：多 Agent 协作</h3><p><strong>目标：设计并实现多 Agent 协作系统</strong></p><p>四种协作模式：</p><table><thead><tr><th>模式</th><th>说明</th></tr></thead><tbody><tr><td><strong>Supervisor</strong></td><td>一个主 Agent 分发任务给子 Agent</td></tr><tr><td><strong>Hierarchical</strong></td><td>多层级的任务分解与上报</td></tr><tr><td><strong>Peer-to-Peer</strong></td><td>Agent 之间平等通信与协商</td></tr><tr><td><strong>Pipeline</strong></td><td>线性流水线，每个 Agent 处理一个阶段</td></tr></tbody></table><p>同时掌握 Agent 安全与防护：</p><ul><li>Prompt Injection 防御</li><li>沙箱隔离</li><li>成本控制与限速</li></ul><h3 id="第四阶段（3-4-周）：工程化落地"><a href="#第四阶段（3-4-周）：工程化落地" class="headerlink" title="第四阶段（3-4 周）：工程化落地"></a>第四阶段（3-4 周）：工程化落地</h3><p><strong>目标：生产级 Agent 系统的工程化能力</strong></p><ul><li><strong>可观测性</strong>：Langfuse Trace、Token 追踪</li><li><strong>评估体系</strong>：LLM-as-Judge、自动化评测</li><li><strong>部署优化</strong>：流式输出、状态持久化、模型分级调用</li></ul><hr><h2 id="八、延伸阅读与推荐资源"><a href="#八、延伸阅读与推荐资源" class="headerlink" title="八、延伸阅读与推荐资源"></a>八、延伸阅读与推荐资源</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><ul><li><a href="https://js.langchain.com/docs/">LangChain JS&#x2F;TS 文档</a></li><li><a href="https://langchain-ai.github.io/langgraphjs/">LangGraph JS 文档</a></li><li><a href="https://modelcontextprotocol.io/">MCP 官方规范</a></li><li><a href="https://docs.anthropic.com/en/docs/tool-use">Anthropic Tool Use</a></li></ul><h3 id="必读论文"><a href="#必读论文" class="headerlink" title="必读论文"></a>必读论文</h3><ul><li><strong>ReAct</strong>：Reasoning and Acting in Language Models</li><li><strong>Reflexion</strong>：Language Agents with Verbal Reinforcement Learning</li><li><strong>Toolformer</strong>：Language Models Can Teach Themselves to Use Tools</li><li><strong>LATS</strong>：Language Agent Tree Search</li></ul><h3 id="开源项目"><a href="#开源项目" class="headerlink" title="开源项目"></a>开源项目</h3><ul><li><a href="https://github.com/langfuse/langfuse">Langfuse</a>：可观测性平台</li><li><a href="https://mastra.ai/">Mastra</a>：TypeScript Agent 框架</li><li><a href="https://github.com/microsoft/autogen">AutoGen</a>：多 Agent 对话</li><li><a href="https://github.com/crewAIInc/crewAI">CrewAI</a>：角色驱动的 Agent 团队</li></ul><h3 id="在线课程（DeepLearning-AI）"><a href="#在线课程（DeepLearning-AI）" class="headerlink" title="在线课程（DeepLearning.AI）"></a>在线课程（DeepLearning.AI）</h3><ul><li>Building Agentic RAG with LangGraph</li><li>AI Agents in LangGraph</li><li>Tool Use with Claude（Anthropic 官方）</li></ul><hr><h2 id="学习路径总结"><a href="#学习路径总结" class="headerlink" title="学习路径总结"></a>学习路径总结</h2><figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sqf">起步<br>├── 第一阶段：手写最小 <span class="hljs-built_in">Agent</span>（Tool Calling）<br>│<br>├── 第二阶段：框架 + RAG + 记忆系统<br>│<br>├── 第三阶段：多 <span class="hljs-built_in">Agent</span> 协作 + 安全防护<br>│<br>└── 第四阶段：可观测性 + 评估 + 生产部署<br></code></pre></td></tr></table></figure><p><strong>建议</strong>：跟着路径一步步做项目，不要只看文档——Agent 开发最重要的是在真实任务中踩坑和积累经验。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔记</category>
+      
+      <category>AI工具</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>AI</tag>
+      
+      <tag>Agent</tag>
+      
+      <tag>LangChain</tag>
+      
+      <tag>MCP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>沙箱环境运行 Claude Code 实践记录</title>
     <link href="/post/654b817c/"/>
     <url>/post/654b817c/</url>
@@ -149,75 +182,11 @@
   
   
   <entry>
-    <title>MySQL 索引选择实战：等值 + IN + 范围混合查询的最优方案</title>
-    <link href="/post/a2a0707d/"/>
-    <url>/post/a2a0707d/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文记录了一次真实的 MySQL 索引优化分析，目标表有 280 万行数据，通过对比多种候选索引方案，找出最适合混合查询场景的索引设计策略。</p></blockquote><h2 id="目标-SQL"><a href="#目标-SQL" class="headerlink" title="目标 SQL"></a>目标 SQL</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> bm_activity_rider_space_time<br><span class="hljs-keyword">WHERE</span> business_type <span class="hljs-operator">=</span> ?<br>  <span class="hljs-keyword">AND</span> <span class="hljs-keyword">period</span> <span class="hljs-keyword">IN</span> (?, ?, ?, ..., ?)   <span class="hljs-comment">-- 通常 10 个值</span><br>  <span class="hljs-keyword">AND</span> stage <span class="hljs-operator">=</span> ?<br>  <span class="hljs-keyword">AND</span> id <span class="hljs-operator">&gt;</span> ?<br><span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> id <span class="hljs-keyword">ASC</span><br>LIMIT <span class="hljs-number">500</span>;<br></code></pre></td></tr></table></figure><p><strong>查询特征分析</strong>：</p><table><thead><tr><th>条件</th><th>类型</th><th>选择性</th></tr></thead><tbody><tr><td><code>business_type = ?</code></td><td>等值</td><td>极低（仅 3 个不同值，某值占 92.9%）</td></tr><tr><td><code>period IN (...)</code></td><td>IN &#x2F; range</td><td>中等（230 个不同值，取 10 个）</td></tr><tr><td><code>stage = ?</code></td><td>等值</td><td>极低（仅 2 个不同值：0 和 60）</td></tr><tr><td><code>id &gt; ?</code></td><td>范围</td><td>高（游标分页）</td></tr></tbody></table><hr><h2 id="数据分布特征（280-万行）"><a href="#数据分布特征（280-万行）" class="headerlink" title="数据分布特征（280 万行）"></a>数据分布特征（280 万行）</h2><table><thead><tr><th>字段</th><th>不同值数</th><th>主要分布</th></tr></thead><tbody><tr><td>business_type</td><td>3</td><td>6: 92.9%、2: 4.0%、9: 3.1%</td></tr><tr><td>period</td><td>230</td><td>每个值约 1 万～12 万行</td></tr><tr><td>stage</td><td>2</td><td>0: 72%、60: 28%</td></tr></tbody></table><hr><h2 id="索引设计核心原则"><a href="#索引设计核心原则" class="headerlink" title="索引设计核心原则"></a>索引设计核心原则</h2><p>在 MySQL B-Tree 索引中，<strong>列的顺序决定了索引的利用率</strong>：</p><ol><li><strong>等值条件列</strong>放前，可以精确定位</li><li><strong>IN 列</strong>（range）放在等值条件之后；range 列之后的列<strong>无法被索引利用</strong></li><li><strong>ORDER BY 列</strong>放在最后，可以避免 filesort</li></ol><p>对于 <code>WHERE a=? AND b IN(?,?) AND c=? ORDER BY d ASC</code> 这类查询：</p><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs r">错误顺序<span class="hljs-operator">:</span> <span class="hljs-punctuation">(</span>b<span class="hljs-punctuation">,</span> a<span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">,</span> d<span class="hljs-punctuation">)</span>  <span class="hljs-operator">-</span><span class="hljs-operator">-</span> b IN 是 <span class="hljs-built_in">range</span>，a 和 <span class="hljs-built_in">c</span> 在 <span class="hljs-built_in">range</span> 后面无法利用<br>好的顺序<span class="hljs-operator">:</span> <span class="hljs-punctuation">(</span>a<span class="hljs-punctuation">,</span> <span class="hljs-built_in">c</span><span class="hljs-punctuation">,</span> b<span class="hljs-punctuation">,</span> d<span class="hljs-punctuation">)</span>  <span class="hljs-operator">-</span><span class="hljs-operator">-</span> 等值在前，<span class="hljs-built_in">range</span> 在后，最后是 ORDER BY 列<br></code></pre></td></tr></table></figure><hr><h2 id="候选方案对比"><a href="#候选方案对比" class="headerlink" title="候选方案对比"></a>候选方案对比</h2><h3 id="方案一（现有索引）：-period-business-type-stage-id"><a href="#方案一（现有索引）：-period-business-type-stage-id" class="headerlink" title="方案一（现有索引）：(period, business_type, stage, id)"></a>方案一（现有索引）：<code>(period, business_type, stage, id)</code></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">KEY idx_period_business_stage_id (<span class="hljs-keyword">period</span>, business_type, stage, id)<br></code></pre></td></tr></table></figure><ul><li><code>period IN</code> 是 range 条件，其后列理论上不能完整走索引</li><li>但 MySQL 5.7 的 ICP（Index Condition Pushdown）让 stage 在存储引擎层过滤</li><li>**<code>Using filesort</code>**：id 列的排序没有利用索引</li></ul><p><strong>实测结果</strong>：stage&#x3D;0 时 0.435s，stage&#x3D;60 时 0.210s</p><hr><h3 id="方案四（理论最优）：-business-type-stage-period-id"><a href="#方案四（理论最优）：-business-type-stage-period-id" class="headerlink" title="方案四（理论最优）：(business_type, stage, period, id)"></a>方案四（理论最优）：<code>(business_type, stage, period, id)</code></h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">KEY idx_opt_bt_stage_period_id (business_type, stage, <span class="hljs-keyword">period</span>, id)<br></code></pre></td></tr></table></figure><p><strong>利用分析</strong>：</p><table><thead><tr><th>索引列</th><th>查询条件</th><th>利用情况</th></tr></thead><tbody><tr><td>business_type</td><td><code>= 6</code></td><td>✅ 等值匹配</td></tr><tr><td>stage</td><td><code>= 0/60</code></td><td>✅ 等值匹配</td></tr><tr><td>period</td><td><code>IN (10个值)</code></td><td>✅ range 扫描</td></tr><tr><td>id</td><td><code>&gt; ?</code> &#x2F; ORDER BY</td><td>⚠️ range IN 中断，filesort</td></tr></tbody></table><p><strong>核心优势</strong>：等值条件全部前置，大幅缩小 period IN 的扫描范围。</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">传统索引: period <span class="hljs-keyword">IN</span> 先扫描 10×12万=120万个节点，ICP 过滤 stage<br>最优索引: <span class="hljs-attribute">business_type</span>=6 → <span class="hljs-attribute">stage</span>=60 → period <span class="hljs-keyword">IN</span> (10个值)<br>         约: 2.79M × 92.9% × 28% × (10/230) ≈ 31,600 行<br></code></pre></td></tr></table></figure><hr><h2 id="实测结果汇总"><a href="#实测结果汇总" class="headerlink" title="实测结果汇总"></a>实测结果汇总</h2><table><thead><tr><th>方案</th><th>索引结构</th><th>stage&#x3D;0 耗时</th><th>stage&#x3D;60 耗时</th></tr></thead><tbody><tr><td>PRIMARY</td><td>id</td><td>1.386s</td><td>1.480s</td></tr><tr><td><strong>方案一（现有）</strong></td><td>(period, bt, stage, id)</td><td><strong>0.435s</strong></td><td><strong>0.210s</strong></td></tr><tr><td>方案四（理论最优）</td><td>(bt, stage, period, id)</td><td>估算 ~0.20s</td><td>估算 ~0.05s</td></tr></tbody></table><p><strong>结论</strong>：</p><ul><li>现有索引 <code>idx_period_business_stage_id</code> 相比 PRIMARY 已有 68%～86% 的提升</li><li>方案四（等值列前置）预计可在此基础上再提升 2～4 倍</li></ul><hr><h2 id="创建最优索引建议"><a href="#创建最优索引建议" class="headerlink" title="创建最优索引建议"></a>创建最优索引建议</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 方案四（理论最优）: 等值条件全部前置</span><br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> bm_activity_rider_space_time<br><span class="hljs-keyword">ADD</span> KEY idx_opt_bt_stage_period_id (business_type, stage, <span class="hljs-keyword">period</span>, id);<br></code></pre></td></tr></table></figure><p><strong>注意事项</strong>：</p><ol><li>280 万行建索引约需 30～60 秒</li><li>建议在业务低峰期操作</li><li>新索引写入时会有约 4% 的额外开销</li></ol><hr><h2 id="通用索引设计小结"><a href="#通用索引设计小结" class="headerlink" title="通用索引设计小结"></a>通用索引设计小结</h2><p>对于 <code>WHERE 等值1=? AND 等值2=? AND 范围 IN(...) ORDER BY id</code> 类查询：</p><ul><li><strong>最优顺序</strong>：<code>(等值1, 等值2, range列, ORDER BY列)</code></li><li><strong>选择性越低的等值条件越应该放前面</strong>（充分利用前缀匹配）</li><li><strong>range 列（IN、&gt;、&lt;、BETWEEN）后的列无法被索引利用</strong>，但 ICP 可以在存储引擎层做二次过滤</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>笔记</category>
-      
-      <category>数据库</category>
-      
-      <category>MySQL</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>MySQL</tag>
-      
-      <tag>数据库</tag>
-      
-      <tag>SQL优化</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>并发问题梳理及解决方案设计</title>
     <link href="/post/29ded6da/"/>
     <url>/post/29ded6da/</url>
     
     <content type="html"><![CDATA[<h2 id="一、什么是并发问题"><a href="#一、什么是并发问题" class="headerlink" title="一、什么是并发问题"></a>一、什么是并发问题</h2><p><strong>并发问题</strong>的核心是：<strong>多个执行单元同时访问和修改同一份数据时，因执行顺序、时机或协作不当而导致的数据错误、业务逻辑异常或系统性能下降。</strong></p><h3 id="1-1-常见问题表现"><a href="#1-1-常见问题表现" class="headerlink" title="1.1 常见问题表现"></a>1.1 常见问题表现</h3><table><thead><tr><th>问题类型</th><th>简单定义</th><th>业务表现</th></tr></thead><tbody><tr><td><strong>数据竞争</strong></td><td>多个执行单元同时写入同一数据，没有同步保护</td><td>库存扣成负数、重复发券、重复扣款</td></tr><tr><td><strong>死锁</strong></td><td>多个执行单元互相持有对方需要的资源，互不释放</td><td>接口长时间无响应</td></tr><tr><td><strong>状态不一致</strong></td><td>并发操作导致关联数据在不同地方不一致</td><td>数据库已更新但缓存未刷新</td></tr><tr><td><strong>竞态条件</strong></td><td>程序行为依赖于不可控的执行顺序</td><td>结果不稳定、偶现问题</td></tr></tbody></table><hr><h2 id="二、并发场景分类（MECE）"><a href="#二、并发场景分类（MECE）" class="headerlink" title="二、并发场景分类（MECE）"></a>二、并发场景分类（MECE）</h2><h3 id="2-1-按场景类型"><a href="#2-1-按场景类型" class="headerlink" title="2.1 按场景类型"></a>2.1 按场景类型</h3><table><thead><tr><th>分类</th><th>说明</th></tr></thead><tbody><tr><td><strong>同一业务对象被同时修改</strong></td><td>同一订单、同一报名记录、同一库存单元</td></tr><tr><td><strong>同一业务动作被重复触发</strong></td><td>重试、超时补偿、重复提交、消息回放</td></tr><tr><td><strong>跨链路状态需要一致但更新节奏不同</strong></td><td>A 已成功，B 仍旧值</td></tr><tr><td><strong>同一业务结果由多条链路共同产出</strong></td><td>在线链路、离线任务、人工操作并行</td></tr><tr><td><strong>资源容量竞争导致并发退化</strong></td><td>连接池、锁等待、队列堆积</td></tr></tbody></table><h3 id="2-2-按执行单元"><a href="#2-2-按执行单元" class="headerlink" title="2.2 按执行单元"></a>2.2 按执行单元</h3><table><thead><tr><th>分类</th><th>说明</th></tr></thead><tbody><tr><td>单一执行单元内多线程</td><td>同一请求内部开多线程处理共享数据</td></tr><tr><td>多个执行单元并发</td><td>不同请求、定时任务、消费者同时修改同一数据</td></tr></tbody></table><hr><h2 id="三、并发问题定位方法"><a href="#三、并发问题定位方法" class="headerlink" title="三、并发问题定位方法"></a>三、并发问题定位方法</h2><h3 id="3-1-四层检查模型"><a href="#3-1-四层检查模型" class="headerlink" title="3.1 四层检查模型"></a>3.1 四层检查模型</h3><ol><li><strong>业务对象层</strong>：定义”谁是共享对象”，明确唯一标识与边界</li><li><strong>业务动作层</strong>：盘点所有会改变对象状态的动作（接口、任务、消费者、人工操作）</li><li><strong>时序层</strong>：识别哪些动作会在时间上重叠，特别是”先读后写”窗口</li><li><strong>一致性层</strong>：明确该对象允许的最终状态、临时状态和不可逆状态</li></ol><h3 id="3-2-逐步排查流程"><a href="#3-2-逐步排查流程" class="headerlink" title="3.2 逐步排查流程"></a>3.2 逐步排查流程</h3><p><strong>第一步：列清楚所有写入口</strong></p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">修改订单的入口：<br><span class="hljs-bullet">1.</span> 用户提交订单接口 → 修改订单表<br><span class="hljs-bullet">2.</span> 系统自动发货任务 → 修改订单表<br><span class="hljs-bullet">3.</span> 支付回调处理 → 修改订单表<br><span class="hljs-bullet">4.</span> 后台管理接口 → 修改订单表<br><span class="hljs-bullet">5.</span> 仓储系统回调 → 修改订单表<br></code></pre></td></tr></table></figure><p><strong>第二步：检查各写入口是否有并发保护</strong></p><ul><li>❌ 没有任何保护（最危险）</li><li>✅ 有分布式锁</li><li>✅ 有数据库级别条件检查（版本号&#x2F;状态）</li><li>✅ 有状态机约束</li><li>✅ 有数据库行锁（SELECT FOR UPDATE）</li></ul><p><strong>第三步：检查保护机制是否合理</strong></p><ul><li>锁粒度是否和实际修改数据维度一致？</li><li>加锁失败后代码是否禁止写操作？</li><li>版本号是否在数据库层原子性更新？</li></ul><p><strong>第四步：检查多个写入口之间是否协调</strong></p><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs elm">反例：<br>报名接口：锁粒度是 user_id<br>取消接口：锁粒度也是 user_id<br>但修改的数据是 (user_id, period_id, activity_<span class="hljs-keyword">type</span>) 的组合<br>→ 可能产生不可预期的结果<br></code></pre></td></tr></table></figure><hr><h2 id="四、并发保护方案"><a href="#四、并发保护方案" class="headerlink" title="四、并发保护方案"></a>四、并发保护方案</h2><h3 id="4-1-分布式锁（悲观锁）"><a href="#4-1-分布式锁（悲观锁）" class="headerlink" title="4.1 分布式锁（悲观锁）"></a>4.1 分布式锁（悲观锁）</h3><p><strong>适用场景</strong>：冲突频率高、冲突代价高、业务逻辑复杂</p><p><strong>最佳实践</strong>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (tryLock(key)) &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 加锁后重新查询最新数据</span><br>        <span class="hljs-type">Data</span> <span class="hljs-variable">freshData</span> <span class="hljs-operator">=</span> queryLatest(id);<br>        <span class="hljs-comment">// 校验业务状态</span><br>        validate(freshData);<br>        <span class="hljs-comment">// 执行业务逻辑</span><br>        process(freshData);<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        releaseLock(key);  <span class="hljs-comment">// 必须 finally 释放</span><br>    &#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BizException</span>(<span class="hljs-string">&quot;资源正在处理中，请稍后重试&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>关键要点</strong>：</p><ul><li>超时时间设为业务 TP99 的 1.5～2 倍</li><li>加锁失败后<strong>严禁继续执行写操作</strong></li><li>选择合适的锁粒度（锁维度要和数据维度一致）</li></ul><hr><h3 id="4-2-乐观锁（CAS）"><a href="#4-2-乐观锁（CAS）" class="headerlink" title="4.2 乐观锁（CAS）"></a>4.2 乐观锁（CAS）</h3><p><strong>适用场景</strong>：冲突概率低、可接受重试、追求吞吐量</p><p><strong>方式 A：版本号字段</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 读取</span><br><span class="hljs-keyword">SELECT</span> id, version <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br><span class="hljs-comment">-- 更新时附带版本号条件</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">SET</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;new_name&#x27;</span>, version <span class="hljs-operator">=</span> version <span class="hljs-operator">+</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> version <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br><span class="hljs-comment">-- 影响行数 = 0 表示并发冲突，需重试</span><br></code></pre></td></tr></table></figure><p><strong>方式 B：利用业务字段</strong></p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 状态机约束</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;SHIPPED&#x27;</span><br><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PENDING&#x27;</span><br></code></pre></td></tr></table></figure><hr><h3 id="4-3-状态机"><a href="#4-3-状态机" class="headerlink" title="4.3 状态机"></a>4.3 状态机</h3><p><strong>适用场景</strong>：数据有明确的生命周期，对状态合法性要求严格</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">订单状态流转：<br>待支付 → 已支付 → 待发货 → 已发货 → 已收货<br><br>非法转换被拒绝：<br>已发货 → 待支付 ❌<br></code></pre></td></tr></table></figure><p>实践要点：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 状态转换附带前置状态条件</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;new_status&#x27;</span><br><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> xxx <span class="hljs-keyword">AND</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;old_status&#x27;</span><br></code></pre></td></tr></table></figure><hr><h2 id="五、方案选择速查"><a href="#五、方案选择速查" class="headerlink" title="五、方案选择速查"></a>五、方案选择速查</h2><table><thead><tr><th>场景</th><th>推荐方案</th></tr></thead><tbody><tr><td>错误一次就不可接受（金钱、库存）</td><td>分布式锁 + 状态机</td></tr><tr><td>高并发且可重试</td><td>乐观锁 + 幂等</td></tr><tr><td>跨系统多写点</td><td>主事实约束 + 最终一致性编排</td></tr><tr><td>存在人工与系统并行修改</td><td>统一业务键 + 统一状态迁移规则</td></tr></tbody></table><hr><h2 id="六、常见陷阱"><a href="#六、常见陷阱" class="headerlink" title="六、常见陷阱"></a>六、常见陷阱</h2><h3 id="陷阱-1：加锁失败后仍然执行写操作"><a href="#陷阱-1：加锁失败后仍然执行写操作" class="headerlink" title="陷阱 1：加锁失败后仍然执行写操作"></a>陷阱 1：加锁失败后仍然执行写操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 错误</span><br><span class="hljs-keyword">if</span> (!tryLock(key)) &#123;<br>    log.warn(<span class="hljs-string">&quot;加锁失败&quot;</span>);<br>    <span class="hljs-comment">// 没有 return，代码继续往下走！</span><br>&#125;<br>updateData();  <span class="hljs-comment">// 在无锁情况下执行了写操作</span><br><br><span class="hljs-comment">// ✅ 正确</span><br><span class="hljs-keyword">if</span> (!tryLock(key)) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BizException</span>(<span class="hljs-string">&quot;加锁失败，拒绝操作&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="陷阱-2：锁超时时间太短"><a href="#陷阱-2：锁超时时间太短" class="headerlink" title="陷阱 2：锁超时时间太短"></a>陷阱 2：锁超时时间太短</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">设置锁超时 1s，但业务逻辑需要 5s 完成<br>→ 锁超时释放，另一个请求进来，数据被并发修改<br></code></pre></td></tr></table></figure><h3 id="陷阱-3：版本号在应用层计算"><a href="#陷阱-3：版本号在应用层计算" class="headerlink" title="陷阱 3：版本号在应用层计算"></a>陷阱 3：版本号在应用层计算</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 错误 - 读取后计算新版本</span><br><span class="hljs-type">int</span> <span class="hljs-variable">currentVersion</span> <span class="hljs-operator">=</span> queryVersion(id);  <span class="hljs-comment">// version = 10</span><br>updateWithVersion(id, currentVersion + <span class="hljs-number">1</span>);  <span class="hljs-comment">// 并发下这步可能被覆盖</span><br><br><span class="hljs-comment">// ✅ 正确 - 版本号在 SQL 层原子更新</span><br>UPDATE table <span class="hljs-type">SET</span> <span class="hljs-variable">version</span> <span class="hljs-operator">=</span> version + <span class="hljs-number">1</span> <span class="hljs-type">WHERE</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> xxx <span class="hljs-type">AND</span> <span class="hljs-variable">version</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure><h3 id="陷阱-4：加锁后未重新查询数据"><a href="#陷阱-4：加锁后未重新查询数据" class="headerlink" title="陷阱 4：加锁后未重新查询数据"></a>陷阱 4：加锁后未重新查询数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 错误 - 使用加锁前查询的数据做校验</span><br>List&lt;Data&gt; results = queryWithoutLock();  <span class="hljs-comment">// 先查数据</span><br><span class="hljs-keyword">for</span> (Data data : results) &#123;<br>    lock(data.getId());  <span class="hljs-comment">// 再加锁</span><br>    process(data);       <span class="hljs-comment">// 用的是加锁前的旧数据！</span><br>&#125;<br><br><span class="hljs-comment">// ✅ 正确 - 加锁后重新查询</span><br><span class="hljs-keyword">for</span> (Data data : results) &#123;<br>    lock(data.getId());<br>    <span class="hljs-type">Data</span> <span class="hljs-variable">freshData</span> <span class="hljs-operator">=</span> queryLatest(data.getId());  <span class="hljs-comment">// 重新查询</span><br>    validate(freshData);<br>    process(freshData);<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="陷阱-5：遗漏定时任务或异步消费者"><a href="#陷阱-5：遗漏定时任务或异步消费者" class="headerlink" title="陷阱 5：遗漏定时任务或异步消费者"></a>陷阱 5：遗漏定时任务或异步消费者</h3><p>排查写入口时，不要只关注 HTTP 接口，还要包括：</p><ul><li>Crane&#x2F;XXL-Job 定时任务</li><li>MQ 消息消费者</li><li>异步线程池任务</li><li>人工触发的批量脚本</li></ul><hr><h2 id="七、并发保护检查清单"><a href="#七、并发保护检查清单" class="headerlink" title="七、并发保护检查清单"></a>七、并发保护检查清单</h2><p>对每个修改数据的入口，确认以下项目：</p><ul><li><input disabled="" type="checkbox"> 这个入口修改的是什么数据？（具体到表、字段、业务维度）</li><li><input disabled="" type="checkbox"> 有没有其他入口也修改同一数据？</li><li><input disabled="" type="checkbox"> 是否有并发保护机制？</li><li><input disabled="" type="checkbox"> 保护粒度是否和实际修改数据的维度一致？</li><li><input disabled="" type="checkbox"> 如果是分布式锁，超时时间是否合理？加锁失败后是否禁止写？</li><li><input disabled="" type="checkbox"> 如果是乐观锁，版本号是否在数据库层原子性更新？</li><li><input disabled="" type="checkbox"> 加锁后是否重新查询了最新数据？</li><li><input disabled="" type="checkbox"> 是否遗漏了定时任务&#x2F;异步任务的并发场景？</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>笔记</category>
-      
-      <category>后端</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Java</tag>
-      
-      <tag>并发编程</tag>
-      
-      <tag>系统设计</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>骑手活动系统并发场景设计参考指南</title>
-    <link href="/post/b3920224/"/>
-    <url>/post/b3920224/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>本文基于实际生产事故教训，采用 MECE（相互独立、完全穷尽）原则，系统地梳理骑手活动管理系统可能存在的并发场景，为开发、测试和架构同学提供并发设计参考。</p><p><strong>核心事故背景</strong>：系统使用<strong>加锁前查询的数据</strong>进行校验，导致校验失效，不该被操作的数据被错误操作。</p></blockquote><hr><h2 id="一、核心概念"><a href="#一、核心概念" class="headerlink" title="一、核心概念"></a>一、核心概念</h2><h3 id="1-1-系统涉及的关键表"><a href="#1-1-系统涉及的关键表" class="headerlink" title="1.1 系统涉及的关键表"></a>1.1 系统涉及的关键表</h3><p>四张核心表构成骑手活动管理的完整生命周期：</p><table><thead><tr><th>表名</th><th>作用</th><th>主要状态</th></tr></thead><tbody><tr><td><code>bm_rider_activity_life_cycle</code></td><td>生命周期主表</td><td>REGISTER → AUDIT → SIGN → ENABLE</td></tr><tr><td><code>bm_rider_activity_register</code></td><td>报名详情表</td><td>COMMIT &#x2F; CANCEL_COMMIT</td></tr><tr><td><code>bm_rider_activity_audit</code></td><td>审核状态表</td><td>WAIT_CHECK &#x2F; CHECK_PASS</td></tr><tr><td><code>bm_rider_activity_sign</code></td><td>签约状态表</td><td>UNSIGNED &#x2F; SIGNED</td></tr></tbody></table><h3 id="1-2-并发问题的根本原因"><a href="#1-2-并发问题的根本原因" class="headerlink" title="1.2 并发问题的根本原因"></a>1.2 并发问题的根本原因</h3><p><strong>TOCTOU 问题（Time of Check, Time of Use）</strong></p><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">线程<span class="hljs-keyword">A</span>:查询数据(v1) → 线程B:修改数据(v2) → 线程<span class="hljs-keyword">A</span>:加锁 → 线程<span class="hljs-keyword">A</span>:校验v1(失效) → 线程<span class="hljs-keyword">A</span>:操作(错误)<br></code></pre></td></tr></table></figure><h3 id="1-3-正确的并发安全模式"><a href="#1-3-正确的并发安全模式" class="headerlink" title="1.3 正确的并发安全模式"></a>1.3 正确的并发安全模式</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dns">线程<span class="hljs-keyword">A</span>:加锁 → 线程<span class="hljs-keyword">A</span>:查询数据(最新) → 线程<span class="hljs-keyword">A</span>:校验(有效) → 线程<span class="hljs-keyword">A</span>:操作(正确) → 线程<span class="hljs-keyword">A</span>:释放锁<br></code></pre></td></tr></table></figure><p><strong>黄金法则：加锁后必须重新查询数据。</strong></p><hr><h2 id="二、按操作类型分类的并发场景"><a href="#二、按操作类型分类的并发场景" class="headerlink" title="二、按操作类型分类的并发场景"></a>二、按操作类型分类的并发场景</h2><h3 id="2-1-单骑手操作"><a href="#2-1-单骑手操作" class="headerlink" title="2.1 单骑手操作"></a>2.1 单骑手操作</h3><table><thead><tr><th>场景</th><th>并发风险</th><th>是否需要加锁</th></tr></thead><tbody><tr><td>手工审核</td><td>中</td><td>✅ 需要</td></tr><tr><td>签约确认</td><td>中</td><td>✅ 需要</td></tr><tr><td>取消报名</td><td>高</td><td>✅ 需要</td></tr><tr><td>取消签约</td><td>中</td><td>✅ 需要</td></tr></tbody></table><h3 id="2-2-批量操作（高风险）"><a href="#2-2-批量操作（高风险）" class="headerlink" title="2.2 批量操作（高风险）"></a>2.2 批量操作（高风险）</h3><table><thead><tr><th>场景</th><th>风险等级</th><th>问题类型</th></tr></thead><tbody><tr><td>批量自动审核</td><td>🔴 高</td><td>TOCTOU + 灰度外无保护</td></tr><tr><td>批量模式切换（单&#x2F;多期）</td><td>🔴 高</td><td>未重查数据</td></tr><tr><td>批量修改城市站点</td><td>🔴 严重</td><td>完全无锁 + 无事务</td></tr><tr><td>白名单批量签约</td><td>🟡 中</td><td>缺少报名锁</td></tr></tbody></table><h3 id="2-3-异步任务操作"><a href="#2-3-异步任务操作" class="headerlink" title="2.3 异步任务操作"></a>2.3 异步任务操作</h3><table><thead><tr><th>场景</th><th>风险</th><th>可能冲突的操作</th></tr></thead><tbody><tr><td>自动审核任务</td><td>高</td><td>手工取消报名</td></tr><tr><td>自动签约任务</td><td>中</td><td>续签</td></tr><tr><td>自动续签任务</td><td>高</td><td>手工模式切换</td></tr></tbody></table><hr><h2 id="三、高风险场景详解"><a href="#三、高风险场景详解" class="headerlink" title="三、高风险场景详解"></a>三、高风险场景详解</h2><h3 id="3-1-批量自动审核-vs-骑手取消报名"><a href="#3-1-批量自动审核-vs-骑手取消报名" class="headerlink" title="3.1 批量自动审核 vs 骑手取消报名"></a>3.1 批量自动审核 vs 骑手取消报名</h3><p><strong>问题代码</strong>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 问题代码</span><br>List&lt;Audit&gt; results = queryAuditList();  <span class="hljs-comment">// 无锁查询</span><br><span class="hljs-keyword">if</span> (isInGrayscale) &#123;<br>    results = filterCancelRegisterLockedRider(results);  <span class="hljs-comment">// 加锁过晚</span><br>&#125;<br>process(results);  <span class="hljs-comment">// 使用过期数据处理 → 已取消的骑手被审核通过！</span><br></code></pre></td></tr></table></figure><p><strong>修复代码</strong>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ✅ 正确做法</span><br>List&lt;Audit&gt; results = queryAuditList();<br>results = filterCancelRegisterLockedRider(results);  <span class="hljs-comment">// 先加锁</span><br><span class="hljs-keyword">if</span> (results.isEmpty()) <span class="hljs-keyword">return</span>;<br>results = queryLatestAuditList(results.getRiderIds());  <span class="hljs-comment">// 加锁后重查</span><br>process(results);  <span class="hljs-comment">// 使用最新数据</span><br></code></pre></td></tr></table></figure><h3 id="3-2-批量修改城市站点"><a href="#3-2-批量修改城市站点" class="headerlink" title="3.2 批量修改城市站点"></a>3.2 批量修改城市站点</h3><p><strong>问题</strong>：完全无锁，四张表可能不同步更新。</p><p><strong>修复方案</strong>：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 1. 给所有骑手加锁</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> riderId : riderIds) &#123;<br>    tryLock(riderId);<br>&#125;<br><span class="hljs-comment">// 2. 加锁后重新查询数据</span><br>List&lt;RiderData&gt; freshData = queryLatestForAll(riderIds);<br><span class="hljs-comment">// 3. 在 @Transactional 事务中批量更新四张表</span><br><span class="hljs-meta">@Transactional</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">batchUpdate</span><span class="hljs-params">(List&lt;RiderData&gt; freshData)</span> &#123;<br>    updateRegister(freshData);<br>    updateAudit(freshData);<br>    updateSign(freshData);<br>    updateLifecycle(freshData);<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="3-3-批量签约模式切换"><a href="#3-3-批量签约模式切换" class="headerlink" title="3.3 批量签约模式切换"></a>3.3 批量签约模式切换</h3><p><strong>问题</strong>：循环加锁但未重查数据，仍使用加锁前的旧数据处理。</p><p><strong>修复方案</strong>：加锁后重新查询 <code>registerVoList</code> 和 <code>lifeCycleVoList</code>，使用最新数据处理。</p><hr><h2 id="四、并发安全设计模式"><a href="#四、并发安全设计模式" class="headerlink" title="四、并发安全设计模式"></a>四、并发安全设计模式</h2><h3 id="4-1-单骑手操作标准模式"><a href="#4-1-单骑手操作标准模式" class="headerlink" title="4.1 单骑手操作标准模式"></a>4.1 单骑手操作标准模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 1. 获取锁</span><br><span class="hljs-type">boolean</span> <span class="hljs-variable">locked</span> <span class="hljs-operator">=</span> tryLock(riderId, businessType);<br><span class="hljs-keyword">if</span> (!locked) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BizException</span>(<span class="hljs-string">&quot;骑手资源正在处理中&quot;</span>);<br>&#125;<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 2. 加锁后重新查询最新数据</span><br>    <span class="hljs-type">RiderData</span> <span class="hljs-variable">freshData</span> <span class="hljs-operator">=</span> queryLatest(riderId, businessType);<br>    <span class="hljs-comment">// 3. 校验数据状态</span><br>    validate(freshData);<br>    <span class="hljs-comment">// 4. 执行业务逻辑</span><br>    process(freshData);<br>    <span class="hljs-comment">// 5. 持久化</span><br>    persist(freshData);<br>&#125; <span class="hljs-keyword">finally</span> &#123;<br>    releaseLock(riderId, businessType);  <span class="hljs-comment">// 6. 确保释放锁</span><br>&#125;<br></code></pre></td></tr></table></figure><h3 id="4-2-批量操作标准模式"><a href="#4-2-批量操作标准模式" class="headerlink" title="4.2 批量操作标准模式"></a>4.2 批量操作标准模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;Long&gt; successLocked = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>List&lt;Long&gt; failedLocked = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br><br><span class="hljs-comment">// 1. 循环尝试加锁</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> riderId : riderIds) &#123;<br>    <span class="hljs-keyword">if</span> (tryLock(riderId)) &#123;<br>        successLocked.add(riderId);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        failedLocked.add(riderId);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-comment">// 2. 加锁后重新查询最新数据</span><br>    List&lt;RiderData&gt; freshData = queryLatestForAll(successLocked);<br>    <span class="hljs-comment">// 3. 校验所有数据</span><br>    validateAll(freshData);<br>    <span class="hljs-comment">// 4. 批量处理</span><br>    <span class="hljs-meta">@Transactional</span><br>    batchProcess(freshData);<br>&#125; <span class="hljs-keyword">finally</span> &#123;<br>    <span class="hljs-comment">// 5. 释放所有锁</span><br>    successLocked.forEach(<span class="hljs-built_in">this</span>::releaseLock);<br>&#125;<br><br><span class="hljs-comment">// 返回加锁失败的骑手列表供上层处理</span><br><span class="hljs-keyword">return</span> failedLocked;<br></code></pre></td></tr></table></figure><h3 id="4-3-多锁顺序规范"><a href="#4-3-多锁顺序规范" class="headerlink" title="4.3 多锁顺序规范"></a>4.3 多锁顺序规范</h3><p><strong>获取顺序</strong>（防死锁，统一按此顺序）：</p><ol><li>签约锁 (trySignLock)</li><li>报名锁 (tryRegisterLock)</li><li>取消报名锁 (tryCancelRegisterLock)</li></ol><p><strong>释放顺序</strong>（必须与获取顺序相反）：</p><ol><li>取消报名锁</li><li>报名锁</li><li>签约锁</li></ol><hr><h2 id="五、并发场景检查清单"><a href="#五、并发场景检查清单" class="headerlink" title="五、并发场景检查清单"></a>五、并发场景检查清单</h2><p>对于任何涉及四张核心表的操作，必须检查：</p><p><strong>操作范围</strong>：</p><ul><li><input disabled="" type="checkbox"> 单骑手 vs 批量？</li><li><input disabled="" type="checkbox"> 单期数 vs 多期数？</li><li><input disabled="" type="checkbox"> 可能并发的操作是否完整列出（含定时任务）？</li></ul><p><strong>锁策略</strong>：</p><ul><li><input disabled="" type="checkbox"> 是否需要分布式锁？</li><li><input disabled="" type="checkbox"> 获取顺序是否遵循规范（签约 → 报名 → 取消报名）？</li><li><input disabled="" type="checkbox"> 是否<strong>先加锁，再查询</strong>？</li><li><input disabled="" type="checkbox"> 加锁后是否重新查询了所有相关数据？</li></ul><p><strong>校验逻辑</strong>：</p><ul><li><input disabled="" type="checkbox"> 校验是否使用加锁后的最新数据？</li></ul><p><strong>持久化</strong>：</p><ul><li><input disabled="" type="checkbox"> 多张表的更新是否在 <code>@Transactional</code> 中？</li><li><input disabled="" type="checkbox"> <code>finally</code> 块是否确保释放所有锁？</li></ul><hr><h2 id="六、参考事故案例分析"><a href="#六、参考事故案例分析" class="headerlink" title="六、参考事故案例分析"></a>六、参考事故案例分析</h2><p><strong>批量自动审核问题根因</strong>：</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs avrasm">时序：<br><span class="hljs-symbol">T1:</span> 自动审核任务 → 无锁查询待审核骑手列表（骑手A状态：待审核）<br><span class="hljs-symbol">T2:</span> 骑手A 同时发起取消报名 → 状态变为：已取消<br><span class="hljs-symbol">T3:</span> 自动审核任务继续 → 使用T1的过期数据 → 骑手A被审核通过<br><br>结果：已取消的骑手被错误审核，生成了待签约记录<br></code></pre></td></tr></table></figure><p><strong>修复原则</strong>：加锁后必须重查，校验必须用最新数据。</p><hr><h2 id="七、优先级建议"><a href="#七、优先级建议" class="headerlink" title="七、优先级建议"></a>七、优先级建议</h2><table><thead><tr><th>优先级</th><th>场景</th><th>处置方式</th></tr></thead><tbody><tr><td>P0 立即修复</td><td>批量自动审核、批量修改城市站点</td><td>高风险，可能直接导致数据错误</td></tr><tr><td>P1 尽快修复</td><td>批量签约模式切换、白名单批量签约</td><td>中风险，偶发</td></tr><tr><td>P2 后续优化</td><td>续期报名锁保护、新骑手报名锁保护</td><td>低概率，优化项</td></tr></tbody></table>]]></content>
     
     
     <categories>
@@ -392,7 +361,7 @@
     
     <categories>
       
-      <category>笔记</category>
+      <category>游戏</category>
       
     </categories>
     
@@ -514,31 +483,6 @@
   
   
   <entry>
-    <title>旅行 - 国内</title>
-    <link href="/post/e1a7f1fd/"/>
-    <url>/post/e1a7f1fd/</url>
-    
-    <content type="html"><![CDATA[<h1 id="高铁"><a href="#高铁" class="headerlink" title="高铁"></a>高铁</h1><ul><li>高铁一般<strong>发车前15分钟开始检票</strong>，<strong>发车前3分钟停止检票</strong>，安检和地铁差不多只用个两三分钟；建议<strong>抵达高铁站时至少预留20分钟时间</strong></li><li>有的高铁车型是<strong>没有插座</strong>的，如果手机没电了尽量带个充电宝或者出行前充满</li><li>如果有的AB检票口都可以检票，选个靠近自己车厢的检票口</li><li><strong>出发是上高铁；到达是下高铁</strong></li></ul><h1 id="飞机"><a href="#飞机" class="headerlink" title="飞机"></a>飞机</h1><ul><li><p>飞机早订票晚订票各有好处。早订票可以尽早值机<strong>抢到经济舱第一排位置</strong>；晚订票能<strong>抢到更低价格</strong></p></li><li><p>一订完票就马上去值机，不然<strong>第一排、靠窗、靠过道</strong>的位置都被抢光了</p></li><li><p>飞机一般<strong>起飞前30分钟开始检票</strong>，<strong>起飞前15分钟停止检票</strong>，且安检流程较为严格（要求把<strong>外套、电脑、充电宝、雨伞</strong>等物品单独放进筐里）；大部分机场都是远离市区的，考虑到<strong>取票、安检、前往登机口、登机</strong>等多种因素，建议<strong>抵达机场时至少预留40分钟时间</strong></p></li><li><p>飞机登机时会很挤，<strong>登机检票建议很早或很晚去排队</strong>（如果随身行李比较多建议早排队）</p></li><li><p>最好<strong>登机前或者飞机启动前上个厕所</strong>，飞机上升时不能上厕所，滑行加速时也不好上厕所</p></li><li><p>即使飞行时段覆盖饭点，<strong>飞机也不一定提供餐食</strong>，一定要在订票前关注好飞机是否提供餐食（正餐、小食、点餐）</p></li><li><p><strong>飞机飞行全程不能使用充电宝</strong>，如果随身带了充电宝，可以在飞机启动前先用会</p></li><li><p>大部分飞机座位都很挤，如果想看电影的话，最多用个平板，电脑一般放不下（非经济舱除外）</p></li><li><p><strong>出发是上飞机；到达是下飞机</strong></p></li></ul><h1 id="地铁卡"><a href="#地铁卡" class="headerlink" title="地铁卡"></a>地铁卡</h1><p>国内大部分城市都有地铁，可以用<strong>支付宝出行</strong>扫进出站的地铁码</p><p>还挺方便的，扣钱是直接用支付宝支付的，到了新城市会提示你是否切换地铁卡，直接注册一个卡就行了</p><h1 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h1><ul><li><p>图便宜可以住多人青旅，30 多一晚</p></li><li><p>如果想住单人，也可以选那种改造的小酒店，一晚也能不过百</p></li><li><p>百元以内，就别想住正常的电竞酒店了，只能电竞和酒店二选一</p></li></ul><h1 id="行李"><a href="#行李" class="headerlink" title="行李"></a>行李</h1><p>如果酒店退房了，还想再多玩一会但是嫌行李麻烦，可以把行李寄存到景点附近的店铺里（我在武汉黄鹤楼附近是不到 10 块一个小时）</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>旅行</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>国内</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Web反爬机制</title>
     <link href="/post/5991018/"/>
     <url>/post/5991018/</url>
@@ -620,11 +564,11 @@
   
   
   <entry>
-    <title>旅行 - 国外</title>
-    <link href="/post/c2abf603/"/>
-    <url>/post/c2abf603/</url>
+    <title>旅行贴士</title>
+    <link href="/post/62856b65/"/>
+    <url>/post/62856b65/</url>
     
-    <content type="html"><![CDATA[<h1 id="通用注意事项"><a href="#通用注意事项" class="headerlink" title="通用注意事项"></a>通用注意事项</h1><h2 id="护照"><a href="#护照" class="headerlink" title="护照"></a>护照</h2><p>在支付宝搜护照点”预约办证”，可以在所在地附近选择办理点</p><p>办理期限：7-15个工作日；办理费用为 120 元（网上说 200 元，不知道哪个准）</p><p>护照有效期限不超过 10 年</p><h2 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="国内出行"><a href="#国内出行" class="headerlink" title="国内出行"></a>国内出行</h1><h2 id="高铁"><a href="#高铁" class="headerlink" title="高铁"></a>高铁</h2><ul><li>高铁一般<strong>发车前 15 分钟开始检票</strong>，<strong>发车前 3 分钟停止检票</strong>，安检和地铁差不多，建议<strong>抵达高铁站时至少预留 20 分钟</strong></li><li>有的高铁车型<strong>没有插座</strong>，出行前记得充满手机或带充电宝</li><li>如果 A&#x2F;B 检票口都能用，选靠近自己车厢的那个</li></ul><h2 id="飞机"><a href="#飞机" class="headerlink" title="飞机"></a>飞机</h2><ul><li><strong>早订</strong>可以尽早值机抢经济舱第一排；<strong>晚订</strong>有机会拿到更低价格——订完票后马上值机，否则靠窗&#x2F;靠过道&#x2F;第一排位置很快被抢光</li><li>飞机一般<strong>起飞前 30 分钟开始检票，前 15 分钟停止</strong>，安检要把外套、电脑、充电宝、雨伞等单独放进筐里；大部分机场远离市区，建议<strong>抵达机场至少预留 40 分钟</strong></li><li>登机时非常拥挤，建议<strong>很早或很晚去排队</strong>（随身行李多的话早排）</li><li><strong>飞机启动前或开始滑行前上厕所</strong>，上升阶段和滑行加速时都不方便</li><li>即使飞行时段覆盖饭点，<strong>飞机不一定提供餐食</strong>，订票前关注好是否有正餐&#x2F;小食&#x2F;点餐</li><li><strong>飞行全程不能使用充电宝</strong>，可以在飞机启动前先用一会</li><li>座位较挤，想看电影最多用平板，笔记本一般放不下（非经济舱除外）</li></ul><h2 id="地铁"><a href="#地铁" class="headerlink" title="地铁"></a>地铁</h2><p>国内大部分城市都有地铁，可以用<strong>支付宝出行</strong>扫地铁码进出站，到新城市时提示切换城市卡，注册一个即可使用，费用直接走支付宝扣款。</p><h2 id="酒店"><a href="#酒店" class="headerlink" title="酒店"></a>酒店</h2><ul><li>预算有限可以住<strong>多人青旅</strong>，30 多元一晚</li><li>单人住宿可以选<strong>改造型小酒店</strong>，一晚可以不过百</li><li>百元以内的预算，电竞和酒店环境基本只能二选一</li></ul><h2 id="行李"><a href="#行李" class="headerlink" title="行李"></a>行李</h2><p>酒店退房后还想多玩一会？可以把行李<strong>寄存到景点附近的店铺</strong>，一般按小时计费，比如武汉黄鹤楼附近约 10 元&#x2F;小时。</p><hr><h1 id="出境旅行"><a href="#出境旅行" class="headerlink" title="出境旅行"></a>出境旅行</h1><h2 id="护照"><a href="#护照" class="headerlink" title="护照"></a>护照</h2><ul><li>在支付宝搜索「护照」→「预约办证」，可以在所在地附近选择办理点</li><li>办理期限：7~15 个工作日；费用约 120 元</li><li>护照有效期不超过 10 年，出行前注意确认有效期剩余时间（部分国家要求入境时护照还剩 6 个月以上有效期）</li></ul><h2 id="签证"><a href="#签证" class="headerlink" title="签证"></a>签证</h2><ul><li>不同国家签证类型、材料、费用差异较大，出发前务必查清目的地最新签证要求</li><li>部分国家支持落地签或免签，提前确认免签条件（有的需要中转国家签证）</li><li>建议提前 1~3 个月申请，节假日前期热门目的地要更早</li></ul><hr><blockquote><p>持续更新中，有新的经验会陆续补充。</p></blockquote>]]></content>
     
     
     <categories>
@@ -636,7 +580,11 @@
     
     <tags>
       
+      <tag>国内</tag>
+      
       <tag>国外</tag>
+      
+      <tag>经验</tag>
       
     </tags>
     
@@ -910,9 +858,9 @@
     
     <tags>
       
-      <tag>Python</tag>
-      
       <tag>爬虫</tag>
+      
+      <tag>Python</tag>
       
     </tags>
     
@@ -1105,11 +1053,11 @@
       
       <tag>C++</tag>
       
+      <tag>动态规划</tag>
+      
       <tag>前缀和</tag>
       
       <tag>状态压缩</tag>
-      
-      <tag>动态规划</tag>
       
     </tags>
     
@@ -2736,9 +2684,9 @@
       
       <tag>C++</tag>
       
-      <tag>状态压缩</tag>
-      
       <tag>动态规划</tag>
+      
+      <tag>状态压缩</tag>
       
     </tags>
     
@@ -2939,11 +2887,11 @@
       
       <tag>Java</tag>
       
-      <tag>字符串</tag>
-      
       <tag>Python</tag>
       
       <tag>JavaScript</tag>
+      
+      <tag>字符串</tag>
       
       <tag>Golang</tag>
       
@@ -3002,7 +2950,7 @@
     
     <categories>
       
-      <category>笔记</category>
+      <category>游戏</category>
       
     </categories>
     
@@ -3027,7 +2975,7 @@
     
     <categories>
       
-      <category>笔记</category>
+      <category>游戏</category>
       
     </categories>
     
@@ -3287,9 +3235,9 @@
     
     <tags>
       
-      <tag>Python</tag>
-      
       <tag>爬虫</tag>
+      
+      <tag>Python</tag>
       
     </tags>
     
@@ -3316,9 +3264,9 @@
     
     <tags>
       
-      <tag>Python</tag>
-      
       <tag>爬虫</tag>
+      
+      <tag>Python</tag>
       
     </tags>
     
