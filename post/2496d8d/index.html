@@ -405,13 +405,13 @@
 <h2 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h2><p>在一个进程中创建多个线程处理请求，进程每接收到一个请求，就创建一个新线程来处理</p>
 <p>这样<strong>频繁地创建和销毁线程</strong>带来的系统开销也不小，所以可以采用线程池来复用线程，同时进程将请求都放入到一个队列中，线程池获取队列中的请求后进行处理</p>
 <p>但是这又引入了新的问题，就是线程安全。想要确保一个线程处理一个请求，需要在获取请求前<strong>加锁</strong></p>
-<h2 id="I-O-多路复用"><a href="#I-O-多路复用" class="headerlink" title="I&#x2F;O 多路复用"></a>I&#x2F;O 多路复用</h2><p>采用一个进程来维护所有的 Socket 请求</p>
+<h2 id="I-O-多路复用"><a href="#I-O-多路复用" class="headerlink" title="I/O 多路复用"></a>I/O 多路复用</h2><p>采用一个进程来维护所有的 Socket 请求</p>
 <p>一个进程虽然任一时刻只能处理一个请求，但是处理每个请求的事件时，耗时控制在 1 毫秒以内，这样 1 秒内就可以处理上千个请求，把时间拉长来看，多个请求复用了一个进程，这就是多路复用，这种思想很类似一个 CPU 并发多个进程，所以也叫做时分多路复用</p>
-<h3 id="select-poll"><a href="#select-poll" class="headerlink" title="select&#x2F;poll"></a>select&#x2F;poll</h3><p>将已连接的 Socket 都放进一个<strong>文件描述符集合</strong>中，然后将集合拷贝到<strong>内核空间</strong>中，由内核进行遍历，找出有事件发生的 Socket</p>
-<h3 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h3><p>epoll 通过两个方面，很好解决了 select&#x2F;poll 的问题：</p>
+<h3 id="select-poll"><a href="#select-poll" class="headerlink" title="select/poll"></a>select/poll</h3><p>将已连接的 Socket 都放进一个<strong>文件描述符集合</strong>中，然后将集合拷贝到<strong>内核空间</strong>中，由内核进行遍历，找出有事件发生的 Socket</p>
+<h3 id="epoll"><a href="#epoll" class="headerlink" title="epoll"></a>epoll</h3><p>epoll 通过两个方面，很好解决了 select/poll 的问题：</p>
 <p><strong>第一点，</strong>epoll 在内核里使用<strong>红黑树来跟踪进程所有待检测的文件描述字</strong>，把需要监控的 socket 通过 <code>epoll_ctl()</code> 函数加入内核中的红黑树里，红黑树是个高效的数据结构，增删改一般时间复杂度是 <code>O(logn)</code></p>
-<p>而 select&#x2F;poll 内核里没有类似 epoll 红黑树这种保存所有待检测的 socket 的数据结构，所以 select&#x2F;poll 每次操作时都传入整个 socket 集合给内核，而 epoll 因为在内核维护了红黑树，可以保存所有待检测的 socket ，所以只需要传入一个待检测的 socket，减少了内核和用户空间大量的数据拷贝和内存分配</p>
-<p><strong>第二点，</strong>epoll 使用<strong>事件驱动</strong>的机制，内核里<strong>维护了一个链表来记录就绪事件</strong>，当某个 socket 有事件发生时，通过<strong>回调函数</strong>内核会将其加入到这个就绪事件列表中，当用户调用 <code>epoll_wait()</code> 函数时，只会返回有事件发生的文件描述符的个数，不需要像 select&#x2F;poll 那样轮询扫描整个 socket 集合，大大提高了检测的效率。</p>
+<p>而 select/poll 内核里没有类似 epoll 红黑树这种保存所有待检测的 socket 的数据结构，所以 select/poll 每次操作时都传入整个 socket 集合给内核，而 epoll 因为在内核维护了红黑树，可以保存所有待检测的 socket ，所以只需要传入一个待检测的 socket，减少了内核和用户空间大量的数据拷贝和内存分配</p>
+<p><strong>第二点，</strong>epoll 使用<strong>事件驱动</strong>的机制，内核里<strong>维护了一个链表来记录就绪事件</strong>，当某个 socket 有事件发生时，通过<strong>回调函数</strong>内核会将其加入到这个就绪事件列表中，当用户调用 <code>epoll_wait()</code> 函数时，只会返回有事件发生的文件描述符的个数，不需要像 select/poll 那样轮询扫描整个 socket 集合，大大提高了检测的效率。</p>
 <h1 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h1><h2 id="传统拷贝"><a href="#传统拷贝" class="headerlink" title="传统拷贝"></a>传统拷贝</h2><p>通过调用 <code>read()</code>，<code>write()</code> 函数来传输文件</p>
 <p>发生了 <strong>4 次用户态和内核态的上下文切换</strong>，和 <strong>4 次拷贝</strong>，流程如下：</p>
 <ol>
@@ -449,7 +449,7 @@
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84-socket-%E6%A8%A1%E5%9E%8B">9.2 I&#x2F;O 多路复用：select&#x2F;poll&#x2F;epoll | 小林coding (xiaolincoding.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/os/8_network_system/selete_poll_epoll.html#最基本的-socket-模型">9.2 I/O 多路复用：select/poll/epoll | 小林coding (xiaolincoding.com)</a></li>
 </ul>
 </blockquote>
 

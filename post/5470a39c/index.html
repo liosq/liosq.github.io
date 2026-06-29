@@ -27,7 +27,7 @@
 <meta property="og:description" content="倒排索引倒排索引主要针对于类似全文检索的业务场景，是一种使用词条来检索文档的索引结构，传统的正向索引一般是由不同的文档ID来检索文档，比如MySQL。而倒排索引使用每个词条对应一个列表（包含文档ID、词条出现频率等等）的结构">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-12T14:42:20.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.702Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.488Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="ElasticSearch">
 <meta name="twitter:card" content="summary_large_image">
@@ -573,6 +573,12 @@
   
 
 
+  
+  
+
+
+
+
 
 
 
@@ -838,6 +844,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -336,7 +336,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          2.9k 字
         
       </span>
     
@@ -405,11 +405,12 @@
 </blockquote>
 <hr>
 <h2 id="一、需要掌握的基础能力"><a href="#一、需要掌握的基础能力" class="headerlink" title="一、需要掌握的基础能力"></a>一、需要掌握的基础能力</h2><h3 id="编程基础"><a href="#编程基础" class="headerlink" title="编程基础"></a>编程基础</h3><ul>
-<li>扎实的编程基础（Python &#x2F; Node.js 为主流语言）</li>
+<li>扎实的编程基础（Python / Node.js 为主流语言）</li>
 <li>熟悉<strong>异步编程</strong>和<strong>并发处理</strong>（Agent 任务天然并发）</li>
 <li>理解 <strong>LLM 的基本原理</strong>：Prompt Engineering、上下文窗口管理、Token 计算</li>
 </ul>
 <h3 id="框架与工具链"><a href="#框架与工具链" class="headerlink" title="框架与工具链"></a>框架与工具链</h3><p>主流 Agent 框架（至少熟悉一两个）：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -417,8 +418,9 @@
 <th>定位</th>
 </tr>
 </thead>
-<tbody><tr>
-<td>LangChain &#x2F; LangGraph</td>
+<tbody>
+<tr>
+<td>LangChain / LangGraph</td>
 <td>最主流，生态最丰富</td>
 </tr>
 <tr>
@@ -433,7 +435,9 @@
 <td>OpenAI Assistants API</td>
 <td>托管式 Agent 平台</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>新兴标准值得重点关注：</p>
 <ul>
 <li><strong>MCP（Model Context Protocol）</strong>：Anthropic 提出的工具调用标准协议</li>
@@ -442,7 +446,7 @@
 <h3 id="核心设计能力"><a href="#核心设计能力" class="headerlink" title="核心设计能力"></a>核心设计能力</h3><p>Agent 开发的精髓在于<strong>系统设计</strong>，主要包括：</p>
 <ul>
 <li><strong>Tool 设计与封装</strong>：工具的颗粒度、参数设计、错误处理</li>
-<li><strong>记忆系统设计</strong>：短期&#x2F;长期记忆管理策略</li>
+<li><strong>记忆系统设计</strong>：短期/长期记忆管理策略</li>
 <li><strong>多步骤任务规划</strong>：ReAct、CoT、Plan-and-Execute 等范式</li>
 <li><strong>多 Agent 协作架构</strong>：角色分工与信息流设计</li>
 <li><strong>错误处理与重试</strong>：容错策略与降级方案</li>
@@ -462,7 +466,8 @@
 <li>记住用户偏好</li>
 <li>沉淀任务执行经验</li>
 </ul>
-<h3 id="记忆的三种形态"><a href="#记忆的三种形态" class="headerlink" title="记忆的三种形态"></a>记忆的三种形态</h3><table>
+<h3 id="记忆的三种形态"><a href="#记忆的三种形态" class="headerlink" title="记忆的三种形态"></a>记忆的三种形态</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>类型</th>
@@ -470,7 +475,8 @@
 <th>特点</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Token-level</strong></td>
 <td>上下文窗口（Context）</td>
 <td>直接但有容量上限，会话结束即消失</td>
@@ -482,10 +488,12 @@
 </tr>
 <tr>
 <td><strong>External</strong></td>
-<td>向量库&#x2F;数据库&#x2F;文件系统</td>
+<td>向量库/数据库/文件系统</td>
 <td>可读写、可增长，工程主流方向</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>从功能角度，记忆还可分为：</p>
 <ul>
 <li><strong>用户记忆</strong>：偏好、画像</li>
@@ -501,9 +509,10 @@
 <li>无法实现”越用越聪明”的自我迭代</li>
 </ul>
 <hr>
-<h2 id="三、Plan（规划）——让-Agent-自主决策"><a href="#三、Plan（规划）——让-Agent-自主决策" class="headerlink" title="三、Plan（规划）——让 Agent 自主决策"></a>三、Plan（规划）——让 Agent 自主决策</h2><p><strong>Agent &#x3D; LLM + Tools + Memory + Plan</strong></p>
+<h2 id="三、Plan（规划）——让-Agent-自主决策"><a href="#三、Plan（规划）——让-Agent-自主决策" class="headerlink" title="三、Plan（规划）——让 Agent 自主决策"></a>三、Plan（规划）——让 Agent 自主决策</h2><p><strong>Agent = LLM + Tools + Memory + Plan</strong></p>
 <p>Plan 让 Agent 从「被动应答」升级为「主动解决问题」。</p>
-<h3 id="常见规划策略对比"><a href="#常见规划策略对比" class="headerlink" title="常见规划策略对比"></a>常见规划策略对比</h3><table>
+<h3 id="常见规划策略对比"><a href="#常见规划策略对比" class="headerlink" title="常见规划策略对比"></a>常见规划策略对比</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>策略</th>
@@ -512,7 +521,8 @@
 <th>核心优势</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>一次性计划</strong></td>
 <td>步骤固定、结果可预测</td>
 <td>低</td>
@@ -542,12 +552,13 @@
 <td>中</td>
 <td>最灵活，工程实践主流</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>选型建议</strong>：大多数场景用 ReAct 即可；步骤固定时用一次性计划；多方案选优时用树形规划 + 剪枝。</p>
 <hr>
 <h2 id="四、MCP（Model-Context-Protocol）"><a href="#四、MCP（Model-Context-Protocol）" class="headerlink" title="四、MCP（Model Context Protocol）"></a>四、MCP（Model Context Protocol）</h2><p>MCP 是 Anthropic 在 2024 年底提出并开源的协议标准，解决 AI 模型统一连接外部工具和数据源的问题，类比 USB 接口——一旦标准化，所有工具都可以即插即用。</p>
 <h3 id="架构三角色"><a href="#架构三角色" class="headerlink" title="架构三角色"></a>架构三角色</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs arduino">MCP Host（Claude Desktop/IDE）<br>  └── MCP <span class="hljs-built_in">Client</span>（通信模块）<br>        └── MCP <span class="hljs-built_in">Server</span>（工具/数据源服务端）<br></code></pre></td></tr></table></figure>
-
 <h3 id="MCP-Server-能提供"><a href="#MCP-Server-能提供" class="headerlink" title="MCP Server 能提供"></a>MCP Server 能提供</h3><ul>
 <li><strong>Tools</strong>：可调用的函数（如查询数据库、发邮件）</li>
 <li><strong>Resources</strong>：可读取的数据（如文件内容、API 响应）</li>
@@ -566,7 +577,8 @@
 <li><strong>MCP Server</strong>负责单一职责的标准化工具执行</li>
 </ul>
 <hr>
-<h2 id="六、可观测性工具"><a href="#六、可观测性工具" class="headerlink" title="六、可观测性工具"></a>六、可观测性工具</h2><table>
+<h2 id="六、可观测性工具"><a href="#六、可观测性工具" class="headerlink" title="六、可观测性工具"></a>六、可观测性工具</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>工具</th>
@@ -574,7 +586,8 @@
 <th>特点</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>LangChain</strong></td>
 <td>开发框架</td>
 <td>用来构建 Agent 的”积木”</td>
@@ -589,24 +602,27 @@
 <td>观测平台</td>
 <td>开源自部署，框架无关，数据安全</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>正式项目推荐<strong>自部署 Langfuse</strong>：不依赖特定框架，数据留存本地，可以追踪所有 LLM 调用的 Trace、Token 消耗、延迟和评估结果。</p>
 <hr>
 <h2 id="七、完整学习路径（四个阶段）"><a href="#七、完整学习路径（四个阶段）" class="headerlink" title="七、完整学习路径（四个阶段）"></a>七、完整学习路径（四个阶段）</h2><h3 id="第一阶段（1-2-周）：地基夯实"><a href="#第一阶段（1-2-周）：地基夯实" class="headerlink" title="第一阶段（1-2 周）：地基夯实"></a>第一阶段（1-2 周）：地基夯实</h3><p><strong>目标：不依赖框架从零写出能调用外部工具的 Agent</strong></p>
 <ul>
-<li>掌握 Node.js &#x2F; Python 异步编程</li>
+<li>掌握 Node.js / Python 异步编程</li>
 <li>理解 Tool Calling（Function Calling）机制</li>
 <li>手写一个能调用外部 API 的简单 Agent</li>
 </ul>
 <h3 id="第二阶段（3-4-周）：框架深入"><a href="#第二阶段（3-4-周）：框架深入" class="headerlink" title="第二阶段（3-4 周）：框架深入"></a>第二阶段（3-4 周）：框架深入</h3><p><strong>目标：掌握主流框架，实现 RAG 和记忆系统</strong></p>
 <ul>
-<li>深入学习 LangChain &#x2F; LangGraph</li>
+<li>深入学习 LangChain / LangGraph</li>
 <li>实现 RAG（Retrieval-Augmented Generation）</li>
 <li>工程化记忆系统（向量库选型、检索策略）</li>
 <li>Week 4-7：综合项目实践</li>
 </ul>
 <h3 id="第三阶段（3-4-周）：多-Agent-协作"><a href="#第三阶段（3-4-周）：多-Agent-协作" class="headerlink" title="第三阶段（3-4 周）：多 Agent 协作"></a>第三阶段（3-4 周）：多 Agent 协作</h3><p><strong>目标：设计并实现多 Agent 协作系统</strong></p>
 <p>四种协作模式：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -614,7 +630,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>Supervisor</strong></td>
 <td>一个主 Agent 分发任务给子 Agent</td>
 </tr>
@@ -630,7 +647,9 @@
 <td><strong>Pipeline</strong></td>
 <td>线性流水线，每个 Agent 处理一个阶段</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>同时掌握 Agent 安全与防护：</p>
 <ul>
 <li>Prompt Injection 防御</li>
@@ -645,7 +664,7 @@
 </ul>
 <hr>
 <h2 id="八、延伸阅读与推荐资源"><a href="#八、延伸阅读与推荐资源" class="headerlink" title="八、延伸阅读与推荐资源"></a>八、延伸阅读与推荐资源</h2><h3 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://js.langchain.com/docs/">LangChain JS&#x2F;TS 文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://js.langchain.com/docs/">LangChain JS/TS 文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://langchain-ai.github.io/langgraphjs/">LangGraph JS 文档</a></li>
 <li><a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/">MCP 官方规范</a></li>
 <li><a target="_blank" rel="noopener" href="https://docs.anthropic.com/en/docs/tool-use">Anthropic Tool Use</a></li>
@@ -669,7 +688,6 @@
 </ul>
 <hr>
 <h2 id="学习路径总结"><a href="#学习路径总结" class="headerlink" title="学习路径总结"></a>学习路径总结</h2><figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sqf">起步<br>├── 第一阶段：手写最小 <span class="hljs-built_in">Agent</span>（Tool Calling）<br>│<br>├── 第二阶段：框架 + RAG + 记忆系统<br>│<br>├── 第三阶段：多 <span class="hljs-built_in">Agent</span> 协作 + 安全防护<br>│<br>└── 第四阶段：可观测性 + 评估 + 生产部署<br></code></pre></td></tr></table></figure>
-
 <p><strong>建议</strong>：跟着路径一步步做项目，不要只看文档——Agent 开发最重要的是在真实任务中踩坑和积累经验。</p>
 
                 

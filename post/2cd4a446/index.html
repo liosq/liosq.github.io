@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          293 字
+          289 字
         
       </span>
     
@@ -399,7 +399,7 @@
                 
                 <h1 id="服务熔断"><a href="#服务熔断" class="headerlink" title="服务熔断"></a>服务熔断</h1><h2 id="服务雪崩"><a href="#服务雪崩" class="headerlink" title="服务雪崩"></a>服务雪崩</h2><p>由于一个服务<strong>崩溃或异常</strong>导致调用这个服务的服务调用失败无法释放连接，从而引发的一系列连锁反应，可能导致整个服务链路都崩溃</p>
 <h2 id="降级"><a href="#降级" class="headerlink" title="降级"></a>降级</h2><p>服务降级是<strong>服务自我保护</strong>或<strong>保护下游服务</strong>的一种方式，用于确保服务不会受<strong>请求突增</strong>的影响而变得<strong>不可用</strong>，确保服务不会崩溃</p>
-<h2 id="熔断"><a href="#熔断" class="headerlink" title="熔断"></a>熔断</h2><p>Hystrix 熔断机制，用于监控微服务调用的情况，默认是关闭的。如果需要开启需要再引导类上添加注解<code>@EnableCircultBreaker</code>，若检测到**10秒内请求的失败率超过50%**，就会触发熔断机制</p>
+<h2 id="熔断"><a href="#熔断" class="headerlink" title="熔断"></a>熔断</h2><p>Hystrix 熔断机制，用于监控微服务调用的情况，默认是关闭的。如果需要开启需要再引导类上添加注解<code>@EnableCircultBreaker</code>，若检测到<strong>10秒内请求的失败率超过50%</strong>，就会触发熔断机制</p>
 <p>熔断机制触发后，每隔5秒重新尝试请求微服务：</p>
 <ul>
 <li>若微服务不能响应，继续走熔断机制</li>

@@ -400,7 +400,8 @@
               <div class="markdown-body">
                 
                 <h2 id="一、什么是并发问题"><a href="#一、什么是并发问题" class="headerlink" title="一、什么是并发问题"></a>一、什么是并发问题</h2><p><strong>并发问题</strong>的核心是：<strong>多个执行单元同时访问和修改同一份数据时，因执行顺序、时机或协作不当而导致的数据错误、业务逻辑异常或系统性能下降。</strong></p>
-<h3 id="1-1-常见问题表现"><a href="#1-1-常见问题表现" class="headerlink" title="1.1 常见问题表现"></a>1.1 常见问题表现</h3><table>
+<h3 id="1-1-常见问题表现"><a href="#1-1-常见问题表现" class="headerlink" title="1.1 常见问题表现"></a>1.1 常见问题表现</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>问题类型</th>
@@ -408,7 +409,8 @@
 <th>业务表现</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>数据竞争</strong></td>
 <td>多个执行单元同时写入同一数据，没有同步保护</td>
 <td>库存扣成负数、重复发券、重复扣款</td>
@@ -428,16 +430,20 @@
 <td>程序行为依赖于不可控的执行顺序</td>
 <td>结果不稳定、偶现问题</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
-<h2 id="二、并发场景分类（MECE）"><a href="#二、并发场景分类（MECE）" class="headerlink" title="二、并发场景分类（MECE）"></a>二、并发场景分类（MECE）</h2><h3 id="2-1-按场景类型"><a href="#2-1-按场景类型" class="headerlink" title="2.1 按场景类型"></a>2.1 按场景类型</h3><table>
+<h2 id="二、并发场景分类（MECE）"><a href="#二、并发场景分类（MECE）" class="headerlink" title="二、并发场景分类（MECE）"></a>二、并发场景分类（MECE）</h2><h3 id="2-1-按场景类型"><a href="#2-1-按场景类型" class="headerlink" title="2.1 按场景类型"></a>2.1 按场景类型</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>分类</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>同一业务对象被同时修改</strong></td>
 <td>同一订单、同一报名记录、同一库存单元</td>
 </tr>
@@ -457,15 +463,19 @@
 <td><strong>资源容量竞争导致并发退化</strong></td>
 <td>连接池、锁等待、队列堆积</td>
 </tr>
-</tbody></table>
-<h3 id="2-2-按执行单元"><a href="#2-2-按执行单元" class="headerlink" title="2.2 按执行单元"></a>2.2 按执行单元</h3><table>
+</tbody>
+</table>
+</div>
+<h3 id="2-2-按执行单元"><a href="#2-2-按执行单元" class="headerlink" title="2.2 按执行单元"></a>2.2 按执行单元</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>分类</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>单一执行单元内多线程</td>
 <td>同一请求内部开多线程处理共享数据</td>
 </tr>
@@ -473,7 +483,9 @@
 <td>多个执行单元并发</td>
 <td>不同请求、定时任务、消费者同时修改同一数据</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <h2 id="三、并发问题定位方法"><a href="#三、并发问题定位方法" class="headerlink" title="三、并发问题定位方法"></a>三、并发问题定位方法</h2><h3 id="3-1-四层检查模型"><a href="#3-1-四层检查模型" class="headerlink" title="3.1 四层检查模型"></a>3.1 四层检查模型</h3><ol>
 <li><strong>业务对象层</strong>：定义”谁是共享对象”，明确唯一标识与边界</li>
@@ -483,12 +495,11 @@
 </ol>
 <h3 id="3-2-逐步排查流程"><a href="#3-2-逐步排查流程" class="headerlink" title="3.2 逐步排查流程"></a>3.2 逐步排查流程</h3><p><strong>第一步：列清楚所有写入口</strong></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown">修改订单的入口：<br><span class="hljs-bullet">1.</span> 用户提交订单接口 → 修改订单表<br><span class="hljs-bullet">2.</span> 系统自动发货任务 → 修改订单表<br><span class="hljs-bullet">3.</span> 支付回调处理 → 修改订单表<br><span class="hljs-bullet">4.</span> 后台管理接口 → 修改订单表<br><span class="hljs-bullet">5.</span> 仓储系统回调 → 修改订单表<br></code></pre></td></tr></table></figure>
-
 <p><strong>第二步：检查各写入口是否有并发保护</strong></p>
 <ul>
 <li>❌ 没有任何保护（最危险）</li>
 <li>✅ 有分布式锁</li>
-<li>✅ 有数据库级别条件检查（版本号&#x2F;状态）</li>
+<li>✅ 有数据库级别条件检查（版本号/状态）</li>
 <li>✅ 有状态机约束</li>
 <li>✅ 有数据库行锁（SELECT FOR UPDATE）</li>
 </ul>
@@ -500,12 +511,10 @@
 </ul>
 <p><strong>第四步：检查多个写入口之间是否协调</strong></p>
 <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs elm">反例：<br>报名接口：锁粒度是 user_id<br>取消接口：锁粒度也是 user_id<br>但修改的数据是 (user_id, period_id, activity_<span class="hljs-keyword">type</span>) 的组合<br>→ 可能产生不可预期的结果<br></code></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="四、并发保护方案"><a href="#四、并发保护方案" class="headerlink" title="四、并发保护方案"></a>四、并发保护方案</h2><h3 id="4-1-分布式锁（悲观锁）"><a href="#4-1-分布式锁（悲观锁）" class="headerlink" title="4.1 分布式锁（悲观锁）"></a>4.1 分布式锁（悲观锁）</h3><p><strong>适用场景</strong>：冲突频率高、冲突代价高、业务逻辑复杂</p>
 <p><strong>最佳实践</strong>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (tryLock(key)) &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 加锁后重新查询最新数据</span><br>        <span class="hljs-type">Data</span> <span class="hljs-variable">freshData</span> <span class="hljs-operator">=</span> queryLatest(id);<br>        <span class="hljs-comment">// 校验业务状态</span><br>        validate(freshData);<br>        <span class="hljs-comment">// 执行业务逻辑</span><br>        process(freshData);<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        releaseLock(key);  <span class="hljs-comment">// 必须 finally 释放</span><br>    &#125;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BizException</span>(<span class="hljs-string">&quot;资源正在处理中，请稍后重试&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p><strong>关键要点</strong>：</p>
 <ul>
 <li>超时时间设为业务 TP99 的 1.5～2 倍</li>
@@ -516,26 +525,24 @@
 <h3 id="4-2-乐观锁（CAS）"><a href="#4-2-乐观锁（CAS）" class="headerlink" title="4.2 乐观锁（CAS）"></a>4.2 乐观锁（CAS）</h3><p><strong>适用场景</strong>：冲突概率低、可接受重试、追求吞吐量</p>
 <p><strong>方式 A：版本号字段</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 读取</span><br><span class="hljs-keyword">SELECT</span> id, version <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span><br><span class="hljs-comment">-- 更新时附带版本号条件</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">SET</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;new_name&#x27;</span>, version <span class="hljs-operator">=</span> version <span class="hljs-operator">+</span> <span class="hljs-number">1</span><br><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> version <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br><span class="hljs-comment">-- 影响行数 = 0 表示并发冲突，需重试</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>方式 B：利用业务字段</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 状态机约束</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">order</span> <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;SHIPPED&#x27;</span><br><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;PENDING&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <hr>
 <h3 id="4-3-状态机"><a href="#4-3-状态机" class="headerlink" title="4.3 状态机"></a>4.3 状态机</h3><p><strong>适用场景</strong>：数据有明确的生命周期，对状态合法性要求严格</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs">订单状态流转：<br>待支付 → 已支付 → 待发货 → 已发货 → 已收货<br><br>非法转换被拒绝：<br>已发货 → 待支付 ❌<br></code></pre></td></tr></table></figure>
-
 <p>实践要点：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 状态转换附带前置状态条件</span><br><span class="hljs-keyword">UPDATE</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">SET</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;new_status&#x27;</span><br><span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> xxx <span class="hljs-keyword">AND</span> status <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;old_status&#x27;</span><br></code></pre></td></tr></table></figure>
-
 <hr>
-<h2 id="五、方案选择速查"><a href="#五、方案选择速查" class="headerlink" title="五、方案选择速查"></a>五、方案选择速查</h2><table>
+<h2 id="五、方案选择速查"><a href="#五、方案选择速查" class="headerlink" title="五、方案选择速查"></a>五、方案选择速查</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>场景</th>
 <th>推荐方案</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>错误一次就不可接受（金钱、库存）</td>
 <td>分布式锁 + 状态机</td>
 </tr>
@@ -551,19 +558,17 @@
 <td>存在人工与系统并行修改</td>
 <td>统一业务键 + 统一状态迁移规则</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <h2 id="六、常见陷阱"><a href="#六、常见陷阱" class="headerlink" title="六、常见陷阱"></a>六、常见陷阱</h2><h3 id="陷阱-1：加锁失败后仍然执行写操作"><a href="#陷阱-1：加锁失败后仍然执行写操作" class="headerlink" title="陷阱 1：加锁失败后仍然执行写操作"></a>陷阱 1：加锁失败后仍然执行写操作</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 错误</span><br><span class="hljs-keyword">if</span> (!tryLock(key)) &#123;<br>    log.warn(<span class="hljs-string">&quot;加锁失败&quot;</span>);<br>    <span class="hljs-comment">// 没有 return，代码继续往下走！</span><br>&#125;<br>updateData();  <span class="hljs-comment">// 在无锁情况下执行了写操作</span><br><br><span class="hljs-comment">// ✅ 正确</span><br><span class="hljs-keyword">if</span> (!tryLock(key)) &#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BizException</span>(<span class="hljs-string">&quot;加锁失败，拒绝操作&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <h3 id="陷阱-2：锁超时时间太短"><a href="#陷阱-2：锁超时时间太短" class="headerlink" title="陷阱 2：锁超时时间太短"></a>陷阱 2：锁超时时间太短</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">设置锁超时 1s，但业务逻辑需要 5s 完成<br>→ 锁超时释放，另一个请求进来，数据被并发修改<br></code></pre></td></tr></table></figure>
-
 <h3 id="陷阱-3：版本号在应用层计算"><a href="#陷阱-3：版本号在应用层计算" class="headerlink" title="陷阱 3：版本号在应用层计算"></a>陷阱 3：版本号在应用层计算</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 错误 - 读取后计算新版本</span><br><span class="hljs-type">int</span> <span class="hljs-variable">currentVersion</span> <span class="hljs-operator">=</span> queryVersion(id);  <span class="hljs-comment">// version = 10</span><br>updateWithVersion(id, currentVersion + <span class="hljs-number">1</span>);  <span class="hljs-comment">// 并发下这步可能被覆盖</span><br><br><span class="hljs-comment">// ✅ 正确 - 版本号在 SQL 层原子更新</span><br>UPDATE table <span class="hljs-type">SET</span> <span class="hljs-variable">version</span> <span class="hljs-operator">=</span> version + <span class="hljs-number">1</span> <span class="hljs-type">WHERE</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> xxx <span class="hljs-type">AND</span> <span class="hljs-variable">version</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="陷阱-4：加锁后未重新查询数据"><a href="#陷阱-4：加锁后未重新查询数据" class="headerlink" title="陷阱 4：加锁后未重新查询数据"></a>陷阱 4：加锁后未重新查询数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ❌ 错误 - 使用加锁前查询的数据做校验</span><br>List&lt;Data&gt; results = queryWithoutLock();  <span class="hljs-comment">// 先查数据</span><br><span class="hljs-keyword">for</span> (Data data : results) &#123;<br>    lock(data.getId());  <span class="hljs-comment">// 再加锁</span><br>    process(data);       <span class="hljs-comment">// 用的是加锁前的旧数据！</span><br>&#125;<br><br><span class="hljs-comment">// ✅ 正确 - 加锁后重新查询</span><br><span class="hljs-keyword">for</span> (Data data : results) &#123;<br>    lock(data.getId());<br>    <span class="hljs-type">Data</span> <span class="hljs-variable">freshData</span> <span class="hljs-operator">=</span> queryLatest(data.getId());  <span class="hljs-comment">// 重新查询</span><br>    validate(freshData);<br>    process(freshData);<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <h3 id="陷阱-5：遗漏定时任务或异步消费者"><a href="#陷阱-5：遗漏定时任务或异步消费者" class="headerlink" title="陷阱 5：遗漏定时任务或异步消费者"></a>陷阱 5：遗漏定时任务或异步消费者</h3><p>排查写入口时，不要只关注 HTTP 接口，还要包括：</p>
 <ul>
-<li>Crane&#x2F;XXL-Job 定时任务</li>
+<li>Crane/XXL-Job 定时任务</li>
 <li>MQ 消息消费者</li>
 <li>异步线程池任务</li>
 <li>人工触发的批量脚本</li>
@@ -571,14 +576,14 @@
 <hr>
 <h2 id="七、并发保护检查清单"><a href="#七、并发保护检查清单" class="headerlink" title="七、并发保护检查清单"></a>七、并发保护检查清单</h2><p>对每个修改数据的入口，确认以下项目：</p>
 <ul>
-<li><input disabled="" type="checkbox"> 这个入口修改的是什么数据？（具体到表、字段、业务维度）</li>
-<li><input disabled="" type="checkbox"> 有没有其他入口也修改同一数据？</li>
-<li><input disabled="" type="checkbox"> 是否有并发保护机制？</li>
-<li><input disabled="" type="checkbox"> 保护粒度是否和实际修改数据的维度一致？</li>
-<li><input disabled="" type="checkbox"> 如果是分布式锁，超时时间是否合理？加锁失败后是否禁止写？</li>
-<li><input disabled="" type="checkbox"> 如果是乐观锁，版本号是否在数据库层原子性更新？</li>
-<li><input disabled="" type="checkbox"> 加锁后是否重新查询了最新数据？</li>
-<li><input disabled="" type="checkbox"> 是否遗漏了定时任务&#x2F;异步任务的并发场景？</li>
+<li>[ ] 这个入口修改的是什么数据？（具体到表、字段、业务维度）</li>
+<li>[ ] 有没有其他入口也修改同一数据？</li>
+<li>[ ] 是否有并发保护机制？</li>
+<li>[ ] 保护粒度是否和实际修改数据的维度一致？</li>
+<li>[ ] 如果是分布式锁，超时时间是否合理？加锁失败后是否禁止写？</li>
+<li>[ ] 如果是乐观锁，版本号是否在数据库层原子性更新？</li>
+<li>[ ] 加锁后是否重新查询了最新数据？</li>
+<li>[ ] 是否遗漏了定时任务/异步任务的并发场景？</li>
 </ul>
 
                 

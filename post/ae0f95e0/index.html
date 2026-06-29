@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          487 字
+          478 字
         
       </span>
     
@@ -403,7 +403,7 @@
 <li><strong>前端控制器</strong>接收到请求，调用<strong>HandlerMapping</strong>（处理器控制器）</li>
 <li><strong>处理器控制器</strong>根据请求找到具体的处理器，生成<strong>处理器对象</strong>和<strong>处理器拦截器</strong>（如果有），并一齐返回给<strong>前端控制器</strong></li>
 <li><strong>前端控制器</strong>调用<strong>HandlerAdapter</strong>（处理器适配器）</li>
-<li><strong>处理器适配器</strong>经过适配调用具体的<strong>处理器</strong>（Handler&#x2F;Controller）</li>
+<li><strong>处理器适配器</strong>经过适配调用具体的<strong>处理器</strong>（Handler/Controller）</li>
 <li><strong>处理器</strong>执行完成后，返回<strong>ModelAndView对象</strong>给<strong>处理器适配器</strong></li>
 <li><strong>处理器适配器</strong>将<strong>ModelAndView对象</strong>返回给<strong>前端控制器</strong></li>
 <li><strong>前端控制器</strong>将<strong>ModelAndView对象</strong>传给<strong>ViewResolver</strong>（视图解析器）</li>
@@ -412,8 +412,8 @@
 <li><strong>前端控制器</strong>响应客户端</li>
 </ol>
 <h3 id="前后端分离阶段"><a href="#前后端分离阶段" class="headerlink" title="前后端分离阶段"></a>前后端分离阶段</h3><p>前后端分离时期，具体的执行流程中<strong>前5步与视图阶段相同</strong></p>
-<ol start="6">
-<li><strong>处理器</strong>的方法上添加了**@ResponseBody**</li>
+<ol>
+<li><strong>处理器</strong>的方法上添加了<strong>@ResponseBody</strong></li>
 <li>通过<strong>HttpMessageConverter</strong>将方法返回值转换为<strong>JSON</strong>并响应客户端</li>
 </ol>
 

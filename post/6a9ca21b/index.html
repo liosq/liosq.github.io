@@ -27,7 +27,7 @@
 <meta property="og:description" content="内存模型Java的内存区域结构如下：">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-13T06:50:52.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.710Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.494Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
@@ -451,7 +451,7 @@
 <li><strong>即时编译器编译后的代码缓存</strong></li>
 </ul>
 <p>等数据</p>
-<p><strong>永久代和元空间对于方法区的关系</strong>类似于<strong>接口与类的关系</strong>，即方法区是抽象的概念&#x2F;规范，而<strong>永久代和元空间则是对方法区的具体实现</strong></p>
+<p><strong>永久代和元空间对于方法区的关系</strong>类似于<strong>接口与类的关系</strong>，即方法区是抽象的概念/规范，而<strong>永久代和元空间则是对方法区的具体实现</strong></p>
 <blockquote>
 <p><strong>为什么要将永久代替换为元空间？</strong></p>
 </blockquote>
@@ -494,7 +494,7 @@
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/memory-area.html#%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88">Java内存区域详解（重点） | JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/java/jvm/memory-area.html#本地方法栈">Java内存区域详解（重点） | JavaGuide</a> </li>
 </ul>
 </blockquote>
 
@@ -662,6 +662,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -929,6 +935,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

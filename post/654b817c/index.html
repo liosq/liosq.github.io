@@ -405,7 +405,6 @@
 <li>CatClaw 作为中间层，将用户指令转发给 Claude Code 执行</li>
 </ul>
 <h2 id="实践方式"><a href="#实践方式" class="headerlink" title="实践方式"></a>实践方式</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">用户 → CatClaw → Claude <span class="hljs-meta">Code</span> → 代码仓库<br></code></pre></td></tr></table></figure>
-
 <p>整体流程：</p>
 <ol>
 <li>在 CatClaw 对话框中用自然语言描述需求</li>
@@ -413,14 +412,16 @@
 <li>Claude Code 在沙箱环境中执行代码修改</li>
 <li>将结果返回给 CatClaw 展示</li>
 </ol>
-<h2 id="收益"><a href="#收益" class="headerlink" title="收益"></a>收益</h2><table>
+<h2 id="收益"><a href="#收益" class="headerlink" title="收益"></a>收益</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>收益点</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>知识库复用</td>
 <td>CatClaw 本身会读取工程约束文档，相当于 Claude Code 作为子 Agent 执行代码任务，同时继承 CatClaw 的业务上下文</td>
 </tr>
@@ -432,15 +433,19 @@
 <td>记忆系统</td>
 <td>CatClaw 的记忆系统作为简易知识库，替 Claude Code 解析带业务含义、个人习惯的表达内容</td>
 </tr>
-</tbody></table>
-<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><table>
+</tbody>
+</table>
+</div>
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>问题</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>耗时增加</td>
 <td>多了一步 Agent 解析过程，相较于直接使用 Claude Code 耗时更长</td>
 </tr>
@@ -452,7 +457,9 @@
 <td>会话持久性</td>
 <td>如果 Claude Code 没有安装在沙箱中，重启沙箱后 Claude Code 会话会丢失</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
 <li><strong>适合</strong>：需要结合业务上下文生成代码、移动端触发代码任务、快速验证想法</li>
 <li><strong>不适合</strong>：需要精准控制 Claude Code 行为的场景、对响应速度要求高的场景</li>

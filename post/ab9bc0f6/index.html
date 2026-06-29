@@ -27,7 +27,7 @@
 <meta property="og:description" content="OSI 数据链路层详解：帧格式、差错检测、流量控制与 MAC 寻址机制">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-15T02:47:51.000Z">
-<meta property="article:modified_time" content="2026-06-25T08:18:07.151Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.475Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary_large_image">
@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          2.5k 字
         
       </span>
     
@@ -463,25 +463,25 @@
 <h4 id="循环冗余校验（CRC）"><a href="#循环冗余校验（CRC）" class="headerlink" title="循环冗余校验（CRC）"></a>循环冗余校验（CRC）</h4><p><strong>其校验码称为循环码（多项式码）</strong>，是一种线性分组码。它是<strong>在严格的代数学理论基础上建立起来的</strong>，检纠错能力非常强，且广泛应用在计算机网络和数据通信中</p>
 <p>循环码除了具有线性分组码的一般性之外，还有一个显著的特点就是<strong>循环性</strong>，即循环码中<strong>任一码字循环左右移一位或多位</strong>形成的码字依旧是循环码中的码字</p>
 <h5 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h5><blockquote>
-<p>给定一个长度为 $n$ 的二进制串 $B_n&#x3D;b_{n-1}b_{n-2}…b_1b_0,(b&#x3D;0,1)$</p>
-<p><strong>则可以将其表示为多项式 $B(x)&#x3D;b_{n-1}x^{n-1}+b_{n-2}x^{n-2}+…+b_1x+b_0$</strong></p>
+<p>给定一个长度为 $n$ 的二进制串 $B<em>n=b</em>{n-1}b_{n-2}…b_1b_0,(b=0,1)$</p>
+<p><strong>则可以将其表示为多项式 $B(x)=b<em>{n-1}x^{n-1}+b</em>{n-2}x^{n-2}+…+b_1x+b_0$</strong></p>
 </blockquote>
 <p>我们给定一个<strong>生成 $k$ 阶多项式</strong> $G(x)$，<strong>二进制串数据</strong> $F(x)$，进行以下操作：</p>
 <ul>
-<li>将 $F(x)$ <strong>左移 $k-1$ 位</strong>，即 $F’(x)&#x3D;F(x)\times x^{k-1}$</li>
-<li>用模 2 算法求得 $F’(x)&#x2F;G(x)$ 的余数 $R(x)$，并将余数 $R(x)$ 追加到 $F(x)$ 尾部，得到最终要发送的数据 $F’’(x)$</li>
+<li>将 $F(x)$ <strong>左移 $k-1$ 位</strong>，即 $F’(x)=F(x)\times x^{k-1}$</li>
+<li>用模 2 算法求得 $F’(x)/G(x)$ 的余数 $R(x)$，并将余数 $R(x)$ 追加到 $F(x)$ 尾部，得到最终要发送的数据 $F’’(x)$</li>
 </ul>
 <p>然后由发送端将 $G(x),F’’(x)$ 发送给接收端</p>
-<h5 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h5><p>接收端接收到数据后，只需用模 2 算法计算 $F’’(x)&#x2F;G(x)$，判断计算后的余数是否为 0（能否被整除），如果为 0，则说明<strong>传输过程中没有出错</strong></p>
+<h5 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h5><p>接收端接收到数据后，只需用模 2 算法计算 $F’’(x)/G(x)$，判断计算后的余数是否为 0（能否被整除），如果为 0，则说明<strong>传输过程中没有出错</strong></p>
 <h4 id="校验和"><a href="#校验和" class="headerlink" title="校验和"></a>校验和</h4><p>将发送的数据看成是二进制整数序列，并划分一段段规定的长度（如8、16、32位等）；然后<strong>计算它们的和</strong>，如计算时有进位，则<strong>将进位加到计算出的和中</strong>，计算完毕后，<strong>将计算的和取反</strong>作为校验和，与数据一并发送给接收端</p>
 <p>在接收端，重新计算校验和，并于接收到的原校验和进行比较</p>
 <h3 id="纠错"><a href="#纠错" class="headerlink" title="纠错"></a>纠错</h3><h4 id="海明码"><a href="#海明码" class="headerlink" title="海明码"></a>海明码</h4><p>在 $m$ 位数据之中添加 $r$ 个冗余位，此时数据传输的总位数为 $m+r$，且要求 $r$ 必须<strong>能够至少表示 $m+r+1$ 种状态</strong>（1 种状态表示无差错，$m+r$ 种状态分别表示数据第 $i,(0&lt; i\le m+r)$ 位出错）</p>
 <p>因为 $r$ 位二进制数可以表示 $2^r$ 种不同的状态，所以有： $2^r\ge m+r+1$</p>
 <h5 id="编码-1"><a href="#编码-1" class="headerlink" title="编码"></a>编码</h5><p>在 $m+r$ 位数据中，各冗余位处于第 $2^i,(0\le i&lt;r)$ 位，分别用 $r_1,r_2,…,r_r$ 表示；而后 $m$ 位数据<strong>从低位到高位按序填充到剩余位置</strong></p>
-<p>因为冗余位 $r_rr_{r-1}…r_1$ 组成的二进制数就代表出错位的位置，所以对于第 $r_i$ 而言，它应该与<strong>位置序号代表的二进制串中第 $i-1$ 位为 1 的位置有关</strong></p>
+<p>因为冗余位 $r<em>rr</em>{r-1}…r_1$ 组成的二进制数就代表出错位的位置，所以对于第 $r_i$ 而言，它应该与<strong>位置序号代表的二进制串中第 $i-1$ 位为 1 的位置有关</strong></p>
 <blockquote>
 <p>很容易理解，当第 $k$ 位出错时，<strong>冗余位组成的二进制数</strong>应该等于 $k$</p>
-<p>即 $2^0\times r_1+2^1\times r_2+…+2^{r-1}\times r_r&#x3D;k$，说明第 $k$ 位和其二进制串中为 1 的每一位都有关；相对地，$r_i$ 也就和每个第 $i-1$ 位为 1 的位置有关</p>
+<p>即 $2^0\times r_1+2^1\times r_2+…+2^{r-1}\times r_r=k$，说明第 $k$ 位和其二进制串中为 1 的每一位都有关；相对地，$r_i$ 也就和每个第 $i-1$ 位为 1 的位置有关</p>
 </blockquote>
 <p>于是，就可以采用奇偶校验来求出所有与 $r_i$ 有关的数据位的校验位，将其作为 $r_i$</p>
 <h5 id="解码-1"><a href="#解码-1" class="headerlink" title="解码"></a>解码</h5><p>解码时，对 $n$ 位数据中的第  $2^i,(0&lt;2^i\le n)$ 位进行奇偶校验，并将结果合并为二进制数 $x$，如果 $x$ 不为 0，则说明有数据位出错，第 $x$ 位即为出错位</p>
@@ -656,6 +656,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -923,6 +929,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

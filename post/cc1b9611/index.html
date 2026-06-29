@@ -407,9 +407,7 @@
 </ul>
 <p>达到<strong>减少调用频率</strong>和<strong>保留最后一次调用</strong>的效果</p>
 <h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// callback	: 需要防抖处理的函数</span><br><span class="hljs-comment">// delay	: 防抖的延迟时长</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">debounce</span> = (<span class="hljs-params">callback, delay = <span class="hljs-number">200</span></span>) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> timer = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 不用箭头函数是因为箭头函数没有this指针</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;<br>        <span class="hljs-built_in">clearTimeout</span>(timer);<br>        timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>            callback.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args);<br>        &#125;, delay);<br>    &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <h3 id="异步返回Promise对象"><a href="#异步返回Promise对象" class="headerlink" title="异步返回Promise对象"></a>异步返回Promise对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title function_">asyncDebounce</span> = (<span class="hljs-params">callback, delay = <span class="hljs-number">200</span></span>) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> timer = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> (<span class="hljs-params">...args</span>) &#123;<br>        <span class="hljs-built_in">clearTimeout</span>(timer);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> &#123;<br>            timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>                <span class="hljs-title function_">resolve</span>(callback.<span class="hljs-title function_">apply</span>(<span class="hljs-variable language_">this</span>, args));<br>            &#125;, delay);<br>        &#125;);<br>    &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>
                 
               </div>
@@ -507,9 +505,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/6f2612a2/" title="SpringBoot">
+                      <a href="/post/4d712855/" title="MySQL">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SpringBoot</span>
+                        <span class="hidden-mobile">MySQL</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -517,8 +515,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/de1f6638/" title="37. 解数独">
-                        <span class="hidden-mobile">37. 解数独</span>
+                      <a href="/post/6f2612a2/" title="SpringBoot">
+                        <span class="hidden-mobile">SpringBoot</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

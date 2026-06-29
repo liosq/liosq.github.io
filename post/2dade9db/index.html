@@ -27,7 +27,7 @@
 <meta property="og:description" content="索引主键索引（聚簇索引）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-15T14:36:42.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.703Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.487Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          653 字
+          634 字
         
       </span>
     
@@ -398,7 +398,7 @@
               <div class="markdown-body">
                 
                 <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="主键索引（聚簇索引）"><a href="#主键索引（聚簇索引）" class="headerlink" title="主键索引（聚簇索引）"></a>主键索引（聚簇索引）</h2><p>存储的是表中一整行的数据</p>
-<h2 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h2><p>存储的是该行的[聚簇索引](# 聚簇索引和非聚簇索引)，若需要返回整行数据需根据聚簇索引再<strong>回表</strong>检索一次</p>
+<h2 id="普通索引"><a href="#普通索引" class="headerlink" title="普通索引"></a>普通索引</h2><p>存储的是该行的<a href="# 聚簇索引和非聚簇索引">聚簇索引</a>，若需要返回整行数据需根据聚簇索引再<strong>回表</strong>检索一次</p>
 <h2 id="联合索引"><a href="#联合索引" class="headerlink" title="联合索引"></a>联合索引</h2><p>设置多个字段的索引，但命中索引需要满足<strong>最左匹配原则</strong>，如（a，b，c）联合索引，查询条件中包含 <strong>a</strong> 才会命中（命中索引的长度要看<strong>最左连续匹配了几个字段</strong>，如 ac 命中 a、abc 命中 abc）</p>
 <p><strong>当查询时对联合索引字段有以下操作，也会出现索引失效</strong></p>
 <ul>
@@ -412,7 +412,7 @@
 <ul>
 <li>若存在主键，则<strong>主键索引</strong>就是聚簇索引</li>
 <li>若不存在主键，则使用<strong>第一个唯一索引</strong>（UNIQUE）作为聚簇索引</li>
-<li>若都不存在，则InnoDB会**自动生成一个<code>rowid</code>**作为隐藏的聚簇索引</li>
+<li>若都不存在，则InnoDB会<strong>自动生成一个<code>rowid</code></strong>作为隐藏的聚簇索引</li>
 </ul>
 <h2 id="覆盖索引和非覆盖索引"><a href="#覆盖索引和非覆盖索引" class="headerlink" title="覆盖索引和非覆盖索引"></a>覆盖索引和非覆盖索引</h2><ul>
 <li><strong>覆盖索引：</strong>使用索引检索到的数据覆盖了<strong>查询所需字段</strong></li>
@@ -590,6 +590,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -857,6 +863,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          648 字
+          638 字
         
       </span>
     
@@ -400,44 +400,46 @@
                 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>由于使用 Python 一般都是需要用来做一些和人工智能相关的东西，所以可以直接安装 Anaconda（一个 Python 整合包）</p>
 <h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><p>如果是直接安装了 Anaconda，里面会自带 pip，一款包下载工具</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">下载包 直接在‘包名’后加‘==[版本号]’可指定版本</span><br>pip install [包名]<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">列出当前已下载的所有包 可以结合管道来过滤出自己想搜索的包</span><br>pip list<br></code></pre></td></tr></table></figure>
-
 <h2 id="poetry"><a href="#poetry" class="headerlink" title="poetry"></a>poetry</h2><p>一款包管理和打包工具。如果在 Python 项目中看见了 <code>pyproject.toml</code> 这个文件，就可以用 <code>poetry install</code> 直接下载其中指定的依赖包</p>
-<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="pip-设置国内镜像源"><a href="#pip-设置国内镜像源" class="headerlink" title="pip 设置国内镜像源"></a>pip 设置国内镜像源</h2><table>
+<h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="pip-设置国内镜像源"><a href="#pip-设置国内镜像源" class="headerlink" title="pip 设置国内镜像源"></a>pip 设置国内镜像源</h2><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">来源</th>
-<th align="center">链接</th>
+<th style="text-align:center">来源</th>
+<th style="text-align:center">链接</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">清华</td>
-<td align="center"><a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></td>
+<tbody>
+<tr>
+<td style="text-align:center">清华</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a></td>
 </tr>
 <tr>
-<td align="center">阿里云</td>
-<td align="center"><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple">http://mirrors.aliyun.com/pypi/simple</a></td>
+<td style="text-align:center">阿里云</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/pypi/simple">http://mirrors.aliyun.com/pypi/simple</a></td>
 </tr>
 <tr>
-<td align="center">中国科技大学</td>
-<td align="center"><a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple">https://pypi.mirrors.ustc.edu.cn/simple</a></td>
+<td style="text-align:center">中国科技大学</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="https://pypi.mirrors.ustc.edu.cn/simple">https://pypi.mirrors.ustc.edu.cn/simple</a></td>
 </tr>
 <tr>
-<td align="center">华中理工大学</td>
-<td align="center"><a target="_blank" rel="noopener" href="http://pypi.hustunique.com/">http://pypi.hustunique.com</a></td>
+<td style="text-align:center">华中理工大学</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://pypi.hustunique.com">http://pypi.hustunique.com</a></td>
 </tr>
 <tr>
-<td align="center">山东理工大学</td>
-<td align="center"><a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org/">http://pypi.sdutlinux.org</a></td>
+<td style="text-align:center">山东理工大学</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://pypi.sdutlinux.org">http://pypi.sdutlinux.org</a></td>
 </tr>
 <tr>
-<td align="center">豆瓣</td>
-<td align="center"><a target="_blank" rel="noopener" href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a></td>
+<td style="text-align:center">豆瓣</td>
+<td style="text-align:center"><a target="_blank" rel="noopener" href="http://pypi.douban.com/simple">http://pypi.douban.com/simple</a></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">设置默认源的url</span> <br>pip config set global.index-url &quot;https://xxx&quot;<br></code></pre></td></tr></table></figure>
-
 <h2 id="poetry-设置国内源"><a href="#poetry-设置国内源" class="headerlink" title="poetry 设置国内源"></a>poetry 设置国内源</h2><blockquote>
-<p><strong>参考教程：</strong><a target="_blank" rel="noopener" href="https://www.resourch.com/archives/66.html#heading-0">poetry如何更换国内源（清华源&#x2F;阿里源&#x2F;豆瓣源） - 数据科学SourceResearch (resourch.com)</a></p>
+<p><strong>参考教程：</strong><a target="_blank" rel="noopener" href="https://www.resourch.com/archives/66.html#heading-0">poetry如何更换国内源（清华源/阿里源/豆瓣源） - 数据科学SourceResearch (resourch.com)</a></p>
 </blockquote>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>
                 

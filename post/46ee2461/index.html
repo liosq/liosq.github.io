@@ -407,54 +407,44 @@
 </ul>
 <h2 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h2><p>Spring 内置的<code>@Autowired</code>，以及 JDK 内置的 <code>@Resource</code> 和 <code>@Inject</code> 都可以用于注入 Bean</p>
 <h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
-<li><p><strong>创建 Bean 实例：</strong>Bean 容器首先找到配置文件中 Bean 的定义，然后使用 Java 反射 API 来创建 Bean 的实例</p>
-</li>
-<li><p><strong>Bean 依赖注入：</strong>为 Bean 设置属性和依赖</p>
-</li>
-<li><p><strong>处理 Aware 接口：</strong></p>
-<ul>
+<li><strong>创建 Bean 实例：</strong>Bean 容器首先找到配置文件中 Bean 的定义，然后使用 Java 反射 API 来创建 Bean 的实例</li>
+<li><strong>Bean 依赖注入：</strong>为 Bean 设置属性和依赖</li>
+<li><strong>处理 Aware 接口：</strong><ul>
 <li>如果 Bean 实现了 <code>BeanNameAware</code> 接口，调用 <code>setBeanName()</code>方法，传入 Bean 的名字</li>
 <li>如果 Bean 实现了 <code>BeanClassLoaderAware</code> 接口，调用 <code>setBeanClassLoader()</code>方法，传入 <code>ClassLoader</code>对象的实例</li>
 <li>如果 Bean 实现了 <code>BeanFactoryAware</code> 接口，调用 <code>setBeanFactory()</code>方法，传入 <code>BeanFactory</code>对象的实例</li>
 </ul>
 </li>
-<li><p><strong>初始化：</strong></p>
-<ul>
+<li><strong>初始化：</strong><ul>
 <li>如果有和加载这个 Bean 的 Spring 容器相关的 <code>BeanPostProcessor</code> 对象，执行<code>postProcessBeforeInitialization()</code> 方法</li>
 <li>如果 Bean 实现了<code>InitializingBean</code>接口，执行<code>afterPropertiesSet()</code>方法</li>
 <li>如果 Bean 在配置文件中的定义包含 <code>init-method</code> 属性，执行指定的方法</li>
 <li>如果有和加载这个 Bean 的 Spring 容器相关的 <code>BeanPostProcessor</code> 对象，执行<code>postProcessAfterInitialization()</code> 方法</li>
 </ul>
 </li>
-<li><p><strong>销毁</strong>：销毁并不是说要立马把 Bean 给销毁掉，而是把 Bean 的销毁方法先记录下来，将来需要销毁 Bean 或者销毁容器的时候，就调用这些方法去释放 Bean 所持有的资源</p>
-<ul>
+<li><strong>销毁</strong>：销毁并不是说要立马把 Bean 给销毁掉，而是把 Bean 的销毁方法先记录下来，将来需要销毁 Bean 或者销毁容器的时候，就调用这些方法去释放 Bean 所持有的资源<ul>
 <li>如果 Bean 实现了 <code>DisposableBean</code> 接口，执行 <code>destroy()</code> 方法</li>
 <li>如果 Bean 在配置文件中的定义包含 <code>destroy-method</code> 属性，执行指定的 Bean 销毁方法。或者，也可以直接通过<code>@PreDestroy</code> 注解标记 Bean 销毁之前执行的方法</li>
 </ul>
 </li>
-<li><p>通过<strong>BeanDefinition</strong>获取Bean的定义信息</p>
-</li>
-<li><p>调用<strong>构造方法</strong>实例化Bean</p>
-</li>
-<li><p>Bean的<strong>依赖注入</strong></p>
-</li>
-<li><p>处理<strong>Aware接口</strong></p>
-<ul>
+</ol>
+<ol>
+<li>通过<strong>BeanDefinition</strong>获取Bean的定义信息</li>
+<li>调用<strong>构造方法</strong>实例化Bean</li>
+<li>Bean的<strong>依赖注入</strong></li>
+<li>处理<strong>Aware接口</strong><ul>
 <li><code>BeanNameAware</code></li>
 <li><code>BeanFactoryAware</code></li>
 <li><code>ApplicationContextAware</code></li>
 </ul>
 </li>
-<li><p>Bean的后置处理器-<strong>BeanPostProcessor#Before</strong></p>
-</li>
-<li><p>初始化方法</p>
-<ul>
+<li>Bean的后置处理器-<strong>BeanPostProcessor#Before</strong></li>
+<li>初始化方法<ul>
 <li>initialization</li>
 <li>自定义init方法</li>
 </ul>
 </li>
-<li><p>Bean的后置处理器-<strong>BeanPostProcessor#After</strong>（可以使用代理增强Bean）</p>
-<ol>
+<li>Bean的后置处理器-<strong>BeanPostProcessor#After</strong>（可以使用代理增强Bean）<ol>
 <li>AOP</li>
 <li>动态代理<ul>
 <li>JDK动态代理</li>
@@ -463,8 +453,7 @@
 </li>
 </ol>
 </li>
-<li><p>Bean销毁</p>
-</li>
+<li>Bean销毁</li>
 </ol>
 <h2 id="循环依赖注入问题"><a href="#循环依赖注入问题" class="headerlink" title="循环依赖注入问题"></a>循环依赖注入问题</h2><blockquote>
 <p><strong>循环依赖：</strong>两个或两个以上的对象互相持有对方，最终形成环路</p>
@@ -472,7 +461,7 @@
 <p>Spring 中是允许存在<strong>循环依赖注入</strong>的，其使用<strong>三级缓存</strong>来解决<strong>大部分</strong>的循环依赖</p>
 <p><strong>三级缓存源码：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DefaultSingletonBeanRegistry</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">SimpleAliasRegistry</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">SingletonBeanRegistry</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> <span class="hljs-variable">SUPPRESSED_EXCEPTIONS_LIMIT</span> <span class="hljs-operator">=</span> <span class="hljs-number">100</span>;<br>    <span class="hljs-comment">// 一级缓存</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;String, Object&gt; singletonObjects = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcurrentHashMap</span>(<span class="hljs-number">256</span>);<br>    <span class="hljs-comment">// 三级缓存</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;String, ObjectFactory&lt;?&gt;&gt; singletonFactories = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>(<span class="hljs-number">16</span>);<br>    <span class="hljs-comment">// 二级缓存</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Map&lt;String, Object&gt; earlySingletonObjects = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ConcurrentHashMap</span>(<span class="hljs-number">16</span>);<br></code></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -481,7 +470,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>一级缓存</td>
 <td>singletonObjects</td>
 <td>缓存已经经历了完整的生命周期，已经初始化完成的 Bean 对象</td>
@@ -496,7 +486,9 @@
 <td>singletonFactories</td>
 <td>缓存 ObjectFactory，表示对象工厂，用来创建某个对象</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>场景1：</strong>A对象需要依赖注入B，B对象中需要依赖注入A</p>
 <ol>
 <li>实例化A</li>
@@ -519,7 +511,7 @@
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html#%E8%B0%88%E8%B0%88%E8%87%AA%E5%B7%B1%E5%AF%B9%E4%BA%8E-spring-ioc-%E7%9A%84%E4%BA%86%E8%A7%A3">Spring常见面试题总结 | JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html#谈谈自己对于-spring-ioc-的了解">Spring常见面试题总结 | JavaGuide</a></li>
 </ul>
 </blockquote>
 

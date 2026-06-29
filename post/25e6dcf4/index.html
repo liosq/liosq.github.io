@@ -27,7 +27,7 @@
 <meta property="og:description" content="287. 寻找重复数$O(nlog_2n)+O(1)$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-23T07:28:03.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.716Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.460Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="二分">
@@ -399,19 +399,19 @@
             
               <div class="markdown-body">
                 
-                <h1 id="287-寻找重复数"><a href="#287-寻找重复数" class="headerlink" title="287. 寻找重复数"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-duplicate-number/">287. 寻找重复数</a></h1><h2 id="O-nlog-2n-O-1"><a href="#O-nlog-2n-O-1" class="headerlink" title="$O(nlog_2n)+O(1)$"></a>$O(nlog_2n)+O(1)$</h2><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p><strong>定义 $cnt[i]$ 表示数组中小于或等于 $i$ 的数有多少个</strong>，设数组中重复的数为 $target$，那么有<br>$$<br>cnt[i] \le i,(i \in [1,target-1])\<br>cnt[i]&gt;i,(i \in [target, n])<br>$$<br>又因为 $cnt$ 本身<strong>单调</strong>，所以我们可以<strong>结合这两点使用二分查找</strong></p>
+                <h1 id="287-寻找重复数"><a href="#287-寻找重复数" class="headerlink" title="287. 寻找重复数"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/find-the-duplicate-number/">287. 寻找重复数</a></h1><h2 id="O-nlog-2n-O-1"><a href="#O-nlog-2n-O-1" class="headerlink" title="$O(nlog_2n)+O(1)$"></a>$O(nlog_2n)+O(1)$</h2><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p><strong>定义 $cnt[i]$ 表示数组中小于或等于 $i$ 的数有多少个</strong>，设数组中重复的数为 $target$，那么有</p>
+<script type="math/tex; mode=display">
+cnt[i] \le i,(i \in [1,target-1])\\
+cnt[i]>i,(i \in [target, n])</script><p>又因为 $cnt$ 本身<strong>单调</strong>，所以我们可以<strong>结合这两点使用二分查找</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">n</span><span class="hljs-params">(nums.size())</span>,<span class="hljs-title">l</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span>,<span class="hljs-title">r</span><span class="hljs-params">(n)</span>,m,cnt</span>;<br>        <span class="hljs-keyword">while</span>(l&lt;=r)<br>        &#123;<br>            cnt=<span class="hljs-number">0</span>;<br>            m=(l+r)&gt;&gt;<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>                <span class="hljs-keyword">if</span>(nums[i]&lt;=m)<br>                    cnt++;<br>            <span class="hljs-comment">// 判断 target 在哪个区间</span><br>            <span class="hljs-keyword">if</span>(cnt&gt;m)<br>                r=m<span class="hljs-number">-1</span>;<br>            <span class="hljs-keyword">else</span><br>                l=m+<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">return</span> r+<span class="hljs-number">1</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p>设计算数组中二进制位中第 $i$ 位为 1 的数有 $x$ 个，计算 $[1,n]$ 中第 $i$ 位为 1 的数有 $y$ 个，如果对于第 $i$ 位，有 $x&gt;y$，说明<strong>重复的数中第 $i$ 位为 1</strong></p>
 <p>按照这个思路把所有位都算一遍，拼接起来得到的数就是数组中唯一重复的数</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">n</span><span class="hljs-params">(nums.size())</span>,<span class="hljs-title">ans</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> x,y,b=<span class="hljs-number">1</span>;b&lt;=n;b&lt;&lt;=<span class="hljs-number">1</span>)<br>        &#123;<br>            x=y=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(nums[i]&amp;b)<br>                    x++;<br>                <span class="hljs-keyword">if</span>(i&amp;b)<br>                    y++;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(x&gt;y)<br>                ans|=b;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <h2 id="O-n-O-1"><a href="#O-n-O-1" class="headerlink" title="$O(n)+O(1)$"></a>$O(n)+O(1)$</h2><p><strong>快慢指针，$Floyd$ 判圈算法</strong></p>
 <p>设数组表示从下标 $i$ 到 $nums[i]$ 的一条边，对其建图。因为数组中必定有重复数 $target$，所以一定有两条或以上的边指向 $target$，又因为边的数量（数组长度）为 $n+1$、节点数量为 $n$，所以若有度大于 1 的节点，则<strong>必定存在环</strong>，且环入口即为 $target$</p>
 <p>定义快慢指针 $f,s$，<strong>快指针 $f$ 每次走两步</strong>，<strong>慢指针 $s$ 每次走一步</strong>。则有以下条件：</p>
 <ul>
-<li><p><strong>环的长度为 $L$</strong></p>
-</li>
+<li><strong>环的长度为 $L$</strong></li>
 <li><p><strong>从起点到环入口的距离为 $a$</strong></p>
 </li>
 <li><p><strong>从环入口走 $b$ 步到达相遇位置</strong></p>
@@ -419,7 +419,7 @@
 <li><p><strong>又从相遇位置走 $c$ 步回到环入口</strong></p>
 </li>
 </ul>
-<p>可得等式 $2(a+b)&#x3D;a+b+kL,(k\ge1)$，整理可得 $a&#x3D;(k-1)L+c$</p>
+<p>可得等式 $2(a+b)=a+b+kL,(k\ge1)$，整理可得 $a=(k-1)L+c$</p>
 <p>由上等式可知，如果快慢指针相遇后，将慢指针放回起点，每次两个指针只走一步，则慢指针走 $a$ 步可以到达环入口，快指针在走了 $k-1$ 圈后也到了环的入口，<strong>两个指针相遇处即为环入口</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">findDuplicate</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; nums)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">s</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span>,<span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">do</span><br>            s=nums[s],f=nums[nums[f]];<br>        <span class="hljs-keyword">while</span>(s!=f);<br>        s=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(s!=f)<br>            s=nums[s],f=nums[f];<br>        <span class="hljs-keyword">return</span> s;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
@@ -591,6 +591,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -858,6 +864,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

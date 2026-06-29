@@ -27,7 +27,7 @@
 <meta property="og:description" content="存储引擎存储引擎位于MySQL体系架构的第三层，其主要负责的是对数据的创建、查询、更新和删除操作">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-15T14:03:11.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.703Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.487Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary_large_image">
@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          482 字
+          477 字
         
       </span>
     
@@ -400,213 +400,217 @@
                 <h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><p>存储引擎位于<strong>MySQL体系架构的第三层</strong>，其主要负责的是对数据的创建、查询、更新和删除操作</p>
 <p>不同的存储引擎可以提供不同的<strong>存储机制</strong>、<strong>索引技巧</strong>、<strong>锁定水平</strong>等功能，使用不同的存储引擎还可以获得特定的功能</p>
 <p>在MySQL中，可以利用<code>show engines</code>显示<strong>可用的数据库引擎和默认引擎</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">特点</th>
-<th align="center">MyISAM</th>
-<th align="center">BDB</th>
-<th align="center">Memory</th>
-<th align="center">InnoDB</th>
-<th align="center">Archive</th>
-<th align="center">NDB</th>
+<th style="text-align:center">特点</th>
+<th style="text-align:center">MyISAM</th>
+<th style="text-align:center">BDB</th>
+<th style="text-align:center">Memory</th>
+<th style="text-align:center">InnoDB</th>
+<th style="text-align:center">Archive</th>
+<th style="text-align:center">NDB</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">内存限制</td>
-<td align="center">X</td>
-<td align="center">X</td>
-<td align="center">√</td>
-<td align="center">64TB</td>
-<td align="center">X</td>
-<td align="center">√</td>
+<tbody>
+<tr>
+<td style="text-align:center">内存限制</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">64TB</td>
+<td style="text-align:center">X</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">事务支持</td>
-<td align="center">表锁</td>
-<td align="center">页锁</td>
-<td align="center">表锁</td>
-<td align="center">行锁</td>
-<td align="center">行锁</td>
-<td align="center">行锁</td>
+<td style="text-align:center">事务支持</td>
+<td style="text-align:center">表锁</td>
+<td style="text-align:center">页锁</td>
+<td style="text-align:center">表锁</td>
+<td style="text-align:center">行锁</td>
+<td style="text-align:center">行锁</td>
+<td style="text-align:center">行锁</td>
 </tr>
 <tr>
-<td align="center">MVCC</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">MVCC</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">Geospatial 支持</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">Geospatial 支持</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">B树索引</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">B树索引</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">Hash索引</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center">√</td>
+<td style="text-align:center">Hash索引</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">全文索引</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">全文索引</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">集群索引</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">集群索引</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">数据缓存</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center">√</td>
+<td style="text-align:center">数据缓存</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">索引缓存</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center">√</td>
+<td style="text-align:center">索引缓存</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">压缩数据</td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center"></td>
+<td style="text-align:center">压缩数据</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">加密数据</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">加密数据</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">存储成本</td>
-<td align="center">low</td>
-<td align="center">low</td>
-<td align="center">N&#x2F;A</td>
-<td align="center">high</td>
-<td align="center">very low</td>
-<td align="center">low</td>
+<td style="text-align:center">存储成本</td>
+<td style="text-align:center">low</td>
+<td style="text-align:center">low</td>
+<td style="text-align:center">N/A</td>
+<td style="text-align:center">high</td>
+<td style="text-align:center">very low</td>
+<td style="text-align:center">low</td>
 </tr>
 <tr>
-<td align="center">内存成本</td>
-<td align="center">low</td>
-<td align="center">low</td>
-<td align="center">Medium</td>
-<td align="center">high</td>
-<td align="center">low</td>
-<td align="center">high</td>
+<td style="text-align:center">内存成本</td>
+<td style="text-align:center">low</td>
+<td style="text-align:center">low</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">high</td>
+<td style="text-align:center">low</td>
+<td style="text-align:center">high</td>
 </tr>
 <tr>
-<td align="center">大部分插入速度</td>
-<td align="center">high</td>
-<td align="center">high</td>
-<td align="center">high</td>
-<td align="center">low</td>
-<td align="center">very high</td>
-<td align="center">high</td>
+<td style="text-align:center">大部分插入速度</td>
+<td style="text-align:center">high</td>
+<td style="text-align:center">high</td>
+<td style="text-align:center">high</td>
+<td style="text-align:center">low</td>
+<td style="text-align:center">very high</td>
+<td style="text-align:center">high</td>
 </tr>
 <tr>
-<td align="center">集群数据库支持</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
+<td style="text-align:center">集群数据库支持</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">复制支持</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">复制支持</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">外键支持</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">√</td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center">外键支持</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center">备份恢复</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">备份恢复</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">查询缓存支持</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">查询缓存支持</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
 <tr>
-<td align="center">更新数据字典的统计顺序</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
-<td align="center">√</td>
+<td style="text-align:center">更新数据字典的统计顺序</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1287657">什么是存储引擎-阿里云开发者社区 (aliyun.com)</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46761060/article/details/124252411">MySQL各引擎之间的比较-CSDN博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46761060/article/details/124252411">MySQL各引擎之间的比较-CSDN博客</a> </li>
 </ul>
 </blockquote>
 
@@ -781,6 +785,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -1048,6 +1058,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

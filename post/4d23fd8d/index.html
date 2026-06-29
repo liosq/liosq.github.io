@@ -27,7 +27,7 @@
 <meta property="og:description" content="介绍一个 Python 的开源库，用来模拟用户操作 Web 界面。如鼠标点击、键盘输入等，因为是使用浏览器模拟，所以可以加载一些用 js 动态渲染的页面信息，一般用来做爬虫或 Web 的自动化测试工具">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-10T04:47:15.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.707Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.498Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="爬虫">
 <meta name="twitter:card" content="summary_large_image">
@@ -401,16 +401,11 @@
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>pip install selenium</code> 即可</p>
 <h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><h3 id="创建浏览器实例"><a href="#创建浏览器实例" class="headerlink" title="创建浏览器实例"></a>创建浏览器实例</h3><p>目前我接触到的就chrome和edge浏览器，可能还有其他的，没有了解太多</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><br>path = <span class="hljs-string">&#x27;D:\xx\xx&#x27;</span> <span class="hljs-comment"># 浏览器 exe 文件路径</span><br>chrome_driver = webdriver.chrome(path) <span class="hljs-comment"># chrome浏览器</span><br>edge_driver = webdriver.edge(path) <span class="hljs-comment"># edge浏览器</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="访问页面和等待加载"><a href="#访问页面和等待加载" class="headerlink" title="访问页面和等待加载"></a>访问页面和等待加载</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> selenium.webdriver.support.ui <span class="hljs-keyword">import</span> WebDriverWait<br><span class="hljs-keyword">from</span> selenium.webdriver.support <span class="hljs-keyword">import</span> expected_conditions<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><br>edge_driver.get(<span class="hljs-string">&#x27;https://www.baidu.com&#x27;</span>) <span class="hljs-comment"># 访问页面</span><br><span class="hljs-comment"># 每0.5秒检测指定元素是否已经渲染出来，5秒内都没检测到就抛出异常</span><br>WebDriverWait(edge_driver, <span class="hljs-number">5</span>, <span class="hljs-number">0.5</span>)<br>.until(expected_conditions.presence_of_element_located((By.ID, <span class="hljs-string">&#x27;xxx&#x27;</span>)), message=<span class="hljs-string">&#x27;元素未找到&#x27;</span>)<br></code></pre></td></tr></table></figure>
-
 <h3 id="获取页面内元素"><a href="#获取页面内元素" class="headerlink" title="获取页面内元素"></a>获取页面内元素</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">element = driver.find_element_by_id(<span class="hljs-string">&#x27;kw&#x27;</span>) <span class="hljs-comment"># 通过id属性获取元素</span><br>element = driver.find_element_by_name(<span class="hljs-string">&#x27;wd&#x27;</span>) <span class="hljs-comment"># 通过name属性获取元素</span><br>element = driver.find_element_by_class_name(<span class="hljs-string">&#x27;input&#x27;</span>) <span class="hljs-comment"># 通过class属性获取元素</span><br>element = driver.find_element_by_tag_name(<span class="hljs-string">&#x27;input&#x27;</span>) <span class="hljs-comment"># 通过标签名获取元素</span><br>element = driver.find_element_by_link_text(<span class="hljs-string">&#x27;视频&#x27;</span>) <span class="hljs-comment"># 通过链接文本值获取元素</span><br>element = driver.find_element_by_partial_link_text(<span class="hljs-string">&#x27;视&#x27;</span>)<span class="hljs-comment"># 通过部分链接文本值获取元素</span><br>element = driver.find_element_by_xpath(<span class="hljs-string">&quot;//*[@id=&#x27;kw&#x27;]&quot;</span>) <span class="hljs-comment"># 通过Xpath获取元素</span><br>element = driver.find_element_by_css_selector(<span class="hljs-string">&#x27;#kw&#x27;</span>) <span class="hljs-comment"># 通过CSS选择器获取元素</span><br></code></pre></td></tr></table></figure>
-
 <h3 id="设置网页-Cookie"><a href="#设置网页-Cookie" class="headerlink" title="设置网页 Cookie"></a>设置网页 Cookie</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 要先访问网页再配置cookie</span><br>driver.get(<span class="hljs-string">&#x27;url&#x27;</span>)<br><span class="hljs-comment"># 清空原有cookie</span><br>driver.delete_all_cookies()<br><span class="hljs-comment"># cookie是字典类型的 浏览器装个Cookie Editor插件就可以导出json格式的cookies</span><br>cookies = [<br>    &#123;<br>        <span class="hljs-string">&quot;domain&quot;</span>: <span class="hljs-string">&quot;.taobao.com&quot;</span>,<br>        <span class="hljs-string">&quot;expirationDate&quot;</span>: <span class="hljs-number">1725995896.097156</span>,<br>        <span class="hljs-string">&quot;httpOnly&quot;</span>: <span class="hljs-literal">False</span>,<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;3PcFlag&quot;</span>,<br>        <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&quot;/&quot;</span>,<br>        <span class="hljs-comment"># 要注意在selenium中sameSite字段只能有None. Lax, Strict三种情况，从Cookie Editor导出来不是这个格式需要自己替换一下</span><br>        <span class="hljs-string">&quot;sameSite&quot;</span>: <span class="hljs-string">&#x27;None&#x27;</span>,<br>        <span class="hljs-string">&quot;secure&quot;</span>: <span class="hljs-literal">True</span>,<br>        <span class="hljs-string">&quot;storeId&quot;</span>: <span class="hljs-string">&quot;0&quot;</span>,<br>        <span class="hljs-string">&quot;value&quot;</span>: <span class="hljs-string">&quot;1725103097024&quot;</span>,<br>        <span class="hljs-string">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://www.taobao.com/&quot;</span><br>    &#125;,<br>]<br><span class="hljs-comment"># 添加cookie</span><br><span class="hljs-keyword">for</span> cookie <span class="hljs-keyword">in</span> cookies:<br>	driver.add_cookie(cookie)<br><span class="hljs-comment"># 配置完要刷新才能生效</span><br>driver.refresh()<br></code></pre></td></tr></table></figure>
-
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="元素存在，但-click-失败"><a href="#元素存在，但-click-失败" class="headerlink" title="元素存在，但 click() 失败"></a>元素存在，但 click() 失败</h2><p>很大可能是因为<strong>元素被遮挡</strong>，导致直接调用 selenium 提供的 click 方法会报错</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">e = driver.find_element_by_xpath(<span class="hljs-string">&#x27;//div[@class=&quot;abc&quot;]&#x27;</span>)<br>driver.execute_script(<span class="hljs-string">&quot;arguments[0].click()&quot;</span>, e)<br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
@@ -589,6 +584,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -856,6 +857,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

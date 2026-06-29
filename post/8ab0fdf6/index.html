@@ -27,7 +27,7 @@
 <meta property="og:description" content="文件输出文件内容">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-08T02:53:41.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.701Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.477Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Shell">
@@ -399,121 +399,128 @@
               <div class="markdown-body">
                 
                 <h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><h2 id="输出文件内容"><a href="#输出文件内容" class="headerlink" title="输出文件内容"></a>输出文件内容</h2><h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p><code>cat [OPTION]... [FILE]...</code></p>
-<h4 id="选项及含义"><a href="#选项及含义" class="headerlink" title="选项及含义"></a>选项及含义</h4><table>
+<h4 id="选项及含义"><a href="#选项及含义" class="headerlink" title="选项及含义"></a>选项及含义</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">选项</th>
-<th align="center">全称</th>
-<th align="center">含义</th>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">全称</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>-A</code></td>
-<td align="center"><code>--show-all</code></td>
-<td align="center">相当于<code>-vET</code></td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-A</code></td>
+<td style="text-align:center"><code>--show-all</code></td>
+<td style="text-align:center">相当于<code>-vET</code></td>
 </tr>
 <tr>
-<td align="center"><code>-b</code></td>
-<td align="center"><code>--number-noblank</code></td>
-<td align="center">为非空白行标上<strong>数字序号</strong></td>
+<td style="text-align:center"><code>-b</code></td>
+<td style="text-align:center"><code>--number-noblank</code></td>
+<td style="text-align:center">为非空白行标上<strong>数字序号</strong></td>
 </tr>
 <tr>
-<td align="center"><code>-e</code></td>
-<td align="center"></td>
-<td align="center">相当于<code>-vE</code></td>
+<td style="text-align:center"><code>-e</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">相当于<code>-vE</code></td>
 </tr>
 <tr>
-<td align="center"><code>-E</code></td>
-<td align="center"><code>--show-ends</code></td>
-<td align="center">在每一行末尾显示<code>$</code></td>
+<td style="text-align:center"><code>-E</code></td>
+<td style="text-align:center"><code>--show-ends</code></td>
+<td style="text-align:center">在每一行末尾显示<code>$</code></td>
 </tr>
 <tr>
-<td align="center"><code>-n</code></td>
-<td align="center"><code>--number</code></td>
-<td align="center">为每一行标上<strong>数字序号</strong></td>
+<td style="text-align:center"><code>-n</code></td>
+<td style="text-align:center"><code>--number</code></td>
+<td style="text-align:center">为每一行标上<strong>数字序号</strong></td>
 </tr>
 <tr>
-<td align="center"><code>-s</code></td>
-<td align="center"><code>--squeeze-blank</code></td>
-<td align="center">压缩<strong>超过一行</strong>的空白行为一行</td>
+<td style="text-align:center"><code>-s</code></td>
+<td style="text-align:center"><code>--squeeze-blank</code></td>
+<td style="text-align:center">压缩<strong>超过一行</strong>的空白行为一行</td>
 </tr>
 <tr>
-<td align="center"><code>-t</code></td>
-<td align="center"></td>
-<td align="center">相当于<code>-vT</code></td>
+<td style="text-align:center"><code>-t</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">相当于<code>-vT</code></td>
 </tr>
 <tr>
-<td align="center"><code>-T</code></td>
-<td align="center"><code>--show-tabs</code></td>
-<td align="center">将<code>\t</code>符号显示为<code>^I</code></td>
+<td style="text-align:center"><code>-T</code></td>
+<td style="text-align:center"><code>--show-tabs</code></td>
+<td style="text-align:center">将<code>\t</code>符号显示为<code>^I</code></td>
 </tr>
 <tr>
-<td align="center"><code>-v</code></td>
-<td align="center"><code>--show-nonprinting</code></td>
-<td align="center">用<code>^</code>或<code>M-</code>显示一些不能打印的字符</td>
+<td style="text-align:center"><code>-v</code></td>
+<td style="text-align:center"><code>--show-nonprinting</code></td>
+<td style="text-align:center">用<code>^</code>或<code>M-</code>显示一些不能打印的字符</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="strings"><a href="#strings" class="headerlink" title="strings"></a>strings</h3><p>一般用于打印<strong>二进制目标文件、库或可执行文件</strong>中的<strong>可打印字符</strong>，字符串默认至少是4个或更多可打印字符的任意序列</p>
 <h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><p><code>strings [option(s)] [file(s)]</code></p>
-<h4 id="选项及含义-1"><a href="#选项及含义-1" class="headerlink" title="选项及含义"></a>选项及含义</h4><table>
+<h4 id="选项及含义-1"><a href="#选项及含义-1" class="headerlink" title="选项及含义"></a>选项及含义</h4><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">选项</th>
-<th align="center">全称</th>
-<th align="center">含义</th>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">全称</th>
+<th style="text-align:center">含义</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>-a</code></td>
-<td align="center"><code>--all</code></td>
-<td align="center"></td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>-a</code></td>
+<td style="text-align:center"><code>--all</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-d</code></td>
-<td align="center"><code>--data</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-d</code></td>
+<td style="text-align:center"><code>--data</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-f</code></td>
-<td align="center"><code>--print-file-name</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-f</code></td>
+<td style="text-align:center"><code>--print-file-name</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-n</code></td>
-<td align="center"><code>--bytes=[number]</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-n</code></td>
+<td style="text-align:center"><code>--bytes=[number]</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-t</code></td>
-<td align="center"><code>--radix=&#123;o,d,x&#125;</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-t</code></td>
+<td style="text-align:center"><code>--radix=&#123;o,d,x&#125;</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-w</code></td>
-<td align="center"><code>--include-all-whitespace</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-w</code></td>
+<td style="text-align:center"><code>--include-all-whitespace</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-o</code></td>
-<td align="center"></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-o</code></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-T</code></td>
-<td align="center"><code>--target=&lt;BFDNAME&gt;</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-T</code></td>
+<td style="text-align:center"><code>--target=&lt;BFDNAME&gt;</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-e</code></td>
-<td align="center"><code>--encoding=&#123;s,S,b,l,B,L&#125;</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-e</code></td>
+<td style="text-align:center"><code>--encoding=&#123;s,S,b,l,B,L&#125;</code></td>
+<td style="text-align:center"></td>
 </tr>
 <tr>
-<td align="center"><code>-s</code></td>
-<td align="center"><code>--output-separator=&lt;string&gt;@&lt;file&gt;</code></td>
-<td align="center"></td>
+<td style="text-align:center"><code>-s</code></td>
+<td style="text-align:center"><code>--output-separator=&lt;string&gt;@&lt;file&gt;</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
                 
               </div>
@@ -688,6 +695,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -955,6 +968,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -27,7 +27,7 @@
 <meta property="og:description" content="金融基础知识学习笔记：债券、股票、基金与衍生品等核心概念梳理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-19T08:03:05.000Z">
-<meta property="article:modified_time" content="2026-06-25T06:44:45.642Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.501Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="金融">
 <meta name="twitter:card" content="summary_large_image">
@@ -397,8 +397,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="柯布-道格拉斯生产函数"><a href="#柯布-道格拉斯生产函数" class="headerlink" title="柯布-道格拉斯生产函数"></a>柯布-道格拉斯生产函数</h1><p>$Y&#x3D;A_{t}L^{\alpha}<em>{t}K^{\beta}</em>{t}$，劳动 <strong>L</strong>abour；资本 <strong>K</strong>apital（Capital）</p>
-<p>当 $\alpha+\beta&#x3D;1$ 时，$\alpha$ 和 $\beta$ 分别代表<strong>劳动</strong>和<strong>资本</strong>所得在总产量中所占的相对份额</p>
+                <h1 id="柯布-道格拉斯生产函数"><a href="#柯布-道格拉斯生产函数" class="headerlink" title="柯布-道格拉斯生产函数"></a>柯布-道格拉斯生产函数</h1><p>$Y=A<em>{t}L^{\alpha}</em>{t}K^{\beta}_{t}$，劳动 <strong>L</strong>abour；资本 <strong>K</strong>apital（Capital）</p>
+<p>当 $\alpha+\beta=1$ 时，$\alpha$ 和 $\beta$ 分别代表<strong>劳动</strong>和<strong>资本</strong>所得在总产量中所占的相对份额</p>
 <h1 id="市场失灵的原因"><a href="#市场失灵的原因" class="headerlink" title="市场失灵的原因"></a>市场失灵的原因</h1><ol>
 <li>垄断</li>
 <li>外部影响</li>
@@ -441,7 +441,7 @@
 <li><strong>货币市场基金</strong>：仅投资于<strong>货币市场工具</strong>的基金，这类基金的资产主要投资于短期货币工具，如商业票据、银行定期存单、短期政府债券、短期企业债券等短期有价证券。<strong>低风险、低收益、高流动性</strong></li>
 <li><strong>混合型基金</strong>：投资于股票、债券、货币市场工具，且股票和债券投资的比例不符合前述规定</li>
 </ol>
-<h1 id="速动比率"><a href="#速动比率" class="headerlink" title="速动比率"></a>速动比率</h1><p>速动比率 &#x3D; 速动资产 &#x2F; 流动负债。其中，速动资产是指<strong>货币资金、交易性金融资产和各种应收款项等</strong>，可以在较短时间内变现的资产</p>
+<h1 id="速动比率"><a href="#速动比率" class="headerlink" title="速动比率"></a>速动比率</h1><p>速动比率 = 速动资产 / 流动负债。其中，速动资产是指<strong>货币资金、交易性金融资产和各种应收款项等</strong>，可以在较短时间内变现的资产</p>
 <p>它是<strong>衡量企业流动资产中可以立即变现用于偿还流动负债的能力</strong></p>
 
                 
@@ -608,6 +608,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -875,6 +881,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

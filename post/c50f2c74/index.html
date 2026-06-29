@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.7k 字
         
       </span>
     
@@ -417,10 +417,8 @@
 <hr>
 <h2 id="编码规范"><a href="#编码规范" class="headerlink" title="编码规范"></a>编码规范</h2><h3 id="集合类声明"><a href="#集合类声明" class="headerlink" title="集合类声明"></a>集合类声明</h3><p>❌ 禁止使用：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;()<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;()<br><span class="hljs-keyword">new</span> <span class="hljs-title class_">HashSet</span>&lt;&gt;()<br></code></pre></td></tr></table></figure>
-
 <p>✅ 统一使用 <code>com.google.common.collect</code> 的静态工厂方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// HashMap - 预测最大值 n</span><br>Maps.newHashMapWithExpectedSize(n)<br><span class="hljs-comment">// 无法预测时</span><br>Maps.newHashMap()<br><br><span class="hljs-comment">// ArrayList</span><br>Lists.newArrayList()<br><br><span class="hljs-comment">// HashSet</span><br>Sets.newHashSet()<br></code></pre></td></tr></table></figure>
-
 <p>⚠️ <strong>注意重载歧义</strong>：<code>Lists.newArrayList(3)</code> 表示初始容量为 3 的列表，而不是包含元素 3 的列表。若要声明含元素 3 的列表，请使用 <code>Arrays.asList(3)</code>。</p>
 <hr>
 <h3 id="降级开关"><a href="#降级开关" class="headerlink" title="降级开关"></a>降级开关</h3><ul>
@@ -429,15 +427,14 @@
 <li><strong>降级开关默认为未降级状态</strong>（即默认不降级）</li>
 </ul>
 <hr>
-<h3 id="对象构造-集合判空"><a href="#对象构造-集合判空" class="headerlink" title="对象构造 &amp; 集合判空"></a>对象构造 &amp; 集合判空</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ✅ new 自定义对象的代码统一收到 helper 类中</span><br><br><span class="hljs-comment">// ✅ 集合判空</span><br>CollectionUtils.isEmpty(list)      <span class="hljs-comment">// org.apache.commons.collections4</span><br>CollectionUtils.isNotEmpty(list)<br>MapUtils.isEmpty(map)<br></code></pre></td></tr></table></figure>
-
+<h3 id="对象构造-amp-集合判空"><a href="#对象构造-amp-集合判空" class="headerlink" title="对象构造 &amp; 集合判空"></a>对象构造 &amp; 集合判空</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ✅ new 自定义对象的代码统一收到 helper 类中</span><br><br><span class="hljs-comment">// ✅ 集合判空</span><br>CollectionUtils.isEmpty(list)      <span class="hljs-comment">// org.apache.commons.collections4</span><br>CollectionUtils.isNotEmpty(list)<br>MapUtils.isEmpty(map)<br></code></pre></td></tr></table></figure>
 <hr>
 <h3 id="配置注入"><a href="#配置注入" class="headerlink" title="配置注入"></a>配置注入</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// ✅ 使用 @MdpConfig，必须加 volatile 关键字</span><br><span class="hljs-meta">@MdpConfig(&quot;config.key&quot;)</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">volatile</span> String configValue;<br></code></pre></td></tr></table></figure>
-
 <hr>
 <h3 id="分页扫表"><a href="#分页扫表" class="headerlink" title="分页扫表"></a>分页扫表</h3><p>定时任务需按属性分页扫表时，参考工程已有场景，使用 <code>TaskHandleTemplate</code> 或 <code>PageHandleTemplate</code> 构建分页流程。</p>
 <hr>
-<h3 id="Repo-DAO-方法命名格式"><a href="#Repo-DAO-方法命名格式" class="headerlink" title="Repo &#x2F; DAO 方法命名格式"></a>Repo &#x2F; DAO 方法命名格式</h3><p>命名格式：**<code>[操作类型][目标对象][扩展条件]</code>**</p>
+<h3 id="Repo-DAO-方法命名格式"><a href="#Repo-DAO-方法命名格式" class="headerlink" title="Repo / DAO 方法命名格式"></a>Repo / DAO 方法命名格式</h3><p>命名格式：<strong><code>[操作类型][目标对象][扩展条件]</code></strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -445,9 +442,10 @@
 <th>规则</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>操作类型</td>
-<td><code>get</code>（查询）、<code>pageGet</code>（分页）、<code>filter</code>（过滤）、<code>upsert</code>、<code>insert</code>、<code>update</code>、<code>batchUpsert</code>&#x2F;<code>batchInsert</code>、<code>batchUpdate</code></td>
+<td><code>get</code>（查询）、<code>pageGet</code>（分页）、<code>filter</code>（过滤）、<code>upsert</code>、<code>insert</code>、<code>update</code>、<code>batchUpsert</code>/<code>batchInsert</code>、<code>batchUpdate</code></td>
 </tr>
 <tr>
 <td>目标对象</td>
@@ -457,10 +455,11 @@
 <td>扩展条件</td>
 <td>入参限制用 <code>ByXXAndXX</code>（只列关键字段）；附带操作如 <code>ThenReturnId</code>；附加属性如 <code>WithXXX</code>、<code>InXXX</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>示例：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 查询列表</span><br>List&lt;Order&gt; <span class="hljs-title function_">getOrderListByUserId</span><span class="hljs-params">(<span class="hljs-type">long</span> userId)</span>;<br><br><span class="hljs-comment">// 分页查询</span><br>Page&lt;Order&gt; <span class="hljs-title function_">pageGetOrderListByStatus</span><span class="hljs-params">(<span class="hljs-type">int</span> status, PageRequest pageRequest)</span>;<br><br><span class="hljs-comment">// 带返回值的插入</span><br><span class="hljs-type">long</span> <span class="hljs-title function_">insertOrderThenReturnId</span><span class="hljs-params">(Order order)</span>;<br><br><span class="hljs-comment">// 批量更新</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">batchUpdateOrderStatusByIds</span><span class="hljs-params">(List&lt;Long&gt; ids, <span class="hljs-type">int</span> status)</span>;<br><br><span class="hljs-comment">// 计数</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">getOrderCountByUserId</span><span class="hljs-params">(<span class="hljs-type">long</span> userId)</span>;<br></code></pre></td></tr></table></figure>
-
 <hr>
 <blockquote>
 <p><strong>为什么需要”宪法约束”？</strong></p>

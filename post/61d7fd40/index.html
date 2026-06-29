@@ -27,7 +27,7 @@
 <meta property="og:description" content="1483. 树节点的第 K 个祖先思路">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-06T13:36:48.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.716Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.467Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="树">
@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          939 字
+          916 字
         
       </span>
     
@@ -399,11 +399,11 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1483-树节点的第-K-个祖先"><a href="#1483-树节点的第-K-个祖先" class="headerlink" title="1483. 树节点的第 K 个祖先"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/">1483. 树节点的第 K 个祖先</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="O-nlog-2n-O-log-2n-O-nlog-2n-O-1"><a href="#O-nlog-2n-O-log-2n-O-nlog-2n-O-1" class="headerlink" title="$O(nlog_2n)&#x2F;O(log_2n)+O(nlog_2n)&#x2F;O(1)$"></a>$O(nlog_2n)&#x2F;O(log_2n)+O(nlog_2n)&#x2F;O(1)$</h3><p>动态规划</p>
+                <h1 id="1483-树节点的第-K-个祖先"><a href="#1483-树节点的第-K-个祖先" class="headerlink" title="1483. 树节点的第 K 个祖先"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/kth-ancestor-of-a-tree-node/">1483. 树节点的第 K 个祖先</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="O-nlog-2n-O-log-2n-O-nlog-2n-O-1"><a href="#O-nlog-2n-O-log-2n-O-nlog-2n-O-1" class="headerlink" title="$O(nlog_2n)/O(log_2n)+O(nlog_2n)/O(1)$"></a>$O(nlog_2n)/O(log_2n)+O(nlog_2n)/O(1)$</h3><p>动态规划</p>
 <p>设 $dp[i][j]$ 代表 $i$ 号节点的第 $2^j$ 个祖先。那么，$i$ 号节点的第 $2^j$ 个祖先就是 <strong>$i$ 号节点的第 $2^{j-1}$ 个祖先</strong>的第 $2^{j-1}$ 个祖先，所以有以下状态转移方程：</p>
-<p>$$<br>dp[i][0]&#x3D;parent[i]\<br>dp[i][j]&#x3D;dp[dp[i][j-1]][j-1],(i\in[1,log_2n),j\in[0,n))<br>$$</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeAncestor</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> anc[<span class="hljs-number">50001</span>][<span class="hljs-number">16</span>];<br>    <span class="hljs-comment">// nlogn</span><br>    <span class="hljs-built_in">TreeAncestor</span>(<span class="hljs-type">int</span> n, vector&lt;<span class="hljs-type">int</span>&gt;&amp; par) <br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">16</span>;j++)<br>                anc[i][j]=<span class="hljs-number">-1</span>;<br>        <span class="hljs-comment">// 初始化</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>            anc[i][<span class="hljs-number">0</span>]=par[i];<br>        <span class="hljs-comment">// </span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">16</span>;i++)<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)<br>                <span class="hljs-keyword">if</span>(anc[j][i<span class="hljs-number">-1</span>]!=<span class="hljs-number">-1</span>)<br>                    anc[j][i]=anc[anc[j][i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>];<br>    &#125;<br>    <br>    <span class="hljs-comment">// logn</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getKthAncestor</span><span class="hljs-params">(<span class="hljs-type">int</span> node, <span class="hljs-type">int</span> k)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;k;k&gt;&gt;=<span class="hljs-number">1</span>,i++)<br>            <span class="hljs-keyword">if</span>(k&amp;<span class="hljs-number">1</span>)<br>            &#123;<br>                node=anc[node][i];<br>                <span class="hljs-keyword">if</span>(node==<span class="hljs-number">-1</span>)<br>                    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>            &#125;<br>        <span class="hljs-keyword">return</span> node;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your TreeAncestor object will be instantiated and called as such:</span><br><span class="hljs-comment"> * TreeAncestor* obj = new TreeAncestor(n, parent);</span><br><span class="hljs-comment"> * int param_1 = obj-&gt;getKthAncestor(node,k);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
-
+<script type="math/tex; mode=display">
+dp[i][0]=parent[i]\\
+dp[i][j]=dp[dp[i][j-1]][j-1],(i\in[1,log_2n),j\in[0,n))</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">TreeAncestor</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> anc[<span class="hljs-number">50001</span>][<span class="hljs-number">16</span>];<br>    <span class="hljs-comment">// nlogn</span><br>    <span class="hljs-built_in">TreeAncestor</span>(<span class="hljs-type">int</span> n, vector&lt;<span class="hljs-type">int</span>&gt;&amp; par) <br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">16</span>;j++)<br>                anc[i][j]=<span class="hljs-number">-1</span>;<br>        <span class="hljs-comment">// 初始化</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>            anc[i][<span class="hljs-number">0</span>]=par[i];<br>        <span class="hljs-comment">// </span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;<span class="hljs-number">16</span>;i++)<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)<br>                <span class="hljs-keyword">if</span>(anc[j][i<span class="hljs-number">-1</span>]!=<span class="hljs-number">-1</span>)<br>                    anc[j][i]=anc[anc[j][i<span class="hljs-number">-1</span>]][i<span class="hljs-number">-1</span>];<br>    &#125;<br>    <br>    <span class="hljs-comment">// logn</span><br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getKthAncestor</span><span class="hljs-params">(<span class="hljs-type">int</span> node, <span class="hljs-type">int</span> k)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;k;k&gt;&gt;=<span class="hljs-number">1</span>,i++)<br>            <span class="hljs-keyword">if</span>(k&amp;<span class="hljs-number">1</span>)<br>            &#123;<br>                node=anc[node][i];<br>                <span class="hljs-keyword">if</span>(node==<span class="hljs-number">-1</span>)<br>                    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>            &#125;<br>        <span class="hljs-keyword">return</span> node;<br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your TreeAncestor object will be instantiated and called as such:</span><br><span class="hljs-comment"> * TreeAncestor* obj = new TreeAncestor(n, parent);</span><br><span class="hljs-comment"> * int param_1 = obj-&gt;getKthAncestor(node,k);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -573,6 +573,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -840,6 +846,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

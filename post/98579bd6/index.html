@@ -27,11 +27,11 @@
 <meta property="og:description" content="473. 火柴拼正方形思路">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-29T09:52:20.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.716Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.462Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="C++">
-<meta property="article:tag" content="状态压缩">
 <meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="状态压缩">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -335,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.5k 字
         
       </span>
     
@@ -399,12 +399,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="473-火柴拼正方形"><a href="#473-火柴拼正方形" class="headerlink" title="473. 火柴拼正方形"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/matchsticks-to-square/">473. 火柴拼正方形</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="O-4-n-O-1"><a href="#O-4-n-O-1" class="headerlink" title="$O(4^n)+O(1)$"></a>$O(4^n)+O(1)$</h3><p>逆序排序后，深度优先搜索判断火柴放到 $i,(i\in[0,3])$ 号桶会不会溢出（桶的容量为火柴长度之和 &#x2F; 4），若会则放到下一个桶中</p>
+                <h1 id="473-火柴拼正方形"><a href="#473-火柴拼正方形" class="headerlink" title="473. 火柴拼正方形"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/matchsticks-to-square/">473. 火柴拼正方形</a></h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="O-4-n-O-1"><a href="#O-4-n-O-1" class="headerlink" title="$O(4^n)+O(1)$"></a>$O(4^n)+O(1)$</h3><p>逆序排序后，深度优先搜索判断火柴放到 $i,(i\in[0,3])$ 号桶会不会溢出（桶的容量为火柴长度之和 / 4），若会则放到下一个桶中</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> len,tar,sqr[<span class="hljs-number">4</span>];<br>    <span class="hljs-function"><span class="hljs-type">static</span> <span class="hljs-type">bool</span> <span class="hljs-title">cmp</span><span class="hljs-params">(<span class="hljs-type">int</span> a,<span class="hljs-type">int</span> b)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> a&gt;b;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">dfs</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; ms,<span class="hljs-type">int</span> x)</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">if</span>(x&gt;=len)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>                <span class="hljs-keyword">if</span>(sqr[i]!=tar)<br>                    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>        &#123;<br>            <span class="hljs-keyword">if</span>(ms[x]+sqr[i]&gt;tar)<br>                <span class="hljs-keyword">continue</span>;<br>            sqr[i]+=ms[x];<br>            <span class="hljs-keyword">if</span>(<span class="hljs-built_in">dfs</span>(ms,x+<span class="hljs-number">1</span>))<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>            sqr[i]-=ms[x];<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">makesquare</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; ms)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        len=ms.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">sum</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;len;sum+=ms[i++]);<br>        <span class="hljs-keyword">if</span>(sum&amp;<span class="hljs-number">3</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        tar=sum&gt;&gt;<span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">sort</span>(ms.<span class="hljs-built_in">begin</span>(),ms.<span class="hljs-built_in">end</span>(),cmp);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">dfs</span>(ms,<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
-
 <h3 id="O-n-times-2-n-O-n"><a href="#O-n-times-2-n-O-n" class="headerlink" title="$O(n\times{2^n})+O(n)$"></a>$O(n\times{2^n})+O(n)$</h3><p>动态规划 + 状态压缩</p>
-<p>设 $dp[i]$ 为状态 $i$ 时正方形中<strong>未放满的边</strong>的当前长度，其中状态 $i$ 记录哪些火柴已经放入（$i$ 的二进制下第 $k$ 位为1则表示第 $k$ 根火柴已放入），有以下状态转换方程：<br>$$<br>dp[0]&#x3D;0\<br>i_1\ 表示\ i\ 状态下去掉第\ k\ 根火柴的状态\<br>dp[i]&#x3D;-1,(dp[i_1]&lt;0)\<br>dp[i]&#x3D;(dp[i_1]+matchsticks[k])\ mod\ len,(dp[i_1]&gt;&#x3D;0)<br>$$</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">const</span> <span class="hljs-type">int</span> <span class="hljs-title">N</span><span class="hljs-params">(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">15</span>)</span></span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> dp[N];<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">makesquare</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; ms)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">len</span><span class="hljs-params">(ms.size())</span>,<span class="hljs-title">bd</span><span class="hljs-params">(<span class="hljs-number">1</span>&lt;&lt;len)</span>,<span class="hljs-title">tar</span><span class="hljs-params">(accumulate(ms.begin(),ms.end(),<span class="hljs-number">0</span>))</span></span>;<br>        <span class="hljs-comment">// 不为4的倍数则说明无解</span><br>        <span class="hljs-keyword">if</span>(tar&amp;<span class="hljs-number">3</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        tar&gt;&gt;=<span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">-1</span>,bd&lt;&lt;<span class="hljs-number">2</span>);<br>        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;bd;i++)<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;len;j++)<br>            &#123;<br>                <span class="hljs-comment">// 左移 j 位 表示放第 j 个火柴时的状态</span><br>                <span class="hljs-type">int</span> t,<span class="hljs-built_in">k</span>(<span class="hljs-number">1</span>&lt;&lt;j);<br>                <span class="hljs-keyword">if</span>(i&amp;k==<span class="hljs-number">0</span>)<br>                    <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-comment">// 异或可以将二进制第 j 位置为 0</span><br>                <span class="hljs-comment">// 1101 ^ 0100 =&gt; 1001</span><br>                t=i^k;<br>                <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">sum</span><span class="hljs-params">(dp[t]+ms[j])</span></span>;<br>                <span class="hljs-keyword">if</span>(dp[t]!=<span class="hljs-number">-1</span>&amp;&amp;sum&lt;=tar)<br>                &#123;<br>                    dp[i]=(sum==tar?<span class="hljs-number">0</span>:sum);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>        <span class="hljs-comment">// 二进制全为 1 的状态 即火柴全部放入</span><br>        <span class="hljs-keyword">return</span> dp[bd<span class="hljs-number">-1</span>]==<span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>设 $dp[i]$ 为状态 $i$ 时正方形中<strong>未放满的边</strong>的当前长度，其中状态 $i$ 记录哪些火柴已经放入（$i$ 的二进制下第 $k$ 位为1则表示第 $k$ 根火柴已放入），有以下状态转换方程：</p>
+<script type="math/tex; mode=display">
+dp[0]=0\\
+i_1\ 表示\ i\ 状态下去掉第\ k\ 根火柴的状态\\
+dp[i]=-1,(dp[i_1]<0)\\
+dp[i]=(dp[i_1]+matchsticks[k])\ mod\ len,(dp[i_1]>=0)</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">const</span> <span class="hljs-type">int</span> <span class="hljs-title">N</span><span class="hljs-params">(<span class="hljs-number">1</span>&lt;&lt;<span class="hljs-number">15</span>)</span></span>;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-type">int</span> dp[N];<br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">makesquare</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; ms)</span> </span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">len</span><span class="hljs-params">(ms.size())</span>,<span class="hljs-title">bd</span><span class="hljs-params">(<span class="hljs-number">1</span>&lt;&lt;len)</span>,<span class="hljs-title">tar</span><span class="hljs-params">(accumulate(ms.begin(),ms.end(),<span class="hljs-number">0</span>))</span></span>;<br>        <span class="hljs-comment">// 不为4的倍数则说明无解</span><br>        <span class="hljs-keyword">if</span>(tar&amp;<span class="hljs-number">3</span>)<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        tar&gt;&gt;=<span class="hljs-number">2</span>;<br>        <span class="hljs-built_in">memset</span>(dp,<span class="hljs-number">-1</span>,bd&lt;&lt;<span class="hljs-number">2</span>);<br>        dp[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;bd;i++)<br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;len;j++)<br>            &#123;<br>                <span class="hljs-comment">// 左移 j 位 表示放第 j 个火柴时的状态</span><br>                <span class="hljs-type">int</span> t,<span class="hljs-built_in">k</span>(<span class="hljs-number">1</span>&lt;&lt;j);<br>                <span class="hljs-keyword">if</span>(i&amp;k==<span class="hljs-number">0</span>)<br>                    <span class="hljs-keyword">continue</span>;<br>                <span class="hljs-comment">// 异或可以将二进制第 j 位置为 0</span><br>                <span class="hljs-comment">// 1101 ^ 0100 =&gt; 1001</span><br>                t=i^k;<br>                <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">sum</span><span class="hljs-params">(dp[t]+ms[j])</span></span>;<br>                <span class="hljs-keyword">if</span>(dp[t]!=<span class="hljs-number">-1</span>&amp;&amp;sum&lt;=tar)<br>                &#123;<br>                    dp[i]=(sum==tar?<span class="hljs-number">0</span>:sum);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>        <span class="hljs-comment">// 二进制全为 1 的状态 即火柴全部放入</span><br>        <span class="hljs-keyword">return</span> dp[bd<span class="hljs-number">-1</span>]==<span class="hljs-number">0</span>;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -446,9 +449,9 @@
       
         <a href="/tags/C/" class="print-no-link">#C++</a>
       
-        <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" class="print-no-link">#状态压缩</a>
-      
         <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
+      
+        <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" class="print-no-link">#状态压缩</a>
       
     </div>
   
@@ -573,6 +576,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -840,6 +849,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

@@ -27,12 +27,12 @@
 <meta property="og:description" content="码题集OJ-蛋糕划分 (matiji.net)$O(2^nn^3)$">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-29T11:24:29.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.718Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:17.565Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="C++">
+<meta property="article:tag" content="动态规划">
 <meta property="article:tag" content="前缀和">
 <meta property="article:tag" content="状态压缩">
-<meta property="article:tag" content="动态规划">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -406,9 +406,11 @@
 <p>在枚举横切情况时用整形，其二进制位的第 $i$ 位（从1开始数）表示<strong>在第 $i$ 行后横切了一刀</strong>，从 0 枚举到 $2^{n-1}$，我们就可以得到所有横切的情况</p>
 <p>对于每一种横切的情况，我们令 $dp[i][k]$ 为<strong>竖切 $k$ 次且最后一次在第 $i$ 行前竖切后的最优解</strong>（即所有蛋糕的重量最大值的最小值）</p>
 <p>记<strong>竖切后第 $i$ 列到第 $j$ 列的最优解</strong>为 $res[i][j]$（实际要自己求，只是标注一下方便理解）、剩余的竖切次数为 $rst$</p>
-<p>有如下状态转移方程：<br>$$<br>dp[1][0]&#x3D;0\<br>dp[i][k]&#x3D;min{max(dp[j][k-1],res[j][i-1]),(i&gt;j\ge k)},(i&gt;1,min(i-1,rst)\ge k&gt;0)<br>$$<br>$min{dp[i][rst],(rst&lt;i\le n)}$ 即为最终答案</p>
+<p>有如下状态转移方程：</p>
+<script type="math/tex; mode=display">
+dp[1][0]=0\\
+dp[i][k]=min\{max(dp[j][k-1],res[j][i-1]),(i>j\ge k)\},(i>1,min(i-1,rst)\ge k>0)</script><p>$min{dp[i][rst],(rst&lt;i\le n)}$ 即为最终答案</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> INF 0x7fffffff</span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">const</span> <span class="hljs-type">int</span> <span class="hljs-title">N</span><span class="hljs-params">(<span class="hljs-number">17</span>)</span></span>;<br><span class="hljs-type">int</span> n,k,<span class="hljs-built_in">ans</span>(INF);<br><span class="hljs-type">int</span> c[N][N],pr[N][N];<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-type">int</span> si,<span class="hljs-type">int</span> sj,<span class="hljs-type">int</span> ei,<span class="hljs-type">int</span> ej)</span></span><br><span class="hljs-function"></span>&#123;<br>	si--,sj--;<br>	<span class="hljs-keyword">return</span> pr[ei][ej]-pr[ei][sj]-pr[si][ej]+pr[si][sj];<br>&#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	cin&gt;&gt;n&gt;&gt;k;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">1</span>;i&lt;=n;i++)<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">1</span>;j&lt;=n;j++)<br>		&#123;<br>			cin&gt;&gt;c[i][j];<br>			pr[i][j]+=pr[i<span class="hljs-number">-1</span>][j]+pr[i][j<span class="hljs-number">-1</span>]-pr[i<span class="hljs-number">-1</span>][j<span class="hljs-number">-1</span>]+c[i][j];<br>		&#125;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> d=<span class="hljs-number">1</span>&lt;&lt;(n<span class="hljs-number">-1</span>),x=<span class="hljs-number">0</span>;x&lt;d;x++)<br>	&#123;<br>		vector&lt;<span class="hljs-type">int</span>&gt; row;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> t=x,i=<span class="hljs-number">1</span>;t;t&gt;&gt;=<span class="hljs-number">1</span>,i++)<br>			<span class="hljs-keyword">if</span>(t&amp;<span class="hljs-number">1</span>)<br>				row.<span class="hljs-built_in">push_back</span>(i);<br>		row.<span class="hljs-built_in">push_back</span>(n);<br>		<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">rst</span><span class="hljs-params">(k-row.size()+<span class="hljs-number">1</span>)</span></span>;<br>		<span class="hljs-keyword">if</span>(rst&lt;<span class="hljs-number">0</span>)<br>			<span class="hljs-keyword">continue</span>;<br>		vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">dp</span>(n+<span class="hljs-number">1</span>,<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(rst+<span class="hljs-number">1</span>,INF));<br>		dp[<span class="hljs-number">1</span>][<span class="hljs-number">0</span>]=<span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">2</span>;i&lt;=n;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> ed=<span class="hljs-built_in">min</span>(rst,i<span class="hljs-number">-1</span>),t=<span class="hljs-number">1</span>;t&lt;=ed;t++)<br>			&#123;<br>				<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> li,res,j=t;j&lt;i;j++)<br>				&#123;<br>					<span class="hljs-keyword">if</span>(dp[j][t<span class="hljs-number">-1</span>]==INF)<br>						<span class="hljs-keyword">continue</span>;<br>					li=<span class="hljs-number">0</span>;<br>					res=<span class="hljs-number">0</span>;<br>					<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> r:row)<br>					&#123;<br>						res=<span class="hljs-built_in">max</span>(res,<span class="hljs-built_in">get</span>(li+<span class="hljs-number">1</span>,j,r,i<span class="hljs-number">-1</span>));<br>						li=r;<br>					&#125;<br>					dp[i][t]=<span class="hljs-built_in">min</span>(dp[i][t],<span class="hljs-built_in">max</span>(res,dp[j][t<span class="hljs-number">-1</span>]));<br>				&#125;<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> li,i=rst+<span class="hljs-number">1</span>;i&lt;=n;i++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(dp[i][rst]==INF)<br>				<span class="hljs-keyword">continue</span>;<br>			li=<span class="hljs-number">0</span>;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> r:row)<br>			&#123;<br>				dp[i][rst]=<span class="hljs-built_in">max</span>(<span class="hljs-built_in">get</span>(li+<span class="hljs-number">1</span>,i,r,n),dp[i][rst]);<br>				li=r;<br>			&#125;<br>			ans=<span class="hljs-built_in">min</span>(ans,dp[i][rst]);<br>		&#125;<br>	&#125;<br>	cout&lt;&lt;ans;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
@@ -444,11 +446,11 @@
       
         <a href="/tags/C/" class="print-no-link">#C++</a>
       
+        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
+      
         <a href="/tags/%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#前缀和</a>
       
         <a href="/tags/%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9/" class="print-no-link">#状态压缩</a>
-      
-        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
       
     </div>
   
@@ -573,6 +575,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -840,6 +848,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

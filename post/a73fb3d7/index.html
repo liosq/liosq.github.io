@@ -27,7 +27,7 @@
 <meta property="og:description" content="Java 并发编程全览：线程模型、synchronized&#x2F;ReentrantLock、线程池与 JUC 工具类">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-01T11:47:46.000Z">
-<meta property="article:modified_time" content="2026-06-25T06:44:49.430Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.492Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="并发编程">
@@ -404,18 +404,14 @@
 </ul>
 <p>这两种方法都太”重”，<strong>不太适合</strong>在实际开发或其他应用场景中广泛使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>    System.out.pringln(<span class="hljs-string">&quot;hello&quot;</span>);<br>&#125;);<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyThread</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Thread</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;hello&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>自定义一个<strong>实现Runnable接口</strong>的类，在其内部<strong>实现run方法</strong>。配合Thread使用</p>
 <p>这种方法相较于Thread更”轻”，比较推荐使用这种方法来创建线程任务</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyRunnable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Runnable</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;hello&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyRunnable</span>());<br></code></pre></td></tr></table></figure>
-
 <h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><p>和 Runnable 相似，也是自定义一个实现接口的类，区别是 Callable 可以<strong>返回数据</strong>，并且其需要配合<strong>FutureTask</strong>来使用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Integer处填返回的数据类型（基元类的包装类）</span><br>MyCallable <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Callable</span>&lt;Integer&gt; &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Integer <span class="hljs-title function_">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 可以理解为FutureTask是带返回值的Thread</span><br>FutureTask&lt;Integer&gt; futureTask = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FutureTask</span>&lt;&gt;(<span class="hljs-keyword">new</span> <span class="hljs-title class_">MyCallable</span>());<br></code></pre></td></tr></table></figure>
-
-<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><p>将需要使用多线程执行的任务封装为自定义的Runnable类，然后使用 <strong><code>Executors</code>静态方法</strong>或**<code>ThreadPoolExecutor</code>构造函数** 创建一个线程池。推荐使用<strong>构造函数</strong>来创建线程池</p>
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h2><p>将需要使用多线程执行的任务封装为自定义的Runnable类，然后使用 <strong><code>Executors</code>静态方法</strong>或<strong><code>ThreadPoolExecutor</code>构造函数</strong> 创建一个线程池。推荐使用<strong>构造函数</strong>来创建线程池</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ExecutorService</span> <span class="hljs-variable">executorService</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>(<br>    <span class="hljs-number">2</span>,                          			<span class="hljs-comment">// corePoolSize: 核心线程数</span><br>    <span class="hljs-number">7</span>,                                      <span class="hljs-comment">// maximumPoolSize: 最大线程数</span><br>    <span class="hljs-number">10L</span>,                                    <span class="hljs-comment">// keepAliveTime: 超时时间</span><br>    TimeUnit.NANOSECONDS,                   <span class="hljs-comment">// TimeUnit: 超时时间的单位</span><br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedBlockingQueue</span>&lt;&gt;(<span class="hljs-number">1</span>),   		<span class="hljs-comment">// BlockingQueue: 任务队列</span><br>    Executors.defaultThreadFactory(),       <span class="hljs-comment">// ThreadFactory: 线程工厂</span><br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>.AbortPolicy()    <span class="hljs-comment">// RejectedExecutionHandler: 饱和/拒绝策略</span><br>);<br></code></pre></td></tr></table></figure>
-
-<h2 id="Executors-自带线程池"><a href="#Executors-自带线程池" class="headerlink" title="Executors 自带线程池"></a>Executors 自带线程池</h2><p>用于创建线程池的**<code>Executors</code>静态方法**包括：</p>
+<h2 id="Executors-自带线程池"><a href="#Executors-自带线程池" class="headerlink" title="Executors 自带线程池"></a>Executors 自带线程池</h2><p>用于创建线程池的<strong><code>Executors</code>静态方法</strong>包括：</p>
 <ul>
 <li><code>newFixedThreadPool</code>：创建一个<strong>定长</strong>的线程池，可以控制线程的最大并发数，超出的线程会存在队列中等待<ul>
 <li><strong>核心线程数</strong>与<strong>最大线程数</strong>相同，没有临时线程</li>
@@ -458,34 +454,38 @@
 <li><code>SynchronousQueue</code>：不存储元素的阻塞队列，每个插入操作必须对应一个移出操作</li>
 </ul>
 <p><strong><code>ArrayBlockingQueue</code>和<code>LinkedBlockingQueue</code>的区别：</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">ArrayBlockingQueue</th>
-<th align="center">LinkedBlockingQueue</th>
+<th style="text-align:center">ArrayBlockingQueue</th>
+<th style="text-align:center">LinkedBlockingQueue</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><strong>强制有界</strong></td>
-<td align="center"><strong>默认无界</strong>，支持有界</td>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>强制有界</strong></td>
+<td style="text-align:center"><strong>默认无界</strong>，支持有界</td>
 </tr>
 <tr>
-<td align="center">底层为<strong>数组</strong></td>
-<td align="center">底层为<strong>链表</strong></td>
+<td style="text-align:center">底层为<strong>数组</strong></td>
+<td style="text-align:center">底层为<strong>链表</strong></td>
 </tr>
 <tr>
-<td align="center"><strong>提前初始化</strong>Node数组</td>
-<td align="center">是懒惰的，在<strong>创建节点时</strong>添加数据</td>
+<td style="text-align:center"><strong>提前初始化</strong>Node数组</td>
+<td style="text-align:center">是懒惰的，在<strong>创建节点时</strong>添加数据</td>
 </tr>
 <tr>
-<td align="center">Node 是提前创建好的</td>
-<td align="center">入队会生成新 Node</td>
+<td style="text-align:center">Node 是提前创建好的</td>
+<td style="text-align:center">入队会生成新 Node</td>
 </tr>
 <tr>
-<td align="center">一把锁</td>
-<td align="center">两把锁（头尾）</td>
+<td style="text-align:center">一把锁</td>
+<td style="text-align:center">两把锁（头尾）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="拒绝策略"><a href="#拒绝策略" class="headerlink" title="拒绝策略"></a>拒绝策略</h3><p>当线程池已经<strong>关闭</strong>或达到<strong>饱和</strong>（最大线程和阻塞队列都已满）状态时，新提交的任务会被拒绝，具体策略如下：</p>
 <ol>
 <li><code>AbortPolicy</code>：<strong>默认拒绝策略</strong>。需要拒绝任务时抛出 <code>RejectedExecutionException</code> 异常</li>
@@ -523,7 +523,7 @@
 <li><strong>核心线程已满：</strong><ul>
 <li><strong>阻塞队列未满：</strong>放入阻塞队列中等待</li>
 <li><strong>阻塞队列已满：</strong><ul>
-<li><strong>核心线程数 &lt;&#x3D; 最大线程数：</strong>创建线程执行任务</li>
+<li><strong>核心线程数 &lt;= 最大线程数：</strong>创建线程执行任务</li>
 <li><strong>核心线程数 &gt; 最大线程数：</strong>触发拒绝策略，拒绝该任务</li>
 </ul>
 </li>
@@ -546,7 +546,6 @@
 <li><strong>代码块：</strong>将代码块中的对象作为<strong>对象锁</strong>，对该代码块进行加锁保护</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// synchronized关键字需要锁定一个对象</span><br><span class="hljs-type">Object</span> <span class="hljs-variable">LOCK</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<br><span class="hljs-type">Thread</span> <span class="hljs-variable">thread1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>    <span class="hljs-keyword">synchronized</span>(LOCK) &#123;<br>        System.out.println(<span class="hljs-string">&quot;Thread1 running&quot;</span>);<br>    &#125;<br>&#125;);<br><span class="hljs-type">Thread</span> <span class="hljs-variable">thread2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;<br>    <span class="hljs-keyword">synchronized</span>(LOCK) &#123;<br>        System.out.println(<span class="hljs-string">&quot;Thread2 running&quot;</span>);<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
-
 <h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><p>底层由 <strong>Monitor</strong> 实现，Monitor 是 <strong>JVM 级别</strong>的对象（用C++实现），线程获取锁需要使用对象（锁）关联 Monitor</p>
 <p><strong>在 Monitor 中有三个属性：</strong></p>
 <ul>
@@ -632,26 +631,30 @@
 </ol>
 <h1 id="AQS"><a href="#AQS" class="headerlink" title="AQS"></a>AQS</h1><p>AQS（<strong>A</strong>bstract <strong>Q</strong>ueued <strong>S</strong>ynchronizer），即抽象队列同步器。是构建锁或其他同步组件的基础框架</p>
 <p><strong>AQS与synchronized的区别：</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">synchronized</th>
-<th align="center">AQS</th>
+<th style="text-align:center">synchronized</th>
+<th style="text-align:center">AQS</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">关键字，C++语言实现，JVM级别</td>
-<td align="center">Java语言实现，API级别</td>
+<tbody>
+<tr>
+<td style="text-align:center">关键字，C++语言实现，JVM级别</td>
+<td style="text-align:center">Java语言实现，API级别</td>
 </tr>
 <tr>
-<td align="center">悲观锁，自动释放锁</td>
-<td align="center">悲观锁，手动开启与关闭</td>
+<td style="text-align:center">悲观锁，自动释放锁</td>
+<td style="text-align:center">悲观锁，手动开启与关闭</td>
 </tr>
 <tr>
-<td align="center">锁竞争激烈都是重量级锁，性能差</td>
-<td align="center">锁竞争激烈的情况下，提供了多种解决方案</td>
+<td style="text-align:center">锁竞争激烈都是重量级锁，性能差</td>
+<td style="text-align:center">锁竞争激烈的情况下，提供了多种解决方案</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>AQS常见的实现类：</p>
 <ul>
 <li><strong>ReentrantLock：</strong>可重入锁</li>
@@ -840,6 +843,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -1107,6 +1116,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

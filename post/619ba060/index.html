@@ -333,7 +333,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.5k 字
         
       </span>
     
@@ -419,19 +419,19 @@
 <p>此时事务A读取到了事务B插入的新数据，这个过程就被称为<strong>幻读</strong></p>
 <h1 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h1><p>隔离级别由低到高，越高的隔离级别<strong>越能保证数据的一致性</strong>，但代价是<strong>性能也越差</strong></p>
 <h2 id="读未提交（READ-UNCOMMITTED）"><a href="#读未提交（READ-UNCOMMITTED）" class="headerlink" title="读未提交（READ-UNCOMMITTED）"></a>读未提交（READ-UNCOMMITTED）</h2><p>事务修改后<strong>即使没有提交</strong>，<strong>其他的事务也能读取到修改后的数据</strong></p>
-<p><em>可能会出现[脏读](# 脏读（Dirty read）)、[不可重复读](# 不可重复读（Unrepeatable read）)、[幻读](# 幻读（Phantom read）)情况</em></p>
+<p><em>可能会出现<a href="# 脏读（Dirty read）">脏读</a>、<a href="# 不可重复读（Unrepeatable read）">不可重复读</a>、<a href="# 幻读（Phantom read）">幻读</a>情况</em></p>
 <h2 id="读已提交（READ-COMMITTED）"><a href="#读已提交（READ-COMMITTED）" class="headerlink" title="读已提交（READ-COMMITTED）"></a>读已提交（READ-COMMITTED）</h2><blockquote>
 <p><strong>大多数数据库的默认隔离级别</strong></p>
 </blockquote>
 <p><strong>事务在执行期间对数据的修改</strong>，只有在<strong>事务提交后</strong>才能被其他事务看到</p>
-<p><em>可能会出现[不可重复读](# 不可重复读（Unrepeatable read）)、[幻读](# 幻读（Phantom read）)情况</em></p>
+<p><em>可能会出现<a href="# 不可重复读（Unrepeatable read）">不可重复读</a>、<a href="# 幻读（Phantom read）">幻读</a>情况</em></p>
 <h2 id="可重复读（REPEATABLE-READ）"><a href="#可重复读（REPEATABLE-READ）" class="headerlink" title="可重复读（REPEATABLE-READ）"></a>可重复读（REPEATABLE-READ）</h2><blockquote>
 <p><strong>MySQL的默认隔离级别</strong></p>
 </blockquote>
 <p>一个事务<strong>执行过程中任何时刻看到的数据</strong>，一直和<strong>这个事务启动时看到的数据</strong>是一致的</p>
-<p><em>可能会出现[幻读](# 幻读（Phantom read）)的情况</em></p>
+<p><em>可能会出现<a href="# 幻读（Phantom read）">幻读</a>的情况</em></p>
 <h2 id="可串行化（SERIALIZABLE）"><a href="#可串行化（SERIALIZABLE）" class="headerlink" title="可串行化（SERIALIZABLE）"></a>可串行化（SERIALIZABLE）</h2><p>会对记录加上<strong>读写锁</strong>，在多个事务对这条记录进行读写操作时，如果<strong>不能获取到读写锁（读写冲突）</strong>，就<strong>必须等待持有读写锁的事务执行完毕</strong>，才能继续执行</p>
-<p><em>不会出现任何[并发事务可能出现的问题](# 并发事务带来的问题)</em></p>
+<p><em>不会出现任何<a href="# 并发事务带来的问题">并发事务可能出现的问题</a></em></p>
 <h1 id="MVCC"><a href="#MVCC" class="headerlink" title="MVCC"></a>MVCC</h1><p>MVCC（<strong>M</strong>ulti-<strong>V</strong>ersion <strong>C</strong>oncurrency <strong>C</strong>ontrol）：多版本并发控制，指维护一个数据的多个版本，使得读写操作不冲突</p>
 <p>MVCC 主要针对的是<strong>快照读</strong>（普通的 select 语句）</p>
 <h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="隐藏字段"><a href="#隐藏字段" class="headerlink" title="隐藏字段"></a>隐藏字段</h3><p>记录中的隐藏字段：</p>
@@ -442,6 +442,7 @@
 </ul>
 <h3 id="undo-log版本链"><a href="#undo-log版本链" class="headerlink" title="undo log版本链"></a>undo log版本链</h3><p>不同事务或相同事务对<strong>同一条记录</strong>进行修改，会导致该记录的undo log生成一条<strong>记录版本链表</strong>，链表的头部是<strong>最新的旧记录</strong>，链表尾部是<strong>最早的旧记录</strong></p>
 <h3 id="Read-View"><a href="#Read-View" class="headerlink" title="Read View"></a>Read View</h3><p>Read View 中包含四个<strong>核心字段</strong>：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -449,7 +450,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>trx_ids</td>
 <td>创建 Read View 时未提交的活跃<strong>事务ID集合</strong></td>
 </tr>
@@ -465,12 +467,14 @@
 <td>creator_trx_id</td>
 <td>Read View <strong>创建者的事务ID</strong></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p><strong>版本链数据访问规则：</strong></p>
 <ul>
-<li><strong>trx_id &#x3D;&#x3D; creator_trx_id：允许访问</strong>；当前事务在访问自己修改过的记录</li>
+<li><strong>trx_id == creator_trx_id：允许访问</strong>；当前事务在访问自己修改过的记录</li>
 <li><strong>trx_id &lt; up_limit_id：允许访问</strong>；当前事务在该 ReadView 创建之前已经提交</li>
-<li><strong>trx_id &gt;&#x3D; low_limit_id：不允许访问</strong>；当前事务在该 ReadView 创建之后才开启</li>
+<li><strong>trx_id &gt;= low_limit_id：不允许访问</strong>；当前事务在该 ReadView 创建之后才开启</li>
 <li><strong>trx_id $\in$ [up_limit_id, low_limit_id)：</strong>判断 trx_id 是否在 trx_ids 中<ul>
 <li><strong>存在：不允许访问</strong>；说明创建 ReadView 时该事务还在活跃没提交</li>
 <li><strong>不存在：允许访问</strong>；说明创建 ReadView 前该事务已经提交</li>
@@ -480,7 +484,7 @@
 <p>当创建好一个 Read View 后，在读取表中记录时，就会对<strong>每一条记录的隐藏字段 <code>trx_id</code> 进行上述规则判断</strong></p>
 <ul>
 <li>如果<strong>允许访问</strong>，则读取这条记录</li>
-<li>如果<strong>不允许</strong>，则根据隐藏字段 <code> roll_ptr</code> 沿着 undo log 版本链对每一版本的 <code>trx_id</code> 进行判断，寻找该记录的<strong>第一个允许访问的版本</strong></li>
+<li>如果<strong>不允许</strong>，则根据隐藏字段 <code>roll_ptr</code> 沿着 undo log 版本链对每一版本的 <code>trx_id</code> 进行判断，寻找该记录的<strong>第一个允许访问的版本</strong></li>
 </ul>
 <h2 id="MVCC-实现读提交"><a href="#MVCC-实现读提交" class="headerlink" title="MVCC 实现读提交"></a>MVCC 实现读提交</h2><p><strong>读提交隔离级别是在每次读取数据时，都会生成一个新的 Read View</strong></p>
 <blockquote>
@@ -497,8 +501,8 @@
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://javaguide.cn/database/mysql/innodb-implementation-of-mvcc.html#innodb-%E5%AF%B9-mvcc-%E7%9A%84%E5%AE%9E%E7%8E%B0">InnoDB存储引擎对MVCC的实现 | JavaGuide</a></li>
-<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/mysql/transaction/mvcc.html#%E8%AF%BB%E6%8F%90%E4%BA%A4%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">事务隔离级别是怎么实现的？ | 小林coding (xiaolincoding.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/database/mysql/innodb-implementation-of-mvcc.html#innodb-对-mvcc-的实现">InnoDB存储引擎对MVCC的实现 | JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/mysql/transaction/mvcc.html#读提交是如何工作的">事务隔离级别是怎么实现的？ | 小林coding (xiaolincoding.com)</a></li>
 </ul>
 </blockquote>
 

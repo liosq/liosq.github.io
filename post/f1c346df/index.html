@@ -398,7 +398,7 @@
               <div class="markdown-body">
                 
                 <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="管理事务"><a href="#管理事务" class="headerlink" title="管理事务"></a>管理事务</h2><ul>
-<li><strong>编程式事务：</strong>在代码中硬编码，通过**<code>TransactionTemplate</code>或<code>TransactionManager</code>**手动管理事务。事务范围过大会出现事务未提交导致超时、因此事务要比锁的力度更小<ul>
+<li><strong>编程式事务：</strong>在代码中硬编码，通过<strong><code>TransactionTemplate</code>或<code>TransactionManager</code></strong>手动管理事务。事务范围过大会出现事务未提交导致超时、因此事务要比锁的力度更小<ul>
 <li>在分布式系统中推荐使用</li>
 </ul>
 </li>
@@ -409,10 +409,8 @@
 </ul>
 <h2 id="事务失效场景"><a href="#事务失效场景" class="headerlink" title="事务失效场景"></a>事务失效场景</h2><h3 id="异常捕获未抛出"><a href="#异常捕获未抛出" class="headerlink" title="异常捕获未抛出"></a>异常捕获未抛出</h3><p>在方法中使用了<strong>try-catch块</strong>捕获异常但没有再抛出异常</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">// 操作A</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 操作B</span><br>    &#125; <span class="hljs-keyword">catch</span>(Exception e) &#123;<br>        e.printStackTrace(); <span class="hljs-comment">// 在后面 throw 异常即可触发回滚</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <h3 id="抛出受检异常（Checked-Exceptions）"><a href="#抛出受检异常（Checked-Exceptions）" class="headerlink" title="抛出受检异常（Checked Exceptions）"></a>抛出受检异常（<code>Checked Exceptions</code>）</h3><p><strong>原因：</strong>Spring 只会回滚非受检异常（<code>Unchecked Exceptions</code>）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span> <span class="hljs-comment">// 改为 @Transactional(rollbackFor = Exception.class) 即可触发回滚</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> <span class="hljs-keyword">throw</span> FileNotFoundException &#123;<br>    <span class="hljs-comment">// 操作A</span><br>    <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> / <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(<span class="hljs-string">&quot;a&quot;</span>);<br>    <span class="hljs-comment">// 操作B</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
 <h3 id="非public方法"><a href="#非public方法" class="headerlink" title="非public方法"></a>非public方法</h3><p><strong>原因：</strong>Spring为方法创建代理、添加事务通知、前提条件都是该方法是public的</p>
 <h2 id="事务传播行为"><a href="#事务传播行为" class="headerlink" title="事务传播行为"></a>事务传播行为</h2><p><strong>事务传播行为</strong>是为了解决<strong>业务层方法之间相互调用</strong>时可能出现的事务问题</p>
 <p>所有的事务传播行为如下：</p>
@@ -436,7 +434,7 @@
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html#springboot-%E5%85%81%E8%AE%B8%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E5%8F%91%E7%94%9F%E4%B9%88">Spring常见面试题总结 | JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html#springboot-允许循环依赖发生么">Spring常见面试题总结 | JavaGuide</a></li>
 </ul>
 </blockquote>
 

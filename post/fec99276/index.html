@@ -401,7 +401,7 @@
 <p>参与消息传递的双方被称为<strong>生产者</strong>和<strong>消费者</strong>，生产者负责发送信息，消费者负责处理信息</p>
 <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><h3 id="异步提高系统性能"><a href="#异步提高系统性能" class="headerlink" title="异步提高系统性能"></a>异步提高系统性能</h3><p>将用户的<strong>请求数据存储到消息队列</strong>之后就<strong>立即返回结果</strong>，然后系统再对消息进行处理</p>
 <p>由于业务的实际处理过程并没有执行完毕，所以在返回结果时并不能直接提示成功，需要<strong>适当修改业务流程来配合</strong></p>
-<h3 id="削峰-限流"><a href="#削峰-限流" class="headerlink" title="削峰&#x2F;限流"></a>削峰&#x2F;限流</h3><p><strong>将短时间内高并发的事务消息存储在消息队列中</strong>，再由服务<strong>根据自己的处理能力来消费这些消息</strong>，避免流量过大将服务压垮（类似漏桶的思想）</p>
+<h3 id="削峰-限流"><a href="#削峰-限流" class="headerlink" title="削峰/限流"></a>削峰/限流</h3><p><strong>将短时间内高并发的事务消息存储在消息队列中</strong>，再由服务<strong>根据自己的处理能力来消费这些消息</strong>，避免流量过大将服务压垮（类似漏桶的思想）</p>
 <h3 id="降低系统耦合性"><a href="#降低系统耦合性" class="headerlink" title="降低系统耦合性"></a>降低系统耦合性</h3><p>在系统中可能有模块与模块之间的复杂的调用关系，使用 MQ <strong>将调用方和被调用方分离开</strong>，调用方只需关注发送消息，被调用方只需关注处理消息，降低了整体系统的耦合性</p>
 <h2 id="带来的问题"><a href="#带来的问题" class="headerlink" title="带来的问题"></a>带来的问题</h2><ul>
 <li><strong>系统可用性降低：</strong>在引入MQ后，不仅需要考虑各<strong>服务的可用性</strong>还需要考虑<strong>MQ的可用性</strong></li>
@@ -419,12 +419,12 @@
 </ul>
 <p>ActiveMQ（已被淘汰）就是基于 JMS 规范实现的</p>
 <h2 id="AMQP"><a href="#AMQP" class="headerlink" title="AMQP"></a>AMQP</h2><p><strong>AMQP</strong>（<strong>A</strong>dvanced <strong>M</strong>essage <strong>Q</strong>ueuing <strong>P</strong>rotocol，<strong>高级消息队列协议</strong>），在 2003 年时被提出，最早用于解决金融领域不同平台之间的信息传递交互问题</p>
-<p>AMQP 是一个提供统一信息服务的<strong>应用层标准</strong>高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间件设计，基于此协议的客户端与消息中间件传递信息，<strong>不受客户端&#x2F;中间件产品、不同开发语言等条件的限制</strong></p>
+<p>AMQP 是一个提供统一信息服务的<strong>应用层标准</strong>高级消息队列协议，是应用层协议的一个开放标准，为面向消息的中间件设计，基于此协议的客户端与消息中间件传递信息，<strong>不受客户端/中间件产品、不同开发语言等条件的限制</strong></p>
 <h3 id="重要角色"><a href="#重要角色" class="headerlink" title="重要角色"></a>重要角色</h3><ul>
 <li><strong>消息（Message）：</strong>即客户端与消息中间件传送的数据</li>
 <li><strong>生产者（Producer）：</strong>消息的生产者</li>
 <li><strong>消费者（Consumer）：</strong>消息的消费者</li>
-<li><strong>连接（Connection）：</strong>一个网络连接，比如 TCP&#x2F;IP 连接<ul>
+<li><strong>连接（Connection）：</strong>一个网络连接，比如 TCP/IP 连接<ul>
 <li>AMQP 连接通常是长连接，当一个应用不再需要连接到 AMQP 代理时，需要释放掉 AMQP 连接，而不是直接将 TCP 连接关闭</li>
 </ul>
 </li>
@@ -439,7 +439,7 @@
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://javaguide.cn/high-performance/message-queue/message-queue.html#amqp-%E6%98%AF%E4%BB%80%E4%B9%88">消息队列基础知识总结 | JavaGuide</a></li>
+<li><a target="_blank" rel="noopener" href="https://javaguide.cn/high-performance/message-queue/message-queue.html#amqp-是什么">消息队列基础知识总结 | JavaGuide</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/34114405/answer/2739551205">amqp 这个协议好像很少人提及，与mqtt的区别在哪？ - 知乎 (zhihu.com)</a></li>
 </ul>
 </blockquote>

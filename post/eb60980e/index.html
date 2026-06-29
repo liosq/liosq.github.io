@@ -398,6 +398,7 @@
               <div class="markdown-body">
                 
                 <h1 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h1><p><strong>Redis两种持久化方式的对比：</strong></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -406,7 +407,8 @@
 <th>AOF</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>文件大小</td>
 <td>小</td>
 <td>大</td>
@@ -421,12 +423,13 @@
 <td>弱</td>
 <td>强</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h2><p>通过创建<strong>快照</strong>来对<strong>某个时间点</strong>Redis中的数据进行备份</p>
 <p>RDB快照文件存储的是经过压缩的<strong>二进制数据</strong>，所以在使用RDB文件恢复数据时速度快</p>
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>在<code>redis.conf</code>文件中可以修改RDB备份的频率：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">save x y #在x秒内，若至少有y个key发生变化，Redis就会自动触发bgsave命令创建快照。<br></code></pre></td></tr></table></figure>
-
 <h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><ul>
 <li><code>save</code>：直接生成RDB文件，阻塞Redis主线程</li>
 <li><code>bgsave</code>：fork一个子进程，由子进程来生成，不会阻塞Redis主线程</li>

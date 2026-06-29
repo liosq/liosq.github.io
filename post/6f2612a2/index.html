@@ -400,120 +400,132 @@
                 
                 <h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h2 id="SpringBoot-和-Spring"><a href="#SpringBoot-和-Spring" class="headerlink" title="SpringBoot 和 Spring"></a>SpringBoot 和 Spring</h2><p>SpringBoot 的出现是为了简化 Spring 的配置，使开发者可以<strong>专注于业务逻辑的实现</strong>，不需要依赖项的 XML 配置</p>
 <h2 id="SpringBoot-自动配置原理"><a href="#SpringBoot-自动配置原理" class="headerlink" title="SpringBoot 自动配置原理"></a>SpringBoot 自动配置原理</h2><ol>
-<li>SpringBoot的引导类上有一个注解**@SpringBootApplication**，该注解对三个注解进行了封装：<ul>
+<li>SpringBoot的引导类上有一个注解<strong>@SpringBootApplication</strong>，该注解对三个注解进行了封装：<ul>
 <li>@SpringBootConfiguration</li>
 <li>@EnableAutoConfiguration</li>
 <li>@ComponentScan</li>
 </ul>
 </li>
-<li>其中**@EnableAutoConfiguration<strong>是</strong>实现自动配置的核心注解**<ul>
-<li>该注解通过**@Import**注解导入对应的配置选择器</li>
+<li>其中<strong>@EnableAutoConfiguration</strong>是<strong>实现自动配置的核心注解</strong><ul>
+<li>该注解通过<strong>@Import</strong>注解导入对应的配置选择器</li>
 <li>其内部是读取了该项目和该项目引用的<strong>Jar包</strong>的classpath路径下<code>/META-INF/spring.factories</code>文件中所配置的类的全部类名</li>
 <li>这些配置类中定义的Bean会根据<strong>条件注解所指定的条件</strong>来决定是否将Bean导入到Spring容器中</li>
 </ul>
 </li>
-<li>条件判断会有像**@ConditionalOnClass<strong>这样的注解，判断是否有对应的</strong>class文件**，如果有则加载该类，把该配置类的所有Bean放入Spring容器中</li>
+<li>条件判断会有像<strong>@ConditionalOnClass</strong>这样的注解，判断是否有对应的<strong>class文件</strong>，如果有则加载该类，把该配置类的所有Bean放入Spring容器中</li>
 </ol>
-<h2 id="Spring、SpringMVC、SpringBoot常见注解"><a href="#Spring、SpringMVC、SpringBoot常见注解" class="headerlink" title="Spring、SpringMVC、SpringBoot常见注解"></a>Spring、SpringMVC、SpringBoot常见注解</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><table>
+<h2 id="Spring、SpringMVC、SpringBoot常见注解"><a href="#Spring、SpringMVC、SpringBoot常见注解" class="headerlink" title="Spring、SpringMVC、SpringBoot常见注解"></a>Spring、SpringMVC、SpringBoot常见注解</h2><h3 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">注解</th>
-<th align="center">说明</th>
+<th style="text-align:center">注解</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">@Component @Controller @Service @Repository</td>
-<td align="center">使用在<strong>类</strong>上，用于实例化Bean</td>
+<tbody>
+<tr>
+<td style="text-align:center">@Component @Controller @Service @Repository</td>
+<td style="text-align:center">使用在<strong>类</strong>上，用于实例化Bean</td>
 </tr>
 <tr>
-<td align="center">@Autowired</td>
-<td align="center">使用在<strong>字段</strong>上，用于<strong>根据类型</strong>依赖注入</td>
+<td style="text-align:center">@Autowired</td>
+<td style="text-align:center">使用在<strong>字段</strong>上，用于<strong>根据类型</strong>依赖注入</td>
 </tr>
 <tr>
-<td align="center">@Qualifier</td>
-<td align="center"><strong>结合@Autowired</strong>一齐使用，用于根据Bean名称进行依赖注入</td>
+<td style="text-align:center">@Qualifier</td>
+<td style="text-align:center"><strong>结合@Autowired</strong>一齐使用，用于根据Bean名称进行依赖注入</td>
 </tr>
 <tr>
-<td align="center">@Scope</td>
-<td align="center">标注@Bean的作用范围</td>
+<td style="text-align:center">@Scope</td>
+<td style="text-align:center">标注@Bean的作用范围</td>
 </tr>
 <tr>
-<td align="center">@Configuration</td>
-<td align="center">指定当前类为<strong>Spring配置类</strong>，当创建容器时会从该类上加载注解</td>
+<td style="text-align:center">@Configuration</td>
+<td style="text-align:center">指定当前类为<strong>Spring配置类</strong>，当创建容器时会从该类上加载注解</td>
 </tr>
 <tr>
-<td align="center">@ComponentScan</td>
-<td align="center">用于指定Spring在<strong>初始化容器</strong>时要扫描的包</td>
+<td style="text-align:center">@ComponentScan</td>
+<td style="text-align:center">用于指定Spring在<strong>初始化容器</strong>时要扫描的包</td>
 </tr>
 <tr>
-<td align="center">@Bean</td>
-<td align="center">使用在<strong>方法</strong>上，标注将该方法的返回值存储到Spring容器中</td>
+<td style="text-align:center">@Bean</td>
+<td style="text-align:center">使用在<strong>方法</strong>上，标注将该方法的返回值存储到Spring容器中</td>
 </tr>
 <tr>
-<td align="center">@Import</td>
-<td align="center">使用@Import导入的类会被Spring加载到IoC容器中</td>
+<td style="text-align:center">@Import</td>
+<td style="text-align:center">使用@Import导入的类会被Spring加载到IoC容器中</td>
 </tr>
 <tr>
-<td align="center">@Aspect @Before @After @Around @Pointcut</td>
-<td align="center">AOP注解</td>
+<td style="text-align:center">@Aspect @Before @After @Around @Pointcut</td>
+<td style="text-align:center">AOP注解</td>
 </tr>
-</tbody></table>
-<h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><table>
+</tbody>
+</table>
+</div>
+<h3 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">注解</th>
-<th align="center">说明</th>
+<th style="text-align:center">注解</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">@RequestMapping</td>
-<td align="center">用于映射请求路径，可以定义在<strong>类</strong>和<strong>方法</strong>上<br /><strong>用于类上：</strong>表明类中所有方法都是以该地址作为父路径</td>
+<tbody>
+<tr>
+<td style="text-align:center">@RequestMapping</td>
+<td style="text-align:center">用于映射请求路径，可以定义在<strong>类</strong>和<strong>方法</strong>上<br /><strong>用于类上：</strong>表明类中所有方法都是以该地址作为父路径</td>
 </tr>
 <tr>
-<td align="center">@RequestBody</td>
-<td align="center">用于接收Http请求中的<strong>JSON数据</strong>，将JSON转换为Java对象</td>
+<td style="text-align:center">@RequestBody</td>
+<td style="text-align:center">用于接收Http请求中的<strong>JSON数据</strong>，将JSON转换为Java对象</td>
 </tr>
 <tr>
-<td align="center">@RequestParam</td>
-<td align="center">指定请求参数的名称</td>
+<td style="text-align:center">@RequestParam</td>
+<td style="text-align:center">指定请求参数的名称</td>
 </tr>
 <tr>
-<td align="center">@PathVariable</td>
-<td align="center">接收请求路径中的参数，传递给方法的形式参数</td>
+<td style="text-align:center">@PathVariable</td>
+<td style="text-align:center">接收请求路径中的参数，传递给方法的形式参数</td>
 </tr>
 <tr>
-<td align="center">@ResponseBody</td>
-<td align="center">定义在<strong>Controller</strong>上，实现将其中所有方法的返回值转换为<strong>JSON</strong>返回给客户端</td>
+<td style="text-align:center">@ResponseBody</td>
+<td style="text-align:center">定义在<strong>Controller</strong>上，实现将其中所有方法的返回值转换为<strong>JSON</strong>返回给客户端</td>
 </tr>
 <tr>
-<td align="center">@RequestHeader</td>
-<td align="center">获取请求头中的指定参数信息</td>
+<td style="text-align:center">@RequestHeader</td>
+<td style="text-align:center">获取请求头中的指定参数信息</td>
 </tr>
 <tr>
-<td align="center">@RestController</td>
-<td align="center">@Controller + @ResponseBody</td>
+<td style="text-align:center">@RestController</td>
+<td style="text-align:center">@Controller + @ResponseBody</td>
 </tr>
-</tbody></table>
-<h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><table>
+</tbody>
+</table>
+</div>
+<h3 id="SpringBoot"><a href="#SpringBoot" class="headerlink" title="SpringBoot"></a>SpringBoot</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">注解</th>
-<th align="center">说明</th>
+<th style="text-align:center">注解</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">@SpringBootConfiguration</td>
-<td align="center">组合了**@Configuration**注解，实现配置文件的功能</td>
+<tbody>
+<tr>
+<td style="text-align:center">@SpringBootConfiguration</td>
+<td style="text-align:center">组合了<strong>@Configuration</strong>注解，实现配置文件的功能</td>
 </tr>
 <tr>
-<td align="center">@EnableAutoConfiguration</td>
-<td align="center">打开自动配置的功能，也可以关闭某个自动配置</td>
+<td style="text-align:center">@EnableAutoConfiguration</td>
+<td style="text-align:center">打开自动配置的功能，也可以关闭某个自动配置</td>
 </tr>
 <tr>
-<td align="center">@ComponentScan</td>
-<td align="center">扫描 Spring 组件</td>
+<td style="text-align:center">@ComponentScan</td>
+<td style="text-align:center">扫描 Spring 组件</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="Transactional-不回滚的问题"><a href="#Transactional-不回滚的问题" class="headerlink" title="@Transactional 不回滚的问题"></a><code>@Transactional</code> 不回滚的问题</h2><p><code>@Transational</code>默认只会回滚非受检异常，如果想实现受检异常也回滚需要配置注解<code>@Transactional(rollbackFor = Exception.class)</code></p>
 <h2 id="properties-和-yml-配置文件同时存在"><a href="#properties-和-yml-配置文件同时存在" class="headerlink" title=".properties 和 .yml 配置文件同时存在"></a><code>.properties</code> 和 <code>.yml</code> 配置文件同时存在</h2><p>两个文件都有效，但 <strong><code>applicaiton.properties</code> 优先级高于 <code>application.yml</code></strong></p>
 <blockquote>
@@ -631,9 +643,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/post/4d712855/" title="MySQL">
+                      <a href="/post/cc1b9611/" title="JavaScript">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MySQL</span>
+                        <span class="hidden-mobile">JavaScript</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -641,8 +653,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/post/cc1b9611/" title="JavaScript">
-                        <span class="hidden-mobile">JavaScript</span>
+                      <a href="/post/de1f6638/" title="37. 解数独">
+                        <span class="hidden-mobile">37. 解数独</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="Hexo博客是一个基于Nodejs开发的一套博客系统。借助Hexo，开发者可以把自己的Hexo配置和Markdown文章，编译为HTML、JavaScript、CSS的存静态资源。  本篇主要为为使用 Hexo 博客的一些心得">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-08T03:08:35.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.697Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.500Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="经验">
 <meta name="twitter:card" content="summary_large_image">
@@ -404,39 +404,34 @@
 <li><strong>博客配置：</strong> <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/618864711">Hexo+Next主题搭建个人博客+优化全过程（完整详细版） - 知乎 (zhihu.com)</a> </li>
 <li><strong>NexT主题配置：</strong> <ul>
 <li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a05351a37dc">Hexo的Next主题详细配置 - 简书 (jianshu.com)</a> </li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cb58558ba222">Hexo+NexT（四）：Hexo站点及Next主题配置详解 - 简书 (jianshu.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cb58558ba222">Hexo+NexT（四）：Hexo站点及Next主题配置详解 - 简书 (jianshu.com)</a> </li>
 </ul>
 </li>
-<li><strong>官方文档：</strong> <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html">资源文件夹 | Hexo</a></li>
+<li><strong>官方文档：</strong> <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html">资源文件夹 | Hexo</a> </li>
 </ul>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>首先需要下载NodeJS（如果是部署到github.io主页的话还要下载Git）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install -g hexo-cli<br><span class="hljs-meta prompt_"># </span><span class="language-bash">初始化一个博客项目（是在当前目录生成，所以你要确保当前目录是你想防止博客项目的目录）</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">注：my-blog 需要替换成你的博客名</span><br>hexo init my-blog<br><span class="hljs-meta prompt_"># </span><span class="language-bash">进入项目文件夹</span><br>cd my-blog<br><span class="hljs-meta prompt_"># </span><span class="language-bash">进入项目下载npm依赖</span><br>npm install<br><span class="hljs-meta prompt_"># </span><span class="language-bash">本地部署hexo博客</span><br>hexo s<br></code></pre></td></tr></table></figure>
-
 <p>然后你就可以访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> 看到你的博客了 🤩🤩</p>
-<h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>你需要在github或其他地方找到喜欢的博客主题，把主题的所有文件下载下来并解压到上面创建的项目中的themes文件夹（即 **my-blog&#x2F;themes&#x2F;**）并复制主题文件夹名</p>
-<p>然后，在<strong>my-blog&#x2F;_config.yml</strong>（项目根配置文件）中，按<kbd>Ctrl</kbd>+<kbd>F</kbd>搜索 theme</p>
+<h2 id="选择主题"><a href="#选择主题" class="headerlink" title="选择主题"></a>选择主题</h2><p>你需要在github或其他地方找到喜欢的博客主题，把主题的所有文件下载下来并解压到上面创建的项目中的themes文件夹（即 <strong>my-blog/themes/</strong>）并复制主题文件夹名</p>
+<p>然后，在<strong>my-blog/_config.yml</strong>（项目根配置文件）中，按<kbd>Ctrl</kbd>+<kbd>F</kbd>搜索 theme</p>
 <p>将 theme: xxxx 改为 theme: [上面复制的文件夹名]</p>
 <h2 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h2><p>如果你是想部署在github.io上的话，我默认你已经安装了git并且创建github账号了（如果不是的话可以上网搜一下教程）</p>
 <p>首先在github上创建一个<strong>公共仓库</strong>，取名为 [github用户名].github.io，然后复制该仓库的仓库链接</p>
 <p>在博客项目的项目根配置文件中滑到最底部，可以看到deploy字段</p>
 <p>把deploy字段改为如图形式</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">deploy:</span><br>  <span class="hljs-attr">type:</span> <span class="hljs-string">git</span><br>  <span class="hljs-attr">repo:</span> <span class="hljs-string">仓库链接</span><br>  <span class="hljs-attr">branch:</span> <span class="hljs-string">仓库分支名</span><br></code></pre></td></tr></table></figure>
-
 <p>最后，在命令行中输入 <code>hexo g -d</code> 就可以把博客项目推到仓库了 🤗🤗</p>
 <h1 id="经验"><a href="#经验" class="headerlink" title="经验"></a>经验</h1><h2 id="新建笔记"><a href="#新建笔记" class="headerlink" title="新建笔记"></a>新建笔记</h2><p>其实不需要在命令行里每次都 hexo new xxx。直接在 [项目路径]\source\_posts 下创md文件，然后在开头加上：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-code">```</span><br><span class="hljs-code">title: xxxx</span><br><span class="hljs-code">date: yyyy-MM-dd hh:mm:ss*日期格式*</span><br><span class="hljs-code">tags: </span><br><span class="hljs-code">*多个标签要用下面这种方式或者 [tag1,tag2] 的方式分隔 要不然就会把所有标签识别成一个标签*</span><br><span class="hljs-code">- tag1</span><br><span class="hljs-code">- tag2</span><br><span class="hljs-code">...</span><br><span class="hljs-code">categories: xxx *分类不知道能不能写多个，反正我写就写了一个*</span><br><span class="hljs-code">mathjax: true *如果文章里有数学公式 要把这个填为true*</span><br><span class="hljs-code">```</span><br></code></pre></td></tr></table></figure>
-
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-code">```</span><br><span class="hljs-code">title: xxxx</span><br><span class="hljs-code">date: yyyy-MM-dd hh:mm:ss*日期格式*</span><br><span class="hljs-code">tags: </span><br><span class="hljs-code">*多个标签要用下面这种方式或者 [tag1,tag2] 的方式分隔 要不然就会把所有标签识别成一个标签*</span><br><span class="hljs-code">- tag1</span><br><span class="hljs-code">- tag2</span><br><span class="hljs-code">...</span><br><span class="hljs-code">categories: xxx *分类不知道能不能写多个，反正我写就写了一个*</span><br><span class="hljs-code">math: true *如果文章里有数学公式 要把这个填为true*</span><br><span class="hljs-code">```</span><br></code></pre></td></tr></table></figure>
 <p>其实就和 new 一个文章一样的</p>
 <h2 id="博客主题"><a href="#博客主题" class="headerlink" title="博客主题"></a>博客主题</h2><h3 id="NexT"><a href="#NexT" class="headerlink" title="NexT"></a>NexT</h3><p>在b站一个视频看到的主题，黑白配色，感觉还不错 <span class="github-emoji" alias="yum" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f60b.png?v8">&#x1f60b;</span></p>
-<p>在主题文件夹中的**_config.yml<strong>配置文件（不是项目根配置文件）中编辑 <strong>scheme</strong> 字段可以改变NexT博客的排版主题（我现在用的排版主题是</strong>Gemini**，在左侧会有侧边栏）</p>
-<p>关于NexT主题其他的一些配置可以看<a href="#%E6%95%99%E7%A8%8B%E9%93%BE%E6%8E%A5">这里链接</a>的教程</p>
+<p>在主题文件夹中的<strong>_config.yml</strong>配置文件（不是项目根配置文件）中编辑 <strong>scheme</strong> 字段可以改变NexT博客的排版主题（我现在用的排版主题是<strong>Gemini</strong>，在左侧会有侧边栏）</p>
+<p>关于NexT主题其他的一些配置可以看<a href="#教程链接">这里链接</a>的教程</p>
 <h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>可以根据标题和内容搜索文章，但是初次使用要加载一段时间（索引文章的标题和内容之类的）</p>
 <p>安装依赖：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install hexo-generator-search --save<br></code></pre></td></tr></table></figure>
-
 <p>然后在项目根配置文件里加上：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">search:</span><br>  <span class="hljs-attr">path:</span> <span class="hljs-string">search.xml</span><br>  <span class="hljs-attr">field:</span> <span class="hljs-string">post</span><br>  <span class="hljs-attr">format:</span> <span class="hljs-string">html</span><br>  <span class="hljs-attr">limit:</span> <span class="hljs-number">10</span> <span class="hljs-comment"># 好像是分页限制的文章数？</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="文章缩略显示"><a href="#文章缩略显示" class="headerlink" title="文章缩略显示"></a>文章缩略显示</h2><p>网上有好几种实现方法，我这里列举两种：</p>
 <ol>
 <li><p>在md文件里要缩略的地方加上</p>
@@ -444,43 +439,34 @@
 </li>
 <li><p>安装 hexo-excerpt 自动在指定位置缩略显示</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install hexo-excerpt --save<br></code></pre></td></tr></table></figure>
-
 <p>然后在项目根配置文件里加上：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">excerpt:</span><br>  <span class="hljs-attr">depth:</span> <span class="hljs-number">2</span> <span class="hljs-comment"># 大致是显示的行数，如果文章开头就是代码块会显示完整代码块</span><br>  <span class="hljs-attr">excerpt_excludes:</span> [] <br>  <span class="hljs-attr">more_excludes:</span> []<br>  <span class="hljs-attr">hideWholePostExcerpts:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">excerpt:</span><br>  <span class="hljs-attr">depth:</span> <span class="hljs-number">2</span> <span class="hljs-comment"># 大致是显示的行数，如果文章开头就是代码块会显示完整代码块</span><br>  <span class="hljs-attr">excerpt_excludes:</span> [] <br>  <span class="hljs-attr">more_excludes:</span> []<br>  <span class="hljs-attr">hideWholePostExcerpts:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 <h2 id="背景蜘蛛网特效"><a href="#背景蜘蛛网特效" class="headerlink" title="背景蜘蛛网特效"></a>背景蜘蛛网特效</h2><blockquote>
 <p>注意：我用的是NexT主题，其他主题可能需要另搜</p>
 </blockquote>
 <p>在 [项目路径]\themes\hexo-theme-next\layout\_layout.njk 里加上如下代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#123;% <span class="hljs-keyword">if</span> theme.<span class="hljs-property">canvas_nest</span> %&#125;<br>    &lt;script type=<span class="hljs-string">&quot;text/javascript&quot;</span> src=<span class="hljs-string">&quot;//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js&quot;</span>&gt;&lt;/script&gt;<br>&#123;% endif %&#125;<br></code></pre></td></tr></table></figure>
-
 <p>然后在主题配置文件里加上：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">canvas_nest:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="Markdown渲染引擎"><a href="#Markdown渲染引擎" class="headerlink" title="Markdown渲染引擎"></a>Markdown渲染引擎</h2><p>我看网上好多都说Hexo自带的 hexo-renderer-marked 引擎性能不太行，而且不支持一些像emoji、LaTeX公式之类的Markdown语法。<del>所以我就换成了 hexo-renderer-markdown-it</del>  NexT主题如果把引擎换成markdown-it或者markdown-it-plus会导致文章一级目录跳转不了，只能含泪换回原来的marked <span class="github-emoji" alias="sob" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">&#x1f62d;</span><span class="github-emoji" alias="sob" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">&#x1f62d;</span><br>emoji的问题可以看 <a href="#%E6%98%BE%E7%A4%BAEmoji">Emoji</a></p>
+<h2 id="Markdown渲染引擎"><a href="#Markdown渲染引擎" class="headerlink" title="Markdown渲染引擎"></a>Markdown渲染引擎</h2><p>我看网上好多都说Hexo自带的 hexo-renderer-marked 引擎性能不太行，而且不支持一些像emoji、LaTeX公式之类的Markdown语法。<del>所以我就换成了 hexo-renderer-markdown-it</del>  NexT主题如果把引擎换成markdown-it或者markdown-it-plus会导致文章一级目录跳转不了，只能含泪换回原来的marked <span class="github-emoji" alias="sob" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">&#x1f62d;</span><span class="github-emoji" alias="sob" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62d.png?v8">&#x1f62d;</span><br>emoji的问题可以看 <a href="#显示Emoji">Emoji</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">换之前要把原来的引擎卸载</span><br>npm uninstall hexo-renderer-marked --save<br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装新引擎</span><br>npm install hexo-renderer-markdown-it --save<br></code></pre></td></tr></table></figure>
-
 <p>安装完好像是不用配置什么就能用，但是不加插件还是显示不了emoji的 <span class="github-emoji" alias="angry" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f620.png?v8">&#x1f620;</span> ，在项目根配置文件里加上：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">markdown:</span><br>  <span class="hljs-attr">plugins:</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">markdown-it-emoji</span><br></code></pre></td></tr></table></figure>
-
 <p>用不用另外安装依赖我也忘了 <span class="github-emoji" alias="joy" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">&#x1f602;</span> ，如果没效果的话就上网搜一搜吧</p>
 <h2 id="显示Emoji"><a href="#显示Emoji" class="headerlink" title="显示Emoji"></a>显示Emoji</h2><p>安装依赖：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install hexo-filter-emoji --save<br></code></pre></td></tr></table></figure>
-
 <p>在项目根配置文件中添加：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">emoji:</span><br>  <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">className:</span> <span class="hljs-string">github-emoji</span><br>  <span class="hljs-attr">styles:</span><br>  <span class="hljs-attr">customEmojis:</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="更改字体"><a href="#更改字体" class="headerlink" title="更改字体"></a>更改字体</h2><p>谷歌字体一直进不去，啊米诺斯</p>
 <h2 id="数学公式"><a href="#数学公式" class="headerlink" title="数学公式"></a>数学公式</h2><h3 id="Mathjax"><a href="#Mathjax" class="headerlink" title="Mathjax"></a>Mathjax</h3><p>我用是Mathjax。但是Mathjax有个问题是显示不了 $\infin$ （如果你看到了的话说明能显示了），在主题配置文件里找到：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">math:</span><br>  <span class="hljs-comment"># 是否每页都使用mathjax渲染 填false的话就要在需要渲染的文章开头加上mathjax: true</span><br>  <span class="hljs-attr">every_page:</span> <span class="hljs-literal">false</span> <br><br>  <span class="hljs-attr">mathjax:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># 这个改成true</span><br>    <span class="hljs-attr">tags:</span> <span class="hljs-string">all</span> <span class="hljs-comment"># 这个好像是显示公式的序号什么的</span><br></code></pre></td></tr></table></figure>
-
 <p>呃呃，也是忘了要不要安装依赖 <span class="github-emoji" alias="joy" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">&#x1f602;</span><span class="github-emoji" alias="joy" style="" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f602.png?v8">&#x1f602;</span></p>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>在主题配置文件找到 **codeblock ** 字段</p>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><p>在主题配置文件找到 <strong>codeblock </strong> 字段</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">codeblock:</span><br>  <span class="hljs-comment"># Code Highlight theme</span><br>  <span class="hljs-comment"># All available themes: https://theme-next.js.org/highlight/</span><br>  <span class="hljs-attr">theme:</span><br>    <span class="hljs-attr">light:</span> <span class="hljs-string">base16/one-light</span>	<span class="hljs-comment"># 这个主题夜间模式也能看清</span><br>    <span class="hljs-attr">dark:</span> <span class="hljs-string">stackoverflow-dark</span><br>  <span class="hljs-attr">prism:</span><br>    <span class="hljs-attr">light:</span> <span class="hljs-string">prism</span><br>    <span class="hljs-attr">dark:</span> <span class="hljs-string">prism-dark</span><br>  <span class="hljs-comment"># Add copy button on codeblock</span><br>  <span class="hljs-attr">copy_button:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>	<span class="hljs-comment"># 启用复制按钮</span><br>    <span class="hljs-comment"># Available values: default | flat | mac</span><br>    <span class="hljs-attr">style:</span> <span class="hljs-string">flat</span>		<span class="hljs-comment"># 复制按钮的样式 mac主题整个代码块样式都会改</span><br>  <span class="hljs-comment"># Fold code block</span><br>  <span class="hljs-attr">fold:</span><br>    <span class="hljs-attr">enable:</span> <span class="hljs-literal">true</span>	<span class="hljs-comment"># 启用代码折叠</span><br>    <span class="hljs-attr">height:</span> <span class="hljs-number">400</span>		<span class="hljs-comment"># 代码折叠的高度 单位应该是px</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="标签云"><a href="#标签云" class="headerlink" title="标签云"></a>标签云</h2><p>在项目根配置文件搜 <strong>tag_cloud</strong></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">tag_cloud:</span><br>  <span class="hljs-attr">textColor:</span> <span class="hljs-string">&#x27;#fc6423&#x27;</span>	<span class="hljs-comment"># 词云的文字颜色 </span><br>  <span class="hljs-attr">outlineColor:</span> <span class="hljs-string">&#x27;#fff&#x27;</span>	<span class="hljs-comment"># 鼠标停留在文字时的背景颜色</span><br></code></pre></td></tr></table></figure>
-
 
                 
               </div>
@@ -639,6 +625,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -906,6 +898,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

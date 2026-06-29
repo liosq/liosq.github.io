@@ -399,14 +399,16 @@
             
               <div class="markdown-body">
                 
-                <h2 id="实践背景"><a href="#实践背景" class="headerlink" title="实践背景"></a>实践背景</h2><table>
+                <h2 id="实践背景"><a href="#实践背景" class="headerlink" title="实践背景"></a>实践背景</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>维度</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>开发范式</td>
 <td>Spec-Kit（Spec-Driven Development）</td>
 </tr>
@@ -420,24 +422,20 @@
 </tr>
 <tr>
 <td>目标</td>
-<td>新增 Crane 定时任务，监控骑手单&#x2F;多期互斥报名异常数据</td>
+<td>新增 Crane 定时任务，监控骑手单/多期互斥报名异常数据</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <hr>
 <h2 id="SDD-流程：以监控任务为例"><a href="#SDD-流程：以监控任务为例" class="headerlink" title="SDD 流程：以监控任务为例"></a>SDD 流程：以监控任务为例</h2><h3 id="1-Specify（定义规格）"><a href="#1-Specify（定义规格）" class="headerlink" title="1. Specify（定义规格）"></a>1. Specify（定义规格）</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Prompt:</span> /Cursor:speckit.specify<br>新增一个 Crane 任务，用于定期监控是否存在乐跑、畅跑、同核、悦跑的报名数据中，<br>有出现单期和多期同时在招募流程的异常数据<br></code></pre></td></tr></table></figure>
-
 <p><strong>输出文档 spec.md（摘要）</strong></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># Feature Specification: 骑手报名数据单期多期冲突监控</span><br><br><span class="hljs-section">## User Scenarios</span><br><br><span class="hljs-section">### User Story 1 - 自动检测单期多期冲突 (Priority: P1)</span><br>作为系统运维人员，我需要系统自动检测并识别出骑手在活动中同时存在单期和多期招募数据的异常情况。<br><br>Acceptance Scenarios:<br><span class="hljs-bullet">1.</span> Given 数据库中存在某骑手同时有单期和多期报名记录且都处于招募流程中<br>   When 监控任务执行<br>   Then 系统成功识别该骑手为异常数据<br><br><span class="hljs-section">### User Story 3 - 监控结果通知告警 (Priority: P3)</span><br>作为业务人员，当系统检测到单期多期冲突的异常数据时，我需要收到及时的告警通知。<br><br><span class="hljs-section">## Requirements</span><br><span class="hljs-bullet">-</span> FR-006: 系统必须以 Crane 定时任务的方式运行<br><span class="hljs-bullet">-</span> FR-011: 当检测到异常数据时，通过大象消息向配置群组发送告警<br><span class="hljs-bullet">-</span> FR-012: 使用 SafeDaxiangUtil 工具，支持超长消息自动拆分<br></code></pre></td></tr></table></figure>
-
 <h3 id="2-Clarify（澄清需求）"><a href="#2-Clarify（澄清需求）" class="headerlink" title="2. Clarify（澄清需求）"></a>2. Clarify（澄清需求）</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Prompt:</span> /Cursor:speckit.clarify<br><span class="hljs-number">1</span>、如果出现异常数据，参考现有发送大象消息的实现，添加告警逻辑<br><span class="hljs-number">2</span>、监控的扫表逻辑，参考复用现有的扫表框架 AbstractActivityOrgBasedTask<br><span class="hljs-number">3</span>、对于不处于取消报名、失效状态的骑手报名数据，都算作正在招募流程中<br></code></pre></td></tr></table></figure>
-
 <h3 id="3-Plan（生成实现计划）"><a href="#3-Plan（生成实现计划）" class="headerlink" title="3. Plan（生成实现计划）"></a>3. Plan（生成实现计划）</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Prompt:</span> /Cursor:speckit.plan<br></code></pre></td></tr></table></figure>
-
 <p><strong>输出文档 plan.md（摘要）</strong></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># Implementation Plan: 骑手报名数据单期多期冲突监控</span><br><br><span class="hljs-section">## 技术方案</span><br><span class="hljs-bullet">-</span> 继承 AbstractActivityOrgBasedTask 扫表框架进行分页查询<br><span class="hljs-bullet">-</span> 使用 SafeDaxiangUtil 工具发送大象消息告警<br><span class="hljs-bullet">-</span> 排除&quot;取消报名&quot;和&quot;失效&quot;状态的记录<br><span class="hljs-bullet">-</span> 遵循 DDD 分层架构，将业务逻辑封装在 domain 层<br><br><span class="hljs-section">## Technical Context</span><br><span class="hljs-bullet">-</span> Language/Version: Java 8<br><span class="hljs-bullet">-</span> Primary Dependencies: Spring Boot, MyBatis, Crane 调度平台<br><span class="hljs-bullet">-</span> Storage: MySQL（Zebra datasource）<br><span class="hljs-bullet">-</span> Testing: JUnit 4.13 + Mockito 3.8.0（覆盖率目标 ≥80%）<br></code></pre></td></tr></table></figure>
-
 <h3 id="4-Tasks（生成任务清单）"><a href="#4-Tasks（生成任务清单）" class="headerlink" title="4. Tasks（生成任务清单）"></a>4. Tasks（生成任务清单）</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Prompt:</span> /Cursor:speckit.tasks<br></code></pre></td></tr></table></figure>
-
 <p><strong>输出文档 tasks.md（摘要）</strong></p>
 <blockquote>
 <p>共 64 个任务：Setup(5) + Foundational(6) + Story1-P1(14) + Story2-P2(16) + Story3-P3(13) + Polish(10)</p>
@@ -455,20 +453,20 @@
 <li><code>T048</code> 调用 <code>SafeDaxiangUtil</code> 发送大象消息告警</li>
 </ul>
 <h3 id="5-Implement（执行实现）"><a href="#5-Implement（执行实现）" class="headerlink" title="5. Implement（执行实现）"></a>5. Implement（执行实现）</h3><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Prompt:</span> /Cursor:speckit.implement<br></code></pre></td></tr></table></figure>
-
 <hr>
 <h2 id="6-迭代：重构数据模型"><a href="#6-迭代：重构数据模型" class="headerlink" title="6. 迭代：重构数据模型"></a>6. 迭代：重构数据模型</h2><p>首次实现后发现底层模型有问题：</p>
 <figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Prompt:</span> /Cursor:speckit.plan<br>底层模型和技术方案有问题，了解一下整体招募数据模型。<br>报名数据是分为报名、审核、签约、周期表四张表，用周期表将报审签三张表关联起来的。<br>现在根据这个信息输入，再来重新构建整体数据模型和技术实现方案<br></code></pre></td></tr></table></figure>
-
 <hr>
-<h2 id="SDD-总结"><a href="#SDD-总结" class="headerlink" title="SDD 总结"></a>SDD 总结</h2><h3 id="核心优势"><a href="#核心优势" class="headerlink" title="核心优势"></a>核心优势</h3><table>
+<h2 id="SDD-总结"><a href="#SDD-总结" class="headerlink" title="SDD 总结"></a>SDD 总结</h2><h3 id="核心优势"><a href="#核心优势" class="headerlink" title="核心优势"></a>核心优势</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>阶段</th>
 <th>SDD 价值</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>Specify</td>
 <td>明确功能边界，AI 提前发现需求歧义</td>
 </tr>
@@ -488,7 +486,9 @@
 <td>Implement</td>
 <td>AI 按规格实现，减少代码审查成本</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
 <li>新功能开发（需求边界清晰的）</li>
 <li>有明确验收标准（可写 Acceptance Scenarios）的任务</li>

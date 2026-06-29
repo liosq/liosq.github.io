@@ -334,7 +334,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k 字
+          3.5k 字
         
       </span>
     
@@ -428,7 +428,7 @@
 </ul>
 <h3 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h3><p>MyBatis<strong>默认开启</strong>一级缓存；在<strong>同一Session</strong>（会话）中缓存数据，即使使用不同的Mapper也会缓存数据</p>
 <h3 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h3><p>MyBatis<strong>默认关闭</strong>二级缓存，在<code>mapper-config.xml</code>中的<code>settings</code>中加入<code>setting name=&quot;cacheEnabled&quot; value=&quot;true|false&quot;</code></p>
-<h3 id="缓存的清理"><a href="#缓存的清理" class="headerlink" title="缓存的清理"></a>缓存的清理</h3><p>当某一作用域（一级缓存：Session &#x2F; 二级缓存：Namespaces）中进行了<strong>增删改</strong>操作后，默认该作用域下<strong>所有SELECT中的缓存</strong>将被清空</p>
+<h3 id="缓存的清理"><a href="#缓存的清理" class="headerlink" title="缓存的清理"></a>缓存的清理</h3><p>当某一作用域（一级缓存：Session / 二级缓存：Namespaces）中进行了<strong>增删改</strong>操作后，默认该作用域下<strong>所有SELECT中的缓存</strong>将被清空</p>
 <h2 id="和-的区别"><a href="#和-的区别" class="headerlink" title="#{} 和 ${} 的区别"></a><code>#&#123;&#125;</code> 和 <code>$&#123;&#125;</code> 的区别</h2><p><code>#&#123;&#125;</code> 底层使用的是 <code>PreparedStatement</code>，会创建<strong>预编译的 SQL 语句</strong>，将 SQL 中的 <code>#&#123;&#125;</code> 替换为 <code>?</code> ，在执行 SQL 时会为预编译 SQL 中的占位符 <code>?</code> 进行赋值，调用 <code>PreparedStatement</code> 的 <code>set</code> 方法来赋值，预编译的 SQL 语句执行效率高，并且可以防止 SQL 注入</p>
 <p>MyBatis 处理<code>$&#123;&#125;</code>时，只创建普通的 SQL 语句，然后再执行过程中将 <code>$&#123;&#125;</code> 中的参数值以<strong>字符串拼接</strong>的形式插入到 SQL 语句中</p>
 <blockquote>
@@ -437,9 +437,7 @@
 </blockquote>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="项目引入"><a href="#项目引入" class="headerlink" title="项目引入"></a>项目引入</h2><h3 id="MyBatis-Plus"><a href="#MyBatis-Plus" class="headerlink" title="MyBatis-Plus"></a>MyBatis-Plus</h3><p>MyBatisPlus也能写Mapper</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--mysql驱动依赖--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.mysql<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mysql-connector-j<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>runtime<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--mybatis-plus启动依赖--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.baomidou<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;mybatis-plus.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br><br><span class="hljs-comment">&lt;!--mybatis--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis-spring<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>$&#123;mybatis.version&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># mybatis配置</span><br><span class="hljs-attr">mybatis-plus:</span><br>  <span class="hljs-comment"># mapper文件的位置</span><br>  <span class="hljs-attr">mapper-locations:</span> <span class="hljs-string">&#x27;classpath:mapper/*Mapper.xml&#x27;</span><br>  <span class="hljs-attr">configuration:</span><br>  	<span class="hljs-comment"># 下划线命名和驼峰命名转换</span><br>    <span class="hljs-attr">map-underscore-to-camel-case:</span> <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
-
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="报错”Error-instantiating-class”"><a href="#报错”Error-instantiating-class”" class="headerlink" title="报错”Error instantiating class”"></a>报错”Error instantiating class”</h2><p>一般是因为没有无参构造方法</p>
 <h2 id="Mapper有传Java对象到XML时报错"><a href="#Mapper有传Java对象到XML时报错" class="headerlink" title="Mapper有传Java对象到XML时报错"></a>Mapper有传Java对象到XML时报错</h2><p>要在Mapper接口的对应方法参数前加@Param注解</p>
 <p>或者在XML的crud标签中加上parameterType属性</p>
@@ -466,13 +464,13 @@
 </li>
 </ul>
 <h2 id="Intelij的MyBatisX插件"><a href="#Intelij的MyBatisX插件" class="headerlink" title="Intelij的MyBatisX插件"></a>Intelij的MyBatisX插件</h2><p>在写Mapper接口和xml的时候很好用，可以在接口跳转到xml并生成对应方法的<strong>crud标签</strong></p>
-<h2 id="一个XML标签写多个SQL语句"><a href="#一个XML标签写多个SQL语句" class="headerlink" title="一个XML标签写多个SQL语句"></a>一个XML标签写多个SQL语句</h2><p><strong>可以实现</strong>，但是要在配置文件中的<strong>数据库url</strong>后面加上<strong>allowMultiQueries&#x3D;true</strong></p>
+<h2 id="一个XML标签写多个SQL语句"><a href="#一个XML标签写多个SQL语句" class="headerlink" title="一个XML标签写多个SQL语句"></a>一个XML标签写多个SQL语句</h2><p><strong>可以实现</strong>，但是要在配置文件中的<strong>数据库url</strong>后面加上<strong>allowMultiQueries=true</strong></p>
 <h2 id="MyBatis子查询"><a href="#MyBatis子查询" class="headerlink" title="MyBatis子查询"></a>MyBatis子查询</h2><p>如果标签里有<strong>resultMap属性</strong>需要去掉，把resultMap放在子查询的标签里</p>
 <p>需要在标签里加<strong>column属性</strong>，其表示<strong>主查询中的字段值到子查询的映射</strong>，格式为<code>&#123;子查询要用的变量名=主查询的字段名&#125;</code>。子查询用<code>#&#123;&#125;</code>调用变量值</p>
 <blockquote>
 <p><strong>参考资料：</strong></p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/interview/spring.html#mybatis%E9%87%8C%E7%9A%84-%E5%92%8C-%E7%9A%84%E5%8C%BA%E5%88%AB">Spring面试题 | 小林coding (xiaolincoding.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://xiaolincoding.com/interview/spring.html#mybatis里的-和-的区别">Spring面试题 | 小林coding (xiaolincoding.com)</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_71443736/article/details/134728125">PreparedStatement预编译原理及基础使用_preparestatement-CSDN博客</a></li>
 </ul>
 </blockquote>

@@ -27,7 +27,7 @@
 <meta property="og:description" content="2385. 感染二叉树需要的总时间以下为树节点的定义">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-24T02:32:10.000Z">
-<meta property="article:modified_time" content="2026-06-24T07:34:35.716Z">
+<meta property="article:modified_time" content="2026-06-29T10:24:39.461Z">
 <meta property="article:author" content="liosq">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="DFS">
@@ -334,7 +334,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          1.8k 字
         
       </span>
     
@@ -345,7 +345,7 @@
         
         
         
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -400,19 +400,18 @@
                 
                 <h1 id="2385-感染二叉树需要的总时间"><a href="#2385-感染二叉树需要的总时间" class="headerlink" title="2385. 感染二叉树需要的总时间"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/amount-of-time-for-binary-tree-to-be-infected/">2385. 感染二叉树需要的总时间</a></h1><p>以下为树节点的定义</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Definition for a binary tree node.</span><br><span class="hljs-comment"> * public class TreeNode &#123;</span><br><span class="hljs-comment"> *     int val;</span><br><span class="hljs-comment"> *     TreeNode left;</span><br><span class="hljs-comment"> *     TreeNode right;</span><br><span class="hljs-comment"> *     TreeNode() &#123;&#125;</span><br><span class="hljs-comment"> *     TreeNode(int val) &#123; this.val = val; &#125;</span><br><span class="hljs-comment"> *     TreeNode(int val, TreeNode left, TreeNode right) &#123;</span><br><span class="hljs-comment"> *         this.val = val;</span><br><span class="hljs-comment"> *         this.left = left;</span><br><span class="hljs-comment"> *         this.right = right;</span><br><span class="hljs-comment"> *     &#125;</span><br><span class="hljs-comment"> * &#125;</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="O-n-O-n"><a href="#O-n-O-n" class="headerlink" title="$O(n)+O(n)$"></a>$O(n)+O(n)$</h2><p><strong>DFS 构建邻接矩阵 + BFS 求以感染节点为根的树的最深深度</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> Map&lt;Integer, List&lt;Integer&gt;&gt; graph;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        <span class="hljs-keyword">if</span>(graph.get(root.val) == <span class="hljs-literal">null</span>) &#123;<br>            graph.put(root.val, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root.left != <span class="hljs-literal">null</span>) &#123;<br>            graph.get(root.val).add(root.left.val);<br>            <span class="hljs-keyword">if</span>(graph.get(root.left.val) == <span class="hljs-literal">null</span>) &#123;<br>                graph.put(root.left.val, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>            &#125;<br>            graph.get(root.left.val).add(root.val);<br>            dfs(root.left);<br>        &#125;<br>        <span class="hljs-keyword">if</span>(root.right != <span class="hljs-literal">null</span>) &#123;<br>            graph.get(root.val).add(root.right.val);<br>            <span class="hljs-keyword">if</span>(graph.get(root.right.val) == <span class="hljs-literal">null</span>) &#123;<br>                graph.put(root.right.val, <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;());<br>            &#125;<br>            graph.get(root.right.val).add(root.val);<br>            dfs(root.right);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">amountOfTime</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> start)</span> &#123;<br>        graph = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        dfs(root);<br>        <span class="hljs-type">int</span> cur, ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 判断节点是否被访问过</span><br>        Map&lt;Integer, Boolean&gt; visit = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        Queue&lt;Integer&gt; level = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        level.add(<span class="hljs-number">0</span>);<br>        queue.add(start);<br>        visit.put(start, <span class="hljs-literal">true</span>);<br>        <span class="hljs-keyword">while</span>(!queue.isEmpty()) &#123;<br>            cur = queue.poll();<br>            ans = level.poll();<br>            <span class="hljs-keyword">for</span>(Integer e : graph.get(cur)) &#123;<br>                <span class="hljs-keyword">if</span>(visit.get(e) == <span class="hljs-literal">null</span>) &#123;<br>                    queue.add(e);<br>                    level.add(ans + <span class="hljs-number">1</span>);<br>                    visit.put(e, <span class="hljs-literal">true</span>);<br>                &#125;<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <h2 id="O-n-O-1"><a href="#O-n-O-1" class="headerlink" title="$O(n)+O(1)$"></a>$O(n)+O(1)$</h2><p><strong>DFS 求子树最深深度 + 优化</strong></p>
-<p>调用 DFS 函数**获取递归左右子树得到的返回值 $x$**，对其优化：</p>
+<p>调用 DFS 函数<strong>获取递归左右子树得到的返回值 $x$</strong>，对其优化：</p>
 <ul>
 <li><strong>如果子树中存在感染节点</strong>，则返回值 $x$ 表示<strong>从当前节点走 $-x$ 步可以到达感染节点</strong></li>
 <li><strong>如果子树中不存在感染节点</strong>，则返回值 $x$ 就表示<strong>子树的最深深度</strong></li>
 </ul>
-<p>由此我们可以在每次递归到一个节点时，就算出**树中到达感染节点的距离的最大值 $ans$<strong>，设</strong>递归左右子树的函数返回值分别为 $left,right$**，则 $ans$ 可表示为：<br>$$<br>max(ans,left-right),(right&lt;0)\<br>max(ans,right-left),(left&lt;0)<br>$$</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> ans;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> dfs(root.left, target),<br>            right = dfs(root.right, target);<br>        <span class="hljs-comment">// 当前节点是感染节点 对于其父节点来说 需要 1 步到达感染节点</span><br>        <span class="hljs-keyword">if</span>(root.val == target) &#123;<br>            ans = Math.max(ans, Math.max(left, right));<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 左右子树都未被感染 正常返回树的最深深度</span><br>        <span class="hljs-keyword">if</span>(left &gt;= <span class="hljs-number">0</span> &amp;&amp; right &gt;= <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> Math.max(left, right) + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 感染节点在右子树 且需要 -right 步到达感染节点</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(left &gt;= <span class="hljs-number">0</span>) &#123;<br>            ans = Math.max(ans, left - right);<br>            <span class="hljs-keyword">return</span> right - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 感染节点在左子树 且需要 -left 步到达感染节点</span><br>        <span class="hljs-keyword">else</span> &#123;<br>            ans = Math.max(ans, right - left);<br>            <span class="hljs-keyword">return</span> left - <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">amountOfTime</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> start)</span> &#123;<br>        ans = <span class="hljs-number">0</span>;<br>        dfs(root, start);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
+<p>由此我们可以在每次递归到一个节点时，就算出<strong>树中到达感染节点的距离的最大值 $ans$</strong>，设<strong>递归左右子树的函数返回值分别为 $left,right$</strong>，则 $ans$ 可表示为：</p>
+<script type="math/tex; mode=display">
+max(ans,left-right),(right<0)\\
+max(ans,right-left),(left<0)</script><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> ans;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-title function_">dfs</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> target)</span> &#123;<br>        <span class="hljs-keyword">if</span>(root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">left</span> <span class="hljs-operator">=</span> dfs(root.left, target),<br>            right = dfs(root.right, target);<br>        <span class="hljs-comment">// 当前节点是感染节点 对于其父节点来说 需要 1 步到达感染节点</span><br>        <span class="hljs-keyword">if</span>(root.val == target) &#123;<br>            ans = Math.max(ans, Math.max(left, right));<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 左右子树都未被感染 正常返回树的最深深度</span><br>        <span class="hljs-keyword">if</span>(left &gt;= <span class="hljs-number">0</span> &amp;&amp; right &gt;= <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">return</span> Math.max(left, right) + <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 感染节点在右子树 且需要 -right 步到达感染节点</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(left &gt;= <span class="hljs-number">0</span>) &#123;<br>            ans = Math.max(ans, left - right);<br>            <span class="hljs-keyword">return</span> right - <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-comment">// 感染节点在左子树 且需要 -left 步到达感染节点</span><br>        <span class="hljs-keyword">else</span> &#123;<br>            ans = Math.max(ans, right - left);<br>            <span class="hljs-keyword">return</span> left - <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">amountOfTime</span><span class="hljs-params">(TreeNode root, <span class="hljs-type">int</span> start)</span> &#123;<br>        ans = <span class="hljs-number">0</span>;<br>        dfs(root, start);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -580,6 +579,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -847,6 +852,49 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
